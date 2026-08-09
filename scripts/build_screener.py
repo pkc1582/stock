@@ -551,6 +551,18 @@ def evaluate_company(
         if fcf_value is not None and fcf_value <= 0:
             reasons.append(_gate_reason("non_positive_fcf", "정의된 FCF가 0 이하입니다."))
 
+    # The pre-request gate and the final screen can independently identify the
+    # same failure. Keep the earliest, source-specific explanation once.
+    deduplicated_reasons: list[dict[str, str]] = []
+    seen_reason_codes: set[str] = set()
+    for reason in reasons:
+        reason_code = str(reason.get("code") or "unknown")
+        if reason_code in seen_reason_codes:
+            continue
+        deduplicated_reasons.append(reason)
+        seen_reason_codes.add(reason_code)
+    reasons = deduplicated_reasons
+
     if financial_type == "financial":
         operating_margin_score = 7.5
         revenue_growth_score = 7.5

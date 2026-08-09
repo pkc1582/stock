@@ -167,6 +167,7 @@ class ScreeningPolicyTests(unittest.TestCase):
             reason["code"] for reason in output["rejected"][0]["rejectionReasons"]
         }
         self.assertEqual(reason_codes, {"market_cap_below_minimum"})
+        self.assertEqual(len(output["rejected"][0]["rejectionReasons"]), 1)
         self.assertNotIn("missing_net_income", reason_codes)
         self.assertNotIn("missing_revenue", reason_codes)
 
