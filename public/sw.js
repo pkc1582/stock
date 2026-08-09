@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'compound-asset-2045'
-const CACHE_VERSION = 'v2'
+const CACHE_VERSION = 'v3'
 const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`
 const DATA_CACHE = `${CACHE_PREFIX}-data-${CACHE_VERSION}`
 const BASE_PATH = '/stock/'
@@ -7,6 +7,7 @@ const CORE_ASSETS = [
   BASE_PATH,
   `${BASE_PATH}offline.html`,
   `${BASE_PATH}manifest.webmanifest`,
+  `${BASE_PATH}images/app-screen-preview.png`,
   `${BASE_PATH}icons/icon-192.png`,
   `${BASE_PATH}icons/icon-512.png`,
   `${BASE_PATH}icons/icon-maskable-512.png`,

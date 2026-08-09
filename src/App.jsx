@@ -409,8 +409,6 @@ function Header({ basisDate }) {
 }
 
 function Hero({ snapshot }) {
-  const leader = snapshot.companies[0]
-  const summary = snapshot.summary
   return (
     <section className="hero" id="top">
       <div className="hero-grid page-shell">
@@ -435,41 +433,14 @@ function Hero({ snapshot }) {
             <span>{formatDate(snapshot.basisDate)} 기준</span>
           </div>
         </div>
-        <div className="hero-panel" aria-label="오늘의 CAVM 요약">
-          <div className="hero-panel-top">
-            <div>
-              <span className="muted-label">CAVM LEADER</span>
-              <h2>{leader?.name || '분석 중'}</h2>
-              <p>{leader?.sector || 'TOP20 데이터를 불러오는 중입니다.'}</p>
-            </div>
-            <div className="score-orbit" style={{ '--score': `${leader?.cavm || 0}%` }}>
-              <span>{leader?.cavm || '—'}</span>
-              <small>/ 100</small>
-            </div>
-          </div>
-          <div className="mini-matrix" aria-hidden="true">
-            <span className="axis y">QUALITY</span>
-            <span className="axis x">VALUE</span>
-            <span className="matrix-line horizontal" />
-            <span className="matrix-line vertical" />
-            <span className="matrix-zone ideal">좋은 기업<br />좋은 가격</span>
-            {snapshot.companies.slice(0, 8).map((company, index) => (
-              <span
-                key={company.code}
-                className={`mini-dot tone-${gapTone(company.gapRate)}`}
-                style={{
-                  left: `${42 + Math.min(48, (company.cavm - 82) * 2.7)}%`,
-                  top: `${Math.max(10, Math.min(87, 51 + (company.gapRate || 0) * 0.42))}%`,
-                  '--delay': `${index * 80}ms`,
-                }}
-              />
-            ))}
-          </div>
-          <div className="hero-stats">
-            <div><strong>{summary.universeSize}</strong><span>검토 후보</span></div>
-            <div><strong>{summary.averageCavm.toFixed(1)}</strong><span>평균 CAVM</span></div>
-            <div><strong>{summary.undervaluedCount}</strong><span>VM 대비 할인</span></div>
-          </div>
+        <div className="hero-panel hero-app-panel" aria-label="복리자산 2045 앱 화면 미리보기">
+          <img
+            className="hero-app-preview"
+            src={`${import.meta.env.BASE_URL}images/app-screen-preview.png`}
+            alt="복리자산 2045 설치형 앱 화면"
+            width="1536"
+            height="2048"
+          />
         </div>
       </div>
     </section>
@@ -706,7 +677,7 @@ function chartLabelLayout(points, x, y, cutX, top, bottom) {
   points.forEach((company) => {
     const cx = x(company.cavm)
     const cy = y(company.gapRate)
-    const side = cx >= cutX + 300 ? 'left' : 'right'
+    const side = cx >= cutX + 300 ? 'right' : 'left'
     groups[side].push({ company, cx, cy, labelY: Math.max(top, Math.min(bottom, cy + 4)) })
   })
 
@@ -763,6 +734,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
           <span><i className="legend-dot attractive" /> -20% 이하 · 적극 검토</span>
           <span><i className="legend-dot fair" /> -20%~-10% · 분할 검토</span>
           <span><i className="legend-dot expensive" /> -10% 초과 · 관찰</span>
+          <span><i className="legend-diamond attention" /> -20% 초과 · 가격 주의</span>
         </div>
         <span className="chart-note">점이나 기업명을 선택하면 상세 분석이 바뀝니다</span>
       </div>
@@ -807,6 +779,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             {renderPoints.map((company) => {
               const tone = gapTone(company.gapRate)
               const isSelected = company.code === selectedCode
+              const needsPriceAttention = company.gapRate > -20
               const cx = x(company.cavm)
               const cy = y(company.gapRate)
               const label = labels.get(company.code)
@@ -819,7 +792,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   className={`data-point tone-${tone}${isSelected ? ' is-selected' : ''}`}
                   role="button"
                   tabIndex="0"
-                  aria-label={`${company.name}, CAVM ${company.cavm}점, 괴리율 ${formatPercent(company.gapRate, true)}`}
+                  aria-label={`${company.name}, CAVM ${company.cavm}점, 괴리율 ${formatPercent(company.gapRate, true)}${needsPriceAttention ? ', 가격 주의' : ''}`}
                   onClick={() => onSelect(company.code)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter' || event.key === ' ') {
@@ -829,10 +802,21 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   }}
                 >
                   <line x1={cx + (labelRight ? 9 : -9)} y1={cy} x2={labelX + (labelRight ? -4 : 4)} y2={labelY - 4} className="point-leader" />
+                  {needsPriceAttention && (
+                    <rect
+                      x={cx - 12}
+                      y={cy - 12}
+                      width="24"
+                      height="24"
+                      rx="2"
+                      className="price-attention-marker"
+                      transform={`rotate(45 ${cx} ${cy})`}
+                    />
+                  )}
                   <circle cx={cx} cy={cy} r={isSelected ? 13 : 10} className="point-halo" />
                   <circle cx={cx} cy={cy} r={isSelected ? 10 : 8} className="point-core" filter="url(#point-shadow)" />
                   <text x={cx} y={cy + 3} className="point-rank" textAnchor="middle">{company.rank}</text>
-                  <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
+                  <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}${needsPriceAttention ? ' is-price-attention' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
                     #{company.rank} {company.name}
                   </text>
                   <title>{company.name} · CAVM {company.cavm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
