@@ -327,7 +327,11 @@ def build_snapshot(
             raise UniverseSyncError("provider returned mixed basis dates")
         code = normalize_code(row.get("srtnCd"))
         if code is None:
-            raise UniverseSyncError("provider returned an invalid short code")
+            raw_code = str(row.get("srtnCd", ""))[:20]
+            raise UniverseSyncError(
+                "provider returned an invalid short code "
+                f"(type={type(row.get('srtnCd')).__name__}, value={raw_code!r})"
+            )
         if code in seen_all_codes:
             raise UniverseSyncError(f"provider returned duplicate short code {code}")
         seen_all_codes.add(code)
