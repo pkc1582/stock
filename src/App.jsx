@@ -413,15 +413,15 @@ function Hero({ snapshot }) {
   const generated = snapshot.generatedAt
     ? new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(snapshot.generatedAt))
     : '확인 중'
+  const goodPriceCompanies = snapshot.companies
+    .filter((company) => Number.isFinite(company.gapRate) && company.gapRate <= -20)
+    .sort((a, b) => a.gapRate - b.gapRate)
   const summaryItems = [
     ['검토 유니버스', `${summary.universeSize}개`, '정량·정성 검토 후보'],
     ['공식 TOP20', `${summary.top20Count}개`, 'CAVM 동점 규칙 반영'],
     ['평균 품질점수', summary.averageCavm.toFixed(1), '100점 만점'],
-    ['저평가 구간', `${summary.undervaluedCount}개`, '괴리율 0% 미만'],
+    ['좋은 가격 기업', `${goodPriceCompanies.length}개`, '괴리율 -20% 이하'],
   ]
-  const priceCautionCompanies = snapshot.companies
-    .filter((company) => Number.isFinite(company.gapRate) && company.gapRate > -20)
-    .sort((a, b) => b.gapRate - a.gapRate)
 
   return (
     <section className="hero" id="top">
@@ -457,13 +457,13 @@ function Hero({ snapshot }) {
               </div>
             ))}
           </div>
-          <div className="hero-price-caution">
-            <div className="hero-price-caution-heading">
-              <span>괴리율 -20% 초과</span>
-              <strong>{priceCautionCompanies.length}개 · 가격 주의</strong>
+          <div className="hero-good-opportunities">
+            <div className="hero-good-opportunities-heading">
+              <span>좋은 기업 · 좋은 가격</span>
+              <strong>{goodPriceCompanies.length}개 · 괴리율 -20% 이하</strong>
             </div>
-            <ul aria-label="괴리율 -20% 초과 기업">
-              {priceCautionCompanies.map((company) => (
+            <ul aria-label="좋은 기업이면서 괴리율 -20% 이하인 기업">
+              {goodPriceCompanies.map((company) => (
                 <li key={company.code}>
                   <span>#{company.rank} {company.name}</span>
                   <strong>{formatPercent(company.gapRate, true)}</strong>
@@ -724,6 +724,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
   for (let value = Math.ceil(yMin / yStep) * yStep; value <= yMax; value += yStep) yTicks.push(value)
   const cutX = x(90)
   const decisionY = y(-10)
+  const goodPriceY = y(-20)
   const selected = points.find((point) => point.code === selectedCode)
   const labels = chartLabelLayout(points, x, y, cutX, margin.top + 14, height - margin.bottom - 12)
   const renderPoints = [...points].sort((a, b) => Number(a.code === selectedCode) - Number(b.code === selectedCode))
@@ -732,10 +733,10 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
     <div className="chart-shell">
       <div className="chart-toolbar">
         <div className="chart-legend" aria-label="괴리율 범례">
-          <span><i className="legend-dot attractive" /> -20% 이하 · 적극 검토</span>
+          <span><i className="legend-dot attractive" /> -20% 이하 · 좋은 가격</span>
           <span><i className="legend-dot fair" /> -20%~-10% · 분할 검토</span>
           <span><i className="legend-dot expensive" /> -10% 초과 · 관찰</span>
-          <span><i className="legend-diamond attention" /> -20% 초과 · 가격 주의</span>
+          <span><i className="legend-diamond opportunity" /> TOP20 + 좋은 가격 · 특별 표시</span>
         </div>
         <span className="chart-note">점이나 기업명을 선택하면 상세 분석이 바뀝니다</span>
       </div>
@@ -773,6 +774,8 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             <line x1={cutX} x2={cutX} y1={margin.top} y2={height - margin.bottom} className="cut-line" />
             <line x1={margin.left} x2={width - margin.right} y1={decisionY} y2={decisionY} className="decision-line" />
             <text x={width - margin.right - 8} y={decisionY - 10} className="decision-label" textAnchor="end">관찰 경계 -10%</text>
+            <line x1={margin.left} x2={width - margin.right} y1={goodPriceY} y2={goodPriceY} className="good-price-line" />
+            <text x={width - margin.right - 8} y={goodPriceY + 17} className="good-price-label" textAnchor="end">좋은 가격 -20% 이하</text>
             <text x={margin.left} y={42} className="zone-label danger">낮은 CAVM · 관찰</text>
             <text x={width - margin.right} y={42} className="zone-label caution" textAnchor="end">높은 CAVM · 관찰</text>
             <text x={margin.left} y={height - margin.bottom - 18} className="zone-label muted">가격은 낮지만 품질 확인</text>
@@ -780,7 +783,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             {renderPoints.map((company) => {
               const tone = gapTone(company.gapRate)
               const isSelected = company.code === selectedCode
-              const needsPriceAttention = company.gapRate > -20
+              const isGoodOpportunity = company.gapRate <= -20
               const cx = x(company.cavm)
               const cy = y(company.gapRate)
               const label = labels.get(company.code)
@@ -793,7 +796,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   className={`data-point tone-${tone}${isSelected ? ' is-selected' : ''}`}
                   role="button"
                   tabIndex="0"
-                  aria-label={`${company.name}, CAVM ${company.cavm}점, 괴리율 ${formatPercent(company.gapRate, true)}${needsPriceAttention ? ', 가격 주의' : ''}`}
+                  aria-label={`${company.name}, CAVM ${company.cavm}점, 괴리율 ${formatPercent(company.gapRate, true)}${isGoodOpportunity ? ', 좋은 기업과 좋은 가격' : ''}`}
                   onClick={() => onSelect(company.code)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter' || event.key === ' ') {
@@ -803,21 +806,21 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   }}
                 >
                   <line x1={cx + (labelRight ? 9 : -9)} y1={cy} x2={labelX + (labelRight ? -4 : 4)} y2={labelY - 4} className="point-leader" />
-                  {needsPriceAttention && (
+                  {isGoodOpportunity && (
                     <rect
                       x={cx - 12}
                       y={cy - 12}
                       width="24"
                       height="24"
                       rx="2"
-                      className="price-attention-marker"
+                      className="good-opportunity-marker"
                       transform={`rotate(45 ${cx} ${cy})`}
                     />
                   )}
                   <circle cx={cx} cy={cy} r={isSelected ? 13 : 10} className="point-halo" />
                   <circle cx={cx} cy={cy} r={isSelected ? 10 : 8} className="point-core" filter="url(#point-shadow)" />
                   <text x={cx} y={cy + 3} className="point-rank" textAnchor="middle">{company.rank}</text>
-                  <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}${needsPriceAttention ? ' is-price-attention' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
+                  <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}${isGoodOpportunity ? ' is-good-opportunity' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
                     #{company.rank} {company.name}
                   </text>
                   <title>{company.name} · CAVM {company.cavm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
@@ -853,7 +856,7 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
           eyebrow="THE CAVM MATRIX"
           title={<>기업의 질과 가격을<br />한 화면에서 봅니다.</>}
           description="가로축은 CAVM, 세로축은 현재가의 Final VM 대비 괴리율입니다. 오른쪽 아래에 가까울수록 우리가 기다린 조건에 부합합니다."
-          aside={<><strong>괴리율 음수</strong><span>= 적정가보다 저렴</span></>}
+          aside={<><strong>좋은 가격 기준</strong><span>= 괴리율 -20% 이하</span></>}
         />
         <MatrixChart companies={snapshot.companies} selectedCode={selectedCode} onSelect={onSelect} />
       </div>

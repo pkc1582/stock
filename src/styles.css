@@ -89,14 +89,14 @@ button { color: inherit; }
 .hero-summary-item > span, .hero-summary-refresh span { color: #b3c1bc; font-size: 13px; font-weight: 700; }
 .hero-summary-item strong { margin: 10px 0 7px; color: white; font-size: 38px; line-height: 1; letter-spacing: -1.4px; }
 .hero-summary-item small { color: #8fa29b; font-size: 12px; line-height: 1.5; }
-.hero-price-caution { padding: 20px 24px 22px; border-bottom: 1px solid rgba(255,255,255,.15); background: rgba(183, 78, 69, .055); }
-.hero-price-caution-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.hero-price-caution-heading span { color: #d9c57e; font-size: 12px; font-weight: 700; }
-.hero-price-caution-heading strong { color: #e4b4aa; font-size: 12px; }
-.hero-price-caution ul { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0 0; padding: 0; list-style: none; }
-.hero-price-caution li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid rgba(228, 180, 170, .25); background: rgba(255,255,255,.035); font-size: 11px; line-height: 1; }
-.hero-price-caution li span { color: #c8d3cf; }
-.hero-price-caution li strong { color: #efb5a9; }
+.hero-good-opportunities { padding: 20px 24px 22px; border-bottom: 1px solid rgba(255,255,255,.15); background: rgba(88, 201, 149, .07); }
+.hero-good-opportunities-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.hero-good-opportunities-heading span { color: #d9c57e; font-size: 12px; font-weight: 700; }
+.hero-good-opportunities-heading strong { color: #78d4aa; font-size: 12px; }
+.hero-good-opportunities ul { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0 0; padding: 0; list-style: none; }
+.hero-good-opportunities li { display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid rgba(120, 212, 170, .28); background: rgba(255,255,255,.04); font-size: 11.5px; line-height: 1; }
+.hero-good-opportunities li span { color: #d4dedb; }
+.hero-good-opportunities li strong { color: #78d4aa; }
 .hero-summary-refresh { min-height: 104px; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 16px; padding: 22px 28px; }
 .hero-refresh-icon { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #82958e; border-radius: 50%; color: #65c89e; font-size: 18px; }
 .hero-summary-refresh div { display: flex; flex-direction: column; }
@@ -121,7 +121,7 @@ button { color: inherit; }
 .legend-dot.fair { background: var(--orange); }
 .legend-dot.expensive { background: var(--red); }
 .legend-diamond { width: 9px; height: 9px; border: 2px solid; transform: rotate(45deg); }
-.legend-diamond.attention { border-color: #aa5a30; background: #fff8f3; }
+.legend-diamond.opportunity { border-color: #c5a95e; background: #e8f5ed; }
 .chart-note { color: #8b9490; font-size: 10px; }
 .chart-scroll { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: #8ca49a #edf1eb; }
 .matrix-chart { min-width: 920px; display: block; width: 100%; height: auto; }
@@ -133,6 +133,8 @@ button { color: inherit; }
 .grid-line.zero, .cut-line { stroke: #718078; stroke-width: 1.3; stroke-dasharray: 7 6; }
 .decision-line { stroke: #0d7655; stroke-width: 2; stroke-dasharray: 9 6; }
 .decision-label { fill: #0d7655; font-size: 12px; font-weight: 700; }
+.good-price-line { stroke: #08704d; stroke-width: 2.5; }
+.good-price-label { fill: #08704d; font-size: 12px; font-weight: 800; }
 .tick-label { fill: #7a8580; font-size: 11px; }
 .axis-title { fill: #394842; font-size: 12px; font-weight: 700; }
 .zone-label { font-size: 11px; font-weight: 700; }
@@ -150,11 +152,11 @@ button { color: inherit; }
 .data-point.tone-expensive .point-core { fill: var(--red); }
 .data-point.tone-expensive .point-halo { stroke: var(--red); }
 .point-leader { stroke: #9eaaa5; stroke-width: 1; opacity: .65; pointer-events: none; }
-.price-attention-marker { fill: rgba(170, 90, 48, .05); stroke: #aa5a30; stroke-width: 2; pointer-events: none; }
+.good-opportunity-marker { fill: rgba(197, 169, 94, .12); stroke: #a98b3e; stroke-width: 2.5; pointer-events: none; }
 .point-rank { fill: white; font-family: 'Noto Sans KR', sans-serif; font-size: 7px; font-weight: 700; pointer-events: none; }
 .point-label { fill: #263a34; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 600; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 4px; stroke-linejoin: round; cursor: pointer; pointer-events: auto; }
 .point-label.is-selected { fill: #075b42; font-size: 12.5px; font-weight: 800; }
-.point-label.is-price-attention { text-decoration: underline; text-decoration-color: #aa5a30; text-underline-offset: 3px; }
+.point-label.is-good-opportunity { fill: #08704d; text-decoration: underline; text-decoration-color: #a98b3e; text-underline-offset: 3px; }
 .selected-chart-card { min-height: 76px; display: grid; grid-template-columns: auto 1.8fr repeat(3, 1fr) auto; align-items: center; gap: 22px; padding: 12px 24px; border-top: 1px solid #dfe3dc; }
 .selected-chart-card.tone-attractive { box-shadow: inset 4px 0 var(--green); }
 .selected-chart-card.tone-fair { box-shadow: inset 4px 0 var(--orange); }
@@ -410,9 +412,9 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
   .hero-panel { padding: 16px; }
   .hero-summary-item { min-height: 142px; padding: 20px; }
   .hero-summary-item strong { font-size: 32px; }
-  .hero-price-caution { padding: 18px 20px 20px; }
-  .hero-price-caution-heading { align-items: flex-start; flex-direction: column; gap: 3px; }
-  .hero-price-caution li { padding: 7px 8px; font-size: 11.5px; }
+  .hero-good-opportunities { padding: 18px 20px 20px; }
+  .hero-good-opportunities-heading { align-items: flex-start; flex-direction: column; gap: 3px; }
+  .hero-good-opportunities li { padding: 7px 8px; font-size: 11.5px; }
   .hero-summary-refresh { min-height: 92px; padding: 18px 20px; }
   .section-heading h2 { font-size: 33px; }
   .chart-legend { gap: 10px; }
