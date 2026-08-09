@@ -361,8 +361,8 @@ function Header({ basisDate }) {
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
     ['#company', '기업 분석'],
-    ['#screener', '전체시장 스크리너'],
     ['#methodology', '평가 기준'],
+    ['#screener', '전체시장 스크리너'],
   ]
 
   return (
@@ -1231,13 +1231,13 @@ export default function App() {
         <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <CompanyDetail company={selectedCompany} />
+        <Methodology methodology={snapshot.methodology} />
         <ScreenerSection
           screener={screener}
           loadState={screenerLoadState}
           error={screenerError}
           onRetry={() => setScreenerRetryKey((value) => value + 1)}
         />
-        <Methodology methodology={snapshot.methodology} />
       </main>
       <Footer snapshot={snapshot} />
     </>
