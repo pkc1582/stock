@@ -130,13 +130,18 @@ def data_status_for(companies_data: dict[str, Any]) -> str:
         market_label = "2026-08-07 정규장 종가 교차검증"
 
     if financial_status == "updated_from_opendart_latest_reports":
-        financial_label = "OpenDART 기업별 최신 보고서 갱신"
+        financial_label = "OpenDART 기업별 최신 보고서 확인 완료"
     elif financial_status == "partially_updated_from_opendart_latest_reports":
         summary = companies_data.get("financialDataSummary", {})
         success_count = summary.get("latestReportSuccessCount") if isinstance(summary, dict) else None
+        complete_count = summary.get("latestReportCompleteCount") if isinstance(summary, dict) else None
         company_count = summary.get("companyCount") if isinstance(summary, dict) else None
-        coverage = f" {success_count}/{company_count}" if success_count is not None and company_count else ""
-        financial_label = f"OpenDART 기업별 최신 보고서 부분 갱신{coverage}"
+        if success_count is not None and company_count:
+            financial_label = f"OpenDART 최신 보고서 확인 {success_count}/{company_count}"
+            if complete_count is not None and complete_count != company_count:
+                financial_label += f" · 주요지표 완전 {complete_count}/{company_count}"
+        else:
+            financial_label = "OpenDART 기업별 최신 보고서 부분 확인"
     elif financial_status in {"updated_from_opendart_2025_annual", "verified_from_opendart_2025_annual"}:
         financial_label = "OpenDART 2025 사업보고서 갱신"
     else:
