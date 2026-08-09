@@ -6,7 +6,7 @@
   "currency": "KRW",
   "financialUnit": "억원",
   "marketDataStatus": "verified_initial_snapshot",
-  "financialDataStatus": "verified_from_opendart_2025_annual",
+  "financialDataStatus": "partially_updated_from_opendart_latest_reports",
   "companies": [
     {
       "code": "000660",
@@ -30,7 +30,23 @@
         "operatingMargin2025": 48.59,
         "roe2025": 44.14,
         "debtRatio2025": 45.95,
-        "eps2025": 62044
+        "eps2025": 62044,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002287",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 525763,
+          "operatingMargin": 71.53,
+          "roeAnnualized": 113.23,
+          "debtRatio": 35.56,
+          "epsCumulative": 57175,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -70,7 +86,23 @@
         "operatingMargin2025": 47.51,
         "roe2025": 22.45,
         "debtRatio2025": 8.3,
-        "eps2025": 1994
+        "eps2025": 2002,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "OFS",
+          "rceptNo": "20260514000391",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 998,
+          "operatingMargin": 47.41,
+          "roeAnnualized": 22.41,
+          "debtRatio": 17.04,
+          "epsCumulative": 532,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -110,7 +142,23 @@
         "operatingMargin2025": 39.98,
         "roe2025": 26.02,
         "debtRatio2025": 44.21,
-        "eps2025": 14933
+        "eps2025": 14933,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001997",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 1461,
+          "operatingMargin": 39.21,
+          "roeAnnualized": 26.78,
+          "debtRatio": 48.18,
+          "epsCumulative": 4245,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -150,7 +198,23 @@
         "operatingMargin2025": 13.07,
         "roe2025": 10.78,
         "debtRatio2025": 29.94,
-        "eps2025": 6605
+        "eps2025": 6605,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002181",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 1338734,
+          "operatingMargin": 42.75,
+          "roeAnnualized": 40.93,
+          "debtRatio": 30.15,
+          "epsCumulative": 7123,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -190,7 +254,25 @@
         "operatingMargin2025": 45.41,
         "roe2025": 19.44,
         "debtRatio2025": 48.44,
-        "eps2025": 26572
+        "eps2025": 26572,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002129",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 12571,
+          "operatingMargin": 46.2,
+          "roeAnnualized": 24.42,
+          "debtRatio": 51.4,
+          "epsCumulative": null,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "epsCumulative"
+          ]
+        }
       },
       "sources": [
         {
@@ -230,7 +312,26 @@
         "operatingMargin2025": 10.49,
         "roe2025": 9.68,
         "debtRatio2025": 1211.73,
-        "eps2025": 15410
+        "eps2025": 15410,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002888",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 12.57,
+          "debtRatio": 1257.11,
+          "epsCumulative": 5165,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -270,7 +371,23 @@
         "operatingMargin2025": 22.29,
         "roe2025": 37.02,
         "debtRatio2025": 72.74,
-        "eps2025": 52156
+        "eps2025": 52156,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260513000571",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 7144,
+          "operatingMargin": 24.79,
+          "roeAnnualized": 43.19,
+          "debtRatio": 69.84,
+          "epsCumulative": 19198,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -310,7 +427,23 @@
         "operatingMargin2025": 31.7,
         "roe2025": 10.47,
         "debtRatio2025": 31.31,
-        "eps2025": 16454
+        "eps2025": 16454,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002756",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 13714,
+          "operatingMargin": 40.95,
+          "roeAnnualized": 28.09,
+          "debtRatio": 31.8,
+          "epsCumulative": 11701,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -350,7 +483,26 @@
         "operatingMargin2025": 14.14,
         "roe2025": 21.18,
         "debtRatio2025": 1102.87,
-        "eps2025": 12903
+        "eps2025": 12903,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260529001907",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 23.6,
+          "debtRatio": 1124.09,
+          "epsCumulative": 3926,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -390,7 +542,23 @@
         "operatingMargin2025": 24.4,
         "roe2025": 41.34,
         "debtRatio2025": 134.63,
-        "eps2025": 20354
+        "eps2025": 20354,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002315",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 10365,
+          "operatingMargin": 24.92,
+          "roeAnnualized": 40.36,
+          "debtRatio": 158.34,
+          "epsCumulative": 5781,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -430,7 +598,23 @@
         "operatingMargin2025": 20.42,
         "roe2025": 11.79,
         "debtRatio2025": 51.98,
-        "eps2025": 10220
+        "eps2025": 10220,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002914",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 17036,
+          "operatingMargin": 21.4,
+          "roeAnnualized": 16.21,
+          "debtRatio": 57.59,
+          "epsCumulative": 3666,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -470,7 +654,23 @@
         "operatingMargin2025": 11.57,
         "roe2025": 15.57,
         "debtRatio2025": 221.38,
-        "eps2025": 28573
+        "eps2025": 28573,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260513000860",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 57510,
+          "operatingMargin": 11.11,
+          "roeAnnualized": 12.3,
+          "debtRatio": 224.88,
+          "epsCumulative": 4999,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -510,7 +710,23 @@
         "operatingMargin2025": 13.04,
         "roe2025": 18.85,
         "debtRatio2025": 133.86,
-        "eps2025": 30664
+        "eps2025": 30664,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001799",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 81409,
+          "operatingMargin": 16.66,
+          "roeAnnualized": 26.68,
+          "debtRatio": 143.73,
+          "epsCumulative": 11939,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -550,7 +766,26 @@
         "operatingMargin2025": 10.86,
         "roe2025": 8.53,
         "debtRatio2025": 1201.94,
-        "eps2025": 9812
+        "eps2025": 9812,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002273",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 10.83,
+          "debtRatio": 1228.55,
+          "epsCumulative": 3327,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -590,7 +825,23 @@
         "operatingMargin2025": 28.07,
         "roe2025": 5.91,
         "debtRatio2025": 28.71,
-        "eps2025": 4668
+        "eps2025": 4668,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002932",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 11450,
+          "operatingMargin": 28.11,
+          "roeAnnualized": 7.96,
+          "debtRatio": 29.99,
+          "epsCumulative": 1583,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -630,7 +881,26 @@
         "operatingMargin2025": 10.73,
         "roe2025": 10.95,
         "debtRatio2025": 352.98,
-        "eps2025": 47478
+        "eps2025": 47478,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001950",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 11.18,
+          "debtRatio": 317.02,
+          "epsCumulative": 14930,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -670,7 +940,23 @@
         "operatingMargin2025": 12.52,
         "roe2025": 22.13,
         "debtRatio2025": 190.31,
-        "eps2025": 55832
+        "eps2025": 55832,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260514001390",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 13582,
+          "operatingMargin": 11.21,
+          "roeAnnualized": 14.53,
+          "debtRatio": 209.68,
+          "epsCumulative": 9370,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -710,7 +996,23 @@
         "operatingMargin2025": 8.59,
         "roe2025": 14.1,
         "debtRatio2025": 131.48,
-        "eps2025": 9647
+        "eps2025": 9647,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260514000847",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 13766,
+          "operatingMargin": 9.19,
+          "roeAnnualized": 22.26,
+          "debtRatio": 151.24,
+          "epsCumulative": 4052,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -750,7 +1052,23 @@
         "operatingMargin2025": 18.35,
         "roe2025": 6.5,
         "debtRatio2025": 41.9,
-        "eps2025": 13009
+        "eps2025": 13009,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001511",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 32411,
+          "operatingMargin": 16.72,
+          "roeAnnualized": 3.89,
+          "debtRatio": 45.21,
+          "epsCumulative": 1889,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -790,7 +1108,23 @@
         "operatingMargin2025": 16.75,
         "roe2025": 10.44,
         "debtRatio2025": 17.55,
-        "eps2025": 9682
+        "eps2025": 9682,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515000512",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-09T19:38:16+09:00",
+          "revenueEok": 9304,
+          "operatingMargin": 17.79,
+          "roeAnnualized": 12.81,
+          "debtRatio": 19.74,
+          "epsCumulative": 3149,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -808,5 +1142,20 @@
         "nextReviewAt": "2026-08-31"
       }
     }
-  ]
+  ],
+  "financialDataSummary": {
+    "checkedAt": "2026-08-09T19:38:16+09:00",
+    "asOf": "2026-08-09",
+    "companyCount": 20,
+    "latestReportSuccessCount": 20,
+    "latestReportCompleteCount": 15,
+    "latestReportPartialCount": 5,
+    "latestReportFailedCount": 0,
+    "latestReportSuccessRate": 1.0,
+    "minimumSuccessRate": 0.8,
+    "annual2025ReportCount": 20,
+    "annual2025PartialCount": 6,
+    "annual2025ChangedCount": 1,
+    "preservedNewerReportCount": 0
+  }
 }
