@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="복리자산 2045">
+  <rect width="512" height="512" fill="#071b18"/>
+  <circle cx="416" cy="96" r="116" fill="none" stroke="#c5a95e" stroke-opacity=".14" stroke-width="18"/>
+  <path d="M256 112 400 256 256 400 112 256Z" fill="#0d2b25" stroke="#d9c57e" stroke-width="10"/>
+  <path d="M155 256h202" stroke="#d9c57e" stroke-opacity=".34" stroke-width="4"/>
+  <text x="195" y="279" fill="#f4e7ad" font-family="Arial, sans-serif" font-size="72" font-weight="800" text-anchor="middle">20</text>
+  <text x="317" y="279" fill="#f4e7ad" font-family="Arial, sans-serif" font-size="72" font-weight="800" text-anchor="middle">45</text>
+  <circle cx="256" cy="256" r="9" fill="#58c995"/>
+</svg>

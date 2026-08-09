@@ -1,0 +1,49 @@
+{
+  "id": "/stock/",
+  "name": "복리자산 2045",
+  "short_name": "복리자산2045",
+  "description": "CAVM과 VM으로 좋은 기업과 좋은 가격을 분리해 보는 국내주식 리서치 앱",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "start_url": "/stock/",
+  "scope": "/stock/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f5ef",
+  "theme_color": "#071b18",
+  "categories": ["finance", "business", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "TOP20 매트릭스",
+      "short_name": "TOP20",
+      "url": "/stock/#matrix",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "전체시장 스크리너",
+      "short_name": "스크리너",
+      "url": "/stock/#screener",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

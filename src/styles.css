@@ -63,6 +63,14 @@ button { color: inherit; }
 .hero-lead { max-width: 580px; margin: 0; color: #b8c9c3; font-size: 17px; line-height: 1.9; letter-spacing: -.2px; }
 .hero blockquote { margin: 34px 0 0; padding-left: 18px; border-left: 2px solid var(--gold); color: #d7e0dc; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.8; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; }
+.pwa-install-control { position: relative; }
+.install-app-button { height: 100%; }
+.pwa-install-help { position: absolute; z-index: 5; top: calc(100% + 10px); left: 0; width: min(320px, calc(100vw - 48px)); margin: 0; padding: 12px 14px; border: 1px solid rgba(217,197,126,.5); background: #102f29; color: #d7e0dc; font-size: 12px; line-height: 1.6; box-shadow: 0 16px 30px rgba(0,0,0,.25); }
+.pwa-update-notice { position: fixed; z-index: 90; right: 20px; bottom: max(20px, env(safe-area-inset-bottom)); width: min(430px, calc(100% - 40px)); display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 18px; border: 1px solid #d9c57e; background: #071b18; color: white; box-shadow: 0 20px 60px rgba(0,0,0,.28); }
+.pwa-update-notice div { display: grid; gap: 3px; }
+.pwa-update-notice strong { font-size: 13px; }
+.pwa-update-notice span { color: #a9bdb6; font-size: 11.5px; }
+.pwa-update-notice button { min-height: 40px; padding: 0 14px; border: 0; background: var(--green); color: white; font-weight: 800; cursor: pointer; white-space: nowrap; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 0 20px; border: 1px solid transparent; border-radius: 2px; font-size: 13px; font-weight: 700; cursor: pointer; transition: .2s ease; }
 .button.primary { background: var(--green); color: white; }
 .button.primary:hover { background: #0f8b63; transform: translateY(-1px); }
@@ -496,6 +504,10 @@ td { padding-block: 15px; }
 .disclaimer p { line-height: 1.75; }
 
 @media (max-width: 520px) {
+  .pwa-install-control, .install-app-button { width: 100%; }
+  .pwa-install-help { width: 100%; }
+  .pwa-update-notice { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: calc(100% - 24px); align-items: stretch; flex-direction: column; }
+  .pwa-update-notice button { width: 100%; }
   .hero-lead, .company-header p, .section-heading p { font-size: 15.5px; }
   .point-label { font-size: 12px; }
   .company-layout { gap: 16px; }

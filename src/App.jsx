@@ -279,6 +279,82 @@ function LogoMark() {
   )
 }
 
+function PwaInstallButton() {
+  const [installPrompt, setInstallPrompt] = useState(null)
+  const [installed, setInstalled] = useState(false)
+  const [showGuide, setShowGuide] = useState(false)
+
+  useEffect(() => {
+    const standalone = window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true
+    setInstalled(standalone)
+
+    const handlePrompt = (event) => {
+      event.preventDefault()
+      setInstallPrompt(event)
+      setShowGuide(false)
+    }
+    const handleInstalled = () => {
+      setInstalled(true)
+      setInstallPrompt(null)
+      setShowGuide(false)
+    }
+
+    window.addEventListener('beforeinstallprompt', handlePrompt)
+    window.addEventListener('appinstalled', handleInstalled)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handlePrompt)
+      window.removeEventListener('appinstalled', handleInstalled)
+    }
+  }, [])
+
+  if (installed) return null
+
+  const requestInstall = async () => {
+    if (!installPrompt) {
+      setShowGuide((visible) => !visible)
+      return
+    }
+    await installPrompt.prompt()
+    const choice = await installPrompt.userChoice
+    if (choice.outcome === 'accepted') setInstallPrompt(null)
+  }
+
+  const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent)
+  return (
+    <div className="pwa-install-control">
+      <button type="button" className="button ghost install-app-button" onClick={requestInstall}>
+        앱으로 설치 <span aria-hidden="true">＋</span>
+      </button>
+      {showGuide && (
+        <p className="pwa-install-help" role="status">
+          {isIos
+            ? 'Safari의 공유 버튼을 누른 뒤 ‘홈 화면에 추가’를 선택하세요.'
+            : '브라우저 메뉴에서 ‘앱 설치’ 또는 ‘홈 화면에 추가’를 선택하세요.'}
+        </p>
+      )}
+    </div>
+  )
+}
+
+function PwaUpdateNotice() {
+  const [available, setAvailable] = useState(false)
+
+  useEffect(() => {
+    const handleUpdate = () => setAvailable(true)
+    window.addEventListener('pwa-update-available', handleUpdate)
+    return () => window.removeEventListener('pwa-update-available', handleUpdate)
+  }, [])
+
+  if (!available) return null
+  return (
+    <aside className="pwa-update-notice" role="status" aria-live="polite">
+      <div><strong>새 데이터와 앱 버전이 준비됐습니다.</strong><span>새로고침하면 바로 적용됩니다.</span></div>
+      <button type="button" onClick={() => window.location.reload()}>새로고침</button>
+    </aside>
+  )
+}
+
 function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
@@ -341,6 +417,7 @@ function Hero({ snapshot }) {
           <div className="hero-actions">
             <a className="button primary" href="#matrix">오늘의 매트릭스 보기 <span>↘</span></a>
             <a className="button ghost" href="#methodology">산정 기준 확인</a>
+            <PwaInstallButton />
           </div>
           <div className="data-line">
             <span className="status-dot" />
@@ -1147,6 +1224,7 @@ export default function App() {
     <>
       <a className="skip-link" href="#main-content">본문으로 건너뛰기</a>
       <Header basisDate={snapshot.basisDate} />
+      <PwaUpdateNotice />
       <main id="main-content">
         <Hero snapshot={snapshot} />
         <SummaryStrip snapshot={snapshot} />

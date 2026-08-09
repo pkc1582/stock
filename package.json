@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:pwa": "node scripts/validate_pwa.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "6.0.2",
