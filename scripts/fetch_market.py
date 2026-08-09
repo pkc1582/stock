@@ -7,25 +7,23 @@ Required secret (either name is accepted):
 Optional:
   STOCK_API_ENDPOINT
 
-The provider publishes reference-date data on the following business day.  A
-single rolling-window bulk response is therefore safer and much faster than 20
-per-company requests.  A snapshot is written only when every configured stock
-has one valid quote on the same latest reference date.  Raw responses and
+The provider publishes reference-date data on the following business day.  We
+therefore probe one exact KST calendar date at a time, newest first, instead of
+downloading a large rolling window.  A snapshot is written only when every
+configured stock has one valid quote on that same date.  Raw responses and
 credentials are never persisted.
 """
 
 from __future__ import annotations
 
 import json
-import math
 import os
 import re
 import sys
 import time
-from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
@@ -36,12 +34,13 @@ DATA_PATH = ROOT / "data" / "companies.json"
 DEFAULT_ENDPOINT = "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo"
 SOURCE_LABEL = "공공데이터포털 금융위원회 주식시세정보"
 
-LOOKBACK_DAYS = 7
-PAGE_SIZE = 10_000
+LOOKBACK_DAYS = 8
+PAGE_SIZE = 5_000
 MAX_PAGES = 2
-MAX_HTTP_ATTEMPTS = 2
-HTTP_TIMEOUT_SECONDS = 25
-RETRY_DELAY_SECONDS = 1
+MAX_HTTP_ATTEMPTS_PER_REQUEST = 2
+HTTP_TIMEOUT_SECONDS = 15
+TOTAL_HTTP_BUDGET_SECONDS = 105
+RETRY_DELAY_SECONDS = 0.25
 SUCCESS_CODES = {"0", "00"}
 STOCK_CODE_PATTERN = re.compile(r"^(?:A)?(\d{6})$")
 
@@ -78,7 +77,7 @@ def service_url(endpoint: str, service_key: str, parameters: dict[str, str]) -> 
     return f"{endpoint}{separator}serviceKey={encoded_key}&{urlencode(parameters)}"
 
 
-def fetch_json(url: str) -> dict[str, Any]:
+def fetch_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> dict[str, Any]:
     request = Request(
         url,
         headers={
@@ -87,7 +86,7 @@ def fetch_json(url: str) -> dict[str, Any]:
             "Accept-Encoding": "identity",
         },
     )
-    with urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
+    with urlopen(request, timeout=timeout) as response:
         payload = response.read()
     decoded = json.loads(payload.decode("utf-8"))
     if not isinstance(decoded, dict):
@@ -115,8 +114,9 @@ def response_page(payload: dict[str, Any], expected_page: int) -> tuple[list[dic
         raise MarketRefreshError("provider response is missing header")
     result_code = str(header.get("resultCode", "")).strip()
     if result_code not in SUCCESS_CODES:
-        message = str(header.get("resultMsg", "unknown provider error")).strip()
-        raise MarketRefreshError(f"provider error {result_code or 'unknown'}: {message}")
+        # Avoid echoing an upstream message because gateways can include request
+        # details in it. The result code is enough to diagnose the API status.
+        raise MarketRefreshError(f"provider API error code={result_code or 'unknown'}")
 
     body = response.get("body")
     if not isinstance(body, dict):
@@ -147,55 +147,83 @@ def response_page(payload: dict[str, Any], expected_page: int) -> tuple[list[dic
 
     if total_count > 0 and not parsed_items:
         raise MarketRefreshError("provider response was truncated before any items were returned")
+    if total_count == 0 and parsed_items:
+        raise MarketRefreshError("provider response has items despite a zero totalCount")
+    if len(parsed_items) > total_count:
+        raise MarketRefreshError("provider response contains more items than totalCount")
+    if len(parsed_items) > page_size:
+        raise MarketRefreshError("provider response contains more items than numOfRows")
     return parsed_items, total_count, page_size
 
 
-def request_with_budget(url: str, attempts: list[int]) -> dict[str, Any]:
+def transport_error_label(error: BaseException) -> str:
+    """Return a credential-safe transport error label."""
+
+    if isinstance(error, HTTPError):
+        return f"HTTPError code={error.code}"
+    return type(error).__name__
+
+
+def request_with_budget(url: str, deadline: float) -> dict[str, Any]:
     last_error: Exception | None = None
-    while attempts[0] < MAX_HTTP_ATTEMPTS:
-        attempts[0] += 1
+    attempts = 0
+    while attempts < MAX_HTTP_ATTEMPTS_PER_REQUEST:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise MarketRefreshError("provider request time budget exhausted") from last_error
+        attempts += 1
         try:
-            return fetch_json(url)
+            return fetch_json(url, min(HTTP_TIMEOUT_SECONDS, remaining))
         except MarketRefreshError:
             raise
         except (HTTPError, URLError, TimeoutError, OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
             last_error = error
-            if attempts[0] < MAX_HTTP_ATTEMPTS:
-                time.sleep(RETRY_DELAY_SECONDS)
+            if attempts < MAX_HTTP_ATTEMPTS_PER_REQUEST:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    break
+                time.sleep(min(RETRY_DELAY_SECONDS, remaining))
     raise MarketRefreshError(
-        f"provider request failed after {attempts[0]} HTTP attempt(s): {type(last_error).__name__}"
+        f"provider transport failure after {attempts} attempt(s): "
+        f"{transport_error_label(last_error or RuntimeError())}"
     ) from last_error
 
 
-def fetch_bulk_rows(endpoint: str, key: str, begin: str, end: str) -> list[dict[str, Any]]:
-    attempts = [0]
-
+def fetch_exact_date_rows(
+    endpoint: str, key: str, basis_date: str, deadline: float
+) -> list[dict[str, Any]]:
     def fetch_page(page_number: int) -> tuple[list[dict[str, Any]], int, int]:
         parameters = {
             "resultType": "json",
             "pageNo": str(page_number),
             "numOfRows": str(PAGE_SIZE),
-            "beginBasDt": begin,
-            # The provider documents endBasDt as exclusive.
-            "endBasDt": end,
+            "basDt": basis_date,
         }
         url = service_url(endpoint, key, parameters)
-        payload = request_with_budget(url, attempts)
+        payload = request_with_budget(url, deadline)
         return response_page(payload, page_number)
 
     first_items, total_count, returned_page_size = fetch_page(1)
-    required_pages = max(1, math.ceil(total_count / returned_page_size))
+    if total_count == 0:
+        return []
+
+    required_pages = (total_count + returned_page_size - 1) // returned_page_size
     if required_pages > MAX_PAGES:
         raise MarketRefreshError(
             f"provider returned {total_count} rows requiring {required_pages} pages; "
             f"the safe page limit is {MAX_PAGES}"
         )
 
+    if required_pages > 1 and len(first_items) != returned_page_size:
+        raise MarketRefreshError("provider response was truncated before the next page")
+
     rows = list(first_items)
     for page_number in range(2, required_pages + 1):
         page_items, page_total, page_size = fetch_page(page_number)
         if page_total != total_count or page_size != returned_page_size:
             raise MarketRefreshError("provider pagination metadata changed between pages")
+        if page_number < required_pages and len(page_items) != returned_page_size:
+            raise MarketRefreshError("provider response was truncated before the next page")
         rows.extend(page_items)
 
     if len(rows) != total_count:
@@ -244,39 +272,32 @@ def configured_codes(companies: list[Any]) -> set[str]:
     return codes
 
 
-def latest_complete_quotes(
-    rows: list[dict[str, Any]], target_codes: set[str]
-) -> tuple[str, dict[str, int]]:
-    by_date: dict[str, dict[str, int]] = defaultdict(dict)
-    observed_codes: set[str] = set()
-
+def complete_quotes_for_date(
+    rows: list[dict[str, Any]], target_codes: set[str], expected_date: str
+) -> dict[str, int] | None:
+    quotes: dict[str, int] = {}
     for item in rows:
+        basis_date = normalized_date(item.get("basDt"))
+        if basis_date != expected_date:
+            raise MarketRefreshError(
+                f"provider ignored exact-date filter: requested {expected_date}, returned "
+                f"{basis_date or 'invalid'}"
+            )
         code = normalized_code(item.get("srtnCd"))
         if code not in target_codes:
             continue
-        observed_codes.add(code)
-        basis_date = normalized_date(item.get("basDt"))
         price = normalized_price(item.get("clpr"))
-        if basis_date is None:
-            raise MarketRefreshError(f"provider returned an invalid basis date for {code}")
         if price is None:
-            raise MarketRefreshError(f"provider returned an invalid closing price for {code} on {basis_date}")
-        if code in by_date[basis_date]:
-            raise MarketRefreshError(f"provider returned duplicate rows for {code} on {basis_date}")
-        by_date[basis_date][code] = price
+            raise MarketRefreshError(
+                f"provider returned an invalid closing price for {code} on {expected_date}"
+            )
+        if code in quotes:
+            raise MarketRefreshError(
+                f"provider returned duplicate rows for {code} on {expected_date}"
+            )
+        quotes[code] = price
 
-    entirely_missing = sorted(target_codes - observed_codes)
-    if entirely_missing:
-        raise MarketRefreshError(
-            "provider response is missing configured stocks: " + ", ".join(entirely_missing)
-        )
-
-    for basis_date in sorted(by_date, reverse=True):
-        quotes = by_date[basis_date]
-        if set(quotes) == target_codes:
-            return basis_date, quotes
-
-    raise MarketRefreshError("provider response has no single basis date shared by all configured stocks")
+    return quotes if set(quotes) == target_codes else None
 
 
 def parse_existing_basis_date(value: Any) -> str:
@@ -331,12 +352,35 @@ def refresh_market(
     if not isinstance(companies, list):
         raise MarketRefreshError("data/companies.json has an invalid companies list")
     target_codes = configured_codes(companies)
-    begin = (today - timedelta(days=LOOKBACK_DAYS)).strftime("%Y%m%d")
-    # endBasDt is exclusive, so tomorrow includes every available row through today.
-    end = (today + timedelta(days=1)).strftime("%Y%m%d")
-    rows = fetch_bulk_rows(endpoint, service_key, begin, end)
-    basis_date, quotes = latest_complete_quotes(rows, target_codes)
-    return apply_quotes(data, basis_date, quotes), basis_date
+    existing_basis_date = parse_existing_basis_date(data.get("priceBasisDate"))
+    deadline = time.monotonic() + TOTAL_HTTP_BUDGET_SECONDS
+    incomplete_dates: list[str] = []
+
+    for offset in range(LOOKBACK_DAYS):
+        candidate = today - timedelta(days=offset)
+        candidate_iso = candidate.isoformat()
+        if candidate_iso < existing_basis_date:
+            break
+
+        rows = fetch_exact_date_rows(
+            endpoint,
+            service_key,
+            candidate.strftime("%Y%m%d"),
+            deadline,
+        )
+        if not rows:
+            continue
+        quotes = complete_quotes_for_date(rows, target_codes, candidate_iso)
+        if quotes is None:
+            incomplete_dates.append(candidate_iso)
+            continue
+        return apply_quotes(data, candidate_iso, quotes), candidate_iso
+
+    detail = f"; incomplete dates: {', '.join(incomplete_dates)}" if incomplete_dates else ""
+    raise MarketRefreshError(
+        f"provider response has no complete 20-company snapshot in the latest "
+        f"{LOOKBACK_DAYS} calendar dates{detail}"
+    )
 
 
 def main() -> int:
