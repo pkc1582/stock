@@ -47,9 +47,9 @@ KST = ZoneInfo("Asia/Seoul")
 PAGE_SIZE = 200
 MAX_PAGES = 40
 LOOKBACK_DAYS = 10
-HTTP_TIMEOUT_SECONDS = 20
-MAX_HTTP_ATTEMPTS = 2
-RETRY_DELAY_SECONDS = 0.25
+HTTP_TIMEOUT_SECONDS = 30
+MAX_HTTP_ATTEMPTS = 3
+RETRY_DELAY_SECONDS = 1.0
 PAGE_REQUEST_DELAY_SECONDS = 0.20
 SUCCESS_CODES = frozenset({"0", "00"})
 TARGET_MARKETS = frozenset({"KOSPI", "KOSDAQ"})
@@ -115,7 +115,7 @@ def fetch_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> dict[str, Any
         ) as error:
             last_error = error
             if attempt < MAX_HTTP_ATTEMPTS:
-                time.sleep(RETRY_DELAY_SECONDS)
+                time.sleep(RETRY_DELAY_SECONDS * attempt)
     raise MarketUniverseError(
         "provider transport failure after "
         f"{MAX_HTTP_ATTEMPTS} attempt(s): {transport_error_label(last_error or RuntimeError())}"
