@@ -1,0 +1,78 @@
+name: Weekly CAVM rebuild
+
+on:
+  schedule:
+    # 09:00 KST every Saturday (GitHub cron uses UTC).
+    - cron: "0 0 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: compound-asset-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    name: Rebuild CAVM dataset
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Validate secret configuration
+        shell: bash
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          STOCK_API_ENDPOINT: ${{ secrets.STOCK_API_ENDPOINT }}
+          STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
+        run: |
+          missing=0
+          for name in DART_API_KEY STOCK_API_SERVICE_KEY; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Required repository secret ${name} is not configured."
+              missing=1
+            fi
+          done
+          exit "$missing"
+
+      - name: Refresh official inputs
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          STOCK_API_ENDPOINT: ${{ secrets.STOCK_API_ENDPOINT }}
+          STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
+        shell: bash
+        run: |
+          python scripts/fetch_market.py
+          python scripts/fetch_dart.py
+
+      - name: Recalculate CAVM and public ranking
+        run: python scripts/build_dataset.py
+
+      - name: Validate generated JSON
+        run: python -m json.tool public/data/latest.json > /dev/null
+
+      - name: Commit weekly CAVM snapshot
+        shell: bash
+        run: |
+          git add -- data/companies.json public/data/latest.json
+          if git diff --cached --quiet; then
+            echo "No CAVM changes to commit."
+            exit 0
+          fi
+
+          git config user.name "compound-asset-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: rebuild weekly CAVM ranking"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

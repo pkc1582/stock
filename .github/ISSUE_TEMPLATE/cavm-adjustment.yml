@@ -1,0 +1,109 @@
+name: CAVM / VM 조정 요청
+description: 3년 EPS, CAVM 세부 점수, VM 가정을 근거와 함께 조정 요청합니다.
+title: "[CAVM] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        요청은 즉시 공개 데이터를 바꾸지 않습니다. 관리자가 공식 근거를 검토한 뒤 `data/manual-overrides.json`에 반영합니다.
+
+  - type: input
+    id: company
+    attributes:
+      label: 기업명
+      placeholder: 예) 삼성전자
+    validations:
+      required: true
+
+  - type: input
+    id: ticker
+    attributes:
+      label: 종목코드
+      description: 6자리 국내 종목코드를 입력해 주세요.
+      placeholder: "005930"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: field
+    attributes:
+      label: 조정 항목
+      multiple: true
+      options:
+        - 3년 EPS 예상치
+        - 해외 유사기업 PER
+        - 할인율
+        - 해자
+        - 성장성
+        - 수익성
+        - 재무건전성
+        - 경영진·주주환원
+        - Final VM
+        - 기타
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 현재 값과 산정 기준
+      description: 사이트의 현재 값, 기준일, 산정 가정을 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: 제안 값
+      description: FY+1/FY+2/FY+3 EPS 또는 변경할 점수를 구체적으로 적어 주세요.
+      placeholder: |
+        FY+1 EPS:
+        FY+2 EPS:
+        FY+3 EPS:
+        점수/가정:
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: 판단 근거
+      description: 변경이 필요한 이유와 CAVM/VM에 주는 영향을 설명해 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 공식 근거
+      description: OpenDART, 기업 IR, 신용평가사 등 원문 URL과 발표일을 항목별로 적어 주세요.
+      placeholder: "- 2026-08-01: https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: basis_date
+    attributes:
+      label: 적용 기준일
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: input
+    id: review_date
+    attributes:
+      label: 다음 재검토일
+      description: 가정이 무기한 남지 않도록 재검토일을 입력합니다.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: policy
+    attributes:
+      label: 확인
+      options:
+        - label: 단기 주가 예측이 아닌 장기 기업가치 근거로 제안합니다.
+          required: true
+        - label: 제공한 링크가 공개·적법한 출처임을 확인했습니다.
+          required: true

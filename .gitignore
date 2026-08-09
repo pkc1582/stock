@@ -1,0 +1,29 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs and test output
+*.log
+coverage/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

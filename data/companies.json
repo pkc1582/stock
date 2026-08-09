@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "basisDate": "2026-08-09",
+  "priceBasisDate": "2026-08-07",
+  "universeSize": 20,
+  "currency": "KRW",
+  "financialUnit": "억원",
+  "marketDataStatus": "verified_initial_snapshot",
+  "financialDataStatus": "verified_2025_annual_public_snapshot",
+  "companies": [
+    {
+      "code": "000660",
+      "name": "SK하이닉스",
+      "sector": "반도체",
+      "cavm": 96,
+      "components": { "moat": 29, "growth": 25, "profitability": 20, "financialHealth": 14, "management": 8 },
+      "currentPrice": 1422000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "HBM 기술 리더십과 선도 고객 인증, 고부가 메모리 믹스가 수익성과 현금창출을 동시에 끌어올린다.",
+      "risk": "메모리 가격 사이클, 대규모 설비투자, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
+      "financials": { "revenue2025": 971467, "operatingMargin2025": 48.59, "roe2025": 44.15, "debtRatio2025": 45.95, "eps2025": 58955 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "SK하이닉스 FY2025 공식 실적", "url": "https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "sector": "반도체 장비·부품",
+      "cavm": 95,
+      "components": { "moat": 30, "growth": 23, "profitability": 20, "financialHealth": 15, "management": 7 },
+      "currentPrice": 65700,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "반도체 테스트 핀과 소켓의 정밀가공 노하우, 고객 전환비용, 높은 영업이익률과 순현금 구조가 강점이다.",
+      "risk": "반도체 테스트 수요 변동과 주요 고객 집중, 증설 이후 가동률 저하 가능성을 점검해야 한다.",
+      "financials": { "revenue2025": 3725, "operatingMargin2025": 47.51, "roe2025": 22.45, "debtRatio2025": 8.3, "eps2025": 1994 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "214450",
+      "name": "파마리서치",
+      "sector": "바이오·미용의료",
+      "cavm": 95,
+      "components": { "moat": 28, "growth": 25, "profitability": 20, "financialHealth": 14, "management": 8 },
+      "currentPrice": 378500,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널, 해외 인허가 확대가 고성장·고마진을 뒷받침한다.",
+      "risk": "핵심 제품 집중, 미용의료 규제, 해외 유통 실행과 경쟁 제품 확산이 주요 위험이다.",
+      "financials": { "revenue2025": 5363, "operatingMargin2025": 39.98, "roe2025": 26.88, "debtRatio2025": 44.21, "eps2025": 14209 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "파마리서치 FY2025 공식 실적", "url": "https://pharmaresearch.com/sub/press/view.html?idx=390" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "005930",
+      "name": "삼성전자",
+      "sector": "반도체·전자",
+      "cavm": 94,
+      "components": { "moat": 30, "growth": 23, "profitability": 19, "financialHealth": 14, "management": 8 },
+      "currentPrice": 231000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "메모리·파운드리·모바일·가전의 규모와 브랜드, 공급망 통합, 풍부한 유동성이 장기 경쟁력을 만든다.",
+      "risk": "HBM 고객 인증과 파운드리 수율 회복 지연, 메모리 사이클과 대규모 투자 효율이 핵심 변수다.",
+      "financials": { "revenue2025": 3336059, "operatingMargin2025": 13.07, "roe2025": 10.85, "debtRatio2025": 29.94, "eps2025": 6564 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "삼성전자 공식 실적 발표", "url": "https://www.samsung.com/global/ir/financial-information/earnings-release/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "207940",
+      "name": "삼성바이오로직스",
+      "sector": "바이오 CDMO",
+      "cavm": 94,
+      "components": { "moat": 29, "growth": 24, "profitability": 20, "financialHealth": 13, "management": 8 },
+      "currentPrice": 1556000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "글로벌 최대급 생산능력, 규제기관 승인 이력, 장기 고객 관계와 높은 배치 성공률이 진입장벽이다.",
+      "risk": "대규모 증설의 가동률, 고객 집중, 바이오의약품 가격 정책과 환율 변동을 추적해야 한다.",
+      "financials": { "revenue2025": 45570, "operatingMargin2025": 45.41, "roe2025": 19.44, "debtRatio2025": 48.44, "eps2025": 26572 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "삼성바이오로직스 FY2025 공식 실적", "url": "https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "105560",
+      "name": "KB금융",
+      "sector": "금융",
+      "cavm": 94,
+      "components": { "moat": 29, "growth": 21, "profitability": 19, "financialHealth": 15, "management": 10 },
+      "currentPrice": 175800,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "은행·카드·증권·보험의 고객 기반과 자본력, 실제 자사주 소각을 포함한 일관된 주주환원이 강점이다.",
+      "risk": "부동산 PF와 가계 신용비용, 순이자마진 하락, CET1 자본비율 변화를 점검해야 한다.",
+      "financials": { "revenue2025": 812307, "operatingMargin2025": 10.49, "roe2025": 9.98, "debtRatio2025": 1211.73, "eps2025": 15116 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "003230",
+      "name": "삼양식품",
+      "sector": "식품",
+      "cavm": 93,
+      "components": { "moat": 29, "growth": 25, "profitability": 19, "financialHealth": 13, "management": 7 },
+      "currentPrice": 1306000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "불닭 브랜드의 글로벌 팬덤, 수출 유통 확대와 생산능력 증설이 높은 성장성과 수익성을 만든다.",
+      "risk": "단일 브랜드 의존, 원재료·환율 변동, 신공장 램프업과 현지 소비 트렌드 변화가 위험이다.",
+      "financials": { "revenue2025": 23518, "operatingMargin2025": 22.29, "roe2025": 37.59, "debtRatio2025": 72.74, "eps2025": 51697 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "259960",
+      "name": "크래프톤",
+      "sector": "게임",
+      "cavm": 93,
+      "components": { "moat": 28, "growth": 23, "profitability": 19, "financialHealth": 15, "management": 8 },
+      "currentPrice": 241500,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "PUBG의 글로벌 이용자 네트워크와 장기 라이브 운영 역량, 높은 영업현금과 순현금이 핵심 자산이다.",
+      "risk": "PUBG 매출 집중과 신규 IP 흥행 불확실성, 플랫폼 정책과 중국 관련 변동성이 존재한다.",
+      "financials": { "revenue2025": 33266, "operatingMargin2025": 31.7, "roe2025": 10.6, "debtRatio2025": 31.31, "eps2025": 15438 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "138040",
+      "name": "메리츠금융지주",
+      "sector": "금융",
+      "cavm": 93,
+      "components": { "moat": 28, "growth": 21, "profitability": 20, "financialHealth": 14, "management": 10 },
+      "currentPrice": 126300,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "높은 자본 효율과 ROE, 이익 범위 내 자사주 매입·소각 중심의 명확한 자본배분 정책이 강점이다.",
+      "risk": "보험 손해율과 부동산 금융 익스포저, 시장성 자산 손익과 규제자본 변화가 핵심 위험이다.",
+      "financials": { "revenue2025": 203170, "operatingMargin2025": 14.14, "roe2025": 22.53, "debtRatio2025": 1102.87, "eps2025": 12698 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "sector": "전력기기",
+      "cavm": 93,
+      "components": { "moat": 27, "growth": 25, "profitability": 20, "financialHealth": 13, "management": 8 },
+      "currentPrice": 762000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "북미 변압기 공급부족, 장기 수주잔고와 생산·인증 진입장벽이 고마진 성장을 지지한다.",
+      "risk": "전력기기 증설 경쟁, 원자재·물류비, 수주 믹스 정상화와 업황 피크아웃을 점검해야 한다.",
+      "financials": { "revenue2025": 40795, "operatingMargin2025": 24.4, "roe2025": 41.5, "debtRatio2025": 134.63, "eps2025": 20324 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "033780",
+      "name": "KT&G",
+      "sector": "필수소비재",
+      "cavm": 92,
+      "components": { "moat": 29, "growth": 20, "profitability": 18, "financialHealth": 15, "management": 10 },
+      "currentPrice": 188800,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "브랜드·전국 유통망·규제장벽과 안정적 현금흐름, 배당 및 실제 자사주 소각 정책이 강점이다.",
+      "risk": "담배 규제와 국내 궐련 감소, 전자담배 해외 성장 실행과 환율·원재료 변동이 위험이다.",
+      "financials": { "revenue2025": 65797, "operatingMargin2025": 20.42, "roe2025": 11.77, "debtRatio2025": 51.98, "eps2025": 8973 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "012450",
+      "name": "한화에어로스페이스",
+      "sector": "방산·항공우주",
+      "cavm": 91,
+      "components": { "moat": 28, "growth": 25, "profitability": 19, "financialHealth": 12, "management": 7 },
+      "currentPrice": 1097000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "무기체계 인증과 정부·군 고객 관계, K9 등 장기 수출잔고가 높은 성장 가시성과 진입장벽을 만든다.",
+      "risk": "수출 계약 시점과 납기, 지정학·정책 변화, 인수 및 운전자본 증가로 인한 재무부담이 위험이다.",
+      "financials": { "revenue2025": 267029, "operatingMargin2025": 11.57, "roe2025": 19.14, "debtRatio2025": 221.38, "eps2025": 28573 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "009540",
+      "name": "HD한국조선해양",
+      "sector": "조선·해양",
+      "cavm": 91,
+      "components": { "moat": 28, "growth": 24, "profitability": 18, "financialHealth": 12, "management": 9 },
+      "currentPrice": 398500,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "LNG선·친환경 선박 설계, 엔진 내재화와 대규모 건조 경험이 수주 경쟁력과 가격결정력을 높인다.",
+      "risk": "후판가와 인건비, 공정 지연, 조선 사이클 및 자회사 투자·지배구조 변화를 확인해야 한다.",
+      "financials": { "revenue2025": 299332, "operatingMargin2025": 13.04, "roe2025": 17.78, "debtRatio2025": 133.86, "eps2025": 30639 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "HD그룹 공식 보도자료", "url": "https://www.hd.com/kr/newsroom/media-hub/press/view?detailsKey=4199" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "055550",
+      "name": "신한지주",
+      "sector": "금융",
+      "cavm": 91,
+      "components": { "moat": 28, "growth": 20, "profitability": 18, "financialHealth": 15, "management": 10 },
+      "currentPrice": 110000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "은행·카드·증권·보험의 다각화된 고객 기반, 높은 자본적정성과 배당·실제 소각 정책이 강점이다.",
+      "risk": "순이자마진과 부동산 PF, 해외 사업 손익, CET1 자본비율과 신용비용 변화를 점검해야 한다.",
+      "financials": { "revenue2025": 646820, "operatingMargin2025": 10.86, "roe2025": 8.72, "debtRatio2025": 1201.94, "eps2025": 10085 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "068270",
+      "name": "셀트리온",
+      "sector": "바이오시밀러",
+      "cavm": 91,
+      "components": { "moat": 27, "growth": 24, "profitability": 18, "financialHealth": 13, "management": 9 },
+      "currentPrice": 199300,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "바이오시밀러 개발·생산 경험과 글로벌 직접판매망, 다수 신제품 출시가 규모의 경제를 강화한다.",
+      "risk": "미국·유럽 가격 경쟁, 신제품 점유율, 재고와 매출채권, 규제기관 승인 일정이 핵심 위험이다.",
+      "financials": { "revenue2025": 41625, "operatingMargin2025": 28.07, "roe2025": 5.94, "debtRatio2025": 28.71, "eps2025": 4238 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "000810",
+      "name": "삼성화재",
+      "sector": "손해보험",
+      "cavm": 90,
+      "components": { "moat": 29, "growth": 17, "profitability": 19, "financialHealth": 15, "management": 10 },
+      "currentPrice": 645000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "브랜드와 판매채널, 보수적 언더라이팅, 높은 자본력과 배당·실제 소각 여력이 경쟁우위다.",
+      "risk": "자동차·장기보험 손해율, 금리 변동, K-ICS 규제자본과 주주환원 실행을 추적해야 한다.",
+      "financials": { "revenue2025": 247785, "operatingMargin2025": 10.73, "roe2025": 10.97, "debtRatio2025": 352.98, "eps2025": 40703 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "298040",
+      "name": "효성중공업",
+      "sector": "전력기기",
+      "cavm": 90,
+      "components": { "moat": 28, "growth": 25, "profitability": 19, "financialHealth": 12, "management": 6 },
+      "currentPrice": 2832000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "초고압 변압기 기술과 미국 생산기지, 장기 수주잔고가 전력망 투자 확대의 수혜를 직접 연결한다.",
+      "risk": "높은 레버리지, 증설 집행과 원재료 가격, 수주 믹스 및 건설 부문의 변동성이 위험이다.",
+      "financials": { "revenue2025": 59685, "operatingMargin2025": 12.52, "roe2025": 24.41, "debtRatio2025": 190.31, "eps2025": 55755 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "010120",
+      "name": "LS ELECTRIC",
+      "sector": "전력·자동화",
+      "cavm": 90,
+      "components": { "moat": 28, "growth": 25, "profitability": 18, "financialHealth": 12, "management": 7 },
+      "currentPrice": 201000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "배전·자동화의 설치 기반과 인증, 데이터센터·북미 전력 인프라 수요가 구조적 성장을 뒷받침한다.",
+      "risk": "증설 투자와 운전자본, 경쟁 심화, 원재료·환율 및 해외 수주의 수익성 변동을 확인해야 한다.",
+      "financials": { "revenue2025": 49658, "operatingMargin2025": 8.59, "roe2025": 14.67, "debtRatio2025": 131.48, "eps2025": 1911 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "035420",
+      "name": "NAVER",
+      "sector": "인터넷 플랫폼",
+      "cavm": 89,
+      "components": { "moat": 28, "growth": 22, "profitability": 18, "financialHealth": 13, "management": 8 },
+      "currentPrice": 210000,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "검색 데이터와 이용자 기반, 커머스·결제 연결, 광고주 네트워크와 국내 콘텐츠 생태계가 해자를 만든다.",
+      "risk": "생성형 AI 검색 전환, 글로벌 플랫폼 경쟁, 규제와 신규 AI 투자 대비 수익화 속도가 변수다.",
+      "financials": { "revenue2025": 120350, "operatingMargin2025": 18.35, "roe2025": 7.36, "debtRatio2025": 41.9, "eps2025": 12376 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    },
+    {
+      "code": "271560",
+      "name": "오리온",
+      "sector": "식품",
+      "cavm": 88,
+      "components": { "moat": 28, "growth": 20, "profitability": 18, "financialHealth": 14, "management": 8 },
+      "currentPrice": 137600,
+      "priceBasisDate": "2026-08-07",
+      "priceSource": "초기 종가 스냅샷(2026-08-07, 자동 API 전환 대기)",
+      "reason": "대표 제품 브랜드와 중국·베트남·러시아 현지 유통망, 낮은 부채와 안정적 현금창출이 강점이다.",
+      "risk": "중국 소비 둔화, 현지 통화와 원재료 가격, 식품안전 이슈 및 신사업 자본배분을 점검해야 한다.",
+      "financials": { "revenue2025": 33324, "operatingMargin2025": 16.75, "roe2025": 10.51, "debtRatio2025": 17.55, "eps2025": 9680 },
+      "sources": [
+        { "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)", "url": "https://opendart.fss.or.kr/intro/main.do" },
+        { "label": "정규장 종가 스냅샷(2026-08-07 교차검증)", "url": "https://data.krx.co.kr/" }
+      ],
+      "review": { "status": "reviewed", "reviewedAt": "2026-08-09", "nextReviewAt": "2026-08-31" }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+name: 기업 이슈 Follow-up
+description: 해자, 실적, 재무, 경영진 이슈를 등록하고 재검토 일정을 관리합니다.
+title: "[FOLLOW-UP] "
+body:
+  - type: input
+    id: company
+    attributes:
+      label: 기업명 / 종목코드
+      placeholder: 예) SK하이닉스 / 000660
+    validations:
+      required: true
+
+  - type: input
+    id: issue_title
+    attributes:
+      label: 이슈 제목
+      placeholder: 예) HBM4 양산 일정 점검
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 영향 영역
+      multiple: true
+      options:
+        - 해자
+        - 성장성
+        - 수익성
+        - 재무건전성
+        - 경영진·주주환원
+        - VM 가정
+        - 규제·법률
+        - 기타
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 중요도
+      options:
+        - Critical - 즉시 재평가
+        - High - 7일 이내 점검
+        - Medium - 다음 주간 점검
+        - Low - 다음 분기 점검
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: 현재 상태
+      options:
+        - 신규
+        - 확인 중
+        - 기업 발표 대기
+        - CAVM 재평가 필요
+        - VM 재산정 필요
+        - 종료 가능
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 이슈 요약과 가설
+      description: 확인된 사실과 현재의 분석 가설을 분리해 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 근거 및 원문
+      description: 공시, IR, 신용평가 등 원문 URL과 발표일을 적어 주세요.
+      placeholder: "- YYYY-MM-DD: https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: follow_up
+    attributes:
+      label: 다음 확인 항목
+      description: 어떤 지표·공시·일정을 확인할지 체크리스트로 적어 주세요.
+      placeholder: |
+        - [ ] 분기 영업이익률
+        - [ ] 고객 인증 완료 여부
+    validations:
+      required: true
+
+  - type: input
+    id: due_date
+    attributes:
+      label: 다음 점검일
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: 확인
+      options:
+        - label: 사실, 추정, 의견을 구분해 작성했습니다.
+          required: true

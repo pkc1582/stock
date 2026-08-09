@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "basisDate": "2026-08-09",
+  "status": "draft",
+  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. forwardEps3y는 2026E EPS를 출발점으로 이후 2년 성장률을 보수적으로 제한해 산정한 초기 분석 가정이며 공식 컨센서스가 아닙니다.",
+  "reviewPolicy": {
+    "owner": "복리자산 2045 PMO",
+    "nextReviewAt": "2026-08-31",
+    "requiredEvidence": ["최근 실적 발표", "사업보고서 또는 분기보고서", "동종기업 밸류에이션", "핵심 이슈 진행상황"]
+  },
+  "companies": {
+    "000660": {
+      "forwardEps3y": 403474,
+      "peerPer": 10,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "HBM 이익의 급증을 반영하되 메모리 경기민감 할인율을 적용한다."
+    },
+    "058470": {
+      "forwardEps3y": 3223,
+      "peerPer": 28,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다."
+    },
+    "214450": {
+      "forwardEps3y": 25196,
+      "peerPer": 25,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다."
+    },
+    "005930": {
+      "forwardEps3y": 57994,
+      "peerPer": 12,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "메모리 회복과 HBM 개선을 반영하되 파운드리 실행 위험을 남긴다."
+    },
+    "207940": {
+      "forwardEps3y": 53589,
+      "peerPer": 30,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "글로벌 CDMO 성장과 높은 계약 가시성을 반영한다."
+    },
+    "105560": {
+      "forwardEps3y": 21452,
+      "peerPer": 7,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "은행업 동종 PER과 자본환원을 반영하며 신용비용을 보수적으로 본다."
+    },
+    "003230": {
+      "forwardEps3y": 99021,
+      "peerPer": 18,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다."
+    },
+    "259960": {
+      "forwardEps3y": 25256,
+      "peerPer": 18,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "PUBG 장기 라이브서비스와 순현금을 반영하고 신규 IP 위험을 할인한다."
+    },
+    "138040": {
+      "forwardEps3y": 16626,
+      "peerPer": 7,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "높은 ROE와 자사주 소각을 반영하되 금융·보험 경기민감도를 적용한다."
+    },
+    "267260": {
+      "forwardEps3y": 33311,
+      "peerPer": 18,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다."
+    },
+    "033780": {
+      "forwardEps3y": 14609,
+      "peerPer": 11,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "안정적 현금흐름과 실제 소각을 반영하고 규제·성장 한계를 고려한다."
+    },
+    "012450": {
+      "forwardEps3y": 53879,
+      "peerPer": 20,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다."
+    },
+    "009540": {
+      "forwardEps3y": 62691,
+      "peerPer": 10,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "LNG선 고선가 물량과 엔진 경쟁력을 반영하되 조선 경기민감도를 적용한다."
+    },
+    "055550": {
+      "forwardEps3y": 14517,
+      "peerPer": 7,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "다각화와 주주환원을 반영하고 은행업 신용·금리 위험을 고려한다."
+    },
+    "068270": {
+      "forwardEps3y": 8896,
+      "peerPer": 25,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "바이오시밀러 신제품 침투와 직접판매 레버리지를 반영한다."
+    },
+    "000810": {
+      "forwardEps3y": 51220,
+      "peerPer": 8,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "보험이익 안정성과 자본환원을 반영하고 손해율·규제자본 위험을 고려한다."
+    },
+    "298040": {
+      "forwardEps3y": 100224,
+      "peerPer": 18,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다."
+    },
+    "010120": {
+      "forwardEps3y": 4772,
+      "peerPer": 18,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "주식분할 조정 EPS 기준이며 북미 전력·자동화 성장과 증설 위험을 함께 반영한다."
+    },
+    "035420": {
+      "forwardEps3y": 13785,
+      "peerPer": 20,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "검색·커머스·결제 생태계와 AI 수익화를 반영하고 플랫폼 전환 위험을 점검한다."
+    },
+    "271560": {
+      "forwardEps3y": 14175,
+      "peerPer": 14,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "draft",
+      "analystNote": "해외 브랜드·유통 성장과 우수한 재무구조를 반영하고 지역 변동성을 고려한다."
+    }
+  }
+}
