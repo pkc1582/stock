@@ -409,6 +409,17 @@ function Header({ basisDate }) {
 }
 
 function Hero({ snapshot }) {
+  const summary = snapshot.summary
+  const generated = snapshot.generatedAt
+    ? new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(snapshot.generatedAt))
+    : '확인 중'
+  const summaryItems = [
+    ['검토 유니버스', `${summary.universeSize}개`, '정량·정성 검토 후보'],
+    ['공식 TOP20', `${summary.top20Count}개`, 'CAVM 동점 규칙 반영'],
+    ['평균 품질점수', summary.averageCavm.toFixed(1), '100점 만점'],
+    ['저평가 구간', `${summary.undervaluedCount}개`, '괴리율 0% 미만'],
+  ]
+
   return (
     <section className="hero" id="top">
       <div className="hero-grid page-shell">
@@ -433,14 +444,20 @@ function Hero({ snapshot }) {
             <span>{formatDate(snapshot.basisDate)} 기준</span>
           </div>
         </div>
-        <div className="hero-panel hero-app-panel" aria-label="복리자산 2045 앱 화면 미리보기">
-          <img
-            className="hero-app-preview"
-            src={`${import.meta.env.BASE_URL}images/app-screen-preview.png`}
-            alt="복리자산 2045 설치형 앱 화면"
-            width="1536"
-            height="2048"
-          />
+        <div className="hero-panel hero-summary-panel" aria-label="복리자산 2045 데이터 요약">
+          <div className="hero-summary-grid">
+            {summaryItems.map(([label, value, note]) => (
+              <div className="hero-summary-item" key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+                <small>{note}</small>
+              </div>
+            ))}
+          </div>
+          <div className="hero-summary-refresh">
+            <span className="hero-refresh-icon" aria-hidden="true">↻</span>
+            <div><span>마지막 계산</span><strong>{generated}</strong></div>
+          </div>
         </div>
       </div>
     </section>
@@ -457,39 +474,6 @@ function SectionHeading({ eyebrow, title, titleId, description, aside }) {
       </div>
       {aside && <div className="heading-aside">{aside}</div>}
     </div>
-  )
-}
-
-function SummaryStrip({ snapshot }) {
-  const summary = snapshot.summary
-  const generated = snapshot.generatedAt
-    ? new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(snapshot.generatedAt))
-    : '확인 중'
-
-  const items = [
-    ['검토 유니버스', `${summary.universeSize}개`, '정량·정성 검토 후보'],
-    ['공식 TOP20', `${summary.top20Count}개`, 'CAVM 동점 규칙 반영'],
-    ['평균 품질점수', summary.averageCavm.toFixed(1), '100점 만점'],
-    ['저평가 구간', `${summary.undervaluedCount}개`, '괴리율 0% 미만'],
-  ]
-
-  return (
-    <section className="summary-section page-shell" aria-label="데이터 요약">
-      <div className="summary-strip">
-        {items.map(([label, value, note]) => (
-          <div className="summary-item" key={label}>
-            <span>{label}</span>
-            <strong>{value}</strong>
-            <small>{note}</small>
-          </div>
-        ))}
-        <div className="summary-refresh">
-          <span className="refresh-icon" aria-hidden="true">↻</span>
-          <span>마지막 계산</span>
-          <strong>{generated}</strong>
-        </div>
-      </div>
-    </section>
   )
 }
 
@@ -1268,7 +1252,6 @@ export default function App() {
       <PwaUpdateNotice />
       <main id="main-content">
         <Hero snapshot={snapshot} />
-        <SummaryStrip snapshot={snapshot} />
         <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <CompanyDetail company={selectedCompany} />
