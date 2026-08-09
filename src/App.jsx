@@ -157,7 +157,9 @@ function normalizeCompany(company, index) {
     currentPrice,
     priceBasisDate: company.priceBasisDate || market.priceAsOf || market.asOf || null,
     forwardEps3y: firstNumber(company.forwardEps3y, valuation.forwardEps3Y, valuation.eps3y),
-    peerPer: firstNumber(company.peerPer, valuation.peerPer, valuation.comparablePer),
+    historicalPer5y: firstNumber(company.historicalPer5y, valuation.historicalPer5y, company.peerPer),
+    overseasPeerPer: firstNumber(company.overseasPeerPer, valuation.overseasPeerPer, valuation.peerPer, valuation.comparablePer, company.peerPer),
+    appliedPer: firstNumber(company.appliedPer, valuation.appliedPer, company.peerPer),
     discountRate: firstNumber(company.discountRate, valuation.discountRate),
     finalVm,
     gapRate: firstNumber(company.gapRate, valuation.gapPct, valuation.gapRate, calculatedGap),
@@ -259,16 +261,16 @@ const formatPercent = (value, sign = false) => {
 
 const gapTone = (gap) => {
   if (gap === null || gap === undefined) return 'neutral'
-  if (gap <= -10) return 'attractive'
-  if (gap <= 5) return 'fair'
+  if (gap <= -20) return 'attractive'
+  if (gap <= -10) return 'fair'
   return 'expensive'
 }
 
 const gapLabel = (gap) => {
   if (gap === null || gap === undefined) return 'VM 입력 대기'
-  if (gap <= -10) return '할인 구간'
-  if (gap <= 5) return '적정가 근접'
-  return '가격 부담'
+  if (gap <= -20) return '적극 검토 구간'
+  if (gap <= -10) return '분할 검토 구간'
+  return '관찰 구간'
 }
 
 function LogoMark() {
@@ -981,7 +983,11 @@ function CompanyDetail({ company }) {
             <div className="vm-flow">
               <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
               <i>×</i>
-              <div><span>비교 PER</span><strong>{company.peerPer ?? '—'}배</strong></div>
+              <div className="vm-per-card">
+                <span>보정 적용 PER</span>
+                <strong>{company.appliedPer ?? '—'}배</strong>
+                <small>5년 평균 {company.historicalPer5y ?? '—'}배 · 해외 {company.overseasPeerPer ?? '—'}배</small>
+              </div>
               <i>→</i>
               <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
               <i>→</i>
@@ -1098,8 +1104,8 @@ function Methodology({ methodology }) {
         </div>
         <div className="formula-card">
           <div><span>VALUE MODEL</span><h3>Final VM 산식</h3></div>
-          <p><strong>3년 예상 EPS</strong><i>×</i><strong>해외 유사기업 PER</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
-          <small>성장기업 10% · 일반기업 11% · 경기민감기업 12%를 원칙으로 하며, 가정은 기업별 근거와 함께 검토합니다.</small>
+          <p><strong>3년 예상 EPS</strong><i>×</i><strong>보정 적용 PER</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
+          <small>보정 적용 PER = (과거 5년 평균 PER + 해외 유사기업 PER) ÷ 2. 할인율은 성장기업 10% · 일반기업 11% · 경기민감기업 12%를 원칙으로 합니다. 현재 PER 입력값은 근거 검토 전 초기 이관값입니다.</small>
         </div>
         <div className="decision-policy">
           <div>
@@ -1108,8 +1114,8 @@ function Methodology({ methodology }) {
           </div>
           <ul>
             <li><strong>★★★★★</strong><span>괴리율 -20% 이하</span><small>적극 검토</small></li>
-            <li><strong>★★★★☆</strong><span>-20% 초과 ~ 10% 이하</span><small>분할 검토</small></li>
-            <li><strong>★★★☆☆</strong><span>10% 초과</span><small>관찰</small></li>
+            <li><strong>★★★★☆</strong><span>-20% 초과 ~ -10% 이하</span><small>분할 검토</small></li>
+            <li><strong>★★★☆☆</strong><span>-10% 초과</span><small>관찰</small></li>
           </ul>
           <p>{methodology.ratingPolicy}</p>
         </div>

@@ -103,6 +103,24 @@ def rounded_hundred(value: float) -> int:
     return int(math.floor(value / 100.0 + 0.5) * 100)
 
 
+def adjusted_per(historical_per_5y: float, overseas_peer_per: float) -> float:
+    """Blend the company's five-year PER with overseas peer valuation."""
+    return round((historical_per_5y + overseas_peer_per) / 2, 2)
+
+
+def final_vm_for(
+    forward_eps_3y: float,
+    historical_per_5y: float,
+    overseas_peer_per: float,
+    discount_rate: float,
+) -> tuple[float, int]:
+    """Return the applied PER and discounted Final VM."""
+    applied_per = adjusted_per(historical_per_5y, overseas_peer_per)
+    three_year_value = forward_eps_3y * applied_per
+    final_vm = rounded_hundred(three_year_value / ((1 + discount_rate / 100) ** 3))
+    return applied_per, final_vm
+
+
 def rating_for(cavm: int, gap_rate: float | None) -> tuple[str, str]:
     if cavm < 70:
         return "★☆☆☆☆", "투자 제외"
@@ -112,7 +130,7 @@ def rating_for(cavm: int, gap_rate: float | None) -> tuple[str, str]:
         return "★★★☆☆", "VM 검토 필요"
     if gap_rate <= -20:
         return "★★★★★", "적극 매수"
-    if gap_rate <= 10:
+    if gap_rate <= -10:
         return "★★★★☆", "분할매수"
     return "★★★☆☆", "관찰"
 
@@ -212,13 +230,26 @@ def main() -> None:
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
         forward_eps = require_number(assumption.get("forwardEps3y"), f"{code}.forwardEps3y", 0)
-        peer_per = require_number(assumption.get("peerPer"), f"{code}.peerPer", 0)
+        historical_per_5y = require_number(
+            assumption.get("historicalPer5y", assumption.get("peerPer")),
+            f"{code}.historicalPer5y",
+            0,
+        )
+        overseas_peer_per = require_number(
+            assumption.get("overseasPeerPer", assumption.get("peerPer")),
+            f"{code}.overseasPeerPer",
+            0,
+        )
         discount_rate = require_number(assumption.get("discountRate"), f"{code}.discountRate", 0)
         if discount_rate >= 100:
             raise ValueError(f"{code}.discountRate must be below 100")
 
-        three_year_value = forward_eps * peer_per
-        final_vm = rounded_hundred(three_year_value / ((1 + discount_rate / 100) ** 3))
+        applied_per, final_vm = final_vm_for(
+            forward_eps,
+            historical_per_5y,
+            overseas_peer_per,
+            discount_rate,
+        )
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
         rating, opinion = rating_for(cavm, gap_rate)
         vm_status = str(assumption.get("status", overrides_data.get("status", "draft")))
@@ -248,7 +279,9 @@ def main() -> None:
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
                 "priceSource": str(company.get("priceSource", "")),
                 "forwardEps3y": int(forward_eps) if forward_eps.is_integer() else forward_eps,
-                "peerPer": int(peer_per) if peer_per.is_integer() else peer_per,
+                "historicalPer5y": int(historical_per_5y) if historical_per_5y.is_integer() else historical_per_5y,
+                "overseasPeerPer": int(overseas_peer_per) if overseas_peer_per.is_integer() else overseas_peer_per,
+                "appliedPer": int(applied_per) if applied_per.is_integer() else applied_per,
                 "discountRate": int(discount_rate) if discount_rate.is_integer() else discount_rate,
                 "vmStatus": vm_status,
                 "vmNote": str(assumption.get("analystNote", "")),
@@ -294,10 +327,10 @@ def main() -> None:
         "dataStatus": data_status_for(companies_data),
         "financialDataSummary": companies_data.get("financialDataSummary", {}),
         "methodology": {
-            "version": "CAVM Official v1.0",
+            "version": "CAVM Official v1.0 · VM v1.1",
             "weights": COMPONENT_LIMITS,
-            "formula": "CAVM = 해자 30 + 성장 25 + 수익성 20 + 재무건전성 15 + 경영진·주주환원 10; 3년 후 가치 = 3년 예상 EPS × 동종기업 PER; Final VM = 3년 후 가치 ÷ (1 + 할인율)^3; 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-            "ratingPolicy": "CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~10% 이하는 분할 검토, 10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+            "formula": "CAVM = 해자 30 + 성장 25 + 수익성 20 + 재무건전성 15 + 경영진·주주환원 10; 적용 PER = (과거 5년 평균 PER + 해외 유사기업 PER) ÷ 2; 3년 후 가치 = 3년 예상 EPS × 적용 PER; Final VM = 3년 후 가치 ÷ (1 + 할인율)^3; 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
+            "ratingPolicy": "CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
             "selectionPolicy": "표시 순서는 CAVM, 해자, 성장성, 수익성, 재무건전성 순이다. 최종 경계 동점은 업종 분산을 사람이 검토한다.",
             "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 일반 부채비율 대신 CET1·K-ICS·신용비용을 함께 판단합니다.",
         },

@@ -31,7 +31,9 @@ body:
       multiple: true
       options:
         - 3년 EPS 예상치
+        - 과거 5년 평균 PER
         - 해외 유사기업 PER
+        - 보정 적용 PER
         - 할인율
         - 해자
         - 성장성

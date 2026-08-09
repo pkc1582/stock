@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "basisDate": "2026-08-09",
   "status": "draft",
-  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. forwardEps3y는 2026E EPS를 출발점으로 이후 2년 성장률을 보수적으로 제한해 산정한 초기 분석 가정이며 공식 컨센서스가 아닙니다.",
+  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. forwardEps3y는 2026E EPS를 출발점으로 이후 2년 성장률을 보수적으로 제한해 산정한 초기 분석 가정이며 공식 컨센서스가 아닙니다. historicalPer5y와 overseasPeerPer는 기존 PER 가정을 양쪽 초기값으로 이관한 검토 전 값이며, 적용 PER은 두 값의 단순 평균입니다.",
   "reviewPolicy": {
     "owner": "복리자산 2045 PMO",
     "nextReviewAt": "2026-08-31",
@@ -11,7 +11,8 @@
   "companies": {
     "000660": {
       "forwardEps3y": 403474,
-      "peerPer": 10,
+      "historicalPer5y": 10,
+      "overseasPeerPer": 10,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -20,7 +21,8 @@
     },
     "058470": {
       "forwardEps3y": 3223,
-      "peerPer": 28,
+      "historicalPer5y": 28,
+      "overseasPeerPer": 28,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -29,7 +31,8 @@
     },
     "214450": {
       "forwardEps3y": 25196,
-      "peerPer": 25,
+      "historicalPer5y": 25,
+      "overseasPeerPer": 25,
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -38,7 +41,8 @@
     },
     "005930": {
       "forwardEps3y": 57994,
-      "peerPer": 12,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -47,7 +51,8 @@
     },
     "207940": {
       "forwardEps3y": 53589,
-      "peerPer": 30,
+      "historicalPer5y": 30,
+      "overseasPeerPer": 30,
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -56,7 +61,8 @@
     },
     "105560": {
       "forwardEps3y": 21452,
-      "peerPer": 7,
+      "historicalPer5y": 7,
+      "overseasPeerPer": 7,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -65,7 +71,8 @@
     },
     "003230": {
       "forwardEps3y": 99021,
-      "peerPer": 18,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -74,7 +81,8 @@
     },
     "259960": {
       "forwardEps3y": 25256,
-      "peerPer": 18,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -83,7 +91,8 @@
     },
     "138040": {
       "forwardEps3y": 16626,
-      "peerPer": 7,
+      "historicalPer5y": 7,
+      "overseasPeerPer": 7,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -92,7 +101,8 @@
     },
     "267260": {
       "forwardEps3y": 33311,
-      "peerPer": 18,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -101,7 +111,8 @@
     },
     "033780": {
       "forwardEps3y": 14609,
-      "peerPer": 11,
+      "historicalPer5y": 11,
+      "overseasPeerPer": 11,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -110,7 +121,8 @@
     },
     "012450": {
       "forwardEps3y": 53879,
-      "peerPer": 20,
+      "historicalPer5y": 20,
+      "overseasPeerPer": 20,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -119,7 +131,8 @@
     },
     "009540": {
       "forwardEps3y": 62691,
-      "peerPer": 10,
+      "historicalPer5y": 10,
+      "overseasPeerPer": 10,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -128,7 +141,8 @@
     },
     "055550": {
       "forwardEps3y": 14517,
-      "peerPer": 7,
+      "historicalPer5y": 7,
+      "overseasPeerPer": 7,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -137,7 +151,8 @@
     },
     "068270": {
       "forwardEps3y": 8896,
-      "peerPer": 25,
+      "historicalPer5y": 25,
+      "overseasPeerPer": 25,
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -146,7 +161,8 @@
     },
     "000810": {
       "forwardEps3y": 51220,
-      "peerPer": 8,
+      "historicalPer5y": 8,
+      "overseasPeerPer": 8,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -155,7 +171,8 @@
     },
     "298040": {
       "forwardEps3y": 100224,
-      "peerPer": 18,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -164,7 +181,8 @@
     },
     "010120": {
       "forwardEps3y": 4772,
-      "peerPer": 18,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
       "discountRate": 12,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -173,7 +191,8 @@
     },
     "035420": {
       "forwardEps3y": 13785,
-      "peerPer": 20,
+      "historicalPer5y": 20,
+      "overseasPeerPer": 20,
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
@@ -182,7 +201,8 @@
     },
     "271560": {
       "forwardEps3y": 14175,
-      "peerPer": 14,
+      "historicalPer5y": 14,
+      "overseasPeerPer": 14,
       "discountRate": 11,
       "componentOverrides": {},
       "issueOverrides": {},
