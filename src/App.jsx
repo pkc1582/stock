@@ -282,10 +282,10 @@ function LogoMark() {
 function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
-    ['#screener', '전체시장 스크리너'],
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
     ['#company', '기업 분석'],
+    ['#screener', '전체시장 스크리너'],
     ['#methodology', '평가 기준'],
   ]
 
@@ -1150,15 +1150,15 @@ export default function App() {
       <main id="main-content">
         <Hero snapshot={snapshot} />
         <SummaryStrip snapshot={snapshot} />
+        <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
+        <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
+        <CompanyDetail company={selectedCompany} />
         <ScreenerSection
           screener={screener}
           loadState={screenerLoadState}
           error={screenerError}
           onRetry={() => setScreenerRetryKey((value) => value + 1)}
         />
-        <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
-        <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
-        <CompanyDetail company={selectedCompany} />
         <Methodology methodology={snapshot.methodology} />
       </main>
       <Footer snapshot={snapshot} />
