@@ -57,7 +57,7 @@ MAX_HTTP_ATTEMPTS = 3
 RETRY_DELAY_SECONDS = 0.4
 
 NO_DATA_STATUSES = frozenset({"013"})
-STOCK_CODE_PATTERN = re.compile(r"^(?:A)?(\d{6})$")
+STOCK_CODE_PATTERN = re.compile(r"^(?:A)?([0-9A-HJ-NP-TV-Z]{6})$", re.IGNORECASE)
 MIN_CORP_CODE_COVERAGE = 0.70
 MIN_REPORT_COVERAGE = 0.70
 
@@ -179,7 +179,7 @@ def _alias(record: dict[str, Any], *names: str) -> Any:
 
 def normalize_stock_code(value: Any) -> str | None:
     match = STOCK_CODE_PATTERN.fullmatch(str(value or "").strip().upper())
-    return match.group(1) if match else None
+    return match.group(1).upper() if match else None
 
 
 def _record_array(payload: Any) -> list[Any]:
@@ -218,7 +218,7 @@ def parse_universe(payload: Any) -> list[UniverseSecurity]:
             )
         )
     if not securities:
-        raise ScreenFinancialError("universe did not contain a valid six-digit stock code")
+        raise ScreenFinancialError("universe did not contain a valid six-character stock code")
     return securities
 
 

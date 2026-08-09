@@ -119,6 +119,9 @@ class SyncUniverseTests(unittest.TestCase):
         with self.assertRaises(universe.UniverseSyncError):
             universe.build_snapshot(rows, len(rows), LATEST_DATE)
 
+    def test_new_alphanumeric_equity_code_is_supported(self) -> None:
+        self.assertEqual(universe.normalize_code("A0001A0"), "0001A0")
+
     def test_downloads_every_advertised_page_and_writes_processed_snapshot(self) -> None:
         rows = [listed_row(number) for number in range(1, universe.PAGE_SIZE + 5)]
         pages = {

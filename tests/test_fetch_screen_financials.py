@@ -106,6 +106,9 @@ class CorpDirectoryTests(unittest.TestCase):
         self.assertEqual(parsed[0].code, "005930")
         self.assertEqual(parsed[0].market, "KOSPI")
 
+    def test_new_alphanumeric_equity_code_is_supported(self) -> None:
+        self.assertEqual(screen_financials.normalize_stock_code("A0001A0"), "0001A0")
+
     def test_dynamic_annual_year_waits_until_april(self) -> None:
         self.assertEqual(screen_financials.latest_expected_annual_year(date(2026, 3, 31)), 2024)
         self.assertEqual(screen_financials.latest_expected_annual_year(date(2026, 4, 1)), 2025)

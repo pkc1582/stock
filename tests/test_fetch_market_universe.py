@@ -123,6 +123,9 @@ class FetchMarketUniverseTests(unittest.TestCase):
         with self.assertRaises(market.MarketUniverseError):
             market.build_snapshot(rows, len(rows), LATEST_DATE)
 
+    def test_new_alphanumeric_equity_code_is_supported(self) -> None:
+        self.assertEqual(market.normalize_code("A0001A0"), "0001A0")
+
     def test_small_pages_are_fully_downloaded_and_atomically_written(self) -> None:
         rows = [market_row(number) for number in range(1, market.PAGE_SIZE + 5)]
         pages = {

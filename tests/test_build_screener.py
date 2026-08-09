@@ -58,6 +58,9 @@ def market(code: str, *, cap: int = 1_000_000_000_000, value: int = 2_000_000_00
 
 
 class ScreeningPolicyTests(unittest.TestCase):
+    def test_new_alphanumeric_equity_code_is_supported(self) -> None:
+        self.assertEqual(build_screener.normalize_stock_code("A0001A0"), "0001A0")
+
     def test_financial_company_is_exempt_from_general_debt_and_revenue_gates(self) -> None:
         universe = {
             "securities": [

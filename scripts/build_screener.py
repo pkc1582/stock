@@ -42,7 +42,7 @@ MIN_MARKET_MATCH_RATIO = 0.90
 MIN_FINANCIAL_RECORD_MATCH_RATIO = 0.95
 KRW_CURRENCY_LABELS = frozenset({"KRW", "WON", "원"})
 
-STOCK_CODE_PATTERN = re.compile(r"^(?:A)?(\d{6})$")
+STOCK_CODE_PATTERN = re.compile(r"^(?:A)?([0-9A-HJ-NP-TV-Z]{6})$", re.IGNORECASE)
 FINANCIAL_KEYWORDS = (
     "금융",
     "은행",
@@ -70,7 +70,7 @@ def _alias(record: dict[str, Any], *names: str) -> Any:
 
 def normalize_stock_code(value: Any) -> str | None:
     match = STOCK_CODE_PATTERN.fullmatch(str(value or "").strip().upper())
-    return match.group(1) if match else None
+    return match.group(1).upper() if match else None
 
 
 def parse_number(value: Any) -> int | float | None:
@@ -121,7 +121,7 @@ def _index(payload: Any, label: str) -> tuple[list[str], dict[str, dict[str, Any
         order.append(code)
         result[code] = record
     if not result:
-        raise ScreenerError(f"{label} contains no valid six-digit stock code")
+        raise ScreenerError(f"{label} contains no valid six-character stock code")
     return order, result
 
 

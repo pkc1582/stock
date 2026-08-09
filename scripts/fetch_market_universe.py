@@ -57,7 +57,7 @@ MIN_KOSPI_ROWS = 500
 MIN_KOSDAQ_ROWS = 800
 MIN_TARGET_ROWS = 1_500
 MIN_PRIOR_SNAPSHOT_RATIO = 0.80
-STOCK_CODE_PATTERN = re.compile(r"^(?:A)?(\d{6})$")
+STOCK_CODE_PATTERN = re.compile(r"^(?:A)?([0-9A-HJ-NP-TV-Z]{6})$", re.IGNORECASE)
 ISIN_PATTERN = re.compile(r"^[A-Z]{2}[A-Z0-9]{9}\d$")
 
 
@@ -191,7 +191,7 @@ def normalize_basis_date(value: Any) -> str | None:
 
 def normalize_code(value: Any) -> str | None:
     match = STOCK_CODE_PATTERN.fullmatch(str(value).strip().upper())
-    return match.group(1) if match else None
+    return match.group(1).upper() if match else None
 
 
 def normalized_text(value: Any) -> str:
