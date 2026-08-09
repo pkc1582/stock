@@ -436,7 +436,6 @@ function Hero({ snapshot }) {
           </div>
         </div>
         <div className="hero-panel" aria-label="오늘의 CAVM 요약">
-          <div className="panel-kicker">TODAY&apos;S RESEARCH NOTE</div>
           <div className="hero-panel-top">
             <div>
               <span className="muted-label">CAVM LEADER</span>
@@ -700,38 +699,72 @@ function ScreenerSection({ screener, loadState, error, onRetry }) {
   )
 }
 
+function chartLabelLayout(points, x, y, cutX, top, bottom) {
+  const labels = new Map()
+  const groups = { left: [], right: [] }
+
+  points.forEach((company) => {
+    const cx = x(company.cavm)
+    const cy = y(company.gapRate)
+    const side = cx >= cutX + 300 ? 'left' : 'right'
+    groups[side].push({ company, cx, cy, labelY: Math.max(top, Math.min(bottom, cy + 4)) })
+  })
+
+  Object.entries(groups).forEach(([side, items]) => {
+    items.sort((a, b) => a.labelY - b.labelY)
+    const spacing = 23
+    for (let index = 1; index < items.length; index += 1) {
+      items[index].labelY = Math.max(items[index].labelY, items[index - 1].labelY + spacing)
+    }
+    if (items.length && items[items.length - 1].labelY > bottom) {
+      const overflow = items[items.length - 1].labelY - bottom
+      items.forEach((item) => { item.labelY -= overflow })
+      for (let index = items.length - 2; index >= 0; index -= 1) {
+        items[index].labelY = Math.min(items[index].labelY, items[index + 1].labelY - spacing)
+      }
+    }
+    items.forEach((item) => labels.set(item.company.code, { ...item, side }))
+  })
+
+  return labels
+}
+
 function MatrixChart({ companies, selectedCode, onSelect }) {
   const points = companies.filter((company) => Number.isFinite(company.cavm) && Number.isFinite(company.gapRate))
-  const width = 1040
-  const height = 600
-  const margin = { top: 58, right: 42, bottom: 74, left: 78 }
+  const width = 1180
+  const height = 700
+  const margin = { top: 70, right: 44, bottom: 86, left: 92 }
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
-  const xMin = Math.min(80, Math.floor(Math.min(...points.map((point) => point.cavm), 80) / 5) * 5)
-  const xMax = 100
+  const rawXMin = Math.min(...points.map((point) => point.cavm), 90)
+  const rawXMax = Math.max(...points.map((point) => point.cavm), 90)
+  const xMin = Math.max(0, Math.floor(rawXMin) - 1)
+  const xMax = Math.min(100, Math.max(xMin + 10, Math.ceil(rawXMax) + 1))
   const gapValues = points.map((point) => point.gapRate)
   const yMin = Math.min(-60, Math.floor(Math.min(...gapValues, -40) / 20) * 20)
   const yMax = Math.max(60, Math.ceil(Math.max(...gapValues, 40) / 50) * 50)
   const x = (value) => margin.left + ((value - xMin) / (xMax - xMin)) * innerWidth
   const y = (value) => margin.top + ((yMax - value) / (yMax - yMin)) * innerHeight
   const xTicks = []
-  for (let value = Math.ceil(xMin / 5) * 5; value <= xMax; value += 5) xTicks.push(value)
+  for (let value = Math.ceil(xMin / 2) * 2; value <= xMax; value += 2) xTicks.push(value)
   const yStep = yMax - yMin > 180 ? 50 : 20
   const yTicks = []
   for (let value = Math.ceil(yMin / yStep) * yStep; value <= yMax; value += yStep) yTicks.push(value)
   const cutX = x(90)
-  const zeroY = y(0)
+  const decisionY = y(-10)
   const selected = points.find((point) => point.code === selectedCode)
+  const labels = chartLabelLayout(points, x, y, cutX, margin.top + 14, height - margin.bottom - 12)
+  const renderPoints = [...points].sort((a, b) => Number(a.code === selectedCode) - Number(b.code === selectedCode))
 
   return (
     <div className="chart-shell">
       <div className="chart-toolbar">
         <div className="chart-legend" aria-label="괴리율 범례">
-          <span><i className="legend-dot attractive" /> 할인 구간</span>
-          <span><i className="legend-dot fair" /> 적정가 근접</span>
-          <span><i className="legend-dot expensive" /> 가격 부담</span>
+          <span><i className="legend-dot attractive" /> -20% 이하 · 적극 검토</span>
+          <span><i className="legend-dot fair" /> -20%~-10% · 분할 검토</span>
+          <span><i className="legend-dot expensive" /> -10% 초과 · 관찰</span>
         </div>
-        <span className="chart-note">원을 선택하면 기업 분석이 바뀝니다</span>
+        <span className="chart-note">점이나 기업명을 선택하면 상세 분석이 바뀝니다</span>
       </div>
       <div className="chart-scroll">
         {points.length ? (
@@ -748,10 +781,10 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                 <feDropShadow dx="0" dy="3" stdDeviation="4" floodOpacity="0.2" />
               </filter>
             </defs>
-            <rect x={margin.left} y={margin.top} width={cutX - margin.left} height={zeroY - margin.top} className="zone low-expensive" />
-            <rect x={cutX} y={margin.top} width={width - margin.right - cutX} height={zeroY - margin.top} className="zone high-expensive" />
-            <rect x={margin.left} y={zeroY} width={cutX - margin.left} height={height - margin.bottom - zeroY} className="zone low-attractive" />
-            <rect x={cutX} y={zeroY} width={width - margin.right - cutX} height={height - margin.bottom - zeroY} className="zone high-attractive" />
+            <rect x={margin.left} y={margin.top} width={cutX - margin.left} height={decisionY - margin.top} className="zone low-expensive" />
+            <rect x={cutX} y={margin.top} width={width - margin.right - cutX} height={decisionY - margin.top} className="zone high-expensive" />
+            <rect x={margin.left} y={decisionY} width={cutX - margin.left} height={height - margin.bottom - decisionY} className="zone low-attractive" />
+            <rect x={cutX} y={decisionY} width={width - margin.right - cutX} height={height - margin.bottom - decisionY} className="zone high-attractive" />
             {xTicks.map((tick) => (
               <g key={`x-${tick}`}>
                 <line x1={x(tick)} x2={x(tick)} y1={margin.top} y2={height - margin.bottom} className="grid-line" />
@@ -765,17 +798,21 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
               </g>
             ))}
             <line x1={cutX} x2={cutX} y1={margin.top} y2={height - margin.bottom} className="cut-line" />
-            <text x={margin.left} y={34} className="zone-label danger">낮은 CAVM · 비싼 가격</text>
-            <text x={width - margin.right} y={34} className="zone-label caution" textAnchor="end">높은 CAVM · 비싼 가격</text>
-            <text x={margin.left} y={height - margin.bottom - 18} className="zone-label muted">가치함정 주의</text>
+            <line x1={margin.left} x2={width - margin.right} y1={decisionY} y2={decisionY} className="decision-line" />
+            <text x={width - margin.right - 8} y={decisionY - 10} className="decision-label" textAnchor="end">관찰 경계 -10%</text>
+            <text x={margin.left} y={42} className="zone-label danger">낮은 CAVM · 관찰</text>
+            <text x={width - margin.right} y={42} className="zone-label caution" textAnchor="end">높은 CAVM · 관찰</text>
+            <text x={margin.left} y={height - margin.bottom - 18} className="zone-label muted">가격은 낮지만 품질 확인</text>
             <text x={width - margin.right} y={height - margin.bottom - 18} className="zone-label ideal" textAnchor="end">좋은 기업 · 좋은 가격 ↘</text>
-            {points.map((company, index) => {
+            {renderPoints.map((company) => {
               const tone = gapTone(company.gapRate)
               const isSelected = company.code === selectedCode
               const cx = x(company.cavm)
               const cy = y(company.gapRate)
-              const labelRight = cx < width - 180
-              const labelY = index % 3 === 0 ? -13 : index % 3 === 1 ? 20 : 4
+              const label = labels.get(company.code)
+              const labelRight = label?.side === 'right'
+              const labelX = cx + (labelRight ? 16 : -16)
+              const labelY = label?.labelY ?? cy
               return (
                 <g
                   key={company.code}
@@ -791,17 +828,19 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                     }
                   }}
                 >
-                  <circle cx={cx} cy={cy} r={isSelected ? 12 : 9} className="point-halo" />
-                  <circle cx={cx} cy={cy} r={isSelected ? 8 : 6} className="point-core" filter="url(#point-shadow)" />
-                  <text x={cx + (labelRight ? 12 : -12)} y={cy + labelY} className="point-label" textAnchor={labelRight ? 'start' : 'end'}>
-                    {company.name}
+                  <line x1={cx + (labelRight ? 9 : -9)} y1={cy} x2={labelX + (labelRight ? -4 : 4)} y2={labelY - 4} className="point-leader" />
+                  <circle cx={cx} cy={cy} r={isSelected ? 13 : 10} className="point-halo" />
+                  <circle cx={cx} cy={cy} r={isSelected ? 10 : 8} className="point-core" filter="url(#point-shadow)" />
+                  <text x={cx} y={cy + 3} className="point-rank" textAnchor="middle">{company.rank}</text>
+                  <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
+                    #{company.rank} {company.name}
                   </text>
                   <title>{company.name} · CAVM {company.cavm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
                 </g>
               )
             })}
-            <text x={margin.left + innerWidth / 2} y={height - 16} className="axis-title" textAnchor="middle">CAVM 품질 점수 → 높을수록 좋은 기업</text>
-            <text transform={`translate(22 ${margin.top + innerHeight / 2}) rotate(-90)`} className="axis-title" textAnchor="middle">괴리율 (%) → 낮을수록 좋은 가격</text>
+            <text x={margin.left + innerWidth / 2} y={height - 20} className="axis-title" textAnchor="middle">CAVM 품질 점수 → 오른쪽일수록 우수</text>
+            <text transform={`translate(27 ${margin.top + innerHeight / 2}) rotate(-90)`} className="axis-title" textAnchor="middle">괴리율 (%) → 아래일수록 저평가</text>
           </svg>
         ) : (
           <div className="empty-state">VM 입력이 완료되면 매트릭스가 표시됩니다.</div>
