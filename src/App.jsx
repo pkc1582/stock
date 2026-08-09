@@ -159,6 +159,8 @@ function normalizeCompany(company, index) {
     forwardEps3y: firstNumber(company.forwardEps3y, valuation.forwardEps3Y, valuation.eps3y),
     historicalPer5y: firstNumber(company.historicalPer5y, valuation.historicalPer5y, company.peerPer),
     overseasPeerPer: firstNumber(company.overseasPeerPer, valuation.overseasPeerPer, valuation.peerPer, valuation.comparablePer, company.peerPer),
+    overseasCorrectionPer: firstNumber(company.overseasCorrectionPer, valuation.overseasCorrectionPer),
+    overseasAdjustmentWeightPct: firstNumber(company.overseasAdjustmentWeightPct, valuation.overseasAdjustmentWeightPct),
     appliedPer: firstNumber(company.appliedPer, valuation.appliedPer, company.peerPer),
     discountRate: firstNumber(company.discountRate, valuation.discountRate),
     finalVm,
@@ -257,6 +259,12 @@ const formatPercent = (value, sign = false) => {
   if (value === null || value === undefined) return '—'
   const prefix = sign && value > 0 ? '+' : ''
   return `${prefix}${new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 1 }).format(value)}%`
+}
+
+const formatPerAdjustment = (value) => {
+  if (value === null || value === undefined) return '—'
+  const prefix = value > 0 ? '+' : ''
+  return `${prefix}${new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 2 }).format(value)}배`
 }
 
 const gapTone = (gap) => {
@@ -984,9 +992,13 @@ function CompanyDetail({ company }) {
               <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
               <i>×</i>
               <div className="vm-per-card">
-                <span>보정 적용 PER</span>
-                <strong>{company.appliedPer ?? '—'}배</strong>
-                <small>5년 평균 {company.historicalPer5y ?? '—'}배 · 해외 {company.overseasPeerPer ?? '—'}배</small>
+                <span>PER 산정</span>
+                <strong>
+                  {company.historicalPer5y ?? '—'}배
+                  <b className={(company.overseasCorrectionPer ?? 0) < 0 ? 'negative' : 'positive'}>{formatPerAdjustment(company.overseasCorrectionPer)}</b>
+                  = {company.appliedPer ?? '—'}배
+                </strong>
+                <small>5년 평균 기준 · 해외 {company.overseasPeerPer ?? '—'}배와의 차이 중 {company.overseasAdjustmentWeightPct ?? 30}% 보정</small>
               </div>
               <i>→</i>
               <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
@@ -1104,8 +1116,8 @@ function Methodology({ methodology }) {
         </div>
         <div className="formula-card">
           <div><span>VALUE MODEL</span><h3>Final VM 산식</h3></div>
-          <p><strong>3년 예상 EPS</strong><i>×</i><strong>보정 적용 PER</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
-          <small>보정 적용 PER = (과거 5년 평균 PER + 해외 유사기업 PER) ÷ 2. 할인율은 성장기업 10% · 일반기업 11% · 경기민감기업 12%를 원칙으로 합니다. 현재 PER 입력값은 근거 검토 전 초기 이관값입니다.</small>
+          <p><strong>3년 예상 EPS</strong><i>×</i><strong>기준 PER + 해외 보정</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
+          <small>기준 PER은 과거 5년 평균입니다. 해외 보정은 (해외 유사기업 PER - 기준 PER)의 30%만 반영합니다. 할인율은 성장 10% · 일반 11% · 경기민감 12%가 원칙이며, 현재 PER 입력값은 근거 검토 전 초기 이관값입니다.</small>
         </div>
         <div className="decision-policy">
           <div>

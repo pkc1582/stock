@@ -1,8 +1,11 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "basisDate": "2026-08-09",
   "status": "draft",
-  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. forwardEps3y는 2026E EPS를 출발점으로 이후 2년 성장률을 보수적으로 제한해 산정한 초기 분석 가정이며 공식 컨센서스가 아닙니다. historicalPer5y와 overseasPeerPer는 기존 PER 가정을 양쪽 초기값으로 이관한 검토 전 값이며, 적용 PER은 두 값의 단순 평균입니다.",
+  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. forwardEps3y는 2026E EPS를 출발점으로 이후 2년 성장률을 보수적으로 제한해 산정한 초기 분석 가정이며 공식 컨센서스가 아닙니다. historicalPer5y를 기준 PER로 사용하고, 해외 유사기업 PER와의 차이 중 valuationPolicy에 정한 비율만 보정합니다. 두 PER는 기존 PER 가정을 양쪽 초기값으로 이관한 검토 전 값입니다.",
+  "valuationPolicy": {
+    "overseasAdjustmentWeight": 0.3
+  },
   "reviewPolicy": {
     "owner": "복리자산 2045 PMO",
     "nextReviewAt": "2026-08-31",

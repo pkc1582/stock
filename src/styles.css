@@ -244,6 +244,10 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .vm-flow span { display: block; color: #708b82; font-size: 8px; }
 .vm-flow strong { display: block; overflow: hidden; margin-top: 5px; font-size: 11px; text-overflow: ellipsis; }
 .vm-flow .vm-per-card small { display: block; margin-top: 4px; color: #7f9790; font-size: 8px; line-height: 1.4; }
+.vm-per-card strong { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px; }
+.vm-per-card b { padding: 2px 5px; border-radius: 2px; font-size: 9px; }
+.vm-per-card b.positive { color: #6cd4a3; background: rgba(108, 212, 163, .1); }
+.vm-per-card b.negative { color: #df7c6e; background: rgba(223, 124, 110, .1); }
 .vm-flow i { color: #506a62; font-size: 10px; font-style: normal; }
 .vm-result strong { color: #e2ce88; }
 .opinion-banner { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding: 13px 15px; border: 1px solid rgba(197,169,94,.3); background: rgba(197,169,94,.05); }
