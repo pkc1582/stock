@@ -419,6 +419,9 @@ function Hero({ snapshot }) {
     ['평균 품질점수', summary.averageCavm.toFixed(1), '100점 만점'],
     ['저평가 구간', `${summary.undervaluedCount}개`, '괴리율 0% 미만'],
   ]
+  const priceCautionCompanies = snapshot.companies
+    .filter((company) => Number.isFinite(company.gapRate) && company.gapRate > -20)
+    .sort((a, b) => b.gapRate - a.gapRate)
 
   return (
     <section className="hero" id="top">
@@ -453,6 +456,20 @@ function Hero({ snapshot }) {
                 <small>{note}</small>
               </div>
             ))}
+          </div>
+          <div className="hero-price-caution">
+            <div className="hero-price-caution-heading">
+              <span>괴리율 -20% 초과</span>
+              <strong>{priceCautionCompanies.length}개 · 가격 주의</strong>
+            </div>
+            <ul aria-label="괴리율 -20% 초과 기업">
+              {priceCautionCompanies.map((company) => (
+                <li key={company.code}>
+                  <span>#{company.rank} {company.name}</span>
+                  <strong>{formatPercent(company.gapRate, true)}</strong>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="hero-summary-refresh">
             <span className="hero-refresh-icon" aria-hidden="true">↻</span>
