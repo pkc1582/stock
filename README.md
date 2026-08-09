@@ -35,13 +35,22 @@ Final VM은 기본적으로 다음 흐름으로 산출합니다.
 ## 데이터 흐름
 
 ```text
-시세 API ───────┐
+공공데이터포털 상장종목 ─> data/universe.json ───────────┐
+공공데이터포털 전 종목 시세 ─> data/market-universe.json ─┼─> public/data/screener.json
+OpenDART 일괄 재무 ─> data/screen-financials.json ───────┘        │
+                                                                  └─> 정성 검토 후보
+
+20종목 시세 API ─────┐
                      ├─> data/companies.json ──┐
-OpenDART 재무 API ──┘                         ├─> public/data/latest.json ─> 대시보드
-data/manual-overrides.json ────────────┘
-data/issues.json ──────────────────────────┘
+OpenDART 기업별 재무 ─┘                        ├─> public/data/latest.json ─> 공식 TOP20 대시보드
+data/manual-overrides.json ────────────────────┘
+data/issues.json ──────────────────────────────┘
 ```
 
+- `scripts/sync_universe.py`: 공공데이터포털 KRX 상장종목정보에서 코스피·코스닥 전체 목록을 원자적으로 동기화합니다. 우선주·스팩·리츠는 현재 종목명 규칙으로 1차 분류하며, 거래소 상태정보가 필요한 관리종목·거래정지는 확인되지 않은 상태로 명시합니다.
+- `scripts/fetch_market_universe.py`: 전체 유니버스의 동일 기준일 종가·거래량·거래대금·시가총액을 수집하고 페이지 누락·중복·날짜 혼합을 거부합니다.
+- `scripts/fetch_screen_financials.py`: OpenDART 기업 고유번호를 연결하고 최대 100개씩 최근 널리 이용 가능한 사업보고서의 주요 계정을 일괄 수집합니다. 1~3월에는 전전년도, 4월부터는 전년도 연간 보고서를 사용합니다.
+- `scripts/build_screener.py`: 상장종목·시장·재무 스냅샷을 결합해 재현 가능한 정량 필터와 탈락 사유를 생성합니다. 이 결과는 CAVM 확정 점수가 아니라 정성 검토 대상을 줄이는 사전 스크린입니다.
 - `scripts/fetch_market.py`: 공공데이터포털에서 직전 영업일부터 20개 종목만 코드별로 조회해, 전 종목이 모두 존재하는 최신 단일 거래일 종가만 원자적으로 반영합니다.
 - `scripts/fetch_dart.py`: OpenDART에서 기업별 최신 분기·반기·사업보고서를 탐색해 누적 손익과 기말 재무상태를 함께 저장합니다. 2025 연간 비교 필드는 2025 사업보고서로만 갱신합니다.
 - `scripts/build_dataset.py`: 공시 값과 수동 가정을 병합하고 CAVM·VM·괴리율을 재계산합니다.
@@ -56,6 +65,7 @@ GitHub 저장소의 **Settings → Secrets and variables → Actions → New rep
 | Secret | 용도 |
 |---|---|
 | `DART_API_KEY` | OpenDART 인증키 |
+| `KRX_LISTED_API_KEY` | 공공데이터포털 KRX 상장종목정보 서비스키 |
 | `STOCK_API_ENDPOINT` | 선택 사항. 미등록 시 공공데이터포털 주식시세 기본 endpoint 사용 |
 | `STOCK_API_SERVICE_KEY` | 시세 API 서비스키 |
 
@@ -64,10 +74,15 @@ GitHub 저장소의 **Settings → Secrets and variables → Actions → New rep
 | 워크플로 | 실행 시각 | 작업 |
 |---|---|---|
 | `Daily data refresh` | 평일 18:20 KST | 종가·공시·재무 갱신, 공개 JSON 재생성 |
+| `Full market screener refresh` | 매주 월요일 20:40 KST | 코스피·코스닥 전체 목록·시세·재무 동기화, 정량 후보와 탈락 사유 재생성 |
 | `Weekly CAVM rebuild` | 매주 토요일 09:00 KST | 최신 입력으로 CAVM 합계·VM·TOP20 재산정 |
 | `Deploy GitHub Pages` | `main` 변경 후 | 웹 사이트 빌드·배포 |
 
-GitHub 예약 실행은 부하에 따라 일부 지연될 수 있습니다. 시세 API는 실시간이 아니라 통상 다음 영업일에 공개되는 종가 기준이며, 휴장일·공시 미제출·API 오류가 있으면 날짜가 섞인 부분 갱신 대신 마지막으로 검증된 스냅샷을 보존합니다. 최신 공시는 기업별로 `반기 → 1분기 → 직전 사업보고서`처럼 이용 가능한 가장 최근 보고서까지 자동 대체 탐색합니다.
+GitHub 예약 실행은 부하에 따라 일부 지연될 수 있습니다. 시세 API는 실시간이 아니라 통상 다음 영업일에 공개되는 종가 기준이며, 휴장일·공시 미제출·API 오류가 있으면 날짜가 섞인 부분 갱신 대신 마지막으로 검증된 스냅샷을 보존합니다. 기존 TOP20의 기업별 재무는 `반기 → 1분기 → 직전 사업보고서`처럼 이용 가능한 가장 최근 보고서까지 자동 대체 탐색합니다. 전체시장 1차 스크리너는 비교 가능성과 API 호출량을 위해 최근 널리 이용 가능한 연간 사업보고서를 사용하며 최신 분기 수치가 아닙니다.
+
+`KRX_LISTED_API_KEY`만으로는 관리종목·거래정지·상장적격성 상태를 확정할 수 없습니다. 따라서 현재 자동화는 종목명 기반 우선주·스팩·리츠 1차 제외와 정량 필터까지만 수행하고, 사이트에 미확인 한계를 표시합니다. 해당 상태까지 자동 제외하려면 KRX Open API의 별도 이용 승인을 추가해야 합니다.
+
+OpenDART 다중회사 주요계정 API에는 CapEx가 없어 전체시장 단계의 FCF는 `검증 보류`로 기록합니다. 시장·손익·재무상태로 200개 안팎의 후보를 먼저 줄인 뒤, 후보군에 한해 전체 재무제표의 영업현금흐름과 CapEx를 2차 수집하는 확장 단계가 필요합니다.
 
 ## GitHub Pages 배포
 

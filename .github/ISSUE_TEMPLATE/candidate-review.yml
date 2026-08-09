@@ -1,0 +1,80 @@
+name: 전체시장 후보 정성 검토
+description: 정량 스크리너 후보의 해자·성장성·경영진·주주환원을 근거와 함께 평가합니다.
+title: "[REVIEW] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        정량 후보는 공식 TOP20이 아닙니다. 모든 점수에는 확인 가능한 근거와 재검토일이 필요합니다.
+
+  - type: input
+    id: company
+    attributes:
+      label: 기업명
+    validations:
+      required: true
+
+  - type: input
+    id: ticker
+    attributes:
+      label: 종목코드
+      placeholder: "005930"
+    validations:
+      required: true
+
+  - type: textarea
+    id: moat
+    attributes:
+      label: 해자 평가 초안 (0~30)
+      description: 브랜드·시장지배력·기술·네트워크효과·진입장벽·원가·규제 우위를 근거별로 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: growth
+    attributes:
+      label: 성장성 평가 초안 (0~25)
+      description: 시장 확장, 신사업, 산업 성장과 정량 스크린으로 설명되지 않는 내용을 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: management
+    attributes:
+      label: 경영진·주주환원 평가 초안 (0~10)
+      description: 자본배분, 배당, 실제 자사주소각의 3년 지속성을 구분해 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 공식 근거와 발표일
+      placeholder: "- YYYY-MM-DD: https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: 핵심 리스크와 반증 조건
+    validations:
+      required: true
+
+  - type: input
+    id: next_review
+    attributes:
+      label: 다음 재검토일
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: approval
+    attributes:
+      label: 확인
+      options:
+        - label: 정량 후보와 공식 CAVM TOP20이 다르다는 점을 확인했습니다.
+          required: true
+        - label: AI 요약이 아니라 원문 근거를 함께 제출했습니다.
+          required: true

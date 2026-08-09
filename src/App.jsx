@@ -3,6 +3,9 @@ import { useEffect, useMemo, useState } from 'react'
 const REPOSITORY_URL = 'https://github.com/psa1582/stock'
 const DATA_EDIT_URL = `${REPOSITORY_URL}/edit/main/data/manual-overrides.json`
 const DATA_URL = `${import.meta.env.BASE_URL}data/latest.json`
+const SCREENER_URL = `${import.meta.env.BASE_URL}data/screener.json`
+const CANDIDATE_REVIEW_URL = `${REPOSITORY_URL}/issues/new?template=candidate-review.yml`
+const SCREENER_ROW_LIMIT = 200
 
 const SCORE_META = [
   { key: 'moat', label: '경쟁우위·해자', max: 30, short: '해자' },
@@ -25,6 +28,104 @@ const firstNumber = (...values) => {
     if (parsed !== null) return parsed
   }
   return null
+}
+
+const normalizeText = (value) => String(value ?? '').trim()
+
+function normalizeScreenerStatus(company) {
+  const rawStatus = normalizeText(
+    company.screenStatus
+      || company.status
+      || company.eligibility?.status
+      || company.screeningStatus
+      || company.screenResult
+      || company.reviewStatus,
+  ).toLowerCase()
+  const excluded = company.excluded === true
+    || company.eligible === false
+    || company.eligibleForPreliminaryScreen === false
+    || company.eligibility?.eligible === false
+    || /(exclude|ineligible|filtered|제외|탈락)/.test(rawStatus)
+  if (excluded) return 'excluded'
+  if (company.reviewPending === true || /(review.pending|pending.review|검토.?대기)/.test(rawStatus)) return 'pending'
+  if (company.quantPassed === true || /(quant.pass|qualified|screen.pass|정량.?통과)/.test(rawStatus)) return 'passed'
+  if (/(pending|candidate|review|대기|후보)/.test(rawStatus)) return 'pending'
+  if (/(pass|eligible|active|통과|적격)/.test(rawStatus)) return 'passed'
+  return 'unclassified'
+}
+
+function normalizeScreenerCompany(company, index) {
+  const metrics = company.metrics || company.financials || company.fundamentals || {}
+  const marketData = typeof company.market === 'object' ? company.market : {}
+  const eligibility = company.eligibility || {}
+  const marketCapEok = firstNumber(company.marketCapEok, marketData.marketCapEok)
+  const rawMarketCap = firstNumber(company.marketCap, marketData.marketCap, company.mrktTotAmt)
+  const exclusionReason = company.exclusionReason
+    || company.excludedReason
+    || eligibility.reason
+    || eligibility.exclusionReason
+    || (Array.isArray(company.exclusionReasons) ? company.exclusionReasons.join(', ') : '')
+
+  return {
+    code: normalizeText(company.code || company.stockCode || company.ticker || company.srtnCd).padStart(6, '0'),
+    name: company.name || company.companyName || company.nameKo || company.itmsNm || `기업 ${index + 1}`,
+    market: normalizeText(
+      typeof company.market === 'string'
+        ? company.market
+        : company.marketName || company.marketCategory || company.mrktCtg || marketData.name,
+    ) || '미분류',
+    sector: company.sector || company.industry || company.industryName || '미분류',
+    status: normalizeScreenerStatus(company),
+    quantPassed: company.quantPassed === true
+      || /(quant.pass|qualified|screen.pass|정량.?통과)/.test(normalizeText(company.screenStatus || company.status).toLowerCase()),
+    reviewPending: company.reviewPending === true
+      || /(review.pending|pending.review|검토.?대기)/.test(normalizeText(company.screenStatus || company.status).toLowerCase()),
+    screenScore: firstNumber(company.screenScore, company.quantScore, company.preScreenScore, company.score),
+    currentPrice: firstNumber(company.currentPrice, company.closePrice, company.price, company.clpr, marketData.price),
+    marketCapEok: marketCapEok ?? (rawMarketCap !== null && rawMarketCap > 10_000_000 ? rawMarketCap / 100_000_000 : rawMarketCap),
+    roe: firstNumber(company.roe, company.roePct, metrics.roe, metrics.roePct, metrics.roeAnnualized),
+    operatingMargin: firstNumber(
+      company.operatingMargin,
+      company.operatingMarginPct,
+      metrics.operatingMargin,
+      metrics.operatingMarginPct,
+    ),
+    debtRatio: firstNumber(company.debtRatio, company.debtRatioPct, metrics.debtRatio, metrics.debtRatioPct),
+    reportPeriod: company.reportPeriod || company.periodEnd || metrics.periodEnd || metrics.latestReport?.periodEnd || null,
+    exclusionReason: normalizeText(exclusionReason),
+  }
+}
+
+function normalizeScreener(raw) {
+  const source = Array.isArray(raw)
+    ? raw
+    : raw.companies || raw.items || raw.results || raw.data || raw.screener || []
+  const companies = Array.isArray(source)
+    ? source.filter((company) => company && typeof company === 'object').map(normalizeScreenerCompany)
+    : []
+  const summary = Array.isArray(raw) ? {} : raw.summary || raw.counts || {}
+  const counts = companies.reduce((result, company) => {
+    result[company.status] = (result[company.status] || 0) + 1
+    return result
+  }, {})
+  const limitationsSource = Array.isArray(raw) ? [] : raw.dataLimitations || raw.limitations || []
+
+  return {
+    companies,
+    generatedAt: Array.isArray(raw) ? null : raw.basisDate || raw.asOf || raw.generatedAt || null,
+    summary: {
+      total: firstNumber(summary.total, summary.universeSize, summary.companyCount, summary.storedRows) ?? companies.length,
+      excluded: firstNumber(summary.excluded, summary.excludedCount, summary.knownExcluded) ?? counts.excluded ?? 0,
+      passed: firstNumber(summary.passed, summary.quantPassed, summary.quantPassedCount) ?? counts.passed ?? 0,
+      pending: firstNumber(summary.pending, summary.reviewPending, summary.reviewPendingCount) ?? counts.pending ?? 0,
+    },
+    limitations: Array.isArray(limitationsSource)
+      ? limitationsSource.map(normalizeText).filter(Boolean)
+      : [normalizeText(limitationsSource)].filter(Boolean),
+    managedItemChecked: Array.isArray(raw)
+      ? false
+      : raw.managedItemChecked === true || raw.metadata?.managedItemChecked === true,
+  }
 }
 
 function normalizeCompany(company, index) {
@@ -181,6 +282,7 @@ function LogoMark() {
 function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
+    ['#screener', '전체시장 스크리너'],
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
     ['#company', '기업 분석'],
@@ -288,12 +390,12 @@ function Hero({ snapshot }) {
   )
 }
 
-function SectionHeading({ eyebrow, title, description, aside }) {
+function SectionHeading({ eyebrow, title, titleId, description, aside }) {
   return (
     <div className="section-heading">
       <div>
         <div className="section-eyebrow">{eyebrow}</div>
-        <h2>{title}</h2>
+        <h2 id={titleId}>{title}</h2>
         {description && <p>{description}</p>}
       </div>
       {aside && <div className="heading-aside">{aside}</div>}
@@ -329,6 +431,183 @@ function SummaryStrip({ snapshot }) {
           <span>마지막 계산</span>
           <strong>{generated}</strong>
         </div>
+      </div>
+    </section>
+  )
+}
+
+const SCREENER_STATUS_META = {
+  passed: { label: '정량 통과', tone: 'passed' },
+  pending: { label: '검토 대기', tone: 'pending' },
+  excluded: { label: '제외', tone: 'excluded' },
+  unclassified: { label: '미분류', tone: 'neutral' },
+}
+
+function ScreenerSection({ screener, loadState, error, onRetry }) {
+  const [query, setQuery] = useState('')
+  const [market, setMarket] = useState('all')
+  const [statusFilter, setStatusFilter] = useState('all')
+  const companies = screener?.companies || []
+  const markets = useMemo(
+    () => [...new Set(companies.map((company) => company.market).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')),
+    [companies],
+  )
+  const filtered = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase()
+    return companies
+      .filter((company) => market === 'all' || company.market === market)
+      .filter((company) => {
+        if (statusFilter === 'all') return true
+        if (statusFilter === 'passed') return company.quantPassed
+        if (statusFilter === 'pending') return company.reviewPending || company.status === 'pending'
+        return company.status === statusFilter
+      })
+      .filter((company) => (
+        !normalizedQuery
+        || `${company.name} ${company.code} ${company.sector}`.toLowerCase().includes(normalizedQuery)
+      ))
+      .sort((a, b) => {
+        const aScore = a.screenScore ?? Number.NEGATIVE_INFINITY
+        const bScore = b.screenScore ?? Number.NEGATIVE_INFINITY
+        return bScore - aScore || a.name.localeCompare(b.name, 'ko')
+      })
+  }, [companies, market, query, statusFilter])
+  const visible = filtered.slice(0, SCREENER_ROW_LIMIT)
+  const count = (value) => new Intl.NumberFormat('ko-KR').format(value || 0)
+
+  return (
+    <section className="screener-section" id="screener" aria-labelledby="screener-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="MARKET-WIDE QUANT SCREEN"
+          title="전체시장 스크리너"
+          titleId="screener-title"
+          description="국내 상장기업의 공개 시장 데이터와 최근 널리 이용 가능한 연간 사업보고서를 먼저 정량 필터링합니다. 이 결과는 공식 CAVM이나 투자 의견이 아니라 PMO 심층 검토 대상을 좁히기 위한 사전 화면입니다."
+          aside={screener?.generatedAt ? `데이터 ${formatDate(screener.generatedAt)} 기준` : '데이터 연결 상태 확인 중'}
+        />
+
+        {loadState === 'loading' && (
+          <div className="screener-load-state" role="status" aria-live="polite">
+            <span className="screener-spinner" aria-hidden="true" />
+            <div><strong>전체시장 데이터를 불러오는 중입니다.</strong><p>공식 TOP20은 이 작업과 별도로 정상 표시됩니다.</p></div>
+          </div>
+        )}
+
+        {loadState === 'unavailable' && (
+          <div className="screener-load-state is-unavailable" role="status" aria-live="polite">
+            <div>
+              <strong>전체시장 스크리너 데이터가 아직 준비되지 않았습니다.</strong>
+              <p>{error || '데이터 파일이 배포되면 이 영역만 자동으로 활성화됩니다. 공식 TOP20 데이터에는 영향이 없습니다.'}</p>
+            </div>
+            <button type="button" className="button screener-retry" onClick={onRetry}>스크리너 다시 불러오기</button>
+          </div>
+        )}
+
+        {loadState === 'ready' && screener && (
+          <>
+            <div className="screener-status-grid" aria-label="전체시장 스크리닝 현황">
+              {[
+                ['전체 유니버스', screener.summary.total, '수집된 상장기업', 'total'],
+                ['제외', screener.summary.excluded, '게이트 탈락·순위 밖', 'excluded'],
+                ['정량 통과', screener.summary.passed, '재무·시장 필터 통과', 'passed'],
+                ['검토 대기', screener.summary.pending, 'PMO 정성 검토 필요', 'pending'],
+              ].map(([label, value, note, tone]) => (
+                <article className={`screener-status-card tone-${tone}`} key={label}>
+                  <span>{label}</span><strong>{count(value)}</strong><small>{note}</small>
+                </article>
+              ))}
+            </div>
+
+            <aside className="screener-notices" aria-label="스크리너 데이터 주의사항">
+              <div><span aria-hidden="true">i</span><p><strong>공식 CAVM과 구분됩니다.</strong> 해자·경영진·자본배분은 자동 확정하지 않으며 사람이 근거를 검토한 기업만 공식 TOP20 후보가 됩니다.</p></div>
+              {!screener.managedItemChecked && (
+                <div className="warning"><span aria-hidden="true">!</span><p><strong>관리종목 여부 미확인</strong> 현재 스냅샷은 관리종목·거래정지·상장적격성 상태를 완전히 반영하지 않을 수 있으므로 거래소 공시를 별도로 확인해야 합니다.</p></div>
+              )}
+              <div><span aria-hidden="true">i</span><p><strong>데이터 한계</strong> 보고서 시차, 업종별 회계 차이, 신규상장·기업분할로 일부 지표가 비어 있거나 비교 가능성이 낮을 수 있습니다.</p></div>
+              {screener.limitations.map((limitation, index) => (
+                <div key={`${limitation}-${index}`}><span aria-hidden="true">i</span><p>{limitation}</p></div>
+              ))}
+            </aside>
+
+            <div className="candidate-review-bar">
+              <p><strong>미검토 후보는 공식 TOP20이 아닙니다.</strong> 해자·경영진·VM 근거를 확인한 뒤에만 공식 후보로 승격할 수 있습니다.</p>
+              <a className="button candidate-review-link" href={CANDIDATE_REVIEW_URL} target="_blank" rel="noreferrer">정성 검토 요청 <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div className="screener-controls" role="search" aria-label="전체시장 기업 검색과 필터">
+              <label className="screener-search">
+                <span>기업 검색</span>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="기업명·종목코드·업종"
+                  autoComplete="off"
+                />
+              </label>
+              <label>
+                <span>시장</span>
+                <select value={market} onChange={(event) => setMarket(event.target.value)}>
+                  <option value="all">전체 시장</option>
+                  {markets.map((item) => <option value={item} key={item}>{item}</option>)}
+                </select>
+              </label>
+              <label>
+                <span>상태</span>
+                <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+                  <option value="all">전체 상태</option>
+                  <option value="passed">정량 통과</option>
+                  <option value="pending">검토 대기</option>
+                  <option value="excluded">제외</option>
+                  <option value="unclassified">미분류</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="screener-result-line" id="screener-result-count" aria-live="polite">
+              <strong>{count(filtered.length)}개 검색됨</strong>
+              <span>정량점수 순 상위 {count(Math.min(filtered.length, SCREENER_ROW_LIMIT))}개 표시</span>
+            </div>
+
+            <div className="screener-table-wrap" tabIndex="0" role="region" aria-labelledby="screener-result-count">
+              <table className="screener-table">
+                <caption>전체시장 정량 스크리너 검색 결과</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">기업</th><th scope="col">시장·업종</th><th scope="col">상태</th><th scope="col">정량점수</th>
+                    <th scope="col">현재가</th><th scope="col">시가총액</th><th scope="col">ROE</th><th scope="col">영업이익률</th>
+                    <th scope="col">부채비율</th><th scope="col">재무 기준 / 제외 사유</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((company, index) => {
+                    const statusMeta = SCREENER_STATUS_META[company.status] || SCREENER_STATUS_META.unclassified
+                    return (
+                      <tr key={`${company.code}-${index}`}>
+                        <td data-label="기업"><div className="screener-company"><strong>{company.name}</strong><small>{company.code}</small></div></td>
+                        <td data-label="시장·업종"><strong>{company.market}</strong><small className="screener-cell-note">{company.sector}</small></td>
+                        <td data-label="상태"><span className={`screen-status tone-${statusMeta.tone}`}>{statusMeta.label}</span></td>
+                        <td data-label="정량점수" className="numeric"><strong>{company.screenScore === null ? '—' : company.screenScore.toFixed(1)}</strong></td>
+                        <td data-label="현재가" className="numeric">{formatWon(company.currentPrice)}</td>
+                        <td data-label="시가총액" className="numeric">{formatEok(company.marketCapEok)}</td>
+                        <td data-label="ROE" className="numeric">{formatPercent(company.roe)}</td>
+                        <td data-label="영업이익률" className="numeric">{formatPercent(company.operatingMargin)}</td>
+                        <td data-label="부채비율" className="numeric">{formatPercent(company.debtRatio)}</td>
+                        <td data-label="재무 기준 / 제외 사유" className="screener-reason">
+                          {company.exclusionReason || (company.reportPeriod ? formatDate(company.reportPeriod) : '세부 데이터 확인 필요')}
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+              {!visible.length && <div className="screener-empty">선택한 조건에 맞는 기업이 없습니다.</div>}
+            </div>
+            {filtered.length > SCREENER_ROW_LIMIT && (
+              <p className="screener-limit-note">브라우저 성능을 위해 상위 {SCREENER_ROW_LIMIT}개만 표시합니다. 검색어나 필터를 사용하면 원하는 기업을 더 빠르게 찾을 수 있습니다.</p>
+            )}
+          </>
+        )}
       </div>
     </section>
   )
@@ -809,6 +1088,10 @@ export default function App() {
   const [selectedCode, setSelectedCode] = useState(null)
   const [error, setError] = useState('')
   const [retryKey, setRetryKey] = useState(0)
+  const [screener, setScreener] = useState(null)
+  const [screenerLoadState, setScreenerLoadState] = useState('loading')
+  const [screenerError, setScreenerError] = useState('')
+  const [screenerRetryKey, setScreenerRetryKey] = useState(0)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -830,6 +1113,30 @@ export default function App() {
     return () => controller.abort()
   }, [retryKey])
 
+  useEffect(() => {
+    const controller = new AbortController()
+    setScreenerLoadState('loading')
+    setScreenerError('')
+    fetch(SCREENER_URL, { cache: 'no-store', signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`스크리너 데이터 응답 오류 (${response.status})`)
+        return response.json()
+      })
+      .then((raw) => {
+        const normalized = normalizeScreener(raw)
+        if (!normalized.companies.length) throw new Error('아직 공개된 전체시장 기업 데이터가 없습니다.')
+        setScreener(normalized)
+        setScreenerLoadState('ready')
+      })
+      .catch((fetchError) => {
+        if (fetchError.name === 'AbortError') return
+        setScreener(null)
+        setScreenerError(fetchError.message || '스크리너 데이터를 불러오지 못했습니다.')
+        setScreenerLoadState('unavailable')
+      })
+    return () => controller.abort()
+  }, [screenerRetryKey])
+
   const selectedCompany = snapshot?.companies.find((company) => company.code === selectedCode)
     || snapshot?.companies[0]
 
@@ -843,6 +1150,12 @@ export default function App() {
       <main id="main-content">
         <Hero snapshot={snapshot} />
         <SummaryStrip snapshot={snapshot} />
+        <ScreenerSection
+          screener={screener}
+          loadState={screenerLoadState}
+          error={screenerError}
+          onRetry={() => setScreenerRetryKey((value) => value + 1)}
+        />
         <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <CompanyDetail company={selectedCompany} />
