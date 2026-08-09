@@ -8,6 +8,12 @@ usually remains pending because ``fnlttMultiAcnt`` does not promise cash-flow
 statement rows.  A later, smaller-company pass can fill it from the full
 statement endpoint without changing this file format.
 
+To conserve the daily OpenDART allowance, requests are sent only for securities
+that remain preliminary-eligible in the universe and have both market
+capitalization of at least KRW 100 billion and daily trading value of at least
+KRW 100 million.  Every skipped security still receives an explicit placeholder
+record so downstream coverage and rejection audits remain complete.
+
 Required environment variable: ``DART_API_KEY``.
 No credential or raw provider response is persisted.
 """
@@ -21,12 +27,13 @@ import os
 import re
 import sys
 import time
+import time
 import zipfile
 from dataclasses import dataclass
 from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any, Iterable, Sequence
+from typing import Any, Callable, Iterable, Sequence
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
@@ -41,6 +48,7 @@ DEFAULT_UNIVERSE_PATHS = (
     ROOT / "data" / "stock-universe.json",
 )
 OUTPUT_PATH = ROOT / "data" / "screen-financials.json"
+MARKET_PATH = ROOT / "data" / "market-universe.json"
 
 CORP_CODE_URL = "https://opendart.fss.or.kr/api/corpCode.xml"
 MULTI_ACCOUNT_URL = "https://opendart.fss.or.kr/api/fnlttMultiAcnt.json"
@@ -52,14 +60,17 @@ _IMPORT_DATE = datetime.now(KST).date()
 REPORT_YEAR = _IMPORT_DATE.year - (2 if _IMPORT_DATE.month < 4 else 1)
 REPORT_CODE = "11011"
 MAX_COMPANIES_PER_REQUEST = 100
-HTTP_TIMEOUT_SECONDS = 30
-MAX_HTTP_ATTEMPTS = 3
+DART_BATCH_SIZE = 25
+HTTP_TIMEOUT_SECONDS = 20
+MAX_HTTP_ATTEMPTS = 2
 RETRY_DELAY_SECONDS = 0.4
 
 NO_DATA_STATUSES = frozenset({"013"})
 STOCK_CODE_PATTERN = re.compile(r"^(?:A)?([0-9A-HJ-NP-TV-Z]{6})$", re.IGNORECASE)
 MIN_CORP_CODE_COVERAGE = 0.70
 MIN_REPORT_COVERAGE = 0.70
+MIN_MARKET_CAP = 100_000_000_000
+MIN_TRADING_VALUE = 100_000_000
 
 
 class ScreenFinancialError(RuntimeError):
@@ -96,6 +107,23 @@ class UniverseSecurity:
     code: str
     name: str | None
     market: str | None
+    eligible_for_preliminary_screen: bool = True
+    exclusion_reasons: tuple[str, ...] = ()
+    classification: str | None = None
+
+
+@dataclass(frozen=True)
+class MarketSecurity:
+    code: str
+    market_cap: int | float | None
+    trading_value: int | float | None
+
+
+@dataclass(frozen=True)
+class DartTargetDecision:
+    target: bool
+    status: str
+    reasons: tuple[dict[str, str], ...]
 
 
 @dataclass(frozen=True)
@@ -196,6 +224,33 @@ def _record_array(payload: Any) -> list[Any]:
     )
 
 
+def _boolean(value: Any) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    normalized = str(value or "").strip().lower()
+    if normalized in {"true", "yes", "y", "1", "eligible", "included"}:
+        return True
+    if normalized in {"false", "no", "n", "0", "ineligible", "excluded"}:
+        return False
+    return None
+
+
+def _reason_values(value: Any) -> list[str]:
+    if isinstance(value, str) and value.strip():
+        return [value.strip()]
+    if isinstance(value, list):
+        values: list[str] = []
+        for item in value:
+            if isinstance(item, dict):
+                selected = _alias(item, "code", "reason", "message")
+                if selected not in (None, ""):
+                    values.append(str(selected).strip())
+            elif str(item).strip():
+                values.append(str(item).strip())
+        return values
+    return []
+
+
 def parse_universe(payload: Any) -> list[UniverseSecurity]:
     securities: list[UniverseSecurity] = []
     seen: set[str] = set()
@@ -210,11 +265,53 @@ def parse_universe(payload: Any) -> list[UniverseSecurity]:
         seen.add(code)
         name_value = _alias(raw, "name", "itmsNm", "stockName", "corpName", "corp_name")
         market_value = _alias(raw, "market", "mrktCtg", "marketName", "corpCls", "corp_cls")
+        exclusion_reasons: list[str] = []
+        for key in (
+            "exclusionReasons",
+            "exclusionReason",
+            "exclusion_reasons",
+            "excludeReasons",
+            "reasons",
+        ):
+            exclusion_reasons.extend(_reason_values(raw.get(key)))
+        classification_value = _alias(raw, "classification", "securityClassification")
+        classification = (
+            str(classification_value).strip()
+            if classification_value not in (None, "")
+            else None
+        )
+        eligible_value = _boolean(
+            _alias(
+                raw,
+                "eligibleForPreliminaryScreen",
+                "eligible",
+                "included",
+                "isEligible",
+            )
+        )
+        source_status = str(
+            _alias(raw, "screeningStatus", "eligibilityStatus", "status") or ""
+        ).strip().lower()
+        explicitly_excluded = source_status in {"excluded", "ineligible", "rejected"}
+        name_class_excluded = classification in {
+            "name_likely_preferred",
+            "name_likely_spac",
+            "name_likely_reit",
+        }
+        eligible = (
+            eligible_value is not False
+            and not explicitly_excluded
+            and not exclusion_reasons
+            and not name_class_excluded
+        )
         securities.append(
             UniverseSecurity(
                 code=code,
                 name=str(name_value).strip() if name_value not in (None, "") else None,
                 market=str(market_value).strip() if market_value not in (None, "") else None,
+                eligible_for_preliminary_screen=eligible,
+                exclusion_reasons=tuple(dict.fromkeys(exclusion_reasons)),
+                classification=classification,
             )
         )
     if not securities:
@@ -234,9 +331,49 @@ def load_universe(path: Path) -> list[UniverseSecurity]:
         return parse_universe(json.load(handle))
 
 
+def parse_market(payload: Any) -> dict[str, MarketSecurity]:
+    market: dict[str, MarketSecurity] = {}
+    for raw in _record_array(payload):
+        if not isinstance(raw, dict):
+            continue
+        code = normalize_stock_code(_alias(raw, "code", "srtnCd", "stockCode", "stock_code"))
+        if code is None:
+            continue
+        if code in market:
+            raise ScreenFinancialError(f"duplicate stock code in market data: {code}")
+        market_cap = parse_amount(
+            _alias(raw, "marketCap", "mrktTotAmt", "marketCapitalization")
+        )
+        trading_value = parse_amount(
+            _alias(
+                raw,
+                "tradingValue",
+                "tradeValue",
+                "averageTradingValue20d",
+                "avgTradingValue20d",
+                "accTrdval",
+            )
+        )
+        market[code] = MarketSecurity(
+            code=code,
+            market_cap=market_cap,
+            trading_value=trading_value,
+        )
+    if not market:
+        raise ScreenFinancialError("market data did not contain a valid six-character stock code")
+    return market
+
+
+def load_market(path: Path) -> tuple[Any, dict[str, MarketSecurity]]:
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    return payload, parse_market(payload)
+
+
 def api_url(endpoint: str, key: str, parameters: dict[str, str]) -> str:
     encoded_key = key if "%" in key else quote(key, safe="")
-    suffix = urlencode(parameters)
+    # OpenDART documents the multi-company corp_code list with literal commas.
+    suffix = urlencode(parameters, safe=",")
     return f"{endpoint}?crtfc_key={encoded_key}" + (f"&{suffix}" if suffix else "")
 
 
@@ -396,6 +533,103 @@ def parse_amount(value: Any) -> int | float | None:
     return float(number)
 
 
+UPSTREAM_REASON_MESSAGES = {
+    "name_indicates_preferred": "종목명 기준 우선주 후보로 분류되어 1차 대상에서 제외했습니다.",
+    "name_indicates_spac": "종목명 기준 SPAC 후보로 분류되어 1차 대상에서 제외했습니다.",
+    "name_indicates_reit": "종목명 기준 REIT 후보로 분류되어 1차 대상에서 제외했습니다.",
+    "not_preliminary_eligible": "상장 종목 원천에서 잠정 선별 비적격으로 표시했습니다.",
+}
+
+
+def _reason(code: str, source: str, message: str) -> dict[str, str]:
+    return {"code": code, "source": source, "message": message}
+
+
+def _upstream_reasons(security: UniverseSecurity) -> list[dict[str, str]]:
+    reasons: list[dict[str, str]] = []
+    for value in security.exclusion_reasons:
+        code = value if re.fullmatch(r"[a-z0-9_]+", value) else "upstream_exclusion"
+        reasons.append(
+            _reason(
+                code,
+                "universe",
+                UPSTREAM_REASON_MESSAGES.get(code, value),
+            )
+        )
+    if not security.eligible_for_preliminary_screen and not reasons:
+        classification = str(security.classification or "")
+        derived = {
+            "name_likely_preferred": "name_indicates_preferred",
+            "name_likely_spac": "name_indicates_spac",
+            "name_likely_reit": "name_indicates_reit",
+        }.get(classification, "not_preliminary_eligible")
+        reasons.append(
+            _reason(derived, "universe", UPSTREAM_REASON_MESSAGES[derived])
+        )
+    return reasons
+
+
+def dart_target_decision(
+    security: UniverseSecurity,
+    market: MarketSecurity | None,
+) -> DartTargetDecision:
+    """Apply cheap upstream gates before spending a DART company request."""
+
+    reasons = _upstream_reasons(security)
+    if market is None:
+        reasons.append(
+            _reason(
+                "missing_market_record",
+                "market",
+                "전 종목 시세 파일에 일치하는 종목이 없어 DART 조회를 보류했습니다.",
+            )
+        )
+    else:
+        if market.market_cap is None:
+            reasons.append(
+                _reason(
+                    "missing_market_cap",
+                    "market",
+                    "시가총액이 없어 DART 조회를 보류했습니다.",
+                )
+            )
+        elif market.market_cap < MIN_MARKET_CAP:
+            reasons.append(
+                _reason(
+                    "market_cap_below_minimum",
+                    "market",
+                    "시가총액이 1,000억원 미만이어서 DART 조회를 생략했습니다.",
+                )
+            )
+        if market.trading_value is None:
+            reasons.append(
+                _reason(
+                    "missing_trading_value",
+                    "market",
+                    "거래대금이 없어 DART 조회를 보류했습니다.",
+                )
+            )
+        elif market.trading_value < MIN_TRADING_VALUE:
+            reasons.append(
+                _reason(
+                    "trading_value_below_minimum",
+                    "market",
+                    "일 거래대금이 1억원 미만이어서 DART 조회를 생략했습니다.",
+                )
+            )
+
+    if not reasons:
+        return DartTargetDecision(True, "dart_target", ())
+    reason_codes = {reason["code"] for reason in reasons}
+    if any(code.startswith("name_indicates_") for code in reason_codes):
+        status = "skipped_name_gate"
+    elif any(reason["source"] == "universe" for reason in reasons):
+        status = "skipped_upstream_gate"
+    else:
+        status = "skipped_market_gate"
+    return DartTargetDecision(False, status, tuple(reasons))
+
+
 def percent_change(current: int | float | None, previous: int | float | None) -> float | None:
     if current is None or previous in (None, 0):
         return None
@@ -514,30 +748,114 @@ def company_financial_record(
     }
 
 
+def skipped_financial_record(
+    security: UniverseSecurity,
+    decision: DartTargetDecision,
+    *,
+    report_year: int,
+    report_code: str,
+) -> dict[str, Any]:
+    """Create an auditable placeholder without pretending DART was queried."""
+
+    metric_status = "not_requested_due_to_pre_screen_gate"
+    metrics = {
+        key: {
+            "current": None,
+            "previous": None,
+            "changePct": None,
+            "status": metric_status,
+            "accountId": None,
+            "accountName": None,
+            "statement": "CF" if key == "operatingCashFlow" else None,
+            "currency": None,
+        }
+        for key in METRIC_SPECS
+    }
+    reasons = [dict(reason) for reason in decision.reasons]
+    return {
+        "code": security.code,
+        "name": security.name,
+        "market": security.market,
+        "corpCode": None,
+        "reportYear": report_year,
+        "reportCode": report_code,
+        "fsDiv": None,
+        "rceptNo": None,
+        "status": decision.status,
+        "skipReasons": reasons,
+        "dartRequest": {
+            "target": False,
+            "requested": False,
+            "status": decision.status,
+            "reasons": reasons,
+        },
+        "metrics": metrics,
+        "dataQuality": {
+            "availableMetricCount": 0,
+            "metricCount": len(metrics),
+            "missingMetrics": [],
+            "pendingMetrics": [],
+            "notRequestedMetrics": list(metrics),
+            "warnings": [reason["code"] for reason in reasons],
+            "currencies": [],
+        },
+    }
+
+
 def build_snapshot(
     universe: list[UniverseSecurity],
     key: str,
     *,
+    market: dict[str, MarketSecurity] | None = None,
+    market_basis_date: str | None = None,
     report_year: int = REPORT_YEAR,
     report_code: str = REPORT_CODE,
     fetched_at: datetime | None = None,
+    progress: Callable[[str], None] | None = None,
 ) -> dict[str, Any]:
-    directory = fetch_corp_directory(key)
-    mapped = {security.code: directory.get(security.code) for security in universe}
+    decisions = {
+        security.code: (
+            dart_target_decision(security, market.get(security.code))
+            if market is not None
+            else DartTargetDecision(True, "dart_target", ())
+        )
+        for security in universe
+    }
+    targets = [security for security in universe if decisions[security.code].target]
+    if progress is not None:
+        progress(
+            "OpenDART pre-screen selected "
+            f"{len(targets)}/{len(universe)} securities for financial requests"
+        )
+        progress("OpenDART corporate-code directory download started")
+    directory = fetch_corp_directory(key) if targets else {}
+    if progress is not None:
+        progress("OpenDART corporate-code directory download completed")
+    mapped = {security.code: directory.get(security.code) for security in targets}
     requested_entries = [entry for entry in mapped.values() if entry is not None]
-    mapping_coverage = len(requested_entries) / len(universe) if universe else 0.0
-    if mapping_coverage < MIN_CORP_CODE_COVERAGE:
+    mapping_coverage = len(requested_entries) / len(targets) if targets else 1.0
+    if targets and mapping_coverage < MIN_CORP_CODE_COVERAGE:
         raise DartDataError(
             "corp-code mapping coverage was below the safety threshold "
-            f"({len(requested_entries)}/{len(universe)})"
+            f"({len(requested_entries)}/{len(targets)} DART targets)"
         )
     corp_to_stock = {entry.corp_code: entry.stock_code for entry in requested_entries}
     rows_by_stock: dict[str, list[dict[str, Any]]] = {security.code: [] for security in universe}
     batch_count = 0
 
     corp_codes = [entry.corp_code for entry in requested_entries]
-    for batch in chunked(corp_codes):
+    expected_batch_count = (
+        (len(corp_codes) + DART_BATCH_SIZE - 1) // DART_BATCH_SIZE
+    )
+    for batch in chunked(corp_codes, DART_BATCH_SIZE):
         batch_count += 1
+        started_at = time.monotonic()
+        if progress is not None:
+            progress(
+                "OpenDART financial batch "
+                f"{batch_count}/{expected_batch_count} started "
+                f"({len(batch)} target companies)"
+            )
         returned_rows = fetch_major_accounts_batch(
             key,
             batch,
@@ -552,25 +870,70 @@ def build_snapshot(
             if stock_code is None or stock_code not in allowed_stocks:
                 raise DartDataError("multi-account response contained an unexpected company")
             rows_by_stock[stock_code].append(row)
+        if progress is not None:
+            progress(
+                "OpenDART financial batch "
+                f"{batch_count}/{expected_batch_count} completed "
+                f"({len(batch)} target companies, "
+                f"{time.monotonic() - started_at:.1f}s)"
+            )
 
-    companies = [
-        company_financial_record(
+    companies: list[dict[str, Any]] = []
+    for security in universe:
+        decision = decisions[security.code]
+        if not decision.target:
+            companies.append(
+                skipped_financial_record(
+                    security,
+                    decision,
+                    report_year=report_year,
+                    report_code=report_code,
+                )
+            )
+            continue
+        corp = mapped.get(security.code)
+        record = company_financial_record(
             security,
-            mapped[security.code],
+            corp,
             rows_by_stock[security.code],
             report_year=report_year,
             report_code=report_code,
         )
-        for security in universe
-    ]
-    available_count = sum(company["status"] in {"available", "partial"} for company in companies)
-    report_coverage = (
-        available_count / len(requested_entries) if requested_entries else 0.0
+        requested = corp is not None
+        request_status = "requested" if requested else "missing_corp_code"
+        request_reasons = (
+            []
+            if requested
+            else [
+                _reason(
+                    "missing_corp_code",
+                    "opendart_corp_directory",
+                    "DART 기업 고유번호를 연결하지 못해 재무 요청을 보내지 못했습니다.",
+                )
+            ]
+        )
+        record["skipReasons"] = request_reasons
+        record["dartRequest"] = {
+            "target": True,
+            "requested": requested,
+            "status": request_status,
+            "reasons": request_reasons,
+        }
+        companies.append(record)
+
+    requested_stock_codes = {entry.stock_code for entry in requested_entries}
+    available_count = sum(
+        company["code"] in requested_stock_codes
+        and company["status"] in {"available", "partial"}
+        for company in companies
     )
-    if report_coverage < MIN_REPORT_COVERAGE:
+    report_coverage = (
+        available_count / len(requested_entries) if requested_entries else 1.0
+    )
+    if requested_entries and report_coverage < MIN_REPORT_COVERAGE:
         raise DartDataError(
             "annual-report coverage was below the safety threshold "
-            f"({available_count}/{len(requested_entries)})"
+            f"({available_count}/{len(requested_entries)} requested DART companies)"
         )
     selected_at = fetched_at or datetime.now(KST)
     if selected_at.tzinfo is None:
@@ -586,16 +949,40 @@ def build_snapshot(
             "reportCode": report_code,
             "cfsPolicy": "prefer_CFS_else_OFS_from_same_response",
             "cashFlowCoverage": "pending_unless_provider_returns_CF_rows",
+            "marketBasisDate": market_basis_date,
+            "preRequestGates": {
+                "preliminaryEligibility": True,
+                "minimumMarketCapKrw": MIN_MARKET_CAP,
+                "minimumTradingValueKrw": MIN_TRADING_VALUE,
+            },
         },
         "summary": {
             "universeCount": len(universe),
+            "dartTargetCount": len(targets),
+            "dartRequestedCount": len(requested_entries),
+            "preRequestSkippedCount": len(universe) - len(targets),
+            "skippedNameGateCount": sum(
+                decision.status == "skipped_name_gate" for decision in decisions.values()
+            ),
+            "skippedUpstreamGateCount": sum(
+                any(reason["source"] == "universe" for reason in decision.reasons)
+                for decision in decisions.values()
+            ),
+            "skippedMarketGateCount": sum(
+                any(reason["source"] == "market" for reason in decision.reasons)
+                for decision in decisions.values()
+            ),
             "corpCodeMappedCount": len(requested_entries),
             "batchCount": batch_count,
             "reportAvailableCount": available_count,
             "corpCodeCoveragePct": round(mapping_coverage * 100, 2),
             "reportCoveragePct": round(report_coverage * 100, 2),
-            "missingCorpCodeCount": sum(company["status"] == "missing_corp_code" for company in companies),
-            "noReportCount": sum(company["status"] == "no_report_rows" for company in companies),
+            "missingCorpCodeCount": sum(
+                company["status"] == "missing_corp_code" for company in companies
+            ),
+            "noReportCount": sum(
+                company["status"] == "no_report_rows" for company in companies
+            ),
         },
         "companies": companies,
     }
@@ -618,20 +1005,33 @@ def refresh_file(
     key: str,
     *,
     universe_path: Path | None = None,
+    market_path: Path | None = None,
     output_path: Path = OUTPUT_PATH,
     report_year: int | None = None,
     report_code: str = REPORT_CODE,
     fetched_at: datetime | None = None,
+    progress: Callable[[str], None] | None = None,
 ) -> dict[str, Any]:
     selected_universe = universe_path or discover_universe_path()
     universe = load_universe(selected_universe)
+    market_payload: Any | None = None
+    market_index: dict[str, MarketSecurity] | None = None
+    if market_path is not None:
+        market_payload, market_index = load_market(market_path)
+    market_basis_date = None
+    if isinstance(market_payload, dict):
+        raw_basis_date = _alias(market_payload, "basisDate", "basDt", "asOf")
+        market_basis_date = str(raw_basis_date).strip() if raw_basis_date not in (None, "") else None
     selected_report_year = report_year if report_year is not None else latest_expected_annual_year()
     snapshot = build_snapshot(
         universe,
         key,
+        market=market_index,
+        market_basis_date=market_basis_date,
         report_year=selected_report_year,
         report_code=report_code,
         fetched_at=fetched_at,
+        progress=progress,
     )
     atomic_write(snapshot, output_path)
     return snapshot["summary"]
@@ -640,6 +1040,12 @@ def refresh_file(
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--universe", type=Path, default=None)
+    parser.add_argument(
+        "--market",
+        type=Path,
+        default=MARKET_PATH,
+        help="full-market snapshot used for the cheap pre-request gates",
+    )
     parser.add_argument("--output", type=Path, default=OUTPUT_PATH)
     parser.add_argument(
         "--year",
@@ -661,9 +1067,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         summary = refresh_file(
             key,
             universe_path=arguments.universe,
+            market_path=arguments.market,
             output_path=arguments.output,
             report_year=arguments.year,
             report_code=arguments.report_code,
+            progress=lambda message: print(message, flush=True),
         )
     except (
         ScreenFinancialError,
@@ -681,7 +1089,8 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     print(
         "screen financial refresh atomically wrote "
-        f"{summary['reportAvailableCount']}/{summary['universeCount']} companies "
+        f"{summary['reportAvailableCount']}/{summary['dartRequestedCount']} requested companies; "
+        f"skipped {summary['preRequestSkippedCount']}/{summary['universeCount']} before DART; "
         f"in {summary['batchCount']} batch(es)"
     )
     return 0

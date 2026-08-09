@@ -141,6 +141,35 @@ class ScreeningPolicyTests(unittest.TestCase):
         self.assertEqual(reason["code"], "universe_exclusion")
         self.assertEqual(reason["message"], "우선주")
 
+    def test_pre_request_skip_keeps_primary_reason_without_financial_noise(self) -> None:
+        output = build_screener.build_screener(
+            {"companies": [{"code": "000001", "name": "소형기업"}]},
+            {"items": [market("000001", cap=50_000_000_000)]},
+            {
+                "companies": [
+                    {
+                        "code": "000001",
+                        "status": "skipped_market_gate",
+                        "skipReasons": [
+                            {
+                                "code": "market_cap_below_minimum",
+                                "source": "market",
+                                "message": "시가총액이 1,000억원 미만입니다.",
+                            }
+                        ],
+                        "metrics": {},
+                    }
+                ]
+            },
+        )
+
+        reason_codes = {
+            reason["code"] for reason in output["rejected"][0]["rejectionReasons"]
+        }
+        self.assertEqual(reason_codes, {"market_cap_below_minimum"})
+        self.assertNotIn("missing_net_income", reason_codes)
+        self.assertNotIn("missing_revenue", reason_codes)
+
     def test_synced_universe_exclusion_and_limitations_are_propagated(self) -> None:
         universe = {
             "managed_item_checked": False,

@@ -62,9 +62,10 @@ jobs:
         run: python scripts/fetch_market_universe.py
 
       - name: Fetch OpenDART batch fundamentals
+        timeout-minutes: 25
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
-        run: python scripts/fetch_screen_financials.py
+        run: python scripts/fetch_screen_financials.py --market data/market-universe.json
 
       - name: Build auditable quantitative screen
         run: python scripts/build_screener.py

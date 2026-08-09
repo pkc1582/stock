@@ -122,17 +122,17 @@ class CorpDirectoryTests(unittest.TestCase):
             patch.object(
                 screen_financials,
                 "urlopen",
-                side_effect=[URLError("temporary"), URLError("temporary"), response],
+                side_effect=[URLError("temporary"), response],
             ) as request,
             patch.object(screen_financials.time, "sleep") as sleep,
         ):
             self.assertEqual(screen_financials.request_bytes("https://example.test"), b"ok")
-        self.assertEqual(request.call_count, 3)
-        self.assertEqual(sleep.call_count, 2)
+        self.assertEqual(request.call_count, 2)
+        self.assertEqual(sleep.call_count, 1)
 
 
 class BatchAndMetricTests(unittest.TestCase):
-    def test_205_companies_are_fetched_in_three_batches_of_at_most_100(self) -> None:
+    def test_205_companies_use_small_operational_batches_below_official_limit(self) -> None:
         universe = [
             screen_financials.UniverseSecurity(f"{index:06d}", f"회사 {index}", "KOSPI")
             for index in range(1, 206)
@@ -144,6 +144,7 @@ class BatchAndMetricTests(unittest.TestCase):
             for index, item in enumerate(universe, start=1)
         }
         batch_sizes: list[int] = []
+        progress_messages: list[str] = []
 
         def fake_batch(_key: str, corp_codes: list[str], **_kwargs: object) -> list[dict[str, str]]:
             batch_sizes.append(len(corp_codes))
@@ -158,11 +159,17 @@ class BatchAndMetricTests(unittest.TestCase):
                 universe,
                 "secret",
                 fetched_at=datetime(2026, 8, 9, 12, 0, tzinfo=screen_financials.KST),
+                progress=progress_messages.append,
             )
 
-        self.assertEqual(batch_sizes, [100, 100, 5])
-        self.assertEqual(snapshot["summary"]["batchCount"], 3)
+        self.assertEqual(batch_sizes, [25] * 8 + [5])
+        self.assertEqual(snapshot["summary"]["batchCount"], 9)
         self.assertEqual(snapshot["summary"]["reportAvailableCount"], 205)
+        self.assertEqual(len(progress_messages), 21)
+        self.assertIn("selected 205/205", progress_messages[0])
+        self.assertIn("1/9", progress_messages[3])
+        self.assertIn("9/9", progress_messages[-1])
+        self.assertNotIn("secret", " ".join(progress_messages))
 
     def test_cfs_is_preferred_and_previous_comparison_is_structured(self) -> None:
         security = screen_financials.UniverseSecurity("005930", "삼성전자", "KOSPI")
@@ -256,6 +263,166 @@ class SafetyTests(unittest.TestCase):
 
             self.assertEqual(output_path.read_bytes(), before)
             self.assertFalse(output_path.with_suffix(".json.tmp").exists())
+
+
+class PreRequestGateTests(unittest.TestCase):
+    def test_only_preliminary_eligible_liquid_large_caps_reach_dart(self) -> None:
+        universe = [
+            screen_financials.UniverseSecurity("000001", "통과 기업", "KOSPI"),
+            screen_financials.UniverseSecurity(
+                "000002",
+                "우선주 후보",
+                "KOSPI",
+                False,
+                ("name_indicates_preferred",),
+                "name_likely_preferred",
+            ),
+            screen_financials.UniverseSecurity(
+                "000003",
+                "원천 제외",
+                "KOSDAQ",
+                False,
+                ("upstream_policy_exclusion",),
+            ),
+            screen_financials.UniverseSecurity("000004", "소형주", "KOSDAQ"),
+            screen_financials.UniverseSecurity("000005", "저유동성", "KOSDAQ"),
+            screen_financials.UniverseSecurity("000006", "시세 없음", "KOSPI"),
+        ]
+        market = {
+            "000001": screen_financials.MarketSecurity(
+                "000001",
+                screen_financials.MIN_MARKET_CAP,
+                screen_financials.MIN_TRADING_VALUE,
+            ),
+            "000002": screen_financials.MarketSecurity(
+                "000002",
+                screen_financials.MIN_MARKET_CAP * 2,
+                screen_financials.MIN_TRADING_VALUE * 2,
+            ),
+            "000003": screen_financials.MarketSecurity(
+                "000003",
+                screen_financials.MIN_MARKET_CAP * 2,
+                screen_financials.MIN_TRADING_VALUE * 2,
+            ),
+            "000004": screen_financials.MarketSecurity(
+                "000004",
+                screen_financials.MIN_MARKET_CAP - 1,
+                screen_financials.MIN_TRADING_VALUE * 2,
+            ),
+            "000005": screen_financials.MarketSecurity(
+                "000005",
+                screen_financials.MIN_MARKET_CAP * 2,
+                screen_financials.MIN_TRADING_VALUE - 1,
+            ),
+        }
+        directory = {
+            "000001": screen_financials.CorpEntry(
+                "00000001", "통과 기업", "000001", "20260801"
+            )
+        }
+        requested_batches: list[list[str]] = []
+
+        def fake_batch(
+            _key: str, corp_codes: list[str], **_kwargs: object
+        ) -> list[dict[str, str]]:
+            requested_batches.append(list(corp_codes))
+            return complete_rows("000001")
+
+        with (
+            patch.object(screen_financials, "fetch_corp_directory", return_value=directory),
+            patch.object(
+                screen_financials,
+                "fetch_major_accounts_batch",
+                side_effect=fake_batch,
+            ),
+        ):
+            snapshot = screen_financials.build_snapshot(
+                universe,
+                "secret",
+                market=market,
+                market_basis_date="2026-08-07",
+            )
+
+        self.assertEqual(requested_batches, [["00000001"]])
+        self.assertEqual(len(snapshot["companies"]), len(universe))
+        self.assertEqual(snapshot["summary"]["dartTargetCount"], 1)
+        self.assertEqual(snapshot["summary"]["dartRequestedCount"], 1)
+        self.assertEqual(snapshot["summary"]["preRequestSkippedCount"], 5)
+        self.assertEqual(snapshot["summary"]["skippedNameGateCount"], 1)
+        self.assertEqual(snapshot["summary"]["skippedUpstreamGateCount"], 2)
+        self.assertEqual(snapshot["summary"]["skippedMarketGateCount"], 3)
+        self.assertEqual(snapshot["summary"]["corpCodeCoveragePct"], 100.0)
+        self.assertEqual(snapshot["summary"]["reportCoveragePct"], 100.0)
+        self.assertEqual(snapshot["source"]["marketBasisDate"], "2026-08-07")
+
+        companies = {company["code"]: company for company in snapshot["companies"]}
+        self.assertEqual(companies["000001"]["status"], "available")
+        self.assertTrue(companies["000001"]["dartRequest"]["requested"])
+        self.assertEqual(companies["000002"]["status"], "skipped_name_gate")
+        self.assertEqual(companies["000003"]["status"], "skipped_upstream_gate")
+        self.assertEqual(companies["000004"]["status"], "skipped_market_gate")
+        self.assertEqual(companies["000005"]["status"], "skipped_market_gate")
+        self.assertEqual(companies["000006"]["status"], "skipped_market_gate")
+        self.assertEqual(
+            companies["000004"]["skipReasons"][0]["code"],
+            "market_cap_below_minimum",
+        )
+        self.assertEqual(
+            companies["000005"]["skipReasons"][0]["code"],
+            "trading_value_below_minimum",
+        )
+        self.assertEqual(
+            companies["000006"]["skipReasons"][0]["code"],
+            "missing_market_record",
+        )
+        self.assertEqual(
+            companies["000004"]["metrics"]["revenue"]["status"],
+            "not_requested_due_to_pre_screen_gate",
+        )
+
+    def test_market_parser_preserves_alphanumeric_codes_and_cli_has_default(self) -> None:
+        parsed = screen_financials.parse_market(
+            {
+                "securities": [
+                    {
+                        "code": "0001A0",
+                        "marketCap": "100,000,000,000",
+                        "tradingValue": "100,000,000",
+                    }
+                ]
+            }
+        )
+        self.assertEqual(parsed["0001A0"].market_cap, 100_000_000_000)
+        self.assertEqual(parsed["0001A0"].trading_value, 100_000_000)
+        self.assertEqual(
+            screen_financials._parser().parse_args([]).market,
+            screen_financials.MARKET_PATH,
+        )
+
+    def test_name_classification_alone_is_a_conservative_upstream_gate(self) -> None:
+        security = screen_financials.parse_universe(
+            {
+                "companies": [
+                    {
+                        "code": "0001A0",
+                        "name": "테스트우",
+                        "market": "KOSPI",
+                        "classification": "name_likely_preferred",
+                    }
+                ]
+            }
+        )[0]
+        decision = screen_financials.dart_target_decision(
+            security,
+            screen_financials.MarketSecurity(
+                "0001A0",
+                screen_financials.MIN_MARKET_CAP,
+                screen_financials.MIN_TRADING_VALUE,
+            ),
+        )
+        self.assertFalse(decision.target)
+        self.assertEqual(decision.status, "skipped_name_gate")
+        self.assertEqual(decision.reasons[0]["code"], "name_indicates_preferred")
 
 
 if __name__ == "__main__":

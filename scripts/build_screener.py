@@ -353,8 +353,13 @@ def market_metrics(market: dict[str, Any] | None) -> dict[str, int | float | str
     }
 
 
-def _gate_reason(code: str, message: str) -> dict[str, str]:
-    return {"code": code, "message": message, "source": "quant_gate"}
+def _gate_reason(
+    code: str,
+    message: str,
+    *,
+    source: str = "quant_gate",
+) -> dict[str, str]:
+    return {"code": code, "message": message, "source": source}
 
 
 def report_period(financial: dict[str, Any] | None) -> str | None:
@@ -416,6 +421,12 @@ def evaluate_company(
     financial: dict[str, Any] | None,
 ) -> dict[str, Any]:
     reasons = upstream_exclusions(universe)
+    financial_status = str(financial.get("status", "")) if isinstance(financial, dict) else ""
+    financial_pre_request_skipped = financial_status in {
+        "skipped_name_gate",
+        "skipped_upstream_gate",
+        "skipped_market_gate",
+    }
     financial_type = "financial" if is_financial_company(universe, market) else "non_financial"
     market_values = market_metrics(market)
 
@@ -456,17 +467,33 @@ def evaluate_company(
         reasons.append(_gate_reason("missing_market_record", "시장 데이터가 없습니다."))
     if financial is None:
         reasons.append(_gate_reason("missing_financial_record", "OpenDART 재무 데이터가 없습니다."))
-    elif str(financial.get("status", "")) in {"missing_corp_code", "no_report_rows"}:
+    elif financial_status in {"missing_corp_code", "no_report_rows"}:
         report_year = parse_number(financial.get("reportYear"))
         report_label = (
             f"{report_year} 사업보고서" if isinstance(report_year, int) else "선택된 사업보고서"
         )
         reasons.append(
             _gate_reason(
-                str(financial.get("status")),
+                financial_status,
                 f"{report_label} 주요계정을 확보하지 못했습니다.",
             )
         )
+    elif financial_pre_request_skipped:
+        existing_codes = {reason["code"] for reason in reasons}
+        for reason in financial.get("skipReasons", []):
+            if not isinstance(reason, dict):
+                continue
+            code_value = str(reason.get("code") or "pre_screen_financial_skip")
+            if code_value in existing_codes:
+                continue
+            reasons.append(
+                _gate_reason(
+                    code_value,
+                    str(reason.get("message") or "1차 조건 탈락으로 OpenDART 재무 조회를 생략했습니다."),
+                    source=str(reason.get("source") or "pre_request_gate"),
+                )
+            )
+            existing_codes.add(code_value)
     if unsupported_currencies:
         reasons.append(
             _gate_reason(
@@ -487,40 +514,42 @@ def evaluate_company(
     elif liquidity < MIN_LIQUIDITY_VALUE:
         reasons.append(_gate_reason("liquidity_below_minimum", "거래대금 환산값이 1억원 미만입니다."))
 
-    if net_income is None:
-        reasons.append(_gate_reason("missing_net_income", "당기순이익을 확인할 수 없습니다."))
-    elif net_income <= 0:
-        reasons.append(_gate_reason("non_positive_net_income", "당기순이익이 0 이하입니다."))
-    if roe is None:
-        reasons.append(_gate_reason("missing_roe", "순이익과 평균자본으로 ROE를 계산할 수 없습니다."))
-    elif roe < MIN_ROE:
-        reasons.append(_gate_reason("roe_below_minimum", "ROE가 5% 미만입니다."))
+    if not financial_pre_request_skipped:
+        if net_income is None:
+            reasons.append(_gate_reason("missing_net_income", "당기순이익을 확인할 수 없습니다."))
+        elif net_income <= 0:
+            reasons.append(_gate_reason("non_positive_net_income", "당기순이익이 0 이하입니다."))
+        if roe is None:
+            reasons.append(_gate_reason("missing_roe", "순이익과 평균자본으로 ROE를 계산할 수 없습니다."))
+        elif roe < MIN_ROE:
+            reasons.append(_gate_reason("roe_below_minimum", "ROE가 5% 미만입니다."))
 
-    if financial_type == "non_financial":
-        if revenue is None:
-            reasons.append(_gate_reason("missing_revenue", "비금융사의 매출액을 확인할 수 없습니다."))
-        elif revenue < MIN_REVENUE:
-            reasons.append(_gate_reason("revenue_below_minimum", "연매출이 1,000억원 미만입니다."))
-        if operating_profit is None:
-            reasons.append(_gate_reason("missing_operating_profit", "비금융사의 영업이익을 확인할 수 없습니다."))
-        elif operating_profit <= 0:
-            reasons.append(_gate_reason("non_positive_operating_profit", "영업이익이 0 이하입니다."))
-        if revenue_growth is None:
-            reasons.append(_gate_reason("missing_revenue_growth", "전기 대비 매출 성장률을 계산할 수 없습니다."))
-        elif revenue_growth < MIN_REVENUE_GROWTH:
-            reasons.append(_gate_reason("revenue_contraction", "매출이 전기 대비 20% 넘게 감소했습니다."))
-        if debt_ratio is None:
-            reasons.append(_gate_reason("missing_debt_ratio", "부채총계와 자본총계로 부채비율을 계산할 수 없습니다."))
-        elif debt_ratio > MAX_DEBT_RATIO:
-            reasons.append(_gate_reason("debt_ratio_above_maximum", "부채비율이 250%를 초과했습니다."))
+        if financial_type == "non_financial":
+            if revenue is None:
+                reasons.append(_gate_reason("missing_revenue", "비금융사의 매출액을 확인할 수 없습니다."))
+            elif revenue < MIN_REVENUE:
+                reasons.append(_gate_reason("revenue_below_minimum", "연매출이 1,000억원 미만입니다."))
+            if operating_profit is None:
+                reasons.append(_gate_reason("missing_operating_profit", "비금융사의 영업이익을 확인할 수 없습니다."))
+            elif operating_profit <= 0:
+                reasons.append(_gate_reason("non_positive_operating_profit", "영업이익이 0 이하입니다."))
+            if revenue_growth is None:
+                reasons.append(_gate_reason("missing_revenue_growth", "전기 대비 매출 성장률을 계산할 수 없습니다."))
+            elif revenue_growth < MIN_REVENUE_GROWTH:
+                reasons.append(_gate_reason("revenue_contraction", "매출이 전기 대비 20% 넘게 감소했습니다."))
+            if debt_ratio is None:
+                reasons.append(_gate_reason("missing_debt_ratio", "부채총계와 자본총계로 부채비율을 계산할 수 없습니다."))
+            elif debt_ratio > MAX_DEBT_RATIO:
+                reasons.append(_gate_reason("debt_ratio_above_maximum", "부채비율이 250%를 초과했습니다."))
 
     # Cash generation is evaluated when available. The batch endpoint normally
     # leaves it pending, so absence is disclosed but does not silently reject
     # the whole market before the full-statement follow-up.
-    if operating_cash_flow is not None and operating_cash_flow <= 0:
-        reasons.append(_gate_reason("non_positive_operating_cash_flow", "영업현금흐름이 0 이하입니다."))
-    if fcf_value is not None and fcf_value <= 0:
-        reasons.append(_gate_reason("non_positive_fcf", "정의된 FCF가 0 이하입니다."))
+    if not financial_pre_request_skipped:
+        if operating_cash_flow is not None and operating_cash_flow <= 0:
+            reasons.append(_gate_reason("non_positive_operating_cash_flow", "영업현금흐름이 0 이하입니다."))
+        if fcf_value is not None and fcf_value <= 0:
+            reasons.append(_gate_reason("non_positive_fcf", "정의된 FCF가 0 이하입니다."))
 
     if financial_type == "financial":
         operating_margin_score = 7.5
