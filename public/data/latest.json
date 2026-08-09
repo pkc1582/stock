@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-09T18:32:46+09:00",
+  "generatedAt": "2026-08-09T19:19:14+09:00",
   "basisDate": "2026-08-09",
-  "dataStatus": "2025 연간 재무 스냅샷 교차검증 · 2026-08-07 정규장 종가 교차검증 / VM 수동가정 초안",
+  "dataStatus": "OpenDART 2025 사업보고서 갱신 · 2026-08-07 정규장 종가 교차검증 / VM 수동가정 초안",
   "methodology": {
     "version": "CAVM Official v1.0",
     "weights": {
@@ -65,9 +65,9 @@
       "financials": {
         "revenue2025": 971467,
         "operatingMargin2025": 48.59,
-        "roe2025": 44.15,
+        "roe2025": 44.14,
         "debtRatio2025": 45.95,
-        "eps2025": 58955
+        "eps2025": 62044
       },
       "sources": [
         {
@@ -189,9 +189,9 @@
       "financials": {
         "revenue2025": 5363,
         "operatingMargin2025": 39.98,
-        "roe2025": 26.88,
+        "roe2025": 26.02,
         "debtRatio2025": 44.21,
-        "eps2025": 14209
+        "eps2025": 14933
       },
       "sources": [
         {
@@ -251,9 +251,9 @@
       "financials": {
         "revenue2025": 3336059,
         "operatingMargin2025": 13.07,
-        "roe2025": 10.85,
+        "roe2025": 10.78,
         "debtRatio2025": 29.94,
-        "eps2025": 6564
+        "eps2025": 6605
       },
       "sources": [
         {
@@ -375,9 +375,9 @@
       "financials": {
         "revenue2025": 812307,
         "operatingMargin2025": 10.49,
-        "roe2025": 9.98,
+        "roe2025": 9.68,
         "debtRatio2025": 1211.73,
-        "eps2025": 15116
+        "eps2025": 15410
       },
       "sources": [
         {
@@ -437,9 +437,9 @@
       "financials": {
         "revenue2025": 23518,
         "operatingMargin2025": 22.29,
-        "roe2025": 37.59,
+        "roe2025": 37.02,
         "debtRatio2025": 72.74,
-        "eps2025": 51697
+        "eps2025": 52156
       },
       "sources": [
         {
@@ -499,9 +499,9 @@
       "financials": {
         "revenue2025": 33266,
         "operatingMargin2025": 31.7,
-        "roe2025": 10.6,
+        "roe2025": 10.47,
         "debtRatio2025": 31.31,
-        "eps2025": 15438
+        "eps2025": 16454
       },
       "sources": [
         {
@@ -561,9 +561,9 @@
       "financials": {
         "revenue2025": 203170,
         "operatingMargin2025": 14.14,
-        "roe2025": 22.53,
+        "roe2025": 21.18,
         "debtRatio2025": 1102.87,
-        "eps2025": 12698
+        "eps2025": 12903
       },
       "sources": [
         {
@@ -623,9 +623,9 @@
       "financials": {
         "revenue2025": 40795,
         "operatingMargin2025": 24.4,
-        "roe2025": 41.5,
+        "roe2025": 41.34,
         "debtRatio2025": 134.63,
-        "eps2025": 20324
+        "eps2025": 20354
       },
       "sources": [
         {
@@ -685,9 +685,9 @@
       "financials": {
         "revenue2025": 65797,
         "operatingMargin2025": 20.42,
-        "roe2025": 11.77,
+        "roe2025": 11.79,
         "debtRatio2025": 51.98,
-        "eps2025": 8973
+        "eps2025": 10220
       },
       "sources": [
         {
@@ -747,7 +747,7 @@
       "financials": {
         "revenue2025": 267029,
         "operatingMargin2025": 11.57,
-        "roe2025": 19.14,
+        "roe2025": 15.57,
         "debtRatio2025": 221.38,
         "eps2025": 28573
       },
@@ -809,9 +809,9 @@
       "financials": {
         "revenue2025": 299332,
         "operatingMargin2025": 13.04,
-        "roe2025": 17.78,
+        "roe2025": 18.85,
         "debtRatio2025": 133.86,
-        "eps2025": 30639
+        "eps2025": 30664
       },
       "sources": [
         {
@@ -871,9 +871,9 @@
       "financials": {
         "revenue2025": 646820,
         "operatingMargin2025": 10.86,
-        "roe2025": 8.72,
+        "roe2025": 8.53,
         "debtRatio2025": 1201.94,
-        "eps2025": 10085
+        "eps2025": 9812
       },
       "sources": [
         {
@@ -933,9 +933,9 @@
       "financials": {
         "revenue2025": 41625,
         "operatingMargin2025": 28.07,
-        "roe2025": 5.94,
+        "roe2025": 5.91,
         "debtRatio2025": 28.71,
-        "eps2025": 4238
+        "eps2025": 4668
       },
       "sources": [
         {
@@ -995,9 +995,9 @@
       "financials": {
         "revenue2025": 247785,
         "operatingMargin2025": 10.73,
-        "roe2025": 10.97,
+        "roe2025": 10.95,
         "debtRatio2025": 352.98,
-        "eps2025": 40703
+        "eps2025": 47478
       },
       "sources": [
         {
@@ -1057,9 +1057,9 @@
       "financials": {
         "revenue2025": 59685,
         "operatingMargin2025": 12.52,
-        "roe2025": 24.41,
+        "roe2025": 22.13,
         "debtRatio2025": 190.31,
-        "eps2025": 55755
+        "eps2025": 55832
       },
       "sources": [
         {
@@ -1119,9 +1119,9 @@
       "financials": {
         "revenue2025": 49658,
         "operatingMargin2025": 8.59,
-        "roe2025": 14.67,
+        "roe2025": 14.1,
         "debtRatio2025": 131.48,
-        "eps2025": 1911
+        "eps2025": 9647
       },
       "sources": [
         {
@@ -1181,9 +1181,9 @@
       "financials": {
         "revenue2025": 120350,
         "operatingMargin2025": 18.35,
-        "roe2025": 7.36,
+        "roe2025": 6.5,
         "debtRatio2025": 41.9,
-        "eps2025": 12376
+        "eps2025": 13009
       },
       "sources": [
         {
@@ -1243,9 +1243,9 @@
       "financials": {
         "revenue2025": 33324,
         "operatingMargin2025": 16.75,
-        "roe2025": 10.51,
+        "roe2025": 10.44,
         "debtRatio2025": 17.55,
-        "eps2025": 9680
+        "eps2025": 9682
       },
       "sources": [
         {
