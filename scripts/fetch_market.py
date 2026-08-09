@@ -8,10 +8,10 @@ Optional:
   STOCK_API_ENDPOINT
 
 The provider publishes reference-date data on the following business day.  We
-therefore probe one exact KST calendar date at a time, newest first, instead of
-downloading a large rolling window.  A snapshot is written only when every
-configured stock has one valid quote on that same date.  Raw responses and
-credentials are never persisted.
+therefore try each prior KST business date, newest first, and fetch only the 20
+configured codes through exact-date, code-filtered requests.  A snapshot is
+written only when every configured stock has one valid quote on that same date.
+Raw responses and credentials are never persisted.
 """
 
 from __future__ import annotations
@@ -21,8 +21,10 @@ import os
 import re
 import sys
 import time
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from threading import Lock
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
@@ -35,9 +37,10 @@ DEFAULT_ENDPOINT = "https://apis.data.go.kr/1160100/service/GetStockSecuritiesIn
 SOURCE_LABEL = "공공데이터포털 금융위원회 주식시세정보"
 
 LOOKBACK_DAYS = 8
-PAGE_SIZE = 5_000
-MAX_PAGES = 2
+CODE_QUERY_PAGE_SIZE = 10
+MAX_CONCURRENT_REQUESTS = 8
 MAX_HTTP_ATTEMPTS_PER_REQUEST = 2
+MAX_API_CALLS = LOOKBACK_DAYS * 20 * MAX_HTTP_ATTEMPTS_PER_REQUEST
 HTTP_TIMEOUT_SECONDS = 15
 TOTAL_HTTP_BUDGET_SECONDS = 105
 RETRY_DELAY_SECONDS = 0.25
@@ -164,7 +167,24 @@ def transport_error_label(error: BaseException) -> str:
     return type(error).__name__
 
 
-def request_with_budget(url: str, deadline: float) -> dict[str, Any]:
+class ApiCallBudget:
+    """Thread-safe upper bound for provider calls in one refresh."""
+
+    def __init__(self, limit: int) -> None:
+        self.limit = limit
+        self.used = 0
+        self._lock = Lock()
+
+    def claim(self) -> None:
+        with self._lock:
+            if self.used >= self.limit:
+                raise MarketRefreshError("provider API call budget exhausted")
+            self.used += 1
+
+
+def request_with_budget(
+    url: str, deadline: float, call_budget: ApiCallBudget
+) -> dict[str, Any]:
     last_error: Exception | None = None
     attempts = 0
     while attempts < MAX_HTTP_ATTEMPTS_PER_REQUEST:
@@ -172,6 +192,7 @@ def request_with_budget(url: str, deadline: float) -> dict[str, Any]:
         if remaining <= 0:
             raise MarketRefreshError("provider request time budget exhausted") from last_error
         attempts += 1
+        call_budget.claim()
         try:
             return fetch_json(url, min(HTTP_TIMEOUT_SECONDS, remaining))
         except MarketRefreshError:
@@ -189,48 +210,49 @@ def request_with_budget(url: str, deadline: float) -> dict[str, Any]:
     ) from last_error
 
 
-def fetch_exact_date_rows(
-    endpoint: str, key: str, basis_date: str, deadline: float
-) -> list[dict[str, Any]]:
-    def fetch_page(page_number: int) -> tuple[list[dict[str, Any]], int, int]:
-        parameters = {
-            "resultType": "json",
-            "pageNo": str(page_number),
-            "numOfRows": str(PAGE_SIZE),
-            "basDt": basis_date,
-        }
-        url = service_url(endpoint, key, parameters)
-        payload = request_with_budget(url, deadline)
-        return response_page(payload, page_number)
+def fetch_code_quote(
+    endpoint: str,
+    key: str,
+    basis_date: str,
+    stock_code: str,
+    deadline: float,
+    call_budget: ApiCallBudget,
+) -> int | None:
+    parameters = {
+        "resultType": "json",
+        "pageNo": "1",
+        "numOfRows": str(CODE_QUERY_PAGE_SIZE),
+        "basDt": basis_date,
+        "likeSrtnCd": stock_code,
+    }
+    url = service_url(endpoint, key, parameters)
+    payload = request_with_budget(url, deadline, call_budget)
+    items, total_count, _ = response_page(payload, 1)
 
-    first_items, total_count, returned_page_size = fetch_page(1)
     if total_count == 0:
-        return []
-
-    required_pages = (total_count + returned_page_size - 1) // returned_page_size
-    if required_pages > MAX_PAGES:
+        return None
+    if total_count != 1 or len(items) != 1:
         raise MarketRefreshError(
-            f"provider returned {total_count} rows requiring {required_pages} pages; "
-            f"the safe page limit is {MAX_PAGES}"
+            f"provider returned {total_count} rows for exact stock query {stock_code}"
         )
 
-    if required_pages > 1 and len(first_items) != returned_page_size:
-        raise MarketRefreshError("provider response was truncated before the next page")
-
-    rows = list(first_items)
-    for page_number in range(2, required_pages + 1):
-        page_items, page_total, page_size = fetch_page(page_number)
-        if page_total != total_count or page_size != returned_page_size:
-            raise MarketRefreshError("provider pagination metadata changed between pages")
-        if page_number < required_pages and len(page_items) != returned_page_size:
-            raise MarketRefreshError("provider response was truncated before the next page")
-        rows.extend(page_items)
-
-    if len(rows) != total_count:
+    item = items[0]
+    returned_date = normalized_date(item.get("basDt"))
+    if returned_date != normalized_date(basis_date):
         raise MarketRefreshError(
-            f"provider response was truncated: expected {total_count} rows, received {len(rows)}"
+            f"provider returned a mismatched basis date for {stock_code}"
         )
-    return rows
+    returned_code = normalized_code(item.get("srtnCd"))
+    if returned_code != stock_code:
+        raise MarketRefreshError(
+            f"provider returned stock {returned_code or 'invalid'} for requested {stock_code}"
+        )
+    price = normalized_price(item.get("clpr"))
+    if price is None:
+        raise MarketRefreshError(
+            f"provider returned an invalid closing price for {stock_code} on {returned_date}"
+        )
+    return price
 
 
 def normalized_code(value: Any) -> str | None:
@@ -272,32 +294,48 @@ def configured_codes(companies: list[Any]) -> set[str]:
     return codes
 
 
-def complete_quotes_for_date(
-    rows: list[dict[str, Any]], target_codes: set[str], expected_date: str
-) -> dict[str, int] | None:
+def fetch_snapshot_quotes(
+    endpoint: str,
+    key: str,
+    basis_date: str,
+    stock_codes: list[str],
+    deadline: float,
+    call_budget: ApiCallBudget,
+) -> dict[str, int]:
     quotes: dict[str, int] = {}
-    for item in rows:
-        basis_date = normalized_date(item.get("basDt"))
-        if basis_date != expected_date:
-            raise MarketRefreshError(
-                f"provider ignored exact-date filter: requested {expected_date}, returned "
-                f"{basis_date or 'invalid'}"
-            )
-        code = normalized_code(item.get("srtnCd"))
-        if code not in target_codes:
-            continue
-        price = normalized_price(item.get("clpr"))
-        if price is None:
-            raise MarketRefreshError(
-                f"provider returned an invalid closing price for {code} on {expected_date}"
-            )
-        if code in quotes:
-            raise MarketRefreshError(
-                f"provider returned duplicate rows for {code} on {expected_date}"
-            )
-        quotes[code] = price
+    futures: dict[Future[int | None], str] = {}
+    worker_count = min(MAX_CONCURRENT_REQUESTS, len(stock_codes))
 
-    return quotes if set(quotes) == target_codes else None
+    with ThreadPoolExecutor(
+        max_workers=worker_count,
+        thread_name_prefix="market-quote",
+    ) as executor:
+        for stock_code in stock_codes:
+            future = executor.submit(
+                fetch_code_quote,
+                endpoint,
+                key,
+                basis_date,
+                stock_code,
+                deadline,
+                call_budget,
+            )
+            futures[future] = stock_code
+
+        try:
+            for future in as_completed(futures):
+                stock_code = futures[future]
+                price = future.result()
+                if price is not None:
+                    quotes[stock_code] = price
+        except BaseException:
+            for pending in futures:
+                pending.cancel()
+            raise
+
+    if not set(quotes).issubset(stock_codes):
+        raise MarketRefreshError("provider response produced an unexpected quote set")
+    return quotes
 
 
 def parse_existing_basis_date(value: Any) -> str:
@@ -352,33 +390,43 @@ def refresh_market(
     if not isinstance(companies, list):
         raise MarketRefreshError("data/companies.json has an invalid companies list")
     target_codes = configured_codes(companies)
+    stock_codes = [str(company["code"]) for company in companies]
+    if set(stock_codes) != target_codes:
+        raise MarketRefreshError("configured stock order does not match the validated universe")
     existing_basis_date = parse_existing_basis_date(data.get("priceBasisDate"))
     deadline = time.monotonic() + TOTAL_HTTP_BUDGET_SECONDS
+    call_budget = ApiCallBudget(MAX_API_CALLS)
     incomplete_dates: list[str] = []
 
-    for offset in range(LOOKBACK_DAYS):
+    # The official feed is published on the following business day, so today's
+    # basis date is intentionally excluded. Weekend dates can never contain a
+    # KRX closing snapshot and are skipped without consuming API traffic.
+    for offset in range(1, LOOKBACK_DAYS + 1):
         candidate = today - timedelta(days=offset)
+        if candidate.weekday() >= 5:
+            continue
         candidate_iso = candidate.isoformat()
         if candidate_iso < existing_basis_date:
             break
 
-        rows = fetch_exact_date_rows(
+        quotes = fetch_snapshot_quotes(
             endpoint,
             service_key,
             candidate.strftime("%Y%m%d"),
+            stock_codes,
             deadline,
+            call_budget,
         )
-        if not rows:
+        if not quotes:
             continue
-        quotes = complete_quotes_for_date(rows, target_codes, candidate_iso)
-        if quotes is None:
+        if set(quotes) != target_codes:
             incomplete_dates.append(candidate_iso)
             continue
         return apply_quotes(data, candidate_iso, quotes), candidate_iso
 
     detail = f"; incomplete dates: {', '.join(incomplete_dates)}" if incomplete_dates else ""
     raise MarketRefreshError(
-        f"provider response has no complete 20-company snapshot in the latest "
+        f"provider response has no complete 20-company snapshot in the prior "
         f"{LOOKBACK_DAYS} calendar dates{detail}"
     )
 
