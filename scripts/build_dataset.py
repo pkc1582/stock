@@ -129,7 +129,15 @@ def data_status_for(companies_data: dict[str, Any]) -> str:
     else:
         market_label = "2026-08-07 정규장 종가 교차검증"
 
-    if financial_status in {"updated_from_opendart_2025_annual", "verified_from_opendart_2025_annual"}:
+    if financial_status == "updated_from_opendart_latest_reports":
+        financial_label = "OpenDART 기업별 최신 보고서 갱신"
+    elif financial_status == "partially_updated_from_opendart_latest_reports":
+        summary = companies_data.get("financialDataSummary", {})
+        success_count = summary.get("latestReportSuccessCount") if isinstance(summary, dict) else None
+        company_count = summary.get("companyCount") if isinstance(summary, dict) else None
+        coverage = f" {success_count}/{company_count}" if success_count is not None and company_count else ""
+        financial_label = f"OpenDART 기업별 최신 보고서 부분 갱신{coverage}"
+    elif financial_status in {"updated_from_opendart_2025_annual", "verified_from_opendart_2025_annual"}:
         financial_label = "OpenDART 2025 사업보고서 갱신"
     else:
         financial_label = "2025 연간 재무 스냅샷 교차검증"
@@ -279,6 +287,7 @@ def main() -> None:
         "generatedAt": datetime.now(kst).isoformat(timespec="seconds"),
         "basisDate": str(companies_data.get("basisDate", "")),
         "dataStatus": data_status_for(companies_data),
+        "financialDataSummary": companies_data.get("financialDataSummary", {}),
         "methodology": {
             "version": "CAVM Official v1.0",
             "weights": COMPONENT_LIMITS,

@@ -246,6 +246,11 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .financial-grid div { min-height: 82px; padding: 16px; border-right: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); }
 .financial-grid span { display: block; color: #708b82; font-size: 9px; }
 .financial-grid strong { display: block; margin-top: 8px; font-size: 14px; }
+.financial-report-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: -8px 0 16px; color: #9db2ab; font-size: 11px; }
+.financial-report-meta span { padding-right: 8px; border-right: 1px solid rgba(255,255,255,.14); }
+.financial-report-meta span.complete { color: #6cd4a3; }
+.financial-report-meta span.partial { color: #d9bd70; }
+.financial-report-meta a { margin-left: auto; color: #e2ce88; font-weight: 700; }
 .sector-note { margin: 17px 0 0; padding: 11px 13px; background: rgba(255,255,255,.045); color: #8ea29b; font-size: 9px; line-height: 1.6; }
 .judgement-block { padding: 17px 18px; border-left: 2px solid; background: rgba(255,255,255,.035); }
 .judgement-block + .judgement-block { margin-top: 12px; }
@@ -429,4 +434,74 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Readability pass: keep supporting information comfortably legible on every screen. */
+body { line-height: 1.65; }
+:focus-visible { outline: 3px solid #0d7655; outline-offset: 3px; }
+.site-header :focus-visible, .hero :focus-visible, .company-section :focus-visible, footer :focus-visible { outline-color: #e2ce88; }
+.data-point:focus-visible .point-halo { opacity: 1; stroke: #10231f; stroke-width: 4; }
+.skip-link { font-size: 13px; font-weight: 700; }
+.brand-copy small, .header-date, .data-line,
+.panel-kicker, .muted-label, .score-orbit small,
+.hero-stats span, .summary-item span, .summary-refresh span,
+.summary-item small, .summary-refresh strong { font-size: 12px; }
+.axis { font-size: 10px; }
+.matrix-zone { font-size: 11.5px; }
+.chart-legend, .chart-note { font-size: 12px; }
+.chart-note, .table-footnote, .summary-item small, .component-cell small { color: #596660; }
+.matrix-chart { min-width: 1040px; }
+.tick-label, .zone-label { font-size: 13px; }
+.axis-title { font-size: 14px; }
+.point-label { font-size: 12px; font-weight: 700; }
+.selected-chart-card div > span, .selected-chart-card small,
+.selected-chart-card a { font-size: 12px; }
+.search-field input, select { font-size: 14px; }
+.sort-tabs button { min-height: 44px; font-size: 12px; }
+table { min-width: 1200px; font-size: 13px; line-height: 1.45; }
+th { padding-block: 16px; font-size: 12px; }
+td { padding-block: 15px; }
+.company-cell strong { font-size: 14px; }
+.company-cell small, .component-cell small, .table-footnote { font-size: 12px; }
+.company-rankline span, .company-score-card span, .company-score-card small,
+.card-heading > span, .card-heading small { font-size: 12px; }
+.card-heading h3 { font-size: 18px; }
+.score-row span { font-size: 12.5px; }
+.score-row strong { font-size: 14px; }
+.score-row strong small { font-size: 12px; }
+.valuation-hero span, .valuation-hero small,
+.vm-flow span, .opinion-banner small, .financial-grid span,
+.judgement-block span, .issue-topline, .review-line span,
+.financial-report-meta { font-size: 12px; }
+.vm-flow strong, .review-line strong { font-size: 12.5px; }
+.vm-note, .sector-note { color: #9db2ab; font-size: 13px; }
+.financial-grid strong { font-size: 16px; }
+.judgement-block p { color: #c5d1cd; font-size: 13px; }
+.issue-item > strong { font-size: 13.5px; }
+.issue-item > p, .source-links a, .empty-inline { color: #a8bbb4; font-size: 13px; }
+.review-line span, .financial-grid span, .vm-flow span,
+.valuation-hero span, .valuation-hero small, .judgement-block span,
+.issue-topline, .card-heading small { color: #93aaa2; }
+.method-grid article > div span, .method-grid article > div strong,
+.method-grid p, .method-flow span, .method-flow p,
+.formula-card span, .formula-card small,
+.decision-policy > div > span, .decision-policy li span,
+.decision-policy li small, .decision-policy > p,
+.disclaimer strong, .disclaimer p, .footer-brand div span,
+.footer-links { font-size: 12px; }
+.method-grid p, .method-flow p, .decision-policy > p, .disclaimer p { font-size: 13px; }
+.company-layout { gap: 20px; }
+.issues-list { gap: 12px; }
+.method-grid p, .method-flow p, .decision-policy > p,
+.disclaimer p { line-height: 1.75; }
+
+@media (max-width: 520px) {
+  .hero-lead, .company-header p, .section-heading p { font-size: 15.5px; }
+  .point-label { font-size: 12px; }
+  .company-layout { gap: 16px; }
+  .detail-card { padding: 24px 20px; }
+  .search-field input, select { font-size: 16px; }
+  table { font-size: 13px; }
+  th { font-size: 12px; }
+  .financial-report-meta a { width: 100%; margin-left: 0; }
 }

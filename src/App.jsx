@@ -75,6 +75,16 @@ function normalizeCompany(company, index) {
       roe2025: firstNumber(financials.roe2025, financials.roePct),
       debtRatio2025: firstNumber(financials.debtRatio2025, financials.debtRatioPct),
       eps2025: firstNumber(financials.eps2025, financials.epsKrw),
+      latestReport: financials.latestReport && typeof financials.latestReport === 'object'
+        ? {
+            ...financials.latestReport,
+            revenueEok: firstNumber(financials.latestReport.revenueEok),
+            operatingMargin: firstNumber(financials.latestReport.operatingMargin),
+            roeAnnualized: firstNumber(financials.latestReport.roeAnnualized),
+            debtRatio: firstNumber(financials.latestReport.debtRatio),
+            epsCumulative: firstNumber(financials.latestReport.epsCumulative),
+          }
+        : null,
     },
     sources: (company.sources || []).map((source, sourceIndex) => (
       typeof source === 'string'
@@ -567,14 +577,24 @@ function ScoreBreakdown({ company }) {
 function CompanyDetail({ company }) {
   if (!company) return null
   const financials = company.financials
+  const latestReport = financials.latestReport
+  const latestIsAnnual = latestReport?.reportCode === '11011'
   const issueUrl = `${REPOSITORY_URL}/issues/new?title=${encodeURIComponent(`[${company.code}] ${company.name} 리서치 업데이트`)}&body=${encodeURIComponent(`기업: ${company.name} (${company.code})\n검토할 항목:\n근거 링크:\n제안 변경사항:`)}`
-  const metrics = [
-    ['2025 매출', formatEok(financials.revenue2025)],
-    ['영업이익률', formatPercent(financials.operatingMargin2025)],
-    ['ROE', formatPercent(financials.roe2025)],
-    ['부채비율', formatPercent(financials.debtRatio2025)],
-    ['2025 EPS', formatWon(financials.eps2025)],
-  ]
+  const metrics = latestReport
+    ? [
+        [latestIsAnnual ? '연간 매출' : '누적 매출', formatEok(latestReport.revenueEok)],
+        ['영업이익률', formatPercent(latestReport.operatingMargin)],
+        [latestIsAnnual ? 'ROE' : '연환산 ROE', formatPercent(latestReport.roeAnnualized)],
+        ['기말 부채비율', formatPercent(latestReport.debtRatio)],
+        [latestIsAnnual ? '연간 EPS' : '누적 EPS', formatWon(latestReport.epsCumulative)],
+      ]
+    : [
+        ['2025 매출', formatEok(financials.revenue2025)],
+        ['영업이익률', formatPercent(financials.operatingMargin2025)],
+        ['ROE', formatPercent(financials.roe2025)],
+        ['부채비율', formatPercent(financials.debtRatio2025)],
+        ['2025 EPS', formatWon(financials.eps2025)],
+      ]
 
   return (
     <section className="company-section" id="company">
@@ -619,10 +639,23 @@ function CompanyDetail({ company }) {
           </article>
 
           <article className="detail-card financial-card">
-            <div className="card-heading"><span>03</span><div><small>FINANCIAL SNAPSHOT</small><h3>2025 핵심 재무</h3></div></div>
+            <div className="card-heading"><span>03</span><div><small>FINANCIAL SNAPSHOT</small><h3>{latestReport?.periodLabel || '2025 사업보고서'} 핵심 재무</h3></div></div>
+            {latestReport && (
+              <div className="financial-report-meta">
+                <span>{latestReport.fsDiv === 'CFS' ? '연결 재무제표' : '별도 재무제표'}</span>
+                <span>{formatDate(latestReport.periodEnd)} 기준</span>
+                <span className={latestReport.dataQuality === 'complete' ? 'complete' : 'partial'}>
+                  {latestReport.dataQuality === 'complete' ? '주요 지표 수신 완료' : '일부 계정 미수신'}
+                </span>
+                {latestReport.rceptNo && (
+                  <a href={`https://dart.fss.or.kr/dsaf001/main.do?rcpNo=${latestReport.rceptNo}`} target="_blank" rel="noreferrer">공시 원문 ↗</a>
+                )}
+              </div>
+            )}
             <div className="financial-grid">
               {metrics.map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}
             </div>
+            {!latestReport && <p className="sector-note">최신 분기·반기 보고서가 수신되기 전까지 검증된 2025년 사업보고서 수치를 표시합니다.</p>}
             {(company.sector.includes('금융') || company.sector.includes('보험')) && (
               <p className="sector-note">금융·보험사는 일반기업 부채비율 대신 CET1, K-ICS, 손해율과 신용비용을 함께 평가합니다.</p>
             )}

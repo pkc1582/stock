@@ -42,8 +42,8 @@ data/manual-overrides.json ────────────┘
 data/issues.json ──────────────────────────┘
 ```
 
-- `scripts/fetch_market.py`: 승인된 시세 API로 현재가와 가격 기준일을 갱신합니다.
-- `scripts/fetch_dart.py`: OpenDART 실제 공시 재무 항목을 갱신합니다.
+- `scripts/fetch_market.py`: 공공데이터포털 전체시장 응답을 1~2회 받아 20개 종목이 모두 존재하는 최신 단일 거래일 종가만 원자적으로 반영합니다.
+- `scripts/fetch_dart.py`: OpenDART에서 기업별 최신 분기·반기·사업보고서를 탐색해 누적 손익과 기말 재무상태를 함께 저장합니다. 2025 연간 비교 필드는 2025 사업보고서로만 갱신합니다.
 - `scripts/build_dataset.py`: 공시 값과 수동 가정을 병합하고 CAVM·VM·괴리율을 재계산합니다.
 - API 키와 원본 API 응답은 저장소나 웹 브라우저에 저장하지 않습니다.
 
@@ -67,7 +67,7 @@ GitHub 저장소의 **Settings → Secrets and variables → Actions → New rep
 | `Weekly CAVM rebuild` | 매주 토요일 09:00 KST | 최신 입력으로 CAVM 합계·VM·TOP20 재산정 |
 | `Deploy GitHub Pages` | `main` 변경 후 | 웹 사이트 빌드·배포 |
 
-GitHub 예약 실행은 부하에 따라 일부 지연될 수 있습니다. 휴장일이거나 API가 일시적으로 실패하면 스크립트는 마지막으로 검증된 스냅샷을 보존합니다.
+GitHub 예약 실행은 부하에 따라 일부 지연될 수 있습니다. 시세 API는 실시간이 아니라 통상 다음 영업일에 공개되는 종가 기준이며, 휴장일·공시 미제출·API 오류가 있으면 날짜가 섞인 부분 갱신 대신 마지막으로 검증된 스냅샷을 보존합니다. 최신 공시는 기업별로 `반기 → 1분기 → 직전 사업보고서`처럼 이용 가능한 가장 최근 보고서까지 자동 대체 탐색합니다.
 
 ## GitHub Pages 배포
 

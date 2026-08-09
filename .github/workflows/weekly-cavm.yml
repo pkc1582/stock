@@ -17,7 +17,7 @@ jobs:
   rebuild:
     name: Rebuild CAVM dataset
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
 
     steps:
       - name: Check out repository
@@ -29,6 +29,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.13"
+
+      - name: Run refresh safety tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
 
       - name: Validate secret configuration
         shell: bash
@@ -46,23 +49,32 @@ jobs:
           done
           exit "$missing"
 
-      - name: Refresh official inputs
+      - name: Refresh official market input
+        id: market
+        continue-on-error: true
         env:
-          DART_API_KEY: ${{ secrets.DART_API_KEY }}
           STOCK_API_ENDPOINT: ${{ secrets.STOCK_API_ENDPOINT }}
           STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
-        shell: bash
-        run: |
-          python scripts/fetch_market.py
-          python scripts/fetch_dart.py
+        run: python scripts/fetch_market.py
+
+      - name: Refresh OpenDART input
+        id: dart
+        continue-on-error: true
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: python scripts/fetch_dart.py
 
       - name: Recalculate CAVM and public ranking
+        id: build
+        if: always() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python scripts/build_dataset.py
 
       - name: Validate generated JSON
+        if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python -m json.tool public/data/latest.json > /dev/null
 
       - name: Commit weekly CAVM snapshot
+        if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         shell: bash
         run: |
           git add -- data/companies.json public/data/latest.json
@@ -76,3 +88,25 @@ jobs:
           git commit -m "data: rebuild weekly CAVM ranking"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Report refresh result
+        if: always()
+        shell: bash
+        run: |
+          market="${{ steps.market.outcome }}"
+          dart="${{ steps.dart.outcome }}"
+          build="${{ steps.build.outcome }}"
+          if [ "$market" != "success" ]; then
+            echo "::warning::Market refresh failed; the last verified prices were preserved."
+          fi
+          if [ "$dart" != "success" ]; then
+            echo "::warning::OpenDART refresh failed; the last verified reports were preserved."
+          fi
+          if [ "$market" != "success" ] && [ "$dart" != "success" ]; then
+            echo "::error::Both official data providers failed. No public snapshot was rebuilt."
+            exit 1
+          fi
+          if [ "$build" != "success" ]; then
+            echo "::error::The public dataset could not be rebuilt safely."
+            exit 1
+          fi

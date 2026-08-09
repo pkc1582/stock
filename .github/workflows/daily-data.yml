@@ -17,7 +17,7 @@ jobs:
   refresh:
     name: Refresh price and disclosure data
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Check out repository
@@ -29,6 +29,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.13"
+
+      - name: Run refresh safety tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
 
       - name: Validate secret configuration
         shell: bash
@@ -47,23 +50,31 @@ jobs:
           exit "$missing"
 
       - name: Fetch official market data
+        id: market
+        continue-on-error: true
         env:
           STOCK_API_ENDPOINT: ${{ secrets.STOCK_API_ENDPOINT }}
           STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
         run: python scripts/fetch_market.py
 
       - name: Fetch OpenDART financial data
+        id: dart
+        continue-on-error: true
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python scripts/fetch_dart.py
 
       - name: Build public dataset
+        id: build
+        if: always() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python scripts/build_dataset.py
 
       - name: Validate generated JSON
+        if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python -m json.tool public/data/latest.json > /dev/null
 
       - name: Commit refreshed snapshot
+        if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         shell: bash
         run: |
           git add -- data/companies.json public/data/latest.json
@@ -77,3 +88,25 @@ jobs:
           git commit -m "data: refresh daily market snapshot"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Report refresh result
+        if: always()
+        shell: bash
+        run: |
+          market="${{ steps.market.outcome }}"
+          dart="${{ steps.dart.outcome }}"
+          build="${{ steps.build.outcome }}"
+          if [ "$market" != "success" ]; then
+            echo "::warning::Market refresh failed; the last verified prices were preserved."
+          fi
+          if [ "$dart" != "success" ]; then
+            echo "::warning::OpenDART refresh failed; the last verified reports were preserved."
+          fi
+          if [ "$market" != "success" ] && [ "$dart" != "success" ]; then
+            echo "::error::Both official data providers failed. No public snapshot was rebuilt."
+            exit 1
+          fi
+          if [ "$build" != "success" ]; then
+            echo "::error::The public dataset could not be rebuilt safely."
+            exit 1
+          fi
