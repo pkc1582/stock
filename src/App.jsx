@@ -671,20 +671,20 @@ function ScreenerSection({ screener, loadState, error, onRetry }) {
   )
 }
 
-function chartLabelLayout(points, x, y, cutX, top, bottom) {
+function chartLabelLayout(points, x, y, centerX, top, bottom) {
   const labels = new Map()
   const groups = { left: [], right: [] }
 
   points.forEach((company) => {
     const cx = x(company.cavm)
     const cy = y(company.gapRate)
-    const side = cx >= cutX + 300 ? 'right' : 'left'
+    const side = cx >= centerX ? 'right' : 'left'
     groups[side].push({ company, cx, cy, labelY: Math.max(top, Math.min(bottom, cy + 4)) })
   })
 
   Object.entries(groups).forEach(([side, items]) => {
     items.sort((a, b) => a.labelY - b.labelY)
-    const spacing = 23
+    const spacing = 25
     for (let index = 1; index < items.length; index += 1) {
       items[index].labelY = Math.max(items[index].labelY, items[index - 1].labelY + spacing)
     }
@@ -705,7 +705,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
   const points = companies.filter((company) => Number.isFinite(company.cavm) && Number.isFinite(company.gapRate))
   const width = 1180
   const height = 700
-  const margin = { top: 70, right: 44, bottom: 86, left: 92 }
+  const margin = { top: 70, right: 190, bottom: 86, left: 190 }
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
   const rawXMin = Math.min(...points.map((point) => point.cavm), 90)
@@ -724,9 +724,8 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
   for (let value = Math.ceil(yMin / yStep) * yStep; value <= yMax; value += yStep) yTicks.push(value)
   const cutX = x(90)
   const decisionY = y(-10)
-  const goodPriceY = y(-20)
   const selected = points.find((point) => point.code === selectedCode)
-  const labels = chartLabelLayout(points, x, y, cutX, margin.top + 14, height - margin.bottom - 12)
+  const labels = chartLabelLayout(points, x, y, margin.left + innerWidth / 2, margin.top + 14, height - margin.bottom - 12)
   const renderPoints = [...points].sort((a, b) => Number(a.code === selectedCode) - Number(b.code === selectedCode))
 
   return (
@@ -774,12 +773,8 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             <line x1={cutX} x2={cutX} y1={margin.top} y2={height - margin.bottom} className="cut-line" />
             <line x1={margin.left} x2={width - margin.right} y1={decisionY} y2={decisionY} className="decision-line" />
             <text x={width - margin.right - 8} y={decisionY - 10} className="decision-label" textAnchor="end">관찰 경계 -10%</text>
-            <line x1={margin.left} x2={width - margin.right} y1={goodPriceY} y2={goodPriceY} className="good-price-line" />
-            <text x={width - margin.right - 8} y={goodPriceY + 17} className="good-price-label" textAnchor="end">좋은 가격 -20% 이하</text>
             <text x={margin.left} y={42} className="zone-label danger">낮은 CAVM · 관찰</text>
             <text x={width - margin.right} y={42} className="zone-label caution" textAnchor="end">높은 CAVM · 관찰</text>
-            <text x={margin.left} y={height - margin.bottom - 18} className="zone-label muted">가격은 낮지만 품질 확인</text>
-            <text x={width - margin.right} y={height - margin.bottom - 18} className="zone-label ideal" textAnchor="end">좋은 기업 · 좋은 가격 ↘</text>
             {renderPoints.map((company) => {
               const tone = gapTone(company.gapRate)
               const isSelected = company.code === selectedCode
@@ -788,7 +783,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
               const cy = y(company.gapRate)
               const label = labels.get(company.code)
               const labelRight = label?.side === 'right'
-              const labelX = cx + (labelRight ? 16 : -16)
+              const labelX = labelRight ? width - margin.right + 18 : margin.left - 18
               const labelY = label?.labelY ?? cy
               return (
                 <g
@@ -833,6 +828,10 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
         ) : (
           <div className="empty-state">VM 입력이 완료되면 매트릭스가 표시됩니다.</div>
         )}
+      </div>
+      <div className="chart-opportunity-caption">
+        <strong>좋은 기업 · 좋은 가격</strong>
+        <span>TOP20 가운데 괴리율 -20% 이하인 기업을 금색 마름모로 표시합니다.</span>
       </div>
       {selected && (
         <div className={`selected-chart-card tone-${gapTone(selected.gapRate)}`}>
