@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'compound-asset-2045'
-const CACHE_VERSION = 'v8'
+const CACHE_VERSION = 'v9'
 const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`
 const DATA_CACHE = `${CACHE_PREFIX}-data-${CACHE_VERSION}`
 const BASE_PATH = '/stock/'
