@@ -750,8 +750,8 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
           <span><i className="legend-diamond opportunity" /> TOP20 + 좋은 가격 · 특별 표시</span>
         </div>
         <span className="chart-note">
-          <span className="chart-note-default">점 옆 숫자 = 괴리율 · 선택하면 기업 상세가 바뀝니다</span>
-          <span className="chart-note-mobile">← 좌우로 이동 · 점 옆 숫자는 괴리율입니다 · 누르면 기업 상세 보기 →</span>
+          <span className="chart-note-default">점 안 숫자 = 순위 · 기업명 색상 = 괴리율 구간</span>
+          <span className="chart-note-mobile">← 좌우로 이동 · 기업명 색상은 괴리율 구간을 뜻합니다 · 누르면 상세 보기 →</span>
         </span>
       </div>
       <div className="chart-scroll">
@@ -831,7 +831,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   <circle cx={cx} cy={cy} r={isSelected ? 10 : 8} className="point-core" filter="url(#point-shadow)" />
                   <text x={cx} y={cy + 3} className="point-rank" textAnchor="middle">{company.rank}</text>
                   <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}${isGoodOpportunity ? ' is-good-opportunity' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
-                    {formatPercent(company.gapRate, true)}
+                    #{company.rank} {company.name}
                   </text>
                   <title>{company.name} · CAVM {company.cavm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
                 </g>
