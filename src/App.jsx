@@ -156,7 +156,19 @@ function normalizeCompany(company, index) {
     },
     currentPrice,
     priceBasisDate: company.priceBasisDate || market.priceAsOf || market.asOf || null,
+    valuationModel: company.valuationModel || valuation.model || 'standard_per',
+    valuationModelLabel: company.valuationModelLabel || valuation.modelLabel || '일반기업 EPS·PER',
+    valuationHorizonYears: firstNumber(company.valuationHorizonYears, valuation.horizonYears),
     forwardEps3y: firstNumber(company.forwardEps3y, valuation.forwardEps3Y, valuation.eps3y),
+    normalizedEps: firstNumber(company.normalizedEps, valuation.normalizedEps),
+    normalizedPer: firstNumber(company.normalizedPer, valuation.normalizedPer, valuation.crossCheckPer),
+    normalizedBps: firstNumber(company.normalizedBps, valuation.normalizedBps),
+    targetPbr: firstNumber(company.targetPbr, valuation.targetPbr),
+    primaryVm: firstNumber(company.primaryVm, valuation.primaryVm),
+    crossCheckVm: firstNumber(company.crossCheckVm, valuation.crossCheckVm),
+    primaryWeightPct: firstNumber(company.primaryWeightPct, valuation.primaryWeightPct),
+    csmSotpAdjustment: firstNumber(company.csmSotpAdjustment, valuation.csmSotpAdjustment),
+    cycleChecks: Array.isArray(company.cycleChecks) ? company.cycleChecks : [],
     historicalPer5y: firstNumber(company.historicalPer5y, valuation.historicalPer5y, company.peerPer),
     overseasPeerPer: firstNumber(company.overseasPeerPer, valuation.overseasPeerPer, valuation.peerPer, valuation.comparablePer, company.peerPer),
     overseasCorrectionPer: firstNumber(company.overseasCorrectionPer, valuation.overseasCorrectionPer),
@@ -929,6 +941,7 @@ function Top20Table({ companies, selectedCode, onSelect }) {
                   <td>
                     <button className="company-cell" type="button" onClick={() => choose(company)}>
                       <strong>{company.name}</strong><small>{company.code} · {company.sector}</small>
+                      <em>{company.valuationModelLabel}</em>
                     </button>
                   </td>
                   <td><strong className="cavm-value">{company.cavm}</strong></td>
@@ -962,6 +975,78 @@ function ScoreBreakdown({ company }) {
           </div>
         )
       })}
+    </div>
+  )
+}
+
+function ValuationModelPanel({ company }) {
+  const model = company.valuationModel
+
+  if (model === 'memory_normalized') {
+    return (
+      <div className="sector-vm-panel">
+        <div className="sector-vm-title"><span>메모리 반도체 전용</span><strong>{company.valuationModelLabel}</strong></div>
+        <div className="sector-vm-flow">
+          <div><span>정상화 EPS</span><strong>{formatWon(company.normalizedEps)}</strong><small>2028E · 피크 이익 배제</small></div>
+          <i>×</i>
+          <div><span>정상 PER</span><strong>{company.normalizedPer ?? '—'}배</strong><small>해외 동종기업·HBM 경쟁력</small></div>
+          <i>÷</i>
+          <div><span>현재가치 할인</span><strong>{formatPercent(company.discountRate)}</strong><small>{company.valuationHorizonYears ?? 2}년</small></div>
+          <i>→</i>
+          <div className="vm-result"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong><small>사이클 중간 이익 기준</small></div>
+        </div>
+        <div className="vm-check-strip">
+          <span>분기 재검증</span>
+          <p>{company.cycleChecks.join(' · ')}</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (model === 'bank_pbr' || model === 'financial_hybrid' || model === 'insurance_sotp') {
+    const isInsurance = model === 'insurance_sotp'
+    const isHybrid = model === 'financial_hybrid'
+    return (
+      <div className="sector-vm-panel">
+        <div className="sector-vm-title"><span>{isInsurance ? '보험사 전용' : '금융회사 전용'}</span><strong>{company.valuationModelLabel}</strong></div>
+        <div className="sector-vm-flow finance">
+          <div><span>정상화 BPS</span><strong>{formatWon(company.normalizedBps)}</strong><small>지속 가능한 장부가치</small></div>
+          <i>×</i>
+          <div><span>적정 PBR</span><strong>{company.targetPbr ?? '—'}배</strong><small>ROE·자본비율·건전성</small></div>
+          {isInsurance && <><i>+</i><div><span>CSM·SOTP 조정</span><strong>{formatWon(company.csmSotpAdjustment)}</strong><small>K-ICS·투자자산 병행</small></div></>}
+          <i>→</i>
+          <div className="vm-result"><span>{isHybrid ? `PBR ${company.primaryWeightPct ?? 60}% 기준` : '주평가 가치'}</span><strong>{formatWon(company.primaryVm)}</strong><small>{isHybrid ? 'PER와 가중 병행' : 'Final VM 기준'}</small></div>
+        </div>
+        <div className="vm-cross-check">
+          <div><span>PER 교차검증</span><strong>{formatWon(company.normalizedEps)} × {company.normalizedPer ?? '—'}배</strong></div>
+          <div><span>교차검증 가치</span><strong>{formatWon(company.crossCheckVm)}</strong></div>
+          <div className="final"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong></div>
+        </div>
+        <div className="vm-check-strip">
+          <span>배수 조정</span>
+          <p>{isInsurance ? 'K-ICS · CSM · 손해율 · 투자자산 · 실제 소각' : 'ROE · CET1 · 연체율 · NPL · 대손비용 · 배당+실제 소각'}</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="vm-flow">
+      <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
+      <i>×</i>
+      <div className="vm-per-card">
+        <span>PER 산정</span>
+        <strong>
+          {company.historicalPer5y ?? '—'}배
+          <b className={(company.overseasCorrectionPer ?? 0) < 0 ? 'negative' : 'positive'}>{formatPerAdjustment(company.overseasCorrectionPer)}</b>
+          = {company.appliedPer ?? '—'}배
+        </strong>
+        <small>5년 평균 기준 · 해외 {company.overseasPeerPer ?? '—'}배와의 차이 중 {company.overseasAdjustmentWeightPct ?? 30}% 보정</small>
+      </div>
+      <i>→</i>
+      <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
+      <i>→</i>
+      <div className="vm-result"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong></div>
     </div>
   )
 }
@@ -1014,23 +1099,7 @@ function CompanyDetail({ company }) {
               <div><span>현재 괴리율</span><strong className={gapTone(company.gapRate)}>{formatPercent(company.gapRate, true)}</strong><small>{gapLabel(company.gapRate)}</small></div>
               <div className="valuation-price"><span>현재가</span><strong>{formatWon(company.currentPrice)}</strong><small>{formatDate(company.priceBasisDate)}</small></div>
             </div>
-            <div className="vm-flow">
-              <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
-              <i>×</i>
-              <div className="vm-per-card">
-                <span>PER 산정</span>
-                <strong>
-                  {company.historicalPer5y ?? '—'}배
-                  <b className={(company.overseasCorrectionPer ?? 0) < 0 ? 'negative' : 'positive'}>{formatPerAdjustment(company.overseasCorrectionPer)}</b>
-                  = {company.appliedPer ?? '—'}배
-                </strong>
-                <small>5년 평균 기준 · 해외 {company.overseasPeerPer ?? '—'}배와의 차이 중 {company.overseasAdjustmentWeightPct ?? 30}% 보정</small>
-              </div>
-              <i>→</i>
-              <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
-              <i>→</i>
-              <div className="vm-result"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong></div>
-            </div>
+            <ValuationModelPanel company={company} />
             <div className="opinion-banner">
               <div><span>{company.ratingStars}</span><strong>{company.opinion || company.ratingLabel || '검토 중'}</strong></div>
               <small>{company.vmStatus === 'draft' ? 'VM 가정 초안' : company.vmStatus}</small>
@@ -1099,7 +1168,7 @@ function CompanyDetail({ company }) {
               ))}
             </div>
             <div className="editor-actions">
-              <a className="button primary small" href={DATA_EDIT_URL} target="_blank" rel="noreferrer">EPS·가정 직접 수정 ↗</a>
+              <a className="button primary small" href={DATA_EDIT_URL} target="_blank" rel="noreferrer">VM·가정 직접 수정 ↗</a>
               <a className="button ghost small" href={issueUrl} target="_blank" rel="noreferrer">새 이슈 등록 ↗</a>
             </div>
           </article>
@@ -1141,9 +1210,41 @@ function Methodology({ methodology }) {
           <div className="flow-result"><span>DECISION</span><strong>두 조건의 교집합</strong><p>그때 투자를 검토합니다.</p></div>
         </div>
         <div className="formula-card">
-          <div><span>VALUE MODEL</span><h3>Final VM 산식</h3></div>
+          <div><span>GENERAL VALUE MODEL</span><h3>일반기업 Final VM</h3></div>
           <p><strong>3년 예상 EPS</strong><i>×</i><strong>기준 PER + 해외 보정</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
           <small>기준 PER은 과거 5년 평균입니다. 해외 보정은 (해외 유사기업 PER - 기준 PER)의 30%만 반영합니다. 할인율은 성장 10% · 일반 11% · 경기민감 12%가 원칙이며, 현재 PER 입력값은 근거 검토 전 초기 이관값입니다.</small>
+        </div>
+        <div className="sector-model-grid">
+          <article>
+            <div className="sector-model-head"><span>FINANCIALS</span><strong>BPS·PBR 주평가</strong></div>
+            <h3>은행·금융지주는 장부가치에서 출발합니다.</h3>
+            <p className="sector-formula">정상화 BPS × 적정 PBR <i>→</i> 주평가<br />정상화 EPS × 적정 PER <i>→</i> 교차검증</p>
+            <div className="roe-pbr-scale">
+              <span>ROE 7~8%<b>0.60~0.75배</b></span>
+              <span>ROE 9~10%<b>0.80~0.95배</b></span>
+              <span>ROE 11~12%<b>1.00~1.15배</b></span>
+            </div>
+            <small>ROE가 자기자본비용보다 높고 지속 가능할 때만 1배 이상을 인정합니다. CET1·연체율·NPL·대손비용과 배당+실제 자사주 소각으로 배수를 조정합니다.</small>
+            <div className="model-examples"><span>KB금융 <b>PBR 1.10 · PER 9.5 · VM 186,000원</b></span><span>하나금융 <b>PBR 0.95 · PER 8.0 · VM 155,000원</b></span></div>
+          </article>
+          <article>
+            <div className="sector-model-head"><span>SEMICONDUCTOR</span><strong>정상화 EPS·PER</strong></div>
+            <h3>메모리는 피크 EPS를 배제합니다.</h3>
+            <p className="sector-formula">2~3년 정상화 EPS × 정상 PER<br />÷ (1 + 할인율)<sup>2~3</sup> <i>→</i> Final VM</p>
+            <ul className="model-checks"><li>DRAM 계약가격</li><li>HBM 가격·출하량</li><li>재고</li><li>CAPEX</li><li>고객사 재고</li></ul>
+            <small>Micron 등 해외 동종기업의 Forward PER·EV/EBITDA·영업이익률·ROE를 비교하고 HBM 경쟁력과 시장점유율로 프리미엄 또는 할인을 적용합니다.</small>
+            <div className="model-examples"><span>삼성전자 <b>72,398원 × 6.5배 · VM 389,000원</b></span><span>SK하이닉스 <b>512,706원 × 7.0배 · VM 2,913,000원</b></span></div>
+          </article>
+          <article>
+            <div className="sector-model-head"><span>FINANCIAL TYPES</span><strong>업종별 분리</strong></div>
+            <h3>금융업 안에서도 같은 산식을 쓰지 않습니다.</h3>
+            <div className="financial-type-list">
+              <span><b>은행·금융지주</b>PBR 중심 · PER 교차검증</span>
+              <span><b>증권·복합금융</b>PER·PBR 병행</span>
+              <span><b>보험</b>PBR·CSM·SOTP 병행</span>
+            </div>
+            <small>주주환원은 발표한 매입액이 아니라 배당수익률과 실제 소각 완료분만 인정합니다. 보험은 K-ICS, CSM, 투자자산과 손해율을 함께 확인합니다.</small>
+          </article>
         </div>
         <div className="decision-policy">
           <div>

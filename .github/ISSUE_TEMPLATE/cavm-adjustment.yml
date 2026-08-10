@@ -1,5 +1,5 @@
 name: CAVM / VM 조정 요청
-description: 3년 EPS, CAVM 세부 점수, VM 가정을 근거와 함께 조정 요청합니다.
+description: 업종별 VM 입력값, CAVM 세부 점수, 가치평가 가정을 근거와 함께 조정 요청합니다.
 title: "[CAVM] "
 body:
   - type: markdown
@@ -25,6 +25,19 @@ body:
       required: true
 
   - type: dropdown
+    id: valuation_model
+    attributes:
+      label: VM 모델
+      options:
+        - 일반기업 3년 EPS·PER
+        - 은행·금융지주 BPS·PBR
+        - 증권·복합금융 PBR·PER 병행
+        - 보험 PBR·CSM·SOTP
+        - 메모리 반도체 정상화 EPS·PER
+    validations:
+      required: true
+
+  - type: dropdown
     id: field
     attributes:
       label: 조정 항목
@@ -35,6 +48,12 @@ body:
         - 해외 유사기업 PER
         - 보정 적용 PER
         - 할인율
+        - 정상화 BPS
+        - 적정 PBR
+        - 정상화 EPS
+        - 교차검증 PER
+        - CSM·SOTP 조정
+        - 정상화 기간·사이클 가정
         - 해자
         - 성장성
         - 수익성
@@ -57,11 +76,12 @@ body:
     id: proposed
     attributes:
       label: 제안 값
-      description: FY+1/FY+2/FY+3 EPS 또는 변경할 점수를 구체적으로 적어 주세요.
+      description: 선택한 모델에 맞는 BPS·PBR·정상화 EPS·PER 또는 변경할 점수를 구체적으로 적어 주세요.
       placeholder: |
-        FY+1 EPS:
-        FY+2 EPS:
-        FY+3 EPS:
+        정상화 BPS/EPS:
+        적정 PBR/PER:
+        교차검증 값:
+        할인기간·할인율:
         점수/가정:
     validations:
       required: true

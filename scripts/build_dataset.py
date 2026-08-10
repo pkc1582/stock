@@ -28,6 +28,14 @@ COMPONENT_LIMITS = {
     "management": 10,
 }
 DEFAULT_OVERSEAS_ADJUSTMENT_WEIGHT = 0.30
+DEFAULT_ROUNDING_UNIT = 100
+VALUATION_MODEL_LABELS = {
+    "standard_per": "일반기업 EPS·PER",
+    "memory_normalized": "메모리 정상화 EPS·PER",
+    "bank_pbr": "은행·금융지주 BPS·PBR",
+    "financial_hybrid": "금융 하이브리드 PBR·PER",
+    "insurance_sotp": "보험 PBR·CSM·SOTP",
+}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -99,9 +107,16 @@ def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[
     return result
 
 
+def rounded_won(value: float, unit: int = DEFAULT_ROUNDING_UNIT) -> int:
+    """Round won values to a review-friendly unit without banker's rounding."""
+    if unit <= 0:
+        raise ValueError("rounding unit must be positive")
+    return int(math.floor(value / float(unit) + 0.5) * unit)
+
+
 def rounded_hundred(value: float) -> int:
-    """Round won values to the nearest KRW 100 without banker's rounding."""
-    return int(math.floor(value / 100.0 + 0.5) * 100)
+    """Backward-compatible KRW 100 rounding used by the standard VM."""
+    return rounded_won(value, 100)
 
 
 def adjusted_per(
@@ -130,6 +145,69 @@ def final_vm_for(
     three_year_value = forward_eps_3y * applied_per
     final_vm = rounded_hundred(three_year_value / ((1 + discount_rate / 100) ** 3))
     return correction_per, applied_per, final_vm
+
+
+def normalized_memory_vm_for(
+    normalized_eps: float,
+    normalized_per: float,
+    discount_rate: float,
+    horizon_years: int = 2,
+    rounding_unit: int = 1_000,
+) -> tuple[int, int]:
+    """Value a cyclical memory company from mid-cycle EPS, not peak EPS."""
+    future_value = normalized_eps * normalized_per
+    final_vm = rounded_won(
+        future_value / ((1 + discount_rate / 100) ** horizon_years),
+        rounding_unit,
+    )
+    return rounded_won(future_value, rounding_unit), final_vm
+
+
+def bank_pbr_vm_for(
+    normalized_bps: float,
+    target_pbr: float,
+    normalized_eps: float,
+    cross_check_per: float,
+    rounding_unit: int = 100,
+) -> tuple[int, int, int]:
+    """Use BPS×PBR as the bank primary value and EPS×PER only as a check."""
+    primary_vm = rounded_won(normalized_bps * target_pbr, rounding_unit)
+    cross_check_vm = rounded_won(normalized_eps * cross_check_per, rounding_unit)
+    return primary_vm, cross_check_vm, primary_vm
+
+
+def financial_hybrid_vm_for(
+    normalized_bps: float,
+    target_pbr: float,
+    normalized_eps: float,
+    cross_check_per: float,
+    primary_weight: float = 0.60,
+    rounding_unit: int = 100,
+) -> tuple[int, int, int]:
+    """Blend PBR and PER for securities-led or mixed financial groups."""
+    if primary_weight < 0 or primary_weight > 1:
+        raise ValueError("primaryWeight must be between 0 and 1")
+    primary_vm = rounded_won(normalized_bps * target_pbr, rounding_unit)
+    cross_check_vm = rounded_won(normalized_eps * cross_check_per, rounding_unit)
+    final_vm = rounded_won(
+        primary_vm * primary_weight + cross_check_vm * (1 - primary_weight),
+        rounding_unit,
+    )
+    return primary_vm, cross_check_vm, final_vm
+
+
+def insurance_sotp_vm_for(
+    normalized_bps: float,
+    target_pbr: float,
+    csm_sotp_adjustment: float,
+    normalized_eps: float,
+    cross_check_per: float,
+    rounding_unit: int = 100,
+) -> tuple[int, int, int]:
+    """Value insurers with PBR plus a separately reviewable CSM/SOTP adjustment."""
+    primary_vm = rounded_won(normalized_bps * target_pbr + csm_sotp_adjustment, rounding_unit)
+    cross_check_vm = rounded_won(normalized_eps * cross_check_per, rounding_unit)
+    return primary_vm, cross_check_vm, primary_vm
 
 
 def rating_for(cavm: int, gap_rate: float | None) -> tuple[str, str]:
@@ -206,6 +284,154 @@ def public_issues(
     return selected
 
 
+def valuation_for(
+    code: str,
+    assumption: dict[str, Any],
+    overseas_adjustment_weight: float,
+) -> dict[str, Any]:
+    """Build one reviewed VM payload using the sector-specific model."""
+    model = str(assumption.get("valuationModel", "standard_per"))
+    if model not in VALUATION_MODEL_LABELS:
+        raise ValueError(f"{code}.valuationModel is not supported: {model}")
+
+    rounding_unit_value = require_number(
+        assumption.get("roundingUnit", DEFAULT_ROUNDING_UNIT),
+        f"{code}.roundingUnit",
+        1,
+    )
+    if not rounding_unit_value.is_integer():
+        raise ValueError(f"{code}.roundingUnit must be an integer")
+    rounding_unit = int(rounding_unit_value)
+
+    if model == "standard_per":
+        forward_eps = require_number(assumption.get("forwardEps3y"), f"{code}.forwardEps3y", 0)
+        historical_per_5y = require_number(
+            assumption.get("historicalPer5y", assumption.get("peerPer")),
+            f"{code}.historicalPer5y",
+            0,
+        )
+        overseas_peer_per = require_number(
+            assumption.get("overseasPeerPer", assumption.get("peerPer")),
+            f"{code}.overseasPeerPer",
+            0,
+        )
+        discount_rate = require_number(assumption.get("discountRate"), f"{code}.discountRate", 0)
+        if discount_rate >= 100:
+            raise ValueError(f"{code}.discountRate must be below 100")
+        correction_per, applied_per, final_vm = final_vm_for(
+            forward_eps,
+            historical_per_5y,
+            overseas_peer_per,
+            discount_rate,
+            overseas_adjustment_weight,
+        )
+        return {
+            "valuationModel": model,
+            "valuationModelLabel": VALUATION_MODEL_LABELS[model],
+            "valuationHorizonYears": 3,
+            "forwardEps3y": int(forward_eps) if forward_eps.is_integer() else forward_eps,
+            "historicalPer5y": int(historical_per_5y) if historical_per_5y.is_integer() else historical_per_5y,
+            "overseasPeerPer": int(overseas_peer_per) if overseas_peer_per.is_integer() else overseas_peer_per,
+            "overseasCorrectionPer": int(correction_per) if correction_per.is_integer() else correction_per,
+            "overseasAdjustmentWeightPct": round(overseas_adjustment_weight * 100, 1),
+            "appliedPer": int(applied_per) if applied_per.is_integer() else applied_per,
+            "discountRate": int(discount_rate) if discount_rate.is_integer() else discount_rate,
+            "primaryVm": final_vm,
+            "crossCheckVm": None,
+            "finalVm": final_vm,
+        }
+
+    normalized_eps = require_number(assumption.get("normalizedEps"), f"{code}.normalizedEps", 0)
+    normalized_per = require_number(
+        assumption.get("normalizedPer", assumption.get("crossCheckPer")),
+        f"{code}.normalizedPer",
+        0,
+    )
+
+    if model == "memory_normalized":
+        discount_rate = require_number(assumption.get("discountRate"), f"{code}.discountRate", 0)
+        horizon_value = require_number(assumption.get("valuationHorizonYears", 2), f"{code}.valuationHorizonYears", 1)
+        if not horizon_value.is_integer():
+            raise ValueError(f"{code}.valuationHorizonYears must be an integer")
+        horizon_years = int(horizon_value)
+        future_value, final_vm = normalized_memory_vm_for(
+            normalized_eps,
+            normalized_per,
+            discount_rate,
+            horizon_years,
+            rounding_unit,
+        )
+        return {
+            "valuationModel": model,
+            "valuationModelLabel": VALUATION_MODEL_LABELS[model],
+            "valuationHorizonYears": horizon_years,
+            "forwardEps3y": int(normalized_eps) if normalized_eps.is_integer() else normalized_eps,
+            "normalizedEps": int(normalized_eps) if normalized_eps.is_integer() else normalized_eps,
+            "normalizedPer": int(normalized_per) if normalized_per.is_integer() else normalized_per,
+            "appliedPer": int(normalized_per) if normalized_per.is_integer() else normalized_per,
+            "discountRate": int(discount_rate) if discount_rate.is_integer() else discount_rate,
+            "primaryVm": future_value,
+            "crossCheckVm": None,
+            "finalVm": final_vm,
+            "cycleChecks": ["DRAM 계약가격", "HBM 가격·출하량", "재고", "CAPEX", "고객사 재고"],
+        }
+
+    normalized_bps = require_number(assumption.get("normalizedBps"), f"{code}.normalizedBps", 0)
+    target_pbr = require_number(assumption.get("targetPbr"), f"{code}.targetPbr", 0)
+    common = {
+        "valuationModel": model,
+        "valuationModelLabel": VALUATION_MODEL_LABELS[model],
+        "valuationHorizonYears": 0,
+        "forwardEps3y": int(normalized_eps) if normalized_eps.is_integer() else normalized_eps,
+        "normalizedEps": int(normalized_eps) if normalized_eps.is_integer() else normalized_eps,
+        "normalizedPer": int(normalized_per) if normalized_per.is_integer() else normalized_per,
+        "normalizedBps": int(normalized_bps) if normalized_bps.is_integer() else normalized_bps,
+        "targetPbr": int(target_pbr) if target_pbr.is_integer() else target_pbr,
+        "appliedPer": int(normalized_per) if normalized_per.is_integer() else normalized_per,
+        "discountRate": 0,
+    }
+    if model == "bank_pbr":
+        primary_vm, cross_check_vm, final_vm = bank_pbr_vm_for(
+            normalized_bps,
+            target_pbr,
+            normalized_eps,
+            normalized_per,
+            rounding_unit,
+        )
+    elif model == "financial_hybrid":
+        primary_weight = require_number(assumption.get("primaryWeight", 0.60), f"{code}.primaryWeight", 0)
+        primary_vm, cross_check_vm, final_vm = financial_hybrid_vm_for(
+            normalized_bps,
+            target_pbr,
+            normalized_eps,
+            normalized_per,
+            primary_weight,
+            rounding_unit,
+        )
+        common["primaryWeightPct"] = round(primary_weight * 100, 1)
+    else:
+        csm_sotp_adjustment = require_number(
+            assumption.get("csmSotpAdjustment", 0),
+            f"{code}.csmSotpAdjustment",
+        )
+        primary_vm, cross_check_vm, final_vm = insurance_sotp_vm_for(
+            normalized_bps,
+            target_pbr,
+            csm_sotp_adjustment,
+            normalized_eps,
+            normalized_per,
+            rounding_unit,
+        )
+        common["csmSotpAdjustment"] = int(csm_sotp_adjustment) if csm_sotp_adjustment.is_integer() else csm_sotp_adjustment
+
+    common.update({
+        "primaryVm": primary_vm,
+        "crossCheckVm": cross_check_vm,
+        "finalVm": final_vm,
+    })
+    return common
+
+
 def main() -> None:
     companies_data = load_json(COMPANIES_PATH)
     overrides_data = load_json(OVERRIDES_PATH)
@@ -251,28 +477,8 @@ def main() -> None:
         cavm = sum(components.values())
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
-        forward_eps = require_number(assumption.get("forwardEps3y"), f"{code}.forwardEps3y", 0)
-        historical_per_5y = require_number(
-            assumption.get("historicalPer5y", assumption.get("peerPer")),
-            f"{code}.historicalPer5y",
-            0,
-        )
-        overseas_peer_per = require_number(
-            assumption.get("overseasPeerPer", assumption.get("peerPer")),
-            f"{code}.overseasPeerPer",
-            0,
-        )
-        discount_rate = require_number(assumption.get("discountRate"), f"{code}.discountRate", 0)
-        if discount_rate >= 100:
-            raise ValueError(f"{code}.discountRate must be below 100")
-
-        correction_per, applied_per, final_vm = final_vm_for(
-            forward_eps,
-            historical_per_5y,
-            overseas_peer_per,
-            discount_rate,
-            overseas_adjustment_weight,
-        )
+        valuation = valuation_for(code, assumption, overseas_adjustment_weight)
+        final_vm = int(valuation["finalVm"])
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
         rating, opinion = rating_for(cavm, gap_rate)
         vm_status = str(assumption.get("status", overrides_data.get("status", "draft")))
@@ -301,16 +507,9 @@ def main() -> None:
                 "currentPrice": current_price,
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
                 "priceSource": str(company.get("priceSource", "")),
-                "forwardEps3y": int(forward_eps) if forward_eps.is_integer() else forward_eps,
-                "historicalPer5y": int(historical_per_5y) if historical_per_5y.is_integer() else historical_per_5y,
-                "overseasPeerPer": int(overseas_peer_per) if overseas_peer_per.is_integer() else overseas_peer_per,
-                "overseasCorrectionPer": int(correction_per) if correction_per.is_integer() else correction_per,
-                "overseasAdjustmentWeightPct": round(overseas_adjustment_weight * 100, 1),
-                "appliedPer": int(applied_per) if applied_per.is_integer() else applied_per,
-                "discountRate": int(discount_rate) if discount_rate.is_integer() else discount_rate,
+                **valuation,
                 "vmStatus": vm_status,
                 "vmNote": str(assumption.get("analystNote", "")),
-                "finalVm": final_vm,
                 "gapRate": gap_rate,
                 "rating": rating,
                 "opinion": opinion,
@@ -352,12 +551,12 @@ def main() -> None:
         "dataStatus": data_status_for(companies_data),
         "financialDataSummary": companies_data.get("financialDataSummary", {}),
         "methodology": {
-            "version": "CAVM Official v1.0 · VM v1.2",
+            "version": "CAVM Official v1.0 · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,
-            "formula": f"CAVM = 해자 30 + 성장 25 + 수익성 20 + 재무건전성 15 + 경영진·주주환원 10; 기준 PER = 과거 5년 평균 PER; 해외 보정 = (해외 유사기업 PER - 기준 PER) × {overseas_adjustment_weight * 100:g}%; 적용 PER = 기준 PER + 해외 보정; 3년 후 가치 = 3년 예상 EPS × 적용 PER; Final VM = 3년 후 가치 ÷ (1 + 할인율)^3; 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
+            "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
             "ratingPolicy": "CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
             "selectionPolicy": "표시 순서는 CAVM, 해자, 성장성, 수익성, 재무건전성 순이다. 최종 경계 동점은 업종 분산을 사람이 검토한다.",
-            "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 일반 부채비율 대신 CET1·K-ICS·신용비용을 함께 판단합니다.",
+            "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },
         "summary": {
             "universeSize": int(companies_data.get("universeSize", len(built))),

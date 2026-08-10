@@ -1,6 +1,14 @@
 import unittest
 
-from scripts.build_dataset import adjusted_per, final_vm_for, rating_for
+from scripts.build_dataset import (
+    adjusted_per,
+    bank_pbr_vm_for,
+    final_vm_for,
+    financial_hybrid_vm_for,
+    insurance_sotp_vm_for,
+    normalized_memory_vm_for,
+    rating_for,
+)
 
 
 class ValuationModelTests(unittest.TestCase):
@@ -20,6 +28,29 @@ class ValuationModelTests(unittest.TestCase):
         self.assertEqual(rating_for(80, -20), ("★★★★★", "적극 매수"))
         self.assertEqual(rating_for(80, -10), ("★★★★☆", "분할매수"))
         self.assertEqual(rating_for(80, -9.9), ("★★★☆☆", "관찰"))
+
+    def test_memory_vm_uses_normalized_eps_and_two_year_discount(self):
+        self.assertEqual(normalized_memory_vm_for(72_398, 6.5, 10), (471_000, 389_000))
+        self.assertEqual(normalized_memory_vm_for(512_706, 7, 11), (3_589_000, 2_913_000))
+
+    def test_bank_vm_uses_pbr_as_primary_and_per_as_cross_check(self):
+        primary, cross_check, final_vm = bank_pbr_vm_for(169_091, 1.10, 19_579, 9.5, 1_000)
+
+        self.assertEqual(primary, 186_000)
+        self.assertEqual(cross_check, 186_000)
+        self.assertEqual(final_vm, primary)
+
+    def test_mixed_financial_vm_blends_primary_and_cross_check(self):
+        self.assertEqual(
+            financial_hybrid_vm_for(60_921, 1.30, 16_626, 7.5, 0.60),
+            (79_200, 124_700, 97_400),
+        )
+
+    def test_insurance_vm_keeps_csm_sotp_adjustment_separate(self):
+        self.assertEqual(
+            insurance_sotp_vm_for(433_589, 1.0, 65_000, 51_220, 8),
+            (498_600, 409_800, 498_600),
+        )
 
 
 if __name__ == "__main__":
