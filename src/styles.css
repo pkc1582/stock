@@ -153,12 +153,9 @@ button { color: inherit; }
 .point-leader { stroke: #9eaaa5; stroke-width: 1; opacity: .65; pointer-events: none; }
 .good-opportunity-marker { fill: rgba(197, 169, 94, .12); stroke: #a98b3e; stroke-width: 2.5; pointer-events: none; }
 .point-rank { fill: white; font-family: 'Noto Sans KR', sans-serif; font-size: 7px; font-weight: 700; pointer-events: none; }
-.point-label { fill: #263a34; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 800; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 4px; stroke-linejoin: round; cursor: pointer; pointer-events: auto; }
-.data-point.tone-attractive .point-label { fill: #08704d; }
-.data-point.tone-fair .point-label { fill: #97601e; }
-.data-point.tone-expensive .point-label { fill: #a34138; }
-.point-label.is-selected { fill: #075b42; font-size: 12.5px; font-weight: 800; }
-.point-label.is-good-opportunity { fill: #08704d; }
+.point-label { fill: #7a8580; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 400; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 4px; stroke-linejoin: round; cursor: pointer; pointer-events: auto; }
+.point-label.is-selected { fill: #394842; font-size: 14px; font-weight: 700; }
+.point-label.is-good-opportunity { fill: #7a8580; }
 .chart-opportunity-caption { display: flex; align-items: baseline; justify-content: flex-end; gap: 10px; padding: 12px 24px; border-top: 1px solid #e1e5df; background: #f7f8f4; text-align: right; }
 .chart-opportunity-caption strong { color: #08704d; font-size: 12px; }
 .chart-opportunity-caption span { color: #6f7c76; font-size: 10.5px; }
@@ -512,7 +509,7 @@ body { line-height: 1.65; }
 .matrix-chart { min-width: 960px; }
 .tick-label, .zone-label { font-size: 13px; }
 .axis-title { font-size: 14px; }
-.point-label { font-size: 12.5px; font-weight: 700; }
+.point-label { font-size: 13px; font-weight: 400; }
 .selected-chart-card div > span, .selected-chart-card small,
 .selected-chart-card a { font-size: 12px; }
 .search-field input, select { font-size: 14px; }
@@ -581,8 +578,8 @@ td { padding-block: 15px; }
   .tick-label, .zone-label { font-size: 14.5px; font-weight: 700; }
   .axis-title { font-size: 15.5px; font-weight: 800; }
   .decision-label { font-size: 13.5px; }
-  .point-label { font-size: 15px; font-weight: 800; stroke-width: 5.5px; }
-  .point-label.is-selected { font-size: 16.5px; }
+  .point-label { font-size: 14.5px; font-weight: 700; stroke-width: 5.5px; }
+  .point-label.is-selected { font-size: 15.5px; font-weight: 800; }
   .point-rank { font-size: 8.5px; font-weight: 800; }
   .chart-opportunity-caption { align-items: flex-start; text-align: left; }
   .chart-opportunity-caption strong { font-size: 13px; }

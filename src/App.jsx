@@ -750,8 +750,8 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
           <span><i className="legend-diamond opportunity" /> TOP20 + 좋은 가격 · 특별 표시</span>
         </div>
         <span className="chart-note">
-          <span className="chart-note-default">점 안 숫자 = 순위 · 기업명 색상 = 괴리율 구간</span>
-          <span className="chart-note-mobile">← 좌우로 이동 · 기업명 색상은 괴리율 구간을 뜻합니다 · 누르면 상세 보기 →</span>
+          <span className="chart-note-default">점 안 숫자 = 순위 · 기업명을 선택하면 상세 분석이 바뀝니다</span>
+          <span className="chart-note-mobile">← 좌우로 이동 · 기업명을 누르면 상세 분석이 바뀝니다 →</span>
         </span>
       </div>
       <div className="chart-scroll">
