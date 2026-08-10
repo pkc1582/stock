@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-09T21:35:10+09:00",
-  "basisDate": "2026-08-06",
+  "generatedAt": "2026-08-10T21:30:21+09:00",
+  "basisDate": "2026-08-07",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -8653,7 +8653,7 @@
       "code": "070300",
       "isin": "KR7070300009",
       "name": "퀀텀레일",
-      "corporationName": "엑스큐어(주)",
+      "corporationName": "(주)퀀텀레일",
       "corporateRegistrationNumber": "1350110106150",
       "market": "KOSDAQ",
       "classification": "common_candidate",
