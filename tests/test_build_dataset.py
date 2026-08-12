@@ -8,6 +8,9 @@ from scripts.build_dataset import (
     insurance_sotp_vm_for,
     normalized_memory_vm_for,
     rating_for,
+    valuation_scenarios_for,
+    vm_confidence_for,
+    change_log_for,
 )
 
 
@@ -51,6 +54,67 @@ class ValuationModelTests(unittest.TestCase):
             insurance_sotp_vm_for(433_589, 1.0, 65_000, 51_220, 8),
             (498_600, 409_800, 498_600),
         )
+
+    def test_memory_scenarios_keep_base_and_bound_it_with_downside_and_upside(self):
+        valuation = {
+            "valuationModel": "memory_normalized",
+            "valuationHorizonYears": 2,
+            "normalizedEps": 72_398,
+            "normalizedPer": 6.5,
+            "discountRate": 10,
+            "finalVm": 389_000,
+        }
+        scenarios = valuation_scenarios_for(valuation, {"roundingUnit": 1_000})
+
+        self.assertLess(scenarios["conservative"]["finalVm"], 389_000)
+        self.assertEqual(scenarios["base"]["finalVm"], 389_000)
+        self.assertGreater(scenarios["optimistic"]["finalVm"], 389_000)
+
+    def test_draft_vm_with_complete_report_is_confidence_c(self):
+        company = {
+            "financials": {"latestReport": {"dataQuality": "complete"}},
+            "sources": [{"url": "a"}, {"url": "b"}],
+        }
+        assumption = {
+            "status": "draft",
+            "forwardEps3y": 100,
+            "historicalPer5y": 10,
+        }
+
+        grade, _, reasons = vm_confidence_for(company, assumption)
+
+        self.assertEqual(grade, "C")
+        self.assertIn("VM 가정 최종 승인 전", reasons)
+
+    def test_change_log_detects_vm_gap_cavm_and_report_changes(self):
+        previous = {
+            "generatedAt": "2026-08-12T10:00:00+09:00",
+            "companies": [{
+                "code": "005930",
+                "name": "삼성전자",
+                "finalVm": 500_000,
+                "gapRate": -40,
+                "cavm": 90,
+                "financials": {"latestReport": {"rceptNo": "old", "periodEnd": "2025-12-31"}},
+            }],
+        }
+        current = [{
+            "code": "005930",
+            "name": "삼성전자",
+            "rank": 1,
+            "finalVm": 389_000,
+            "gapRate": -41,
+            "cavm": 91,
+            "financials": {"latestReport": {"rceptNo": "new", "periodEnd": "2026-03-31", "periodLabel": "1분기"}},
+        }]
+
+        changes = change_log_for(previous, current, "2026-08-13T10:00:00+09:00")
+
+        self.assertTrue(changes["hasMaterialChanges"])
+        self.assertEqual(len(changes["vm"]), 1)
+        self.assertEqual(len(changes["gap"]), 1)
+        self.assertEqual(len(changes["cavm"]), 1)
+        self.assertEqual(len(changes["reports"]), 1)
 
 
 if __name__ == "__main__":

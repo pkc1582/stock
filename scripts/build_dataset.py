@@ -36,6 +36,11 @@ VALUATION_MODEL_LABELS = {
     "financial_hybrid": "금융 하이브리드 PBR·PER",
     "insurance_sotp": "보험 PBR·CSM·SOTP",
 }
+SCENARIO_LABELS = {
+    "conservative": "보수",
+    "base": "기준",
+    "optimistic": "낙관",
+}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -208,6 +213,224 @@ def insurance_sotp_vm_for(
     primary_vm = rounded_won(normalized_bps * target_pbr + csm_sotp_adjustment, rounding_unit)
     cross_check_vm = rounded_won(normalized_eps * cross_check_per, rounding_unit)
     return primary_vm, cross_check_vm, primary_vm
+
+
+def valuation_scenarios_for(
+    valuation: dict[str, Any],
+    assumption: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    """Build transparent downside/base/upside cases with model-specific inputs."""
+    model = str(valuation["valuationModel"])
+    rounding_unit = int(assumption.get("roundingUnit", DEFAULT_ROUNDING_UNIT))
+    base_vm = int(valuation["finalVm"])
+
+    if model in {"standard_per", "memory_normalized"}:
+        horizon_years = int(valuation.get("valuationHorizonYears", 3))
+        base_eps = float(valuation.get("normalizedEps") or valuation.get("forwardEps3y") or 0)
+        base_multiple = float(valuation.get("normalizedPer") or valuation.get("appliedPer") or 0)
+        base_discount = float(valuation.get("discountRate") or 0)
+        settings = {
+            "conservative": (0.85 if model == "standard_per" else 0.80, 0.90, 1.5),
+            "base": (1.0, 1.0, 0.0),
+            "optimistic": (1.15, 1.10, -1.0),
+        }
+        result: dict[str, dict[str, Any]] = {}
+        for key, (eps_factor, multiple_factor, discount_delta) in settings.items():
+            adjusted_discount = max(0.0, base_discount + discount_delta)
+            value = rounded_won(
+                base_eps
+                * eps_factor
+                * base_multiple
+                * multiple_factor
+                / ((1 + adjusted_discount / 100) ** horizon_years),
+                rounding_unit,
+            )
+            if key == "base":
+                value = base_vm
+            eps_delta = round((eps_factor - 1) * 100)
+            multiple_delta = round((multiple_factor - 1) * 100)
+            result[key] = {
+                "label": SCENARIO_LABELS[key],
+                "finalVm": value,
+                "assumptions": [
+                    f"EPS {eps_delta:+d}%" if eps_delta else "공식 적용 EPS",
+                    f"배수 {multiple_delta:+d}%" if multiple_delta else "공식 적용 배수",
+                    f"할인율 {discount_delta:+g}%p" if discount_delta else "공식 할인율",
+                ],
+            }
+        return result
+
+    bps = float(valuation.get("normalizedBps") or 0)
+    pbr = float(valuation.get("targetPbr") or 0)
+    eps = float(valuation.get("normalizedEps") or 0)
+    per = float(valuation.get("normalizedPer") or 0)
+    primary_weight = float(valuation.get("primaryWeightPct") or 60) / 100
+    csm_adjustment = float(valuation.get("csmSotpAdjustment") or 0)
+    settings = {
+        "conservative": (0.95, 0.90, 0.85),
+        "base": (1.0, 1.0, 1.0),
+        "optimistic": (1.05, 1.10, 1.15),
+    }
+    result = {}
+    for key, (fundamental_factor, multiple_factor, csm_factor) in settings.items():
+        primary = bps * fundamental_factor * pbr * multiple_factor
+        cross_check = eps * fundamental_factor * per * multiple_factor
+        if model == "financial_hybrid":
+            value = primary * primary_weight + cross_check * (1 - primary_weight)
+        elif model == "insurance_sotp":
+            value = primary + csm_adjustment * csm_factor
+        else:
+            value = primary
+        rounded_value = rounded_won(value, rounding_unit)
+        if key == "base":
+            rounded_value = base_vm
+        fundamental_delta = round((fundamental_factor - 1) * 100)
+        multiple_delta = round((multiple_factor - 1) * 100)
+        assumptions = [
+            f"BPS·EPS {fundamental_delta:+d}%" if fundamental_delta else "공식 적용 BPS·EPS",
+            f"PBR·PER {multiple_delta:+d}%" if multiple_delta else "공식 적용 배수",
+        ]
+        if model == "insurance_sotp":
+            csm_delta = round((csm_factor - 1) * 100)
+            assumptions.append(f"CSM·SOTP {csm_delta:+d}%" if csm_delta else "공식 CSM·SOTP")
+        result[key] = {
+            "label": SCENARIO_LABELS[key],
+            "finalVm": rounded_value,
+            "assumptions": assumptions,
+        }
+    return result
+
+
+def vm_confidence_for(
+    company: dict[str, Any],
+    assumption: dict[str, Any],
+) -> tuple[str, str, list[str]]:
+    """Grade VM evidence freshness without claiming unavailable consensus data."""
+    financials = company.get("financials") or {}
+    latest_report = financials.get("latestReport") if isinstance(financials, dict) else None
+    latest_report = latest_report if isinstance(latest_report, dict) else {}
+    sources = company.get("sources") if isinstance(company.get("sources"), list) else []
+    report_quality = str(latest_report.get("dataQuality", ""))
+    vm_status = str(assumption.get("status", "draft"))
+    model = str(assumption.get("valuationModel", "standard_per"))
+    reasons: list[str] = []
+
+    if not latest_report or report_quality not in {"complete", "partial"}:
+        reasons.append("최신 보고서 핵심 지표 확인 필요")
+    elif report_quality == "partial":
+        reasons.append("최신 보고서 일부 계정 미수신")
+    else:
+        reasons.append("최신 보고서 주요 지표 수신 완료")
+
+    if vm_status != "reviewed":
+        reasons.append("VM 가정 최종 승인 전")
+    else:
+        reasons.append("VM 가정 검토 완료")
+
+    if len(sources) < 2:
+        reasons.append("비교·근거 자료 보강 필요")
+    else:
+        reasons.append("근거 자료 2건 이상 연결")
+
+    has_model_inputs = (
+        (model == "standard_per" and assumption.get("forwardEps3y") is not None and assumption.get("historicalPer5y") is not None)
+        or (model == "memory_normalized" and assumption.get("normalizedEps") is not None and assumption.get("normalizedPer") is not None)
+        or (model in {"bank_pbr", "financial_hybrid", "insurance_sotp"} and assumption.get("normalizedBps") is not None and assumption.get("targetPbr") is not None)
+    )
+    if not has_model_inputs or not latest_report:
+        return "D", "핵심 데이터 보강 필요", reasons
+    if vm_status == "reviewed" and report_quality == "complete" and len(sources) >= 2:
+        return "B", "근거 확인 완료 · 일부 분석 가정", reasons
+    return "C", "EPS 또는 배수 검토 필요", reasons
+
+
+def change_log_for(
+    previous: dict[str, Any] | None,
+    current_companies: list[dict[str, Any]],
+    generated_at: str,
+) -> dict[str, Any]:
+    """Compare against the last committed public snapshot and keep material deltas."""
+    empty = {
+        "comparedAt": previous.get("generatedAt") if previous else None,
+        "generatedAt": generated_at,
+        "vm": [],
+        "gap": [],
+        "cavm": [],
+        "entrants": [],
+        "exits": [],
+        "reports": [],
+        "hasMaterialChanges": False,
+    }
+    if not previous or not isinstance(previous.get("companies"), list):
+        return empty
+
+    old_by_code = {str(item.get("code")): item for item in previous["companies"] if isinstance(item, dict)}
+    new_by_code = {str(item.get("code")): item for item in current_companies}
+    for code, company in new_by_code.items():
+        old = old_by_code.get(code)
+        if old is None:
+            empty["entrants"].append({
+                "code": code,
+                "name": company.get("name"),
+                "rank": company.get("rank"),
+                "cavm": company.get("cavm"),
+            })
+            continue
+        if old.get("finalVm") != company.get("finalVm"):
+            empty["vm"].append({
+                "code": code,
+                "name": company.get("name"),
+                "before": old.get("finalVm"),
+                "after": company.get("finalVm"),
+            })
+        old_gap = old.get("gapRate")
+        new_gap = company.get("gapRate")
+        if isinstance(old_gap, (int, float)) and isinstance(new_gap, (int, float)) and old_gap != new_gap:
+            empty["gap"].append({
+                "code": code,
+                "name": company.get("name"),
+                "before": old_gap,
+                "after": new_gap,
+                "delta": round(new_gap - old_gap, 1),
+            })
+        if old.get("cavm") != company.get("cavm"):
+            empty["cavm"].append({
+                "code": code,
+                "name": company.get("name"),
+                "before": old.get("cavm"),
+                "after": company.get("cavm"),
+            })
+        old_report = ((old.get("financials") or {}).get("latestReport") or {})
+        new_report = ((company.get("financials") or {}).get("latestReport") or {})
+        if (
+            new_report.get("rceptNo")
+            and (old_report.get("rceptNo"), old_report.get("periodEnd"))
+            != (new_report.get("rceptNo"), new_report.get("periodEnd"))
+        ):
+            empty["reports"].append({
+                "code": code,
+                "name": company.get("name"),
+                "before": old_report.get("periodEnd"),
+                "after": new_report.get("periodEnd"),
+                "periodLabel": new_report.get("periodLabel"),
+            })
+
+    for code, company in old_by_code.items():
+        if code not in new_by_code:
+            empty["exits"].append({
+                "code": code,
+                "name": company.get("name"),
+                "previousRank": company.get("rank"),
+                "reason": "CAVM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동",
+            })
+
+    empty["gap"].sort(key=lambda item: abs(item["delta"]), reverse=True)
+    empty["hasMaterialChanges"] = any(empty[key] for key in ("vm", "gap", "cavm", "entrants", "exits", "reports"))
+    if not empty["hasMaterialChanges"] and isinstance(previous.get("changes"), dict):
+        preserved = dict(previous["changes"])
+        preserved["preservedAt"] = generated_at
+        return preserved
+    return empty
 
 
 def rating_for(cavm: int, gap_rate: float | None) -> tuple[str, str]:
@@ -433,6 +656,7 @@ def valuation_for(
 
 
 def main() -> None:
+    previous_output = load_json(OUTPUT_PATH) if OUTPUT_PATH.exists() else None
     companies_data = load_json(COMPANIES_PATH)
     overrides_data = load_json(OVERRIDES_PATH)
     issues_data = load_json(ISSUES_PATH)
@@ -478,6 +702,7 @@ def main() -> None:
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
         valuation = valuation_for(code, assumption, overseas_adjustment_weight)
+        vm_scenarios = valuation_scenarios_for(valuation, assumption)
         final_vm = int(valuation["finalVm"])
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
         rating, opinion = rating_for(cavm, gap_rate)
@@ -493,6 +718,7 @@ def main() -> None:
         issue_overrides = assumption.get("issueOverrides") or {}
 
         base_review = company.get("review") or {}
+        confidence_grade, confidence_label, confidence_reasons = vm_confidence_for(company, assumption)
         next_review = min(
             str(base_review.get("nextReviewAt", overrides_data.get("reviewPolicy", {}).get("nextReviewAt", "9999-12-31"))),
             str(overrides_data.get("reviewPolicy", {}).get("nextReviewAt", "9999-12-31")),
@@ -508,6 +734,12 @@ def main() -> None:
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
                 "priceSource": str(company.get("priceSource", "")),
                 **valuation,
+                "vmScenarios": vm_scenarios,
+                "vmConfidence": {
+                    "grade": confidence_grade,
+                    "label": confidence_label,
+                    "reasons": confidence_reasons,
+                },
                 "vmStatus": vm_status,
                 "vmNote": str(assumption.get("analystNote", "")),
                 "gapRate": gap_rate,
@@ -522,6 +754,13 @@ def main() -> None:
                     "status": f"CAVM {base_review.get('status', 'pending')} / VM {assumption.get('status', overrides_data.get('status', 'draft'))}",
                     "reviewedAt": str(base_review.get("reviewedAt", companies_data.get("basisDate", ""))),
                     "nextReviewAt": next_review,
+                    "basisDates": {
+                        "price": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
+                        "financialReport": str(((company.get("financials") or {}).get("latestReport") or {}).get("periodEnd", companies_data.get("basisDate", ""))),
+                        "eps": str(assumption.get("epsReviewedAt", base_review.get("reviewedAt", companies_data.get("basisDate", "")))),
+                        "multiple": str(assumption.get("multipleReviewedAt", base_review.get("reviewedAt", companies_data.get("basisDate", "")))),
+                        "nextReview": next_review,
+                    },
                 },
             }
         )
@@ -545,11 +784,14 @@ def main() -> None:
         item.update(item_copy)
 
     kst = timezone(timedelta(hours=9))
+    generated_at = datetime.now(kst).isoformat(timespec="seconds")
+    changes = change_log_for(previous_output, built, generated_at)
     output = {
-        "generatedAt": datetime.now(kst).isoformat(timespec="seconds"),
+        "generatedAt": generated_at,
         "basisDate": str(companies_data.get("basisDate", "")),
         "dataStatus": data_status_for(companies_data),
         "financialDataSummary": companies_data.get("financialDataSummary", {}),
+        "changes": changes,
         "methodology": {
             "version": "CAVM Official v1.0 · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,

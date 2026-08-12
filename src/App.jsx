@@ -6,6 +6,12 @@ const DATA_URL = `${import.meta.env.BASE_URL}data/latest.json`
 const SCREENER_URL = `${import.meta.env.BASE_URL}data/screener.json`
 const CANDIDATE_REVIEW_URL = `${REPOSITORY_URL}/issues/new?template=candidate-review.yml`
 const SCREENER_ROW_LIMIT = 200
+const WATCHLIST_STORAGE_KEY = 'compound-asset-2045-watchlist'
+
+const companyCodeFromHash = () => {
+  const match = window.location.hash.match(/^#company=(\d{6})$/)
+  return match?.[1] || null
+}
 
 const SCORE_META = [
   { key: 'moat', label: '경쟁우위·해자', max: 30, short: '해자' },
@@ -139,6 +145,12 @@ function normalizeCompany(company, index) {
   const calculatedGap = currentPrice !== null && finalVm
     ? ((currentPrice - finalVm) / finalVm) * 100
     : null
+  const rawScenarios = company.vmScenarios || valuation.scenarios || {}
+  const scenarioFor = (key, fallbackVm) => ({
+    label: rawScenarios[key]?.label || ({ conservative: '보수', base: '기준', optimistic: '낙관' }[key]),
+    finalVm: firstNumber(rawScenarios[key]?.finalVm, fallbackVm),
+    assumptions: Array.isArray(rawScenarios[key]?.assumptions) ? rawScenarios[key].assumptions : [],
+  })
 
   return {
     ...company,
@@ -176,6 +188,16 @@ function normalizeCompany(company, index) {
     appliedPer: firstNumber(company.appliedPer, valuation.appliedPer, company.peerPer),
     discountRate: firstNumber(company.discountRate, valuation.discountRate),
     finalVm,
+    vmScenarios: {
+      conservative: scenarioFor('conservative', finalVm ? finalVm * 0.82 : null),
+      base: scenarioFor('base', finalVm),
+      optimistic: scenarioFor('optimistic', finalVm ? finalVm * 1.16 : null),
+    },
+    vmConfidence: company.vmConfidence || valuation.confidence || {
+      grade: 'C',
+      label: 'EPS 또는 배수 검토 필요',
+      reasons: [],
+    },
     gapRate: firstNumber(company.gapRate, valuation.gapPct, valuation.gapRate, calculatedGap),
     vmStatus: company.vmStatus || valuation.status || 'draft',
     vmNote: company.vmNote || valuation.note || 'VM 입력값은 검토 중인 가정입니다.',
@@ -208,10 +230,11 @@ function normalizeCompany(company, index) {
         ? { label: `근거 자료 ${sourceIndex + 1}`, url: source }
         : source
     )),
-    review: company.review || {
-      status: company.reviewStatus || '검토 필요',
-      reviewedAt: null,
-      nextReviewAt: null,
+    review: {
+      status: company.review?.status || company.reviewStatus || '검토 필요',
+      reviewedAt: company.review?.reviewedAt || null,
+      nextReviewAt: company.review?.nextReviewAt || null,
+      basisDates: company.review?.basisDates || {},
     },
   }
 }
@@ -229,6 +252,11 @@ function normalizeSnapshot(raw) {
     generatedAt: raw.generatedAt || raw.asOf || null,
     basisDate: raw.basisDate || raw.asOf || null,
     dataStatus: raw.dataStatus || '공개 자료 기반 분석 스냅샷',
+    changes: raw.changes || {
+      comparedAt: null,
+      vm: [], gap: [], cavm: [], entrants: [], exits: [], reports: [],
+      hasMaterialChanges: false,
+    },
     methodology: raw.methodology || {
       version: raw.methodologyVersion || 'CAVM Official v1.0',
       weights: {},
@@ -252,6 +280,15 @@ const formatDate = (value) => {
   if (Number.isNaN(date.getTime())) return value
   return new Intl.DateTimeFormat('ko-KR', {
     year: 'numeric', month: 'long', day: 'numeric',
+  }).format(date)
+}
+
+const formatDateTime = (value) => {
+  if (!value) return '확인 중'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+  return new Intl.DateTimeFormat('ko-KR', {
+    year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
   }).format(date)
 }
 
@@ -380,7 +417,7 @@ function PwaUpdateNotice() {
 function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
-    ['#data-policy', '데이터 원칙'],
+    ['#changes', '이번 갱신'],
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
     ['#company', '기업 분석'],
@@ -488,6 +525,95 @@ function Hero({ snapshot }) {
             <span className="hero-refresh-icon" aria-hidden="true">↻</span>
             <div><span>마지막 계산</span><strong>{generated}</strong></div>
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LatestChanges({ snapshot, onSelect }) {
+  const changes = snapshot.changes || {}
+  const financial = snapshot.financialDataSummary || {}
+  const choose = (code) => {
+    if (!code) return
+    onSelect(code)
+    window.requestAnimationFrame(() => document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' }))
+  }
+  const groups = [
+    {
+      key: 'vm',
+      label: 'VM 변경',
+      tone: 'vm',
+      items: (changes.vm || []).map((item) => ({
+        ...item,
+        copy: `${formatWon(item.before)} → ${formatWon(item.after)}`,
+      })),
+    },
+    {
+      key: 'gap',
+      label: '괴리율 변경',
+      tone: 'gap',
+      items: (changes.gap || []).slice(0, 4).map((item) => ({
+        ...item,
+        copy: `${formatPercent(item.before, true)} → ${formatPercent(item.after, true)}`,
+      })),
+    },
+    {
+      key: 'ranking',
+      label: 'TOP20 진입·탈락',
+      tone: 'ranking',
+      items: [
+        ...(changes.entrants || []).map((item) => ({ ...item, copy: `신규 진입 · #${item.rank} · CAVM ${item.cavm}` })),
+        ...(changes.exits || []).map((item) => ({ ...item, copy: `탈락 · ${item.reason}` })),
+      ],
+    },
+    {
+      key: 'research',
+      label: 'CAVM·보고서',
+      tone: 'research',
+      items: [
+        ...(changes.cavm || []).map((item) => ({ ...item, copy: `CAVM ${item.before} → ${item.after}` })),
+        ...(changes.reports || []).map((item) => ({ ...item, copy: `${item.periodLabel || '최신 보고서'} 반영 · ${formatDate(item.after)}` })),
+      ],
+    },
+  ].filter((group) => group.items.length)
+
+  return (
+    <section className="changes-section" id="changes" aria-labelledby="changes-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="LATEST UPDATE"
+          title="이번 갱신에서 바뀐 것"
+          titleId="changes-title"
+          description="직전 공개 스냅샷과 비교해 VM·괴리율·CAVM·TOP20·최신 보고서의 변화를 분리해서 기록합니다."
+          aside={<span className="changes-basis">비교 기준 {formatDateTime(changes.comparedAt)}</span>}
+        />
+        {groups.length ? (
+          <div className="changes-grid">
+            {groups.map((group) => (
+              <article className={`change-group tone-${group.tone}`} key={group.key}>
+                <div className="change-group-title"><span>{group.label}</span><strong>{group.items.length}건</strong></div>
+                <div className="change-items">
+                  {group.items.map((item, index) => (
+                    <button type="button" key={`${item.code}-${index}`} onClick={() => choose(item.code)}>
+                      <span>{item.name}</span><strong>{item.copy}</strong><i aria-hidden="true">↘</i>
+                    </button>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="no-material-change">
+            <span aria-hidden="true">✓</span>
+            <div><strong>직전 스냅샷 대비 중요한 변경은 없습니다.</strong><p>VM·CAVM·TOP20 구성·최신 보고서가 동일합니다. 시세 갱신으로 괴리율이 바뀌면 다음 기록에 자동으로 나타납니다.</p></div>
+          </div>
+        )}
+        <div className="data-health-grid" aria-label="자동화 데이터 상태">
+          <div><span>시세 기준일</span><strong>{formatDate(snapshot.companies[0]?.priceBasisDate)}</strong><small>공식 종가 스냅샷</small></div>
+          <div><span>OpenDART 수신</span><strong>{financial.latestReportSuccessCount ?? '—'} / {financial.companyCount ?? snapshot.companies.length}</strong><small>기업별 최신 보고서</small></div>
+          <div><span>주요 지표 완전</span><strong>{financial.latestReportCompleteCount ?? '—'}개</strong><small>누락 없는 기업</small></div>
+          <div><span>마지막 자동 계산</span><strong>{formatDateTime(snapshot.generatedAt)}</strong><small>다음 실행 · 평일 18:20 KST</small></div>
         </div>
       </div>
     </section>
@@ -953,22 +1079,44 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
   )
 }
 
-function Top20Table({ companies, selectedCode, onSelect }) {
+function downloadTop20Csv(companies) {
+  const headers = ['순위', '종목코드', '기업', '업종', 'CAVM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '판단']
+  const rows = companies.map((company) => [
+    company.rank, company.code, company.name, company.sector, company.cavm,
+    company.components.moat, company.components.growth, company.components.profitability,
+    company.components.financialHealth, company.components.management,
+    company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '', company.opinion,
+  ])
+  const escape = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`
+  const csv = `\uFEFF${[headers, ...rows].map((row) => row.map(escape).join(',')).join('\r\n')}`
+  const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
+  const link = document.createElement('a')
+  link.href = url
+  link.download = `compound-asset-2045-top20-${new Date().toISOString().slice(0, 10)}.csv`
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+  URL.revokeObjectURL(url)
+}
+
+function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatch }) {
   const [query, setQuery] = useState('')
   const [sector, setSector] = useState('전체 업종')
   const [sort, setSort] = useState('rank')
+  const [watchedOnly, setWatchedOnly] = useState(false)
   const sectors = useMemo(() => ['전체 업종', ...new Set(companies.map((company) => company.sector))], [companies])
   const visible = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
     return companies
       .filter((company) => sector === '전체 업종' || company.sector === sector)
+      .filter((company) => !watchedOnly || watchlist.includes(company.code))
       .filter((company) => !normalizedQuery || `${company.name} ${company.code}`.toLowerCase().includes(normalizedQuery))
       .sort((a, b) => {
         if (sort === 'cavm') return b.cavm - a.cavm || a.rank - b.rank
         if (sort === 'gap') return (a.gapRate ?? Infinity) - (b.gapRate ?? Infinity)
         return a.rank - b.rank
       })
-  }, [companies, query, sector, sort])
+  }, [companies, query, sector, sort, watchedOnly, watchlist])
 
   const choose = (company) => {
     onSelect(company.code)
@@ -1000,6 +1148,10 @@ function Top20Table({ companies, selectedCode, onSelect }) {
               <button type="button" key={value} className={sort === value ? 'active' : ''} onClick={() => setSort(value)}>{label}</button>
             ))}
           </div>
+          <button type="button" className={watchedOnly ? 'watchlist-filter is-active' : 'watchlist-filter'} onClick={() => setWatchedOnly((value) => !value)}>
+            ★ 관심기업 {watchlist.length}
+          </button>
+          <button type="button" className="csv-export" onClick={() => downloadTop20Csv(visible)}>CSV 저장</button>
         </div>
         <div className="table-wrap">
           <table>
@@ -1017,10 +1169,18 @@ function Top20Table({ companies, selectedCode, onSelect }) {
                 >
                   <td><span className={`table-rank rank-${company.rank}`}>{company.rank}</span></td>
                   <td>
-                    <button className="company-cell" type="button" onClick={() => choose(company)}>
-                      <strong>{company.name}</strong><small>{company.code} · {company.sector}</small>
-                      <em>{company.valuationModelLabel}</em>
-                    </button>
+                    <div className="company-cell-wrap">
+                      <button className="company-cell" type="button" onClick={() => choose(company)}>
+                        <strong>{company.name}</strong><small>{company.code} · {company.sector}</small>
+                        <em>{company.valuationModelLabel}</em>
+                      </button>
+                      <button
+                        type="button"
+                        className={watchlist.includes(company.code) ? 'table-watch is-active' : 'table-watch'}
+                        aria-label={`${company.name} 관심기업 ${watchlist.includes(company.code) ? '해제' : '추가'}`}
+                        onClick={(event) => { event.stopPropagation(); onToggleWatch(company.code) }}
+                      >{watchlist.includes(company.code) ? '★' : '☆'}</button>
+                    </div>
                   </td>
                   <td><strong className="cavm-value">{company.cavm}</strong></td>
                   {SCORE_META.map((meta) => <td key={meta.key} className="component-cell">{company.components[meta.key]}<small>/{meta.max}</small></td>)}
@@ -1129,7 +1289,93 @@ function ValuationModelPanel({ company }) {
   )
 }
 
-function CompanyDetail({ company }) {
+function VmScenarioPanel({ company }) {
+  const scenarios = company.vmScenarios || {}
+  return (
+    <div className="vm-scenario-panel">
+      <div className="vm-scenario-heading">
+        <div><span>VALUATION RANGE</span><strong>보수 · 기준 · 낙관 VM</strong></div>
+        <small>매트릭스에는 기준 VM만 사용</small>
+      </div>
+      <div className="vm-scenario-grid">
+        {['conservative', 'base', 'optimistic'].map((key) => {
+          const scenario = scenarios[key] || {}
+          const scenarioGap = scenario.finalVm
+            ? ((company.currentPrice - scenario.finalVm) / scenario.finalVm) * 100
+            : null
+          return (
+            <div className={`vm-scenario tone-${key}`} key={key}>
+              <span>{scenario.label || key}</span>
+              <strong>{formatWon(scenario.finalVm)}</strong>
+              <small>괴리율 {formatPercent(scenarioGap, true)}</small>
+              <p>{(scenario.assumptions || []).join(' · ')}</p>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function SensitivityCalculator({ company }) {
+  const [fundamentalAdjustment, setFundamentalAdjustment] = useState(0)
+  const [multipleAdjustment, setMultipleAdjustment] = useState(0)
+  const [discountAdjustment, setDiscountAdjustment] = useState(0)
+  const horizon = Math.max(0, company.valuationHorizonYears || 0)
+  const baseDiscount = Math.max(0, company.discountRate || 0)
+  const adjustedDiscount = Math.max(0, baseDiscount + discountAdjustment)
+  const discountFactor = horizon
+    ? ((1 + baseDiscount / 100) ** horizon) / ((1 + adjustedDiscount / 100) ** horizon)
+    : 1
+  const calculatedVm = Math.max(0, Math.round(
+    company.finalVm
+      * (1 + fundamentalAdjustment / 100)
+      * (1 + multipleAdjustment / 100)
+      * discountFactor,
+  ))
+  const calculatedGap = calculatedVm > 0
+    ? ((company.currentPrice - calculatedVm) / calculatedVm) * 100
+    : null
+  const isFinancial = ['bank_pbr', 'financial_hybrid', 'insurance_sotp'].includes(company.valuationModel)
+  const reset = () => {
+    setFundamentalAdjustment(0)
+    setMultipleAdjustment(0)
+    setDiscountAdjustment(0)
+  }
+
+  return (
+    <details className="sensitivity-calculator">
+      <summary><span>민감도 계산기</span><strong>내 가정으로 VM 확인</strong><i aria-hidden="true">+</i></summary>
+      <div className="sensitivity-body">
+        <div className="sensitivity-controls">
+          <label>
+            <span>{isFinancial ? 'BPS·EPS 조정' : 'EPS 조정'}<strong>{fundamentalAdjustment > 0 ? '+' : ''}{fundamentalAdjustment}%</strong></span>
+            <input type="range" min="-20" max="20" step="1" value={fundamentalAdjustment} onChange={(event) => setFundamentalAdjustment(Number(event.target.value))} />
+          </label>
+          <label>
+            <span>{isFinancial ? 'PBR·PER 조정' : 'PER 조정'}<strong>{multipleAdjustment > 0 ? '+' : ''}{multipleAdjustment}%</strong></span>
+            <input type="range" min="-20" max="20" step="1" value={multipleAdjustment} onChange={(event) => setMultipleAdjustment(Number(event.target.value))} />
+          </label>
+          {horizon > 0 && (
+            <label>
+              <span>할인율 조정<strong>{discountAdjustment > 0 ? '+' : ''}{discountAdjustment}%p</strong></span>
+              <input type="range" min="-2" max="2" step="0.5" value={discountAdjustment} onChange={(event) => setDiscountAdjustment(Number(event.target.value))} />
+            </label>
+          )}
+        </div>
+        <div className="sensitivity-result">
+          <span>시험 VM</span><strong>{formatWon(calculatedVm)}</strong>
+          <small>괴리율 {formatPercent(calculatedGap, true)}</small>
+          <button type="button" onClick={reset}>공식 가정으로 초기화</button>
+        </div>
+        <p>이 계산은 현재 기기 화면에서만 실행되며 공식 VM과 공개 데이터에는 영향을 주지 않습니다.</p>
+      </div>
+    </details>
+  )
+}
+
+function CompanyDetail({ company, isWatched, onToggleWatch }) {
+  const [shareState, setShareState] = useState('')
   if (!company) return null
   const financials = company.financials
   const latestReport = financials.latestReport
@@ -1151,6 +1397,23 @@ function CompanyDetail({ company }) {
         ['2025 EPS', formatWon(financials.eps2025)],
       ]
 
+  const shareCompany = async () => {
+    const url = new URL(window.location.href)
+    url.hash = `company=${company.code}`
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `${company.name} · 복리자산 2045`, text: `${company.name} CAVM·VM 분석`, url: url.toString() })
+        setShareState('공유 완료')
+      } else {
+        await navigator.clipboard.writeText(url.toString())
+        setShareState('주소 복사됨')
+      }
+    } catch (error) {
+      if (error?.name !== 'AbortError') setShareState('공유 실패')
+    }
+    window.setTimeout(() => setShareState(''), 2200)
+  }
+
   return (
     <section className="company-section" id="company">
       <div className="page-shell">
@@ -1159,6 +1422,12 @@ function CompanyDetail({ company }) {
             <div className="company-rankline"><span>OFFICIAL #{company.rank}</span><span>{company.code}</span><span>{company.sector}</span></div>
             <h2>{company.name}</h2>
             <p>{company.reason}</p>
+            <div className="company-actions">
+              <button type="button" className={isWatched ? 'is-active' : ''} onClick={() => onToggleWatch(company.code)}>{isWatched ? '★ 관심기업 저장됨' : '☆ 관심기업 추가'}</button>
+              <button type="button" onClick={shareCompany}>공유 주소 만들기</button>
+              <button type="button" onClick={() => window.print()}>인쇄·PDF</button>
+              {shareState && <span role="status">{shareState}</span>}
+            </div>
           </div>
           <div className="company-score-card">
             <span>CAVM</span><strong>{company.cavm}</strong><small>/ 100</small>
@@ -1178,6 +1447,8 @@ function CompanyDetail({ company }) {
               <div className="valuation-price"><span>현재가</span><strong>{formatWon(company.currentPrice)}</strong><small>{formatDate(company.priceBasisDate)}</small></div>
             </div>
             <ValuationModelPanel company={company} />
+            <VmScenarioPanel company={company} />
+            <SensitivityCalculator company={company} />
             <div className="opinion-banner">
               <div><span>{company.ratingStars}</span><strong>{company.opinion || company.ratingLabel || '검토 중'}</strong></div>
               <small>{company.vmStatus === 'draft' ? 'VM 가정 초안' : company.vmStatus}</small>
@@ -1234,10 +1505,21 @@ function CompanyDetail({ company }) {
           <article className="detail-card sources-card">
             <div className="card-heading"><span>06</span><div><small>EVIDENCE & REVIEW</small><h3>근거 자료와 검토 상태</h3></div></div>
             <div className="review-line">
+              <div className={`confidence-grade grade-${String(company.vmConfidence?.grade || 'D').toLowerCase()}`}><span>VM 신뢰도</span><strong>{company.vmConfidence?.grade || 'D'} · {company.vmConfidence?.label || '검토 필요'}</strong></div>
               <div><span>검토 상태</span><strong>{company.review?.status || '검토 필요'}</strong></div>
               <div><span>최근 검토</span><strong>{formatDate(company.review?.reviewedAt)}</strong></div>
               <div><span>다음 검토</span><strong>{formatDate(company.review?.nextReviewAt)}</strong></div>
             </div>
+            <div className="basis-date-grid">
+              <div><span>주가 기준일</span><strong>{formatDate(company.review?.basisDates?.price || company.priceBasisDate)}</strong></div>
+              <div><span>재무보고서 기준일</span><strong>{formatDate(company.review?.basisDates?.financialReport || latestReport?.periodEnd)}</strong></div>
+              <div><span>예상 EPS 검토일</span><strong>{formatDate(company.review?.basisDates?.eps || company.review?.reviewedAt)}</strong></div>
+              <div><span>PER·PBR 검토일</span><strong>{formatDate(company.review?.basisDates?.multiple || company.review?.reviewedAt)}</strong></div>
+              <div><span>다음 재검토</span><strong>{formatDate(company.review?.basisDates?.nextReview || company.review?.nextReviewAt)}</strong></div>
+            </div>
+            {!!company.vmConfidence?.reasons?.length && (
+              <div className="confidence-reasons">{company.vmConfidence.reasons.map((reason) => <span key={reason}>{reason}</span>)}</div>
+            )}
             <div className="source-links">
               {company.sources.map((source, index) => (
                 <a href={source.url} target="_blank" rel="noreferrer" key={`${source.url}-${index}`}>
@@ -1392,6 +1674,15 @@ export default function App() {
   const [screenerLoadState, setScreenerLoadState] = useState('loading')
   const [screenerError, setScreenerError] = useState('')
   const [screenerRetryKey, setScreenerRetryKey] = useState(0)
+  const [openSharedCompany, setOpenSharedCompany] = useState(() => Boolean(companyCodeFromHash()))
+  const [watchlist, setWatchlist] = useState(() => {
+    try {
+      const stored = JSON.parse(window.localStorage.getItem(WATCHLIST_STORAGE_KEY) || '[]')
+      return Array.isArray(stored) ? stored.filter((code) => /^\d{6}$/.test(code)) : []
+    } catch {
+      return []
+    }
+  })
 
   useEffect(() => {
     const controller = new AbortController()
@@ -1405,7 +1696,13 @@ export default function App() {
         const normalized = normalizeSnapshot(raw)
         if (!normalized.companies.length) throw new Error('분석 기업 데이터가 비어 있습니다.')
         setSnapshot(normalized)
-        setSelectedCode((current) => current || normalized.companies[0].code)
+        setSelectedCode((current) => {
+          if (current && normalized.companies.some((company) => company.code === current)) return current
+          const sharedCode = companyCodeFromHash()
+          return normalized.companies.some((company) => company.code === sharedCode)
+            ? sharedCode
+            : normalized.companies[0].code
+        })
       })
       .catch((fetchError) => {
         if (fetchError.name !== 'AbortError') setError(fetchError.message || '알 수 없는 오류')
@@ -1437,6 +1734,43 @@ export default function App() {
     return () => controller.abort()
   }, [screenerRetryKey])
 
+  useEffect(() => {
+    window.localStorage.setItem(WATCHLIST_STORAGE_KEY, JSON.stringify(watchlist))
+  }, [watchlist])
+
+  useEffect(() => {
+    if (!openSharedCompany || !snapshot || !selectedCode) return
+    window.requestAnimationFrame(() => {
+      document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' })
+      setOpenSharedCompany(false)
+    })
+  }, [openSharedCompany, selectedCode, snapshot])
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const code = companyCodeFromHash()
+      if (code && snapshot?.companies.some((company) => company.code === code)) {
+        setSelectedCode(code)
+        window.requestAnimationFrame(() => document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' }))
+      }
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [snapshot])
+
+  const selectCompany = (code) => {
+    setSelectedCode(code)
+    const nextUrl = new URL(window.location.href)
+    nextUrl.hash = `company=${code}`
+    window.history.replaceState(null, '', nextUrl.toString())
+  }
+
+  const toggleWatchlist = (code) => {
+    setWatchlist((current) => (
+      current.includes(code) ? current.filter((item) => item !== code) : [...current, code]
+    ))
+  }
+
   const selectedCompany = snapshot?.companies.find((company) => company.code === selectedCode)
     || snapshot?.companies[0]
 
@@ -1450,10 +1784,22 @@ export default function App() {
       <PwaUpdateNotice />
       <main id="main-content">
         <Hero snapshot={snapshot} />
+        <LatestChanges snapshot={snapshot} onSelect={selectCompany} />
         <DataPolicy />
-        <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
-        <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
-        <CompanyDetail company={selectedCompany} />
+        <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={selectCompany} />
+        <Top20Table
+          companies={snapshot.companies}
+          selectedCode={selectedCompany?.code}
+          onSelect={selectCompany}
+          watchlist={watchlist}
+          onToggleWatch={toggleWatchlist}
+        />
+        <CompanyDetail
+          key={selectedCompany?.code}
+          company={selectedCompany}
+          isWatched={watchlist.includes(selectedCompany?.code)}
+          onToggleWatch={toggleWatchlist}
+        />
         <Methodology methodology={snapshot.methodology} />
         <ScreenerSection
           screener={screener}

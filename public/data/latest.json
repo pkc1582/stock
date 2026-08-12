@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T19:42:16+09:00",
+  "generatedAt": "2026-08-13T00:12:36+09:00",
   "basisDate": "2026-08-09",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / VM 수동가정 초안",
   "financialDataSummary": {
@@ -16,6 +16,17 @@
     "annual2025PartialCount": 6,
     "annual2025ChangedCount": 0,
     "preservedNewerReportCount": 0
+  },
+  "changes": {
+    "comparedAt": "2026-08-12T19:42:16+09:00",
+    "generatedAt": "2026-08-13T00:12:36+09:00",
+    "vm": [],
+    "gap": [],
+    "cavm": [],
+    "entrants": [],
+    "exits": [],
+    "reports": [],
+    "hasMaterialChanges": false
   },
   "methodology": {
     "version": "CAVM Official v1.0 · Sector VM v2.0",
@@ -72,6 +83,44 @@
         "CAPEX",
         "고객사 재고"
       ],
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 2042000,
+          "assumptions": [
+            "EPS -20%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 2913000,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 3752000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
       "gapRate": -51.3,
@@ -127,7 +176,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -159,6 +215,44 @@
       "primaryVm": 66000,
       "crossCheckVm": null,
       "finalVm": 66000,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 48500,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 66000,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 85800,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
       "gapRate": 7.1,
@@ -214,7 +308,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -246,6 +347,44 @@
       "primaryVm": 473300,
       "crossCheckVm": null,
       "finalVm": 473300,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 347600,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 473300,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 615300,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
       "gapRate": -13.4,
@@ -301,7 +440,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -338,6 +484,44 @@
         "CAPEX",
         "고객사 재고"
       ],
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 273000,
+          "assumptions": [
+            "EPS -20%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 389000,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 501000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다.",
       "gapRate": -40.9,
@@ -393,7 +577,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -425,6 +616,44 @@
       "primaryVm": 1207900,
       "crossCheckVm": null,
       "finalVm": 1207900,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 887200,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1207900,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1570400,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "글로벌 CDMO 성장과 높은 계약 가시성을 반영한다.",
       "gapRate": 29.9,
@@ -482,7 +711,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -514,6 +750,41 @@
       "primaryVm": 186000,
       "crossCheckVm": 186000,
       "finalVm": 186000,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 159000,
+          "assumptions": [
+            "BPS·EPS -5%",
+            "PBR·PER -10%"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 186000,
+          "assumptions": [
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 215000,
+          "assumptions": [
+            "BPS·EPS +5%",
+            "PBR·PER +10%"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
       "gapRate": -7.7,
@@ -572,7 +843,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -604,6 +882,44 @@
       "primaryVm": 1339100,
       "crossCheckVm": null,
       "finalVm": 1339100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 983600,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1339100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1741000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다.",
       "gapRate": -3.8,
@@ -659,7 +975,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -691,6 +1014,44 @@
       "primaryVm": 332400,
       "crossCheckVm": null,
       "finalVm": 332400,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 244300,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 332400,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 432100,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "PUBG 장기 라이브서비스와 순현금을 반영하고 신규 IP 위험을 할인한다.",
       "gapRate": -27.2,
@@ -746,7 +1107,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -779,6 +1147,41 @@
       "primaryVm": 79200,
       "crossCheckVm": 124700,
       "finalVm": 97400,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 83300,
+          "assumptions": [
+            "BPS·EPS -5%",
+            "PBR·PER -10%"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 97400,
+          "assumptions": [
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 112500,
+          "assumptions": [
+            "BPS·EPS +5%",
+            "PBR·PER +10%"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "보험·증권 중심 복합금융 구조를 고려해 BPS×PBR을 60%, EPS×PER를 40% 병행한다. 높은 ROE와 실제 자사주 소각은 프리미엄 요인이지만 보험·증권 이익 변동성을 별도로 점검한다.",
       "gapRate": 26.8,
@@ -837,7 +1240,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -869,6 +1279,44 @@
       "primaryVm": 426800,
       "crossCheckVm": null,
       "finalVm": 426800,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 313700,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 426800,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 554600,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
       "gapRate": 79.0,
@@ -924,7 +1372,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -956,6 +1411,44 @@
       "primaryVm": 117500,
       "crossCheckVm": null,
       "finalVm": 117500,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 86300,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 117500,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 152700,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "안정적 현금흐름과 실제 소각을 반영하고 규제·성장 한계를 고려한다.",
       "gapRate": 58.0,
@@ -1011,7 +1504,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1043,6 +1543,44 @@
       "primaryVm": 767000,
       "crossCheckVm": null,
       "finalVm": 767000,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 563800,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 767000,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 996700,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
       "gapRate": 50.2,
@@ -1098,7 +1636,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1130,6 +1675,44 @@
       "primaryVm": 446200,
       "crossCheckVm": null,
       "finalVm": 446200,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 328000,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 446200,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 579900,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "LNG선 고선가 물량과 엔진 경쟁력을 반영하되 조선 경기민감도를 적용한다.",
       "gapRate": -9.5,
@@ -1185,7 +1768,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1217,6 +1807,41 @@
       "primaryVm": 86300,
       "crossCheckVm": 116100,
       "finalVm": 86300,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 73800,
+          "assumptions": [
+            "BPS·EPS -5%",
+            "PBR·PER -10%"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 86300,
+          "assumptions": [
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 99600,
+          "assumptions": [
+            "BPS·EPS +5%",
+            "PBR·PER +10%"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "정상화 BPS×적정 PBR 0.75배를 주평가하고 정상화 EPS×PER 8.0배로 교차검증한다. ROE의 지속성, CET1, 신용비용과 실제 소각 완료분을 확인해 PBR을 조정한다.",
       "gapRate": 23.3,
@@ -1275,7 +1900,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1307,6 +1939,44 @@
       "primaryVm": 167100,
       "crossCheckVm": null,
       "finalVm": 167100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 122700,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 167100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 217200,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "바이오시밀러 신제품 침투와 직접판매 레버리지를 반영한다.",
       "gapRate": 20.3,
@@ -1362,7 +2032,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1395,6 +2072,44 @@
       "primaryVm": 498600,
       "crossCheckVm": 409800,
       "finalVm": 498600,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 426000,
+          "assumptions": [
+            "BPS·EPS -5%",
+            "PBR·PER -10%",
+            "CSM·SOTP -15%"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 498600,
+          "assumptions": [
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수",
+            "공식 CSM·SOTP"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 575500,
+          "assumptions": [
+            "BPS·EPS +5%",
+            "PBR·PER +10%",
+            "CSM·SOTP +15%"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
       "gapRate": 26.4,
@@ -1453,7 +2168,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1485,6 +2207,44 @@
       "primaryVm": 1284100,
       "crossCheckVm": null,
       "finalVm": 1284100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 943900,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1284100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1668700,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
       "gapRate": 128.5,
@@ -1540,7 +2300,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1572,6 +2339,44 @@
       "primaryVm": 61100,
       "crossCheckVm": null,
       "finalVm": 61100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 44900,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 61100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 79500,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "주식분할 조정 EPS 기준이며 북미 전력·자동화 성장과 증설 위험을 함께 반영한다.",
       "gapRate": 241.2,
@@ -1627,7 +2432,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1659,6 +2471,44 @@
       "primaryVm": 207100,
       "crossCheckVm": null,
       "finalVm": 207100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 152200,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 207100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 269300,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "검색·커머스·결제 생태계와 AI 수익화를 반영하고 플랫폼 전환 위험을 점검한다.",
       "gapRate": 2.1,
@@ -1714,7 +2564,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     },
     {
@@ -1746,6 +2603,44 @@
       "primaryVm": 145100,
       "crossCheckVm": null,
       "finalVm": 145100,
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 106600,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 145100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 188600,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 최종 승인 전",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
       "vmStatus": "draft",
       "vmNote": "해외 브랜드·유통 성장과 우수한 재무구조를 반영하고 지역 변동성을 고려한다.",
       "gapRate": -5.2,
@@ -1801,7 +2696,14 @@
       "review": {
         "status": "CAVM reviewed / VM draft",
         "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "nextReviewAt": "2026-08-31",
+        "basisDates": {
+          "price": "2026-08-10",
+          "financialReport": "2026-03-31",
+          "eps": "2026-08-09",
+          "multiple": "2026-08-09",
+          "nextReview": "2026-08-31"
+        }
       }
     }
   ]
