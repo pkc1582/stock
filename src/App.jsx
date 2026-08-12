@@ -380,6 +380,7 @@ function PwaUpdateNotice() {
 function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
+    ['#data-policy', '데이터 원칙'],
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
     ['#company', '기업 분석'],
@@ -486,6 +487,80 @@ function Hero({ snapshot }) {
           <div className="hero-summary-refresh">
             <span className="hero-refresh-icon" aria-hidden="true">↻</span>
             <div><span>마지막 계산</span><strong>{generated}</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function DataPolicy() {
+  const policies = [
+    {
+      number: '01',
+      status: '자동 수집',
+      tone: 'automatic',
+      title: '실제 주가와 공시 실적',
+      description: '가격은 거래소·공공데이터의 일별 종가를, 재무는 OpenDART의 최신 사업·반기·분기보고서를 우선합니다.',
+      meta: '주가 매일 · 재무 공시 반영',
+    },
+    {
+      number: '02',
+      status: '사람 검토',
+      tone: 'reviewed',
+      title: '3년 PMO 예상 EPS',
+      description: '공시 실적과 회사 가이던스, 정상화 가정을 바탕으로 작성하고 담당자가 확인한 값만 VM 계산에 사용합니다.',
+      meta: '가정·근거·검토일 기록',
+    },
+    {
+      number: '03',
+      status: '공개 제한',
+      tone: 'restricted',
+      title: '증권사 시장 컨센서스',
+      description: '국내외 컨센서스는 공개 표시 권한이 확인된 데이터만 사용합니다. 무료 페이지를 무단 수집해 자동 게시하지 않습니다.',
+      meta: '라이선스 확보 전 미연동',
+    },
+    {
+      number: '04',
+      status: '추적 관리',
+      tone: 'monitored',
+      title: '변경과 후속 검토',
+      description: '실적 발표, 가이던스 변경, 해자 훼손과 자본배분 이슈가 생기면 기존 가정을 유지하지 않고 다시 검토합니다.',
+      meta: '변경 이력과 다음 점검일 표시',
+    },
+  ]
+
+  return (
+    <section className="data-policy-section" id="data-policy" aria-labelledby="data-policy-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="DATA & ESTIMATE POLICY"
+          title="실적과 예상치를 섞지 않습니다."
+          titleId="data-policy-title"
+          description="자동으로 들어오는 사실과 사람이 판단한 가정을 분리하고, 각 숫자의 출처·기준일·검토 상태를 함께 관리합니다."
+          aside={<span className="policy-principle">공개 원자료 → 계산 → PMO 검토 → 게시</span>}
+        />
+        <div className="data-policy-grid">
+          {policies.map((policy) => (
+            <article className={`data-policy-card tone-${policy.tone}`} key={policy.number}>
+              <div className="data-policy-topline">
+                <span>{policy.number}</span>
+                <strong>{policy.status}</strong>
+              </div>
+              <h3>{policy.title}</h3>
+              <p>{policy.description}</p>
+              <small>{policy.meta}</small>
+            </article>
+          ))}
+        </div>
+        <div className="data-policy-note">
+          <div>
+            <span aria-hidden="true">i</span>
+            <p><strong>사이트의 ‘예상 EPS’는 자동 수집된 시장 컨센서스와 같은 뜻이 아닙니다.</strong> 별도 출처가 표시되지 않은 값은 복리자산 2045 PMO가 공개 자료를 바탕으로 검토한 분석 가정입니다.</p>
+          </div>
+          <div className="data-policy-links" aria-label="주요 공식 데이터 출처">
+            <a href="https://opendart.fss.or.kr/" target="_blank" rel="noreferrer">OpenDART ↗</a>
+            <a href="https://openapi.krx.co.kr/" target="_blank" rel="noreferrer">KRX OpenAPI ↗</a>
           </div>
         </div>
       </div>
@@ -1375,6 +1450,7 @@ export default function App() {
       <PwaUpdateNotice />
       <main id="main-content">
         <Hero snapshot={snapshot} />
+        <DataPolicy />
         <MatrixSection snapshot={snapshot} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <Top20Table companies={snapshot.companies} selectedCode={selectedCompany?.code} onSelect={setSelectedCode} />
         <CompanyDetail company={selectedCompany} />
