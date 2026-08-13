@@ -846,10 +846,10 @@ def main() -> None:
         "changes": changes,
         "officialMaster": overrides_data.get("officialMaster", {}),
         "methodology": {
-            "version": "CAVM Official v1.1 · Absolute-score calibration · Sector VM v2.0",
+            "version": "CAVM Official v1.1 · Cross-agent calibration · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-            "ratingPolicy": "CAVM은 가격과 VM을 제외한 절대 배점이다. 90점 이상은 세계적 해자와 복리 가능성이 높은 기업, 85~89점은 강한 기업이나 일부 감점 요인이 있는 기업, 80~84점은 좋은 기업 후보이나 뚜렷한 약점이 있는 기업으로 해석한다. CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+            "ratingPolicy": "CAVM은 가격과 VM을 제외한다. 국내 TOP20 공식 점수를 기준점으로 두고 동일한 100점 배점 안에서 최근 실적·사이클·재무건전성 차이를 소폭 보정한다. CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
             "selectionPolicy": "공식 마스터는 CAVM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
             "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },

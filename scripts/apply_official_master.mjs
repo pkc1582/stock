@@ -18,26 +18,26 @@ const oldCompanies = new Map(companyData.companies.map((company) => [company.cod
 const screenerCompanies = new Map(screenerData.companies.map((company) => [company.code, company]))
 
 const master = [
-  { code: '058470', name: '리노공업', sector: '반도체 장비·부품', cavm: 93, finalVm: 69300, components: [29, 22, 20, 15, 7], reason: '반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.', risk: '고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.' },
-  { code: '267260', name: 'HD현대일렉트릭', sector: '전력기기', cavm: 89, finalVm: 681200, components: [27, 24, 18, 12, 8], reason: '북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.', risk: '변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.' },
-  { code: '207940', name: '삼성바이오로직스', sector: '바이오 CDMO', cavm: 92, finalVm: 1652000, components: [28, 24, 19, 14, 7], reason: '글로벌 대형 생산능력과 규제기관 승인 이력, 장기 고객관계가 높은 진입장벽을 만든다.', risk: '대규모 증설 가동률, 고객 집중과 바이오의약품 가격 정책을 추적해야 한다.' },
-  { code: '140860', name: '파크시스템스', sector: '반도체 계측', cavm: 89, finalVm: 243600, components: [29, 22, 18, 14, 6], reason: '산업용 AFM의 비접촉식 계측 기술과 고객 인증, 반복 수요가 독점적 지위를 지지한다.', risk: '고평가 부담, 반도체 고객 CAPEX와 신규 장비 채택 속도를 점검해야 한다.' },
-  { code: '192820', name: '코스맥스', sector: '화장품 ODM', cavm: 81, finalVm: 288000, components: [26, 21, 15, 11, 8], reason: '글로벌 화장품 ODM 개발력과 고객 다변화, K-뷰티 수출 확대가 장기 성장의 축이다.', risk: '중국 사업 변동성, 고객사 재고와 원재료·인건비 상승에 따른 마진 위험이 있다.' },
-  { code: '012450', name: '한화에어로스페이스', sector: '방산', cavm: 85, finalVm: 977700, components: [27, 24, 17, 10, 7], reason: '방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.', risk: '계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.' },
-  { code: '003230', name: '삼양식품', sector: '글로벌 식품', cavm: 91, finalVm: 1339100, components: [28, 24, 19, 13, 7], reason: '불닭 브랜드의 글로벌 확장과 생산능력 증설이 높은 성장성과 수익성을 뒷받침한다.', risk: '단일 브랜드 집중, 원재료·환율 변동과 해외 소비 트렌드 변화가 위험이다.' },
-  { code: '000810', name: '삼성화재', sector: '보험', cavm: 88, finalVm: 644500, components: [28, 19, 18, 14, 9], reason: '우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.', risk: '손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.' },
-  { code: '298040', name: '효성중공업', sector: '전력기기', cavm: 84, finalVm: 2611100, components: [27, 23, 17, 10, 7], reason: '고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.', risk: '프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다.' },
-  { code: '105560', name: 'KB금융', sector: '금융', cavm: 90, finalVm: 186000, components: [28, 19, 18, 15, 10], reason: '은행·카드·증권·보험의 다각화, 우수한 자본력과 실제 소각을 포함한 주주환원이 강점이다.', risk: '부동산 PF, 신용비용과 CET1·NPL·연체율 변화를 점검해야 한다.' },
-  { code: '214450', name: '파마리서치', sector: '바이오·의료미용', cavm: 93, finalVm: 540000, components: [28, 24, 20, 13, 8], price: 375500, reason: '리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.', risk: '핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.' },
-  { code: '214150', name: '클래시스', sector: '의료미용기기', cavm: 92, finalVm: 77000, components: [28, 24, 20, 14, 6], reason: '집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.', risk: '경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다.' },
-  { code: '009540', name: 'HD한국조선해양', sector: '조선', cavm: 83, finalVm: 524000, components: [26, 22, 16, 11, 8], reason: '고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.', risk: '후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.' },
-  { code: '000270', name: '기아', sector: '자동차', cavm: 84, finalVm: 163300, components: [27, 18, 16, 14, 9], reason: '글로벌 브랜드와 생산 유연성, 높은 현금창출 및 주주환원이 장기 복리의 기반이다.', risk: '관세·환율, 전기차 전환 비용과 주요 시장 인센티브 확대를 점검해야 한다.' },
-  { code: '138040', name: '메리츠금융지주', sector: '금융', cavm: 89, finalVm: 121600, components: [27, 20, 19, 13, 10], reason: '높은 자본효율과 ROE, 실제 자사주 매입·소각 중심의 명확한 자본배분이 강점이다.', risk: '보험 손해율, 증권·부동산 금융 익스포저와 규제자본 변동이 핵심 위험이다.' },
-  { code: '086790', name: '하나금융지주', sector: '금융', cavm: 85, finalVm: 155000, components: [26, 18, 17, 15, 9], reason: '안정적 은행 이익과 비은행 확장, 개선된 자본비율과 주주환원이 기업가치를 지지한다.', risk: '환율 민감도, 신용비용과 CET1·NPL·연체율을 지속 점검해야 한다.' },
-  { code: '000660', name: 'SK하이닉스', sector: '반도체', cavm: 92, finalVm: 2913000, components: [29, 24, 19, 13, 7], reason: 'HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.', risk: '메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.' },
-  { code: '030200', name: 'KT', sector: '통신·AX', cavm: 80, finalVm: 68500, components: [25, 16, 15, 15, 9], reason: '통신 현금흐름과 데이터센터·클라우드·AX 확장, 주주환원이 하방을 지지한다.', risk: '통신 규제, CAPEX와 신사업 실행 속도 및 인건비 부담을 점검해야 한다.' },
-  { code: '005930', name: '삼성전자', sector: '반도체·전자', cavm: 87, finalVm: 389000, components: [29, 20, 16, 15, 7], reason: '메모리·파운드리·모바일·가전의 규모와 재무안정성이 장기 경쟁력의 기반이다.', risk: 'HBM 고객 인증, 파운드리 수율과 메모리 피크 이익의 지속성을 보수적으로 봐야 한다.' },
-  { code: '005380', name: '현대차', sector: '자동차', cavm: 80, finalVm: 467900, components: [26, 18, 15, 12, 9], reason: '글로벌 생산·브랜드 포트폴리오, 하이브리드 경쟁력과 주주환원 확대가 강점이다.', risk: '관세·환율, 전기차 투자 회수와 금융부문 신용비용이 주요 변수다.' },
+  { code: '058470', name: '리노공업', sector: '반도체 장비·부품', cavm: 96, finalVm: 69300, components: [30, 24, 20, 15, 7], reason: '반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.', risk: '고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.' },
+  { code: '267260', name: 'HD현대일렉트릭', sector: '전력기기', cavm: 94, finalVm: 681200, components: [29, 25, 19, 13, 8], reason: '북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.', risk: '변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.' },
+  { code: '207940', name: '삼성바이오로직스', sector: '바이오 CDMO', cavm: 95, finalVm: 1652000, components: [29, 25, 19, 14, 8], reason: '글로벌 대형 생산능력과 규제기관 승인 이력, 장기 고객관계가 높은 진입장벽을 만든다.', risk: '대규모 증설 가동률, 고객 집중과 바이오의약품 가격 정책을 추적해야 한다.' },
+  { code: '140860', name: '파크시스템스', sector: '반도체 계측', cavm: 94, finalVm: 243600, components: [30, 24, 19, 14, 7], reason: '산업용 AFM의 비접촉식 계측 기술과 고객 인증, 반복 수요가 독점적 지위를 지지한다.', risk: '고평가 부담, 반도체 고객 CAPEX와 신규 장비 채택 속도를 점검해야 한다.' },
+  { code: '192820', name: '코스맥스', sector: '화장품 ODM', cavm: 92, finalVm: 288000, components: [28, 25, 18, 13, 8], reason: '글로벌 화장품 ODM 개발력과 고객 다변화, K-뷰티 수출 확대가 장기 성장의 축이다.', risk: '중국 사업 변동성, 고객사 재고와 원재료·인건비 상승에 따른 마진 위험이 있다.' },
+  { code: '012450', name: '한화에어로스페이스', sector: '방산', cavm: 94, finalVm: 977700, components: [29, 25, 18, 13, 9], reason: '방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.', risk: '계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.' },
+  { code: '003230', name: '삼양식품', sector: '글로벌 식품', cavm: 95, finalVm: 1339100, components: [29, 25, 20, 14, 7], reason: '불닭 브랜드의 글로벌 확장과 생산능력 증설이 높은 성장성과 수익성을 뒷받침한다.', risk: '단일 브랜드 집중, 원재료·환율 변동과 해외 소비 트렌드 변화가 위험이다.' },
+  { code: '000810', name: '삼성화재', sector: '보험', cavm: 94, finalVm: 644500, components: [28, 22, 19, 15, 10], reason: '우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.', risk: '손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.' },
+  { code: '298040', name: '효성중공업', sector: '전력기기', cavm: 93, finalVm: 2611100, components: [28, 25, 19, 12, 9], reason: '고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.', risk: '프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다.' },
+  { code: '105560', name: 'KB금융', sector: '금융', cavm: 94, finalVm: 186000, components: [29, 21, 19, 15, 10], reason: '은행·카드·증권·보험의 다각화, 우수한 자본력과 실제 소각을 포함한 주주환원이 강점이다.', risk: '부동산 PF, 신용비용과 CET1·NPL·연체율 변화를 점검해야 한다.' },
+  { code: '214450', name: '파마리서치', sector: '바이오·의료미용', cavm: 95, finalVm: 540000, components: [28, 25, 20, 14, 8], price: 375500, reason: '리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.', risk: '핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.' },
+  { code: '214150', name: '클래시스', sector: '의료미용기기', cavm: 94, finalVm: 77000, components: [28, 24, 20, 15, 7], reason: '집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.', risk: '경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다.' },
+  { code: '009540', name: 'HD한국조선해양', sector: '조선', cavm: 92, finalVm: 524000, components: [28, 25, 18, 13, 8], reason: '고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.', risk: '후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.' },
+  { code: '000270', name: '기아', sector: '자동차', cavm: 91, finalVm: 163300, components: [28, 21, 18, 15, 9], reason: '글로벌 브랜드와 생산 유연성, 높은 현금창출 및 주주환원이 장기 복리의 기반이다.', risk: '관세·환율, 전기차 전환 비용과 주요 시장 인센티브 확대를 점검해야 한다.' },
+  { code: '138040', name: '메리츠금융지주', sector: '금융', cavm: 93, finalVm: 121600, components: [28, 22, 19, 14, 10], reason: '높은 자본효율과 ROE, 실제 자사주 매입·소각 중심의 명확한 자본배분이 강점이다.', risk: '보험 손해율, 증권·부동산 금융 익스포저와 규제자본 변동이 핵심 위험이다.' },
+  { code: '086790', name: '하나금융지주', sector: '금융', cavm: 92, finalVm: 155000, components: [27, 21, 19, 15, 10], reason: '안정적 은행 이익과 비은행 확장, 개선된 자본비율과 주주환원이 기업가치를 지지한다.', risk: '환율 민감도, 신용비용과 CET1·NPL·연체율을 지속 점검해야 한다.' },
+  { code: '000660', name: 'SK하이닉스', sector: '반도체', cavm: 93, finalVm: 2913000, components: [29, 25, 19, 13, 7], reason: 'HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.', risk: '메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.' },
+  { code: '030200', name: 'KT', sector: '통신·AX', cavm: 89, finalVm: 68500, components: [27, 19, 18, 15, 10], reason: '통신 현금흐름과 데이터센터·클라우드·AX 확장, 주주환원이 하방을 지지한다.', risk: '통신 규제, CAPEX와 신사업 실행 속도 및 인건비 부담을 점검해야 한다.' },
+  { code: '005930', name: '삼성전자', sector: '반도체·전자', cavm: 91, finalVm: 389000, components: [29, 23, 17, 15, 7], reason: '메모리·파운드리·모바일·가전의 규모와 재무안정성이 장기 경쟁력의 기반이다.', risk: 'HBM 고객 인증, 파운드리 수율과 메모리 피크 이익의 지속성을 보수적으로 봐야 한다.' },
+  { code: '005380', name: '현대차', sector: '자동차', cavm: 89, finalVm: 467900, components: [27, 20, 18, 15, 9], reason: '글로벌 생산·브랜드 포트폴리오, 하이브리드 경쟁력과 주주환원 확대가 강점이다.', risk: '관세·환율, 전기차 투자 회수와 금융부문 신용비용이 주요 변수다.' },
 ]
 
 const componentObject = ([moat, growth, profitability, financialHealth, management]) => ({
@@ -103,27 +103,27 @@ const newAssumptions = {
 overridesData.schemaVersion = 5
 overridesData.basisDate = '2026-08-13'
 overridesData.status = 'reviewed'
-overridesData.description = '복리자산 2045 국내 TOP20 공식 마스터입니다. CAVM은 2026.08.13 절대 배점 재산정값을 사용하고, 공식 Final VM과 재현 가능한 모델 산출값을 분리해 기록합니다. 다음 시세 갱신에서는 CAVM과 공식 VM을 유지한 채 괴리율만 다시 계산합니다.'
+overridesData.description = '복리자산 2045 국내 TOP20 공식 마스터입니다. 다른 분석 에이전트의 공식 점수를 기준점으로 두고 최근 실적·사이클·재무건전성을 소폭 보정한 CAVM을 사용합니다. 공식 Final VM과 재현 가능한 모델 산출값은 분리하며 다음 시세 갱신에서는 CAVM과 공식 VM을 유지합니다.'
 overridesData.reviewPolicy = {
   ...(overridesData.reviewPolicy || {}),
   nextReviewAt: '2026-09-30',
 }
 overridesData.officialMaster = {
-  version: '국내 TOP20 CAVM 절대배점 재산정 · 2026.08.13',
+  version: '국내 TOP20 CAVM 교차검증 보정 · 2026.08.13',
   basisDate: '2026-08-13',
   changes: [
-    { code: 'CAVM', title: 'TOP20 CAVM 절대배점 재산정', detail: '가격·VM을 제외하고 해자 30 · 성장 25 · 수익성 20 · 재무 15 · 경영진·주주환원 10의 동일 기준으로 재채점' },
-    { code: '214450', title: '파마리서치 TOP20 편입', detail: '재산정 CAVM 93 · Final VM 540,000원 · 기준가 375,500원 / 에이피알 후보군 이동' },
-    { code: '105560', title: 'KB금융 TOP20 편입', detail: '재산정 CAVM 90 · Final VM 186,000원 / 한국콜마 후보군 이동' },
+    { code: 'CAVM', title: 'TOP20 CAVM 교차검증 보정', detail: '다른 분석 에이전트의 공식 점수를 기준점으로 두고 최근 실적·사이클·재무건전성 차이를 기업별 ±1~2점 중심으로 보정' },
+    { code: '214450', title: '파마리서치 TOP20 편입', detail: '교차검증 CAVM 95 · Final VM 540,000원 · 기준가 375,500원 / 에이피알 후보군 이동' },
+    { code: '105560', title: 'KB금융 TOP20 편입', detail: '교차검증 CAVM 94 · Final VM 186,000원 / 한국콜마 후보군 이동' },
     { code: '086790', title: '하나금융지주 VM 상향', detail: '122,500원 → 155,000원' },
     { code: '005930', title: '삼성전자 정상화 VM 반영', detail: '메모리 전용 기준 · Final VM 389,000원' },
     { code: '000660', title: 'SK하이닉스 정상화 VM 반영', detail: '메모리 전용 기준 · Final VM 2,913,000원' },
   ],
   candidates: [
-    { code: '042700', name: '한미반도체', cavm: null, finalVm: 205000, note: '기존 CAVM은 압축 배점값이므로 새 절대 배점 기준으로 재검토합니다.' },
-    { code: '319660', name: 'PSK', cavm: null, finalVm: 164000, note: '공정 장비 점유율과 고객 CAPEX를 새 절대 배점 기준으로 재검토합니다.' },
-    { code: '052690', name: '한국전력기술', cavm: null, finalVm: 73000, note: '원전 수주 가시성과 프로젝트 일정을 새 절대 배점 기준으로 재검토합니다.' },
-    { code: '034020', name: '두산에너빌리티', cavm: null, finalVm: 44400, note: '원전·가스터빈 수주와 재무 개선을 새 절대 배점 기준으로 재검토합니다.' },
+    { code: '042700', name: '한미반도체', cavm: 94, finalVm: 205000, note: '반도체 장비 해자와 HBM CAPEX 민감도를 재검토합니다.' },
+    { code: '319660', name: 'PSK', cavm: 91, finalVm: 164000, note: '공정 장비 점유율과 고객 CAPEX 지속성을 재검토합니다.' },
+    { code: '052690', name: '한국전력기술', cavm: 91, finalVm: 73000, note: '원전 수주 가시성과 프로젝트 일정을 재검토합니다.' },
+    { code: '034020', name: '두산에너빌리티', cavm: 90, finalVm: 44400, note: '원전·가스터빈 수주와 재무 개선을 재검토합니다.' },
     { code: '278470', name: '에이피알', cavm: null, finalVm: null, note: '파마리서치 편입에 따라 후보군에서 CAVM·VM을 재검토합니다.' },
     { code: '161890', name: '한국콜마', cavm: null, finalVm: null, note: 'KB금융 편입에 따라 후보군에서 CAVM·VM을 재검토합니다.' },
   ],
