@@ -20,8 +20,8 @@
         "financialHealth": 15,
         "management": 7
       },
-      "currentPrice": 65700,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 71400,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
       "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
@@ -30,7 +30,23 @@
         "operatingMargin2025": 47.51,
         "roe2025": 22.45,
         "debtRatio2025": 8.3,
-        "eps2025": null
+        "eps2025": 2002,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "OFS",
+          "rceptNo": "20260514000391",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 998,
+          "operatingMargin": 47.41,
+          "roeAnnualized": 22.41,
+          "debtRatio": 17.04,
+          "epsCumulative": 532,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -61,8 +77,8 @@
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 762000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 782000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
       "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
@@ -71,7 +87,23 @@
         "operatingMargin2025": 24.4,
         "roe2025": 41.34,
         "debtRatio2025": 134.63,
-        "eps2025": null
+        "eps2025": 20354,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002315",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 10365,
+          "operatingMargin": 24.92,
+          "roeAnnualized": 40.36,
+          "debtRatio": 158.34,
+          "epsCumulative": 5781,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -102,8 +134,8 @@
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 1556000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 1549000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "글로벌 대형 생산능력과 규제기관 승인 이력, 장기 고객관계가 높은 진입장벽을 만든다.",
       "risk": "대규모 증설 가동률, 고객 집중과 바이오의약품 가격 정책을 추적해야 한다.",
@@ -112,7 +144,25 @@
         "operatingMargin2025": 45.41,
         "roe2025": 19.44,
         "debtRatio2025": 48.44,
-        "eps2025": null
+        "eps2025": null,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002129",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 12571,
+          "operatingMargin": 46.2,
+          "roeAnnualized": 24.42,
+          "debtRatio": 51.4,
+          "epsCumulative": null,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "epsCumulative"
+          ]
+        }
       },
       "sources": [
         {
@@ -144,8 +194,8 @@
         "financialHealth": 14,
         "management": 7
       },
-      "currentPrice": 250500,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 291000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "산업용 AFM의 비접촉식 계측 기술과 고객 인증, 반복 수요가 독점적 지위를 지지한다.",
       "risk": "고평가 부담, 반도체 고객 CAPEX와 신규 장비 채택 속도를 점검해야 한다.",
@@ -154,7 +204,23 @@
         "operatingMargin2025": 20.52,
         "roe2025": 16.69,
         "debtRatio2025": 55.44,
-        "eps2025": null
+        "eps2025": 4963,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260514001410",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 394,
+          "operatingMargin": 5.33,
+          "roeAnnualized": 9.02,
+          "debtRatio": 60.91,
+          "epsCumulative": 737,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -185,8 +251,8 @@
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 205500,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 249500,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "글로벌 화장품 ODM 개발력과 고객 다변화, K-뷰티 수출 확대가 장기 성장의 축이다.",
       "risk": "중국 사업 변동성, 고객사 재고와 원재료·인건비 상승에 따른 마진 위험이 있다.",
@@ -195,7 +261,23 @@
         "operatingMargin2025": 8.16,
         "roe2025": 23.38,
         "debtRatio2025": 247.1,
-        "eps2025": null
+        "eps2025": 10847,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260813001436",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 14769,
+          "operatingMargin": 8.58,
+          "roeAnnualized": 28.37,
+          "debtRatio": 276.14,
+          "epsCumulative": 7956,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -225,8 +307,8 @@
         "financialHealth": 13,
         "management": 9
       },
-      "currentPrice": 1097000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 1156000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
       "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
@@ -235,7 +317,23 @@
         "operatingMargin2025": 11.57,
         "roe2025": 15.57,
         "debtRatio2025": 221.38,
-        "eps2025": null
+        "eps2025": null,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260513000860",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 57510,
+          "operatingMargin": 11.11,
+          "roeAnnualized": 12.3,
+          "debtRatio": 224.88,
+          "epsCumulative": 4999,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -266,8 +364,8 @@
         "financialHealth": 13,
         "management": 7
       },
-      "currentPrice": 1306000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 1204000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "불닭 브랜드의 글로벌 확장과 생산능력 증설이 높은 성장성과 수익성을 뒷받침한다.",
       "risk": "단일 브랜드 집중, 원재료·환율 변동과 해외 소비 트렌드 변화가 위험이다.",
@@ -276,7 +374,23 @@
         "operatingMargin2025": 22.29,
         "roe2025": 37.02,
         "debtRatio2025": 72.74,
-        "eps2025": null
+        "eps2025": 52156,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260513000571",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 7144,
+          "operatingMargin": 24.79,
+          "roeAnnualized": 43.19,
+          "debtRatio": 69.84,
+          "epsCumulative": 19198,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -307,8 +421,8 @@
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 645000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 628000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.",
       "risk": "손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.",
@@ -317,7 +431,26 @@
         "operatingMargin2025": null,
         "roe2025": 10.95,
         "debtRatio2025": 352.98,
-        "eps2025": null
+        "eps2025": 47478,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001950",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 11.18,
+          "debtRatio": 317.02,
+          "epsCumulative": 14930,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -348,8 +481,8 @@
         "financialHealth": 13,
         "management": 9
       },
-      "currentPrice": 2832000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 2892000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
       "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다.",
@@ -358,7 +491,23 @@
         "operatingMargin2025": 12.52,
         "roe2025": 22.13,
         "debtRatio2025": 190.31,
-        "eps2025": null
+        "eps2025": 55832,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260813001554",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 30452,
+          "operatingMargin": 13.68,
+          "roeAnnualized": 20.16,
+          "debtRatio": 213.51,
+          "epsCumulative": 27905,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -389,8 +538,8 @@
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 175800,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 166000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "은행·카드·증권·보험의 다각화, 우수한 자본력과 실제 소각을 포함한 주주환원이 강점이다.",
       "risk": "부동산 PF, 신용비용과 CET1·NPL·연체율 변화를 점검해야 한다.",
@@ -399,7 +548,26 @@
         "operatingMargin2025": null,
         "roe2025": 9.68,
         "debtRatio2025": 1211.73,
-        "eps2025": null
+        "eps2025": 15410,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002888",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 12.57,
+          "debtRatio": 1257.11,
+          "epsCumulative": 5165,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -430,8 +598,8 @@
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 375500,
-      "priceBasisDate": "2026-08-13",
+      "currentPrice": 408000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
       "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
@@ -440,7 +608,23 @@
         "operatingMargin2025": 39.98,
         "roe2025": 26.02,
         "debtRatio2025": 44.21,
-        "eps2025": null
+        "eps2025": 14933,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001997",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 1461,
+          "operatingMargin": 39.21,
+          "roeAnnualized": 26.78,
+          "debtRatio": 48.18,
+          "epsCumulative": 4245,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -472,8 +656,8 @@
         "financialHealth": 14,
         "management": 7
       },
-      "currentPrice": 45900,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 43800,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
       "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다.",
@@ -482,7 +666,23 @@
         "operatingMargin2025": 50.65,
         "roe2025": 26.28,
         "debtRatio2025": 27.73,
-        "eps2025": null
+        "eps2025": 2017,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001293",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 872,
+          "operatingMargin": 42.67,
+          "roeAnnualized": 24.54,
+          "debtRatio": 51.12,
+          "epsCumulative": 515,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -512,8 +712,8 @@
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 398500,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 380500,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.",
       "risk": "후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.",
@@ -522,7 +722,23 @@
         "operatingMargin2025": 13.04,
         "roe2025": 18.85,
         "debtRatio2025": 133.86,
-        "eps2025": null
+        "eps2025": 30664,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515001799",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 81409,
+          "operatingMargin": 16.66,
+          "roeAnnualized": 26.68,
+          "debtRatio": 143.73,
+          "epsCumulative": 11939,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -554,8 +770,8 @@
         "financialHealth": 15,
         "management": 9
       },
-      "currentPrice": 134900,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 135600,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "글로벌 브랜드와 생산 유연성, 높은 현금창출 및 주주환원이 장기 복리의 기반이다.",
       "risk": "관세·환율, 전기차 전환 비용과 주요 시장 인센티브 확대를 점검해야 한다.",
@@ -564,7 +780,23 @@
         "operatingMargin2025": 7.95,
         "roe2025": 12.91,
         "debtRatio2025": 61.76,
-        "eps2025": null
+        "eps2025": 19382,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002675",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 295019,
+          "operatingMargin": 7.47,
+          "roeAnnualized": 11.92,
+          "debtRatio": 70.93,
+          "epsCumulative": 4713,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -594,17 +826,36 @@
         "financialHealth": 14,
         "management": 10
       },
-      "currentPrice": 126300,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 119000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "높은 자본효율과 ROE, 실제 자사주 매입·소각 중심의 명확한 자본배분이 강점이다.",
       "risk": "보험 손해율, 증권·부동산 금융 익스포저와 규제자본 변동이 핵심 위험이다.",
       "financials": {
         "revenue2025": null,
         "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "roe2025": 21.18,
+        "debtRatio2025": 1102.87,
+        "eps2025": 12903,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260529001907",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 23.6,
+          "debtRatio": 1124.09,
+          "epsCumulative": 3926,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -636,8 +887,8 @@
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 134700,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 127900,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "안정적 은행 이익과 비은행 확장, 개선된 자본비율과 주주환원이 기업가치를 지지한다.",
       "risk": "환율 민감도, 신용비용과 CET1·NPL·연체율을 지속 점검해야 한다.",
@@ -646,7 +897,26 @@
         "operatingMargin2025": null,
         "roe2025": 9.05,
         "debtRatio2025": 1377.89,
-        "eps2025": null
+        "eps2025": 13954,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002550",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 10.69,
+          "debtRatio": 1375.74,
+          "epsCumulative": 4322,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -676,8 +946,8 @@
         "financialHealth": 13,
         "management": 7
       },
-      "currentPrice": 1422000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 1504000,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
       "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
@@ -686,7 +956,23 @@
         "operatingMargin2025": 48.59,
         "roe2025": 44.14,
         "debtRatio2025": 45.95,
-        "eps2025": null
+        "eps2025": 62044,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002287",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 525763,
+          "operatingMargin": 71.53,
+          "roeAnnualized": 113.23,
+          "debtRatio": 35.56,
+          "epsCumulative": 57175,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -718,8 +1004,8 @@
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 53300,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 52700,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "통신 현금흐름과 데이터센터·클라우드·AX 확장, 주주환원이 하방을 지지한다.",
       "risk": "통신 규제, CAPEX와 신사업 실행 속도 및 인건비 부담을 점검해야 한다.",
@@ -728,7 +1014,23 @@
         "operatingMargin2025": 8.74,
         "roe2025": 9.81,
         "debtRatio2025": 120.72,
-        "eps2025": null
+        "eps2025": 7119,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002674",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 67784,
+          "operatingMargin": 7.12,
+          "roeAnnualized": 7.87,
+          "debtRatio": 117.62,
+          "epsCumulative": 1460,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -758,8 +1060,8 @@
         "financialHealth": 15,
         "management": 7
       },
-      "currentPrice": 231000,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 255500,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "메모리·파운드리·모바일·가전의 규모와 재무안정성이 장기 경쟁력의 기반이다.",
       "risk": "HBM 고객 인증, 파운드리 수율과 메모리 피크 이익의 지속성을 보수적으로 봐야 한다.",
@@ -768,7 +1070,23 @@
         "operatingMargin2025": 13.07,
         "roe2025": 10.78,
         "debtRatio2025": 29.94,
-        "eps2025": null
+        "eps2025": 6605,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002181",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 1338734,
+          "operatingMargin": 42.75,
+          "roeAnnualized": 40.93,
+          "debtRatio": 30.15,
+          "epsCumulative": 7123,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -800,8 +1118,8 @@
         "financialHealth": 15,
         "management": 9
       },
-      "currentPrice": 395500,
-      "priceBasisDate": "2026-08-10",
+      "currentPrice": 409500,
+      "priceBasisDate": "2026-08-12",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "reason": "글로벌 생산·브랜드 포트폴리오, 하이브리드 경쟁력과 주주환원 확대가 강점이다.",
       "risk": "관세·환율, 전기차 투자 회수와 금융부문 신용비용이 주요 변수다.",
@@ -810,7 +1128,23 @@
         "operatingMargin2025": 6.16,
         "roe2025": 8.36,
         "debtRatio2025": 188.95,
-        "eps2025": null
+        "eps2025": 36088,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11013",
+          "periodLabel": "2026년 1분기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260515002418",
+          "periodEnd": "2026-03-31",
+          "fetchedAt": "2026-08-13T23:07:36+09:00",
+          "revenueEok": 459389,
+          "operatingMargin": 5.47,
+          "roeAnnualized": 7.96,
+          "debtRatio": 190.28,
+          "epsCumulative": 8897,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -830,18 +1164,18 @@
     }
   ],
   "financialDataSummary": {
-    "checkedAt": "2026-08-13T19:31:57+09:00",
+    "checkedAt": "2026-08-13T23:07:36+09:00",
     "asOf": "2026-08-13",
     "companyCount": 20,
     "latestReportSuccessCount": 20,
     "latestReportCompleteCount": 15,
     "latestReportPartialCount": 5,
     "latestReportFailedCount": 0,
-    "latestReportSuccessRate": 1,
+    "latestReportSuccessRate": 1.0,
     "minimumSuccessRate": 0.8,
     "annual2025ReportCount": 20,
     "annual2025PartialCount": 6,
-    "annual2025ChangedCount": 0,
+    "annual2025ChangedCount": 18,
     "preservedNewerReportCount": 0
   }
 }
