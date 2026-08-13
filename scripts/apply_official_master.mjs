@@ -103,18 +103,17 @@ const newAssumptions = {
 overridesData.schemaVersion = 5
 overridesData.basisDate = '2026-08-13'
 overridesData.status = 'reviewed'
-overridesData.description = '복리자산 2045 국내 TOP20 공식 마스터입니다. 다른 분석 에이전트의 공식 점수를 기준점으로 두고 최근 실적·사이클·재무건전성을 소폭 보정한 CAVM을 사용합니다. 공식 Final VM과 재현 가능한 모델 산출값은 분리하며 다음 시세 갱신에서는 CAVM과 공식 VM을 유지합니다.'
+overridesData.description = '복리자산 2045 국내 TOP20 공식 마스터입니다. CAVM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.'
 overridesData.reviewPolicy = {
   ...(overridesData.reviewPolicy || {}),
   nextReviewAt: '2026-09-30',
 }
 overridesData.officialMaster = {
-  version: '국내 TOP20 CAVM 교차검증 보정 · 2026.08.13',
+  version: '국내 TOP20 공식 마스터 · 2026.08.13',
   basisDate: '2026-08-13',
   changes: [
-    { code: 'CAVM', title: 'TOP20 CAVM 교차검증 보정', detail: '다른 분석 에이전트의 공식 점수를 기준점으로 두고 최근 실적·사이클·재무건전성 차이를 기업별 ±1~2점 중심으로 보정' },
-    { code: '214450', title: '파마리서치 TOP20 편입', detail: '교차검증 CAVM 95 · Final VM 540,000원 · 기준가 375,500원 / 에이피알 후보군 이동' },
-    { code: '105560', title: 'KB금융 TOP20 편입', detail: '교차검증 CAVM 94 · Final VM 186,000원 / 한국콜마 후보군 이동' },
+    { code: '214450', title: '파마리서치 TOP20 신규 편입', detail: 'CAVM 95 · Final VM 540,000원 / 에이피알 후보군 이동' },
+    { code: '105560', title: 'KB금융 TOP20 신규 편입', detail: 'CAVM 94 · Final VM 186,000원 / 한국콜마 후보군 이동' },
     { code: '086790', title: '하나금융지주 VM 상향', detail: '122,500원 → 155,000원' },
     { code: '005930', title: '삼성전자 정상화 VM 반영', detail: '메모리 전용 기준 · Final VM 389,000원' },
     { code: '000660', title: 'SK하이닉스 정상화 VM 반영', detail: '메모리 전용 기준 · Final VM 2,913,000원' },

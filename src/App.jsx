@@ -601,9 +601,9 @@ function LatestChanges({ snapshot, onSelect }) {
       <div className="page-shell">
         <SectionHeading
           eyebrow="LATEST UPDATE"
-          title="이번 갱신에서 바뀐 것"
+          title="최근 공식 변경 이력"
           titleId="changes-title"
-          description="직전 공개 스냅샷과 비교해 VM·괴리율·CAVM·TOP20·최신 보고서의 변화를 분리해서 기록합니다."
+          description="TOP20 편입·탈락, 중요 VM·CAVM 변경, 가격 판단 구간 전환과 최신 보고서 반영처럼 투자 판단에 의미 있는 변화만 기록합니다."
           aside={<span className="changes-basis">{officialMaster.version || `비교 기준 ${formatDateTime(changes.comparedAt)}`}</span>}
         />
         {groups.length ? (
@@ -624,7 +624,7 @@ function LatestChanges({ snapshot, onSelect }) {
         ) : (
           <div className="no-material-change">
             <span aria-hidden="true">✓</span>
-            <div><strong>직전 스냅샷 대비 중요한 변경은 없습니다.</strong><p>VM·CAVM·TOP20 구성·최신 보고서가 동일합니다. 시세 갱신으로 괴리율이 바뀌면 다음 기록에 자동으로 나타납니다.</p></div>
+            <div><strong>새로운 공식 변경은 없습니다.</strong><p>단순 시세 변동과 내부 검토 과정은 제외하고, 투자 판단에 의미 있는 변화가 확인될 때 기록합니다.</p></div>
           </div>
         )}
         <div className="data-health-grid" aria-label="자동화 데이터 상태">

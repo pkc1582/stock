@@ -119,6 +119,7 @@ class ValuationModelTests(unittest.TestCase):
             "companies": [{
                 "code": "005930",
                 "name": "삼성전자",
+                "rank": 1,
                 "finalVm": 500_000,
                 "gapRate": -40,
                 "cavm": 90,
@@ -130,8 +131,8 @@ class ValuationModelTests(unittest.TestCase):
             "name": "삼성전자",
             "rank": 1,
             "finalVm": 389_000,
-            "gapRate": -41,
-            "cavm": 91,
+            "gapRate": -30,
+            "cavm": 92,
             "financials": {"latestReport": {"rceptNo": "new", "periodEnd": "2026-03-31", "periodLabel": "1분기"}},
         }]
 
@@ -142,6 +143,64 @@ class ValuationModelTests(unittest.TestCase):
         self.assertEqual(len(changes["gap"]), 1)
         self.assertEqual(len(changes["cavm"]), 1)
         self.assertEqual(len(changes["reports"]), 1)
+
+    def test_change_log_omits_internal_and_minor_market_noise(self):
+        previous = {
+            "generatedAt": "2026-08-12T10:00:00+09:00",
+            "companies": [{
+                "code": "005930",
+                "name": "삼성전자",
+                "rank": 1,
+                "finalVm": 389_000,
+                "gapRate": -25,
+                "cavm": 90,
+                "financials": {"latestReport": {"rceptNo": "old", "periodEnd": "2026-03-31"}},
+            }],
+        }
+        current = [{
+            "code": "005930",
+            "name": "삼성전자",
+            "rank": 1,
+            "finalVm": 389_000,
+            "gapRate": -23,
+            "cavm": 91,
+            "financials": {"latestReport": {"rceptNo": "amended", "periodEnd": "2026-03-31"}},
+        }]
+
+        changes = change_log_for(previous, current, "2026-08-13T10:00:00+09:00")
+
+        self.assertFalse(changes["hasMaterialChanges"])
+        self.assertEqual(changes["gap"], [])
+        self.assertEqual(changes["cavm"], [])
+        self.assertEqual(changes["reports"], [])
+
+    def test_change_log_keeps_price_judgement_boundary_crossing(self):
+        previous = {
+            "generatedAt": "2026-08-12T10:00:00+09:00",
+            "companies": [{
+                "code": "005930",
+                "name": "삼성전자",
+                "rank": 1,
+                "finalVm": 389_000,
+                "gapRate": -19.5,
+                "cavm": 91,
+                "financials": {},
+            }],
+        }
+        current = [{
+            "code": "005930",
+            "name": "삼성전자",
+            "rank": 1,
+            "finalVm": 389_000,
+            "gapRate": -20.1,
+            "cavm": 91,
+            "financials": {},
+        }]
+
+        changes = change_log_for(previous, current, "2026-08-13T10:00:00+09:00")
+
+        self.assertTrue(changes["hasMaterialChanges"])
+        self.assertEqual(len(changes["gap"]), 1)
 
 
 if __name__ == "__main__":
