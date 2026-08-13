@@ -223,6 +223,12 @@ def valuation_scenarios_for(
     model = str(valuation["valuationModel"])
     rounding_unit = int(assumption.get("roundingUnit", DEFAULT_ROUNDING_UNIT))
     base_vm = int(valuation["finalVm"])
+    model_base_vm = float(valuation.get("modelCalculatedVm") or base_vm)
+
+    def align_to_official_base(value: float) -> float:
+        if valuation.get("officialVmOverride") and model_base_vm > 0:
+            return value / model_base_vm * base_vm
+        return value
 
     if model in {"standard_per", "memory_normalized"}:
         horizon_years = int(valuation.get("valuationHorizonYears", 3))
@@ -237,14 +243,14 @@ def valuation_scenarios_for(
         result: dict[str, dict[str, Any]] = {}
         for key, (eps_factor, multiple_factor, discount_delta) in settings.items():
             adjusted_discount = max(0.0, base_discount + discount_delta)
-            value = rounded_won(
+            raw_value = (
                 base_eps
                 * eps_factor
                 * base_multiple
                 * multiple_factor
-                / ((1 + adjusted_discount / 100) ** horizon_years),
-                rounding_unit,
+                / ((1 + adjusted_discount / 100) ** horizon_years)
             )
+            value = rounded_won(align_to_official_base(raw_value), rounding_unit)
             if key == "base":
                 value = base_vm
             eps_delta = round((eps_factor - 1) * 100)
@@ -281,7 +287,7 @@ def valuation_scenarios_for(
             value = primary + csm_adjustment * csm_factor
         else:
             value = primary
-        rounded_value = rounded_won(value, rounding_unit)
+        rounded_value = rounded_won(align_to_official_base(value), rounding_unit)
         if key == "base":
             rounded_value = base_vm
         fundamental_delta = round((fundamental_factor - 1) * 100)
@@ -655,6 +661,28 @@ def valuation_for(
     return common
 
 
+def apply_official_final_vm(
+    code: str,
+    valuation: dict[str, Any],
+    assumption: dict[str, Any],
+) -> dict[str, Any]:
+    """Keep the reviewed master VM separate from the model's reproducible calculation."""
+    official_value = assumption.get("officialFinalVm")
+    if official_value is None:
+        return valuation
+    official_vm = require_number(official_value, f"{code}.officialFinalVm", 1)
+    if not official_vm.is_integer():
+        raise ValueError(f"{code}.officialFinalVm must be an integer")
+    result = dict(valuation)
+    result["modelCalculatedVm"] = int(valuation["finalVm"])
+    result["finalVm"] = int(official_vm)
+    result["officialVmOverride"] = True
+    result["officialVmSource"] = str(
+        assumption.get("officialVmSource", "복리자산 2045 국내 TOP20 공식 마스터")
+    )
+    return result
+
+
 def main() -> None:
     previous_output = load_json(OUTPUT_PATH) if OUTPUT_PATH.exists() else None
     companies_data = load_json(COMPANIES_PATH)
@@ -702,6 +730,7 @@ def main() -> None:
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
         valuation = valuation_for(code, assumption, overseas_adjustment_weight)
+        valuation = apply_official_final_vm(code, valuation, assumption)
         vm_scenarios = valuation_scenarios_for(valuation, assumption)
         final_vm = int(valuation["finalVm"])
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
@@ -726,6 +755,7 @@ def main() -> None:
         built.append(
             {
                 "code": code,
+                "officialOrder": int(require_number(company.get("officialOrder", len(built) + 1), f"{code}.officialOrder", 1)),
                 "name": str(company.get("name", "")),
                 "sector": str(company.get("sector", "")),
                 "cavm": cavm,
@@ -768,6 +798,7 @@ def main() -> None:
     built.sort(
         key=lambda item: (
             -item["cavm"],
+            item["officialOrder"],
             -item["components"]["moat"],
             -item["components"]["growth"],
             -item["components"]["profitability"],
@@ -775,8 +806,14 @@ def main() -> None:
             item["name"],
         )
     )
-    for rank, item in enumerate(built, start=1):
-        item["rank"] = rank
+    previous_cavm: int | None = None
+    display_rank = 0
+    for position, item in enumerate(built, start=1):
+        if item["cavm"] != previous_cavm:
+            display_rank = position
+            previous_cavm = item["cavm"]
+        item["rank"] = display_rank
+        item["position"] = position
         # Keep rank first for easier review and stable UI consumption.
         item_order = ["rank"] + [key for key in item if key != "rank"]
         item_copy = {key: item[key] for key in item_order}
@@ -786,18 +823,34 @@ def main() -> None:
     kst = timezone(timedelta(hours=9))
     generated_at = datetime.now(kst).isoformat(timespec="seconds")
     changes = change_log_for(previous_output, built, generated_at)
+    latest_reports = [
+        ((item.get("financials") or {}).get("latestReport") or {})
+        for item in built
+    ]
+    financial_summary = {
+        "companyCount": len(built),
+        "latestReportSuccessCount": sum(1 for report in latest_reports if report.get("rceptNo")),
+        "latestReportCompleteCount": sum(1 for report in latest_reports if report.get("dataQuality") == "complete"),
+        "latestReportPartialCount": sum(1 for report in latest_reports if report.get("dataQuality") == "partial"),
+    }
+    status_input = dict(companies_data)
+    status_input["financialDataSummary"] = financial_summary
+    data_status = data_status_for(status_input)
+    if str(overrides_data.get("status")) == "reviewed":
+        data_status = data_status.replace("VM 수동가정 초안", "공식 마스터 VM 검토 완료")
     output = {
         "generatedAt": generated_at,
         "basisDate": str(companies_data.get("basisDate", "")),
-        "dataStatus": data_status_for(companies_data),
-        "financialDataSummary": companies_data.get("financialDataSummary", {}),
+        "dataStatus": data_status,
+        "financialDataSummary": financial_summary,
         "changes": changes,
+        "officialMaster": overrides_data.get("officialMaster", {}),
         "methodology": {
             "version": "CAVM Official v1.0 · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
             "ratingPolicy": "CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
-            "selectionPolicy": "표시 순서는 CAVM, 해자, 성장성, 수익성, 재무건전성 순이다. 최종 경계 동점은 업종 분산을 사람이 검토한다.",
+            "selectionPolicy": "공식 마스터는 CAVM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
             "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },
         "summary": {

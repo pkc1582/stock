@@ -110,6 +110,9 @@ button { color: inherit; }
 .change-group-title span { color: var(--deep); font-size: 13px; font-weight: 800; }
 .change-group-title strong { min-width: 26px; padding: 4px 7px; border-radius: 999px; background: #e5ece5; color: #4e645a; font-size: 10px; text-align: center; }
 .change-group.tone-vm { border-top: 3px solid #a78b3e; }
+.change-group.tone-official { grid-column: 1 / -1; border-top: 3px solid #0d7655; }
+.change-group.tone-official .change-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.change-group.tone-official .change-items button { border-right: 1px solid #e2e7e1; }
 .change-group.tone-gap { border-top: 3px solid #18805a; }
 .change-group.tone-ranking { border-top: 3px solid #557d8d; }
 .change-group.tone-research { border-top: 3px solid #735f8d; }
@@ -157,7 +160,7 @@ button { color: inherit; }
 .data-policy-links a { min-height: 40px; display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid #aebcb2; background: #fbfcf8; color: #31594a; font-size: 11px; font-weight: 800; white-space: nowrap; }
 .data-policy-links a:hover { border-color: var(--green); background: var(--deep); color: white; }
 
-.matrix-section, .top20-section, .company-section, .method-section { padding: 112px 0; }
+.matrix-section, .top20-section, .candidate-section, .company-section, .method-section { padding: 112px 0; }
 .section-heading { display: flex; justify-content: space-between; gap: 60px; align-items: end; margin-bottom: 44px; }
 .section-heading > div:first-child { max-width: 740px; }
 .section-heading h2 { margin: 13px 0 13px; color: var(--deep); font-size: clamp(34px, 4vw, 54px); line-height: 1.14; letter-spacing: -2.6px; }
@@ -268,6 +271,18 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .opinion-text { font-weight: 600; }
 .table-footnote { margin: 14px 0 0; color: #7b8782; font-size: 10px; }
 
+.candidate-section { border-top: 1px solid #d4dbd2; background: #f7f7f1; }
+.candidate-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #cdd5cc; border-left: 1px solid #cdd5cc; }
+.candidate-grid article { min-width: 0; min-height: 240px; padding: 24px; border-right: 1px solid #cdd5cc; border-bottom: 1px solid #cdd5cc; background: #fbfcf8; }
+.candidate-topline { display: flex; align-items: center; justify-content: space-between; color: #718079; font-size: 11px; font-weight: 800; }
+.candidate-topline small { font-size: 11px; }
+.candidate-grid h3 { margin: 34px 0 18px; color: var(--deep); font-size: 21px; letter-spacing: -.7px; }
+.candidate-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #dfe5dd; }
+.candidate-values div { min-width: 0; padding: 13px; background: #f1f4ee; }
+.candidate-values span { display: block; color: #728078; font-size: 10px; }
+.candidate-values strong { display: block; margin-top: 5px; overflow: hidden; color: var(--green); font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
+.candidate-grid p { margin: 17px 0 0; color: #65736d; font-size: 12.5px; line-height: 1.7; }
+
 .company-section { background: var(--deep); color: white; }
 .company-header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; padding-bottom: 46px; border-bottom: 1px solid rgba(255,255,255,.12); }
 .company-rankline { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -333,6 +348,10 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .vm-cross-check strong { display: block; margin-top: 5px; color: #b9c8c3; font-size: 10px; }
 .vm-cross-check .final strong { color: #e2ce88; }
 .vm-check-strip { display: grid; grid-template-columns: auto 1fr; gap: 9px; padding: 10px 13px; border-top: 1px solid rgba(255,255,255,.09); }
+.official-vm-note { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 10px; margin-top: 12px; padding: 11px 13px; border: 1px solid rgba(226,206,136,.24); background: rgba(226,206,136,.055); }
+.official-vm-note span { color: #e2ce88; font-size: 10px; font-weight: 800; }
+.official-vm-note strong { color: #f0dfa5; font-size: 14px; }
+.official-vm-note small { color: #8fa39b; font-size: 10px; line-height: 1.5; text-align: right; }
 .vm-check-strip span { color: #6cd4a3; font-size: 8px; font-weight: 800; }
 .vm-check-strip p { margin: 0; color: #7f9790; font-size: 8px; line-height: 1.55; }
 .opinion-banner { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding: 13px 15px; border: 1px solid rgba(197,169,94,.3); background: rgba(197,169,94,.05); }
@@ -531,11 +550,12 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(43px, 12vw, 62px); letter-spacing: -3px; }
   .hero-lead { font-size: 15px; }
-  .changes-section, .data-policy-section, .matrix-section, .top20-section, .company-section, .method-section { padding: 78px 0; }
+  .changes-section, .data-policy-section, .matrix-section, .top20-section, .candidate-section, .company-section, .method-section { padding: 78px 0; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading h2 { font-size: 38px; letter-spacing: -2px; }
   .heading-aside { margin-top: 20px; }
   .changes-grid { grid-template-columns: 1fr; }
+  .change-group.tone-official .change-items { grid-template-columns: 1fr; }
   .data-policy-note { align-items: flex-start; flex-direction: column; }
   .chart-toolbar { display: block; padding: 16px; }
   .chart-note { display: block; margin-top: 9px; }
@@ -550,6 +570,7 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
   .company-score-card { justify-self: start; min-width: 0; padding: 14px 0 0 18px; text-align: left; }
   .company-layout { grid-template-columns: 1fr; }
   .method-grid { grid-template-columns: 1fr 1fr; }
+  .candidate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sector-model-grid { grid-template-columns: 1fr; }
   .sector-model-grid article:last-child { grid-column: auto; }
   .method-grid article { min-height: 220px; }
@@ -594,6 +615,8 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
   .chart-legend { gap: 10px; }
   .chart-opportunity-caption { align-items: flex-end; flex-direction: column; gap: 2px; padding: 12px 16px; }
   .method-grid { grid-template-columns: 1fr; }
+  .candidate-grid { grid-template-columns: 1fr; }
+  .candidate-grid article { min-height: 210px; }
   .method-grid article { min-height: 185px; }
   .method-grid h3 { margin-top: 30px; }
   .detail-card { padding: 21px 17px; }
@@ -610,6 +633,8 @@ footer p { color: #95a49f; font-size: 12px; text-align: center; }
   .vm-cross-check > div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
   .vm-cross-check > div:last-child { border-bottom: 0; }
   .vm-check-strip { grid-template-columns: 1fr; gap: 4px; }
+  .official-vm-note { grid-template-columns: 1fr; }
+  .official-vm-note small { text-align: left; }
   .vm-scenario-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
   .vm-scenario-heading > div { align-items: flex-start; flex-direction: column; gap: 3px; }
   .vm-scenario-grid { grid-template-columns: 1fr; }
@@ -838,7 +863,7 @@ td { padding-block: 15px; }
   @page { size: A4; margin: 14mm; }
   body { background: white; color: #10231f; }
   .site-header, .hero, .changes-section, .data-policy-section, .matrix-section,
-  .top20-section, .method-section, .screener-section, footer,
+  .top20-section, .candidate-section, .method-section, .screener-section, footer,
   .company-actions, .editor-actions, .pwa-update-notice { display: none !important; }
   .company-section { padding: 0; background: white; color: #10231f; }
   .company-section .page-shell { width: 100%; }

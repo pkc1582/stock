@@ -11,6 +11,7 @@ from scripts.build_dataset import (
     valuation_scenarios_for,
     vm_confidence_for,
     change_log_for,
+    apply_official_final_vm,
 )
 
 
@@ -69,6 +70,32 @@ class ValuationModelTests(unittest.TestCase):
         self.assertLess(scenarios["conservative"]["finalVm"], 389_000)
         self.assertEqual(scenarios["base"]["finalVm"], 389_000)
         self.assertGreater(scenarios["optimistic"]["finalVm"], 389_000)
+
+    def test_official_master_vm_preserves_model_calculation_for_audit(self):
+        valuation = {"valuationModel": "standard_per", "finalVm": 280_000}
+
+        result = apply_official_final_vm(
+            "192820",
+            valuation,
+            {"officialFinalVm": 288_000, "officialVmSource": "공식 마스터"},
+        )
+
+        self.assertEqual(result["finalVm"], 288_000)
+        self.assertEqual(result["modelCalculatedVm"], 280_000)
+        self.assertTrue(result["officialVmOverride"])
+        self.assertEqual(result["officialVmSource"], "공식 마스터")
+
+        scenario_input = {
+            **result,
+            "valuationHorizonYears": 3,
+            "forwardEps3y": 40_000,
+            "appliedPer": 10,
+            "discountRate": 11,
+        }
+        scenarios = valuation_scenarios_for(scenario_input, {"roundingUnit": 100})
+        self.assertLess(scenarios["conservative"]["finalVm"], 288_000)
+        self.assertEqual(scenarios["base"]["finalVm"], 288_000)
+        self.assertGreater(scenarios["optimistic"]["finalVm"], 288_000)
 
     def test_draft_vm_with_complete_report_is_confidence_c(self):
         company = {

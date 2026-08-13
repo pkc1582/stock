@@ -155,6 +155,8 @@ function normalizeCompany(company, index) {
   return {
     ...company,
     rank: firstNumber(company.rank) ?? index + 1,
+    position: firstNumber(company.position) ?? index + 1,
+    officialOrder: firstNumber(company.officialOrder) ?? index + 1,
     code: String(company.code || company.ticker || '').padStart(6, '0'),
     name: company.name || company.companyName || company.nameKo || `기업 ${index + 1}`,
     sector: company.sector || company.industry || '미분류',
@@ -188,6 +190,9 @@ function normalizeCompany(company, index) {
     appliedPer: firstNumber(company.appliedPer, valuation.appliedPer, company.peerPer),
     discountRate: firstNumber(company.discountRate, valuation.discountRate),
     finalVm,
+    modelCalculatedVm: firstNumber(company.modelCalculatedVm, valuation.modelCalculatedVm),
+    officialVmOverride: Boolean(company.officialVmOverride || valuation.officialVmOverride),
+    officialVmSource: company.officialVmSource || valuation.officialVmSource || '',
     vmScenarios: {
       conservative: scenarioFor('conservative', finalVm ? finalVm * 0.82 : null),
       base: scenarioFor('base', finalVm),
@@ -242,7 +247,7 @@ function normalizeCompany(company, index) {
 function normalizeSnapshot(raw) {
   const companies = (raw.companies || raw.top20 || raw.data || [])
     .map(normalizeCompany)
-    .sort((a, b) => a.rank - b.rank)
+    .sort((a, b) => a.position - b.position)
   const average = companies.length
     ? companies.reduce((sum, company) => sum + company.cavm, 0) / companies.length
     : 0
@@ -257,6 +262,7 @@ function normalizeSnapshot(raw) {
       vm: [], gap: [], cavm: [], entrants: [], exits: [], reports: [],
       hasMaterialChanges: false,
     },
+    officialMaster: raw.officialMaster || { version: '', changes: [], candidates: [] },
     methodology: raw.methodology || {
       version: raw.methodologyVersion || 'CAVM Official v1.0',
       weights: {},
@@ -420,6 +426,7 @@ function Header({ basisDate }) {
     ['#changes', '이번 갱신'],
     ['#matrix', 'CAVM × 가격'],
     ['#top20', 'TOP20'],
+    ['#candidates', '후보군'],
     ['#company', '기업 분석'],
     ['#methodology', '평가 기준'],
     ['#screener', '전체시장 스크리너'],
@@ -533,6 +540,7 @@ function Hero({ snapshot }) {
 
 function LatestChanges({ snapshot, onSelect }) {
   const changes = snapshot.changes || {}
+  const officialMaster = snapshot.officialMaster || {}
   const financial = snapshot.financialDataSummary || {}
   const choose = (code) => {
     if (!code) return
@@ -540,6 +548,16 @@ function LatestChanges({ snapshot, onSelect }) {
     window.requestAnimationFrame(() => document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' }))
   }
   const groups = [
+    {
+      key: 'official',
+      label: '공식 마스터 반영',
+      tone: 'official',
+      items: (officialMaster.changes || []).map((item) => ({
+        ...item,
+        name: item.title || item.name,
+        copy: item.detail || '',
+      })),
+    },
     {
       key: 'vm',
       label: 'VM 변경',
@@ -586,7 +604,7 @@ function LatestChanges({ snapshot, onSelect }) {
           title="이번 갱신에서 바뀐 것"
           titleId="changes-title"
           description="직전 공개 스냅샷과 비교해 VM·괴리율·CAVM·TOP20·최신 보고서의 변화를 분리해서 기록합니다."
-          aside={<span className="changes-basis">비교 기준 {formatDateTime(changes.comparedAt)}</span>}
+          aside={<span className="changes-basis">{officialMaster.version || `비교 기준 ${formatDateTime(changes.comparedAt)}`}</span>}
         />
         {groups.length ? (
           <div className="changes-grid">
@@ -1112,9 +1130,9 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
       .filter((company) => !watchedOnly || watchlist.includes(company.code))
       .filter((company) => !normalizedQuery || `${company.name} ${company.code}`.toLowerCase().includes(normalizedQuery))
       .sort((a, b) => {
-        if (sort === 'cavm') return b.cavm - a.cavm || a.rank - b.rank
+        if (sort === 'cavm') return b.cavm - a.cavm || a.position - b.position
         if (sort === 'gap') return (a.gapRate ?? Infinity) - (b.gapRate ?? Infinity)
-        return a.rank - b.rank
+        return a.position - b.position
       })
   }, [companies, query, sector, sort, watchedOnly, watchlist])
 
@@ -1200,6 +1218,37 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
   )
 }
 
+function CandidateWatchlist({ master }) {
+  const candidates = master?.candidates || []
+  if (!candidates.length) return null
+  return (
+    <section className="candidate-section" id="candidates" aria-labelledby="candidate-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="NEXT REVIEW"
+          title="공식 후보군"
+          titleId="candidate-title"
+          description="TOP20 밖에서 다음 정기 재선정을 기다리는 핵심 기업입니다. 숫자가 없는 항목은 임의로 채우지 않고 검토 중으로 표시합니다."
+          aside={<><strong>{candidates.length}개 후보</strong><span>CAVM·VM 재검토 대기</span></>}
+        />
+        <div className="candidate-grid">
+          {candidates.map((candidate, index) => (
+            <article key={candidate.code || candidate.name}>
+              <div className="candidate-topline"><span>{String(index + 1).padStart(2, '0')}</span><small>{candidate.code}</small></div>
+              <h3>{candidate.name}</h3>
+              <div className="candidate-values">
+                <div><span>CAVM</span><strong>{Number.isFinite(candidate.cavm) ? candidate.cavm : '검토 중'}</strong></div>
+                <div><span>Final VM</span><strong>{Number.isFinite(candidate.finalVm) ? formatWon(candidate.finalVm) : '검토 중'}</strong></div>
+              </div>
+              <p>{candidate.note || '정성 근거와 VM 입력값을 재검토합니다.'}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function ScoreBreakdown({ company }) {
   return (
     <div className="score-breakdown">
@@ -1219,6 +1268,13 @@ function ScoreBreakdown({ company }) {
 
 function ValuationModelPanel({ company }) {
   const model = company.valuationModel
+  const officialMasterNote = company.officialVmOverride ? (
+    <div className="official-vm-note">
+      <span>공식 마스터 적용</span>
+      <strong>{formatWon(company.finalVm)}</strong>
+      <small>{company.officialVmSource}{Number.isFinite(company.modelCalculatedVm) ? ` · 모델 재계산 ${formatWon(company.modelCalculatedVm)}` : ''}</small>
+    </div>
+  ) : null
 
   if (model === 'memory_normalized') {
     return (
@@ -1237,6 +1293,7 @@ function ValuationModelPanel({ company }) {
           <span>분기 재검증</span>
           <p>{company.cycleChecks.join(' · ')}</p>
         </div>
+        {officialMasterNote}
       </div>
     )
   }
@@ -1264,28 +1321,32 @@ function ValuationModelPanel({ company }) {
           <span>배수 조정</span>
           <p>{isInsurance ? 'K-ICS · CSM · 손해율 · 투자자산 · 실제 소각' : 'ROE · CET1 · 연체율 · NPL · 대손비용 · 배당+실제 소각'}</p>
         </div>
+        {officialMasterNote}
       </div>
     )
   }
 
   return (
-    <div className="vm-flow">
-      <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
-      <i>×</i>
-      <div className="vm-per-card">
-        <span>PER 산정</span>
-        <strong>
-          {company.historicalPer5y ?? '—'}배
-          <b className={(company.overseasCorrectionPer ?? 0) < 0 ? 'negative' : 'positive'}>{formatPerAdjustment(company.overseasCorrectionPer)}</b>
-          = {company.appliedPer ?? '—'}배
-        </strong>
-        <small>5년 평균 기준 · 해외 {company.overseasPeerPer ?? '—'}배와의 차이 중 {company.overseasAdjustmentWeightPct ?? 30}% 보정</small>
+    <>
+      <div className="vm-flow">
+        <div><span>3년 예상 EPS</span><strong>{formatWon(company.forwardEps3y)}</strong></div>
+        <i>×</i>
+        <div className="vm-per-card">
+          <span>PER 산정</span>
+          <strong>
+            {company.historicalPer5y ?? '—'}배
+            <b className={(company.overseasCorrectionPer ?? 0) < 0 ? 'negative' : 'positive'}>{formatPerAdjustment(company.overseasCorrectionPer)}</b>
+            = {company.appliedPer ?? '—'}배
+          </strong>
+          <small>5년 평균 기준 · 해외 {company.overseasPeerPer ?? '—'}배와의 차이 중 {company.overseasAdjustmentWeightPct ?? 30}% 보정</small>
+        </div>
+        <i>→</i>
+        <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
+        <i>→</i>
+        <div className="vm-result"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong></div>
       </div>
-      <i>→</i>
-      <div><span>할인율</span><strong>{formatPercent(company.discountRate)}</strong></div>
-      <i>→</i>
-      <div className="vm-result"><span>Final VM</span><strong>{formatWon(company.finalVm)}</strong></div>
-    </div>
+      {officialMasterNote}
+    </>
   )
 }
 
@@ -1794,6 +1855,7 @@ export default function App() {
           watchlist={watchlist}
           onToggleWatch={toggleWatchlist}
         />
+        <CandidateWatchlist master={snapshot.officialMaster} />
         <CompanyDetail
           key={selectedCompany?.code}
           company={selectedCompany}

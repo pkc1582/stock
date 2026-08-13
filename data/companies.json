@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "basisDate": "2026-08-09",
+  "schemaVersion": 2,
+  "basisDate": "2026-08-13",
   "priceBasisDate": "2026-08-12",
   "universeSize": 20,
   "currency": "KRW",
@@ -9,286 +9,373 @@
   "financialDataStatus": "partially_updated_from_opendart_latest_reports",
   "companies": [
     {
-      "code": "000660",
-      "name": "SK하이닉스",
-      "sector": "반도체",
-      "cavm": 96,
-      "components": {
-        "moat": 29,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 14,
-        "management": 8
-      },
-      "currentPrice": 1504000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "HBM 기술 리더십과 선도 고객 인증, 고부가 메모리 믹스가 수익성과 현금창출을 동시에 끌어올린다.",
-      "risk": "메모리 가격 사이클, 대규모 설비투자, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
-      "financials": {
-        "revenue2025": 971467,
-        "operatingMargin2025": 48.59,
-        "roe2025": 44.14,
-        "debtRatio2025": 45.95,
-        "eps2025": 62044,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002287",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 525763,
-          "operatingMargin": 71.53,
-          "roeAnnualized": 113.23,
-          "debtRatio": 35.56,
-          "epsCumulative": 57175,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "SK하이닉스 FY2025 공식 실적",
-          "url": "https://news.skhynix.com/sk-hynix-announces-fy25-financial-results/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
       "code": "058470",
       "name": "리노공업",
       "sector": "반도체 장비·부품",
-      "cavm": 95,
+      "cavm": 96,
       "components": {
         "moat": 30,
-        "growth": 23,
+        "growth": 24,
         "profitability": 20,
         "financialHealth": 15,
         "management": 7
       },
-      "currentPrice": 71400,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 65700,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "반도체 테스트 핀과 소켓의 정밀가공 노하우, 고객 전환비용, 높은 영업이익률과 순현금 구조가 강점이다.",
-      "risk": "반도체 테스트 수요 변동과 주요 고객 집중, 증설 이후 가동률 저하 가능성을 점검해야 한다.",
+      "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
+      "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
       "financials": {
         "revenue2025": 3725,
         "operatingMargin2025": 47.51,
         "roe2025": 22.45,
         "debtRatio2025": 8.3,
-        "eps2025": 2002,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "OFS",
-          "rceptNo": "20260514000391",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 998,
-          "operatingMargin": 47.41,
-          "roeAnnualized": 22.41,
-          "debtRatio": 17.04,
-          "epsCumulative": 532,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 1
     },
     {
-      "code": "214450",
-      "name": "파마리서치",
-      "sector": "바이오·미용의료",
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "sector": "전력기기",
       "cavm": 95,
       "components": {
-        "moat": 28,
+        "moat": 29,
         "growth": 25,
-        "profitability": 20,
-        "financialHealth": 14,
-        "management": 8
-      },
-      "currentPrice": 408000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널, 해외 인허가 확대가 고성장·고마진을 뒷받침한다.",
-      "risk": "핵심 제품 집중, 미용의료 규제, 해외 유통 실행과 경쟁 제품 확산이 주요 위험이다.",
-      "financials": {
-        "revenue2025": 5363,
-        "operatingMargin2025": 39.98,
-        "roe2025": 26.02,
-        "debtRatio2025": 44.21,
-        "eps2025": 14933,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515001997",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 1461,
-          "operatingMargin": 39.21,
-          "roeAnnualized": 26.78,
-          "debtRatio": 48.18,
-          "epsCumulative": 4245,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "파마리서치 FY2025 공식 실적",
-          "url": "https://pharmaresearch.com/sub/press/view.html?idx=390"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "005930",
-      "name": "삼성전자",
-      "sector": "반도체·전자",
-      "cavm": 94,
-      "components": {
-        "moat": 30,
-        "growth": 23,
         "profitability": 19,
         "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 255500,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 762000,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "메모리·파운드리·모바일·가전의 규모와 브랜드, 공급망 통합, 풍부한 유동성이 장기 경쟁력을 만든다.",
-      "risk": "HBM 고객 인증과 파운드리 수율 회복 지연, 메모리 사이클과 대규모 투자 효율이 핵심 변수다.",
+      "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
+      "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
       "financials": {
-        "revenue2025": 3336059,
-        "operatingMargin2025": 13.07,
-        "roe2025": 10.78,
-        "debtRatio2025": 29.94,
-        "eps2025": 6605,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002181",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 1338734,
-          "operatingMargin": 42.75,
-          "roeAnnualized": 40.93,
-          "debtRatio": 30.15,
-          "epsCumulative": 7123,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 40795,
+        "operatingMargin2025": 24.4,
+        "roe2025": 41.34,
+        "debtRatio2025": 134.63,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "삼성전자 공식 실적 발표",
-          "url": "https://www.samsung.com/global/ir/financial-information/earnings-release/"
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 2
     },
     {
       "code": "207940",
       "name": "삼성바이오로직스",
       "sector": "바이오 CDMO",
-      "cavm": 94,
+      "cavm": 95,
       "components": {
         "moat": 29,
-        "growth": 24,
-        "profitability": 20,
-        "financialHealth": 13,
+        "growth": 25,
+        "profitability": 19,
+        "financialHealth": 14,
         "management": 8
       },
-      "currentPrice": 1549000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 1556000,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "글로벌 최대급 생산능력, 규제기관 승인 이력, 장기 고객 관계와 높은 배치 성공률이 진입장벽이다.",
-      "risk": "대규모 증설의 가동률, 고객 집중, 바이오의약품 가격 정책과 환율 변동을 추적해야 한다.",
+      "reason": "글로벌 대형 생산능력과 규제기관 승인 이력, 장기 고객관계가 높은 진입장벽을 만든다.",
+      "risk": "대규모 증설 가동률, 고객 집중과 바이오의약품 가격 정책을 추적해야 한다.",
       "financials": {
         "revenue2025": 45570,
         "operatingMargin2025": 45.41,
         "roe2025": 19.44,
         "debtRatio2025": 48.44,
-        "eps2025": 26572,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002129",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 12571,
-          "operatingMargin": 46.2,
-          "roeAnnualized": 24.42,
-          "debtRatio": 51.4,
-          "epsCumulative": null,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "epsCumulative"
-          ]
-        }
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "삼성바이오로직스 FY2025 공식 실적",
-          "url": "https://samsungbiologics.com/media/company-news/samsung-biologics-reports-fourth-quarter-and-fiscal-year-2025-financial-results"
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 3
+    },
+    {
+      "code": "140860",
+      "officialOrder": 4,
+      "name": "파크시스템스",
+      "sector": "반도체 계측",
+      "cavm": 95,
+      "components": {
+        "moat": 30,
+        "growth": 24,
+        "profitability": 20,
+        "financialHealth": 14,
+        "management": 7
+      },
+      "currentPrice": 250500,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "산업용 AFM의 비접촉식 계측 기술과 고객 인증, 반복 수요가 독점적 지위를 지지한다.",
+      "risk": "고평가 부담, 반도체 고객 CAPEX와 신규 장비 채택 속도를 점검해야 한다.",
+      "financials": {
+        "revenue2025": 2056,
+        "operatingMargin2025": 20.52,
+        "roe2025": 16.69,
+        "debtRatio2025": 55.44,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
       }
+    },
+    {
+      "code": "192820",
+      "officialOrder": 5,
+      "name": "코스맥스",
+      "sector": "화장품 ODM",
+      "cavm": 94,
+      "components": {
+        "moat": 28,
+        "growth": 25,
+        "profitability": 19,
+        "financialHealth": 14,
+        "management": 8
+      },
+      "currentPrice": 205500,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "글로벌 화장품 ODM 개발력과 고객 다변화, K-뷰티 수출 확대가 장기 성장의 축이다.",
+      "risk": "중국 사업 변동성, 고객사 재고와 원재료·인건비 상승에 따른 마진 위험이 있다.",
+      "financials": {
+        "revenue2025": 23988,
+        "operatingMargin2025": 8.16,
+        "roe2025": 23.38,
+        "debtRatio2025": 247.1,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      }
+    },
+    {
+      "code": "012450",
+      "name": "한화에어로스페이스",
+      "sector": "방산",
+      "cavm": 94,
+      "components": {
+        "moat": 29,
+        "growth": 25,
+        "profitability": 18,
+        "financialHealth": 13,
+        "management": 9
+      },
+      "currentPrice": 1097000,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
+      "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
+      "financials": {
+        "revenue2025": 267029,
+        "operatingMargin2025": 11.57,
+        "roe2025": 15.57,
+        "debtRatio2025": 221.38,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 6
+    },
+    {
+      "code": "003230",
+      "name": "삼양식품",
+      "sector": "글로벌 식품",
+      "cavm": 94,
+      "components": {
+        "moat": 29,
+        "growth": 25,
+        "profitability": 20,
+        "financialHealth": 13,
+        "management": 7
+      },
+      "currentPrice": 1306000,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "불닭 브랜드의 글로벌 확장과 생산능력 증설이 높은 성장성과 수익성을 뒷받침한다.",
+      "risk": "단일 브랜드 집중, 원재료·환율 변동과 해외 소비 트렌드 변화가 위험이다.",
+      "financials": {
+        "revenue2025": 23518,
+        "operatingMargin2025": 22.29,
+        "roe2025": 37.02,
+        "debtRatio2025": 72.74,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 7
+    },
+    {
+      "code": "000810",
+      "name": "삼성화재",
+      "sector": "보험",
+      "cavm": 94,
+      "components": {
+        "moat": 28,
+        "growth": 22,
+        "profitability": 19,
+        "financialHealth": 15,
+        "management": 10
+      },
+      "currentPrice": 645000,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.",
+      "risk": "손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.",
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": 10.95,
+        "debtRatio2025": 352.98,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 8
+    },
+    {
+      "code": "298040",
+      "name": "효성중공업",
+      "sector": "전력기기",
+      "cavm": 94,
+      "components": {
+        "moat": 28,
+        "growth": 25,
+        "profitability": 19,
+        "financialHealth": 13,
+        "management": 9
+      },
+      "currentPrice": 2832000,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
+      "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다.",
+      "financials": {
+        "revenue2025": 59685,
+        "operatingMargin2025": 12.52,
+        "roe2025": 22.13,
+        "debtRatio2025": 190.31,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 9
     },
     {
       "code": "105560",
@@ -302,844 +389,443 @@
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 166000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 175800,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "은행·카드·증권·보험의 고객 기반과 자본력, 실제 자사주 소각을 포함한 일관된 주주환원이 강점이다.",
-      "risk": "부동산 PF와 가계 신용비용, 순이자마진 하락, CET1 자본비율 변화를 점검해야 한다.",
+      "reason": "은행·카드·증권·보험의 다각화, 우수한 자본력과 실제 소각을 포함한 주주환원이 강점이다.",
+      "risk": "부동산 PF, 신용비용과 CET1·NPL·연체율 변화를 점검해야 한다.",
       "financials": {
-        "revenue2025": 812307,
-        "operatingMargin2025": 10.49,
+        "revenue2025": null,
+        "operatingMargin2025": null,
         "roe2025": 9.68,
         "debtRatio2025": 1211.73,
-        "eps2025": 15410,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002888",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 12.57,
-          "debtRatio": 1257.11,
-          "epsCumulative": 5165,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 10
     },
     {
-      "code": "003230",
-      "name": "삼양식품",
-      "sector": "식품",
-      "cavm": 93,
+      "code": "214450",
+      "name": "파마리서치",
+      "sector": "바이오·의료미용",
+      "cavm": 94,
       "components": {
-        "moat": 29,
-        "growth": 25,
-        "profitability": 19,
-        "financialHealth": 13,
-        "management": 7
+        "moat": 28,
+        "growth": 24,
+        "profitability": 20,
+        "financialHealth": 14,
+        "management": 8
       },
-      "currentPrice": 1204000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 375500,
+      "priceBasisDate": "2026-08-13",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "불닭 브랜드의 글로벌 팬덤, 수출 유통 확대와 생산능력 증설이 높은 성장성과 수익성을 만든다.",
-      "risk": "단일 브랜드 의존, 원재료·환율 변동, 신공장 램프업과 현지 소비 트렌드 변화가 위험이다.",
+      "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
+      "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
       "financials": {
-        "revenue2025": 23518,
-        "operatingMargin2025": 22.29,
-        "roe2025": 37.02,
-        "debtRatio2025": 72.74,
-        "eps2025": 52156,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260513000571",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 7144,
-          "operatingMargin": 24.79,
-          "roeAnnualized": 43.19,
-          "debtRatio": 69.84,
-          "epsCumulative": 19198,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 5363,
+        "operatingMargin2025": 39.98,
+        "roe2025": 26.02,
+        "debtRatio2025": 44.21,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 11
     },
     {
-      "code": "259960",
-      "name": "크래프톤",
-      "sector": "게임",
+      "code": "214150",
+      "officialOrder": 12,
+      "name": "클래시스",
+      "sector": "의료미용기기",
       "cavm": 93,
       "components": {
         "moat": 28,
-        "growth": 23,
-        "profitability": 19,
-        "financialHealth": 15,
-        "management": 8
+        "growth": 24,
+        "profitability": 20,
+        "financialHealth": 14,
+        "management": 7
       },
-      "currentPrice": 235000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 45900,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "PUBG의 글로벌 이용자 네트워크와 장기 라이브 운영 역량, 높은 영업현금과 순현금이 핵심 자산이다.",
-      "risk": "PUBG 매출 집중과 신규 IP 흥행 불확실성, 플랫폼 정책과 중국 관련 변동성이 존재한다.",
+      "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
+      "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다.",
       "financials": {
-        "revenue2025": 33266,
-        "operatingMargin2025": 31.7,
-        "roe2025": 10.47,
-        "debtRatio2025": 31.31,
-        "eps2025": 16454,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002756",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 13714,
-          "operatingMargin": 40.95,
-          "roeAnnualized": 28.09,
-          "debtRatio": 31.8,
-          "epsCumulative": 11701,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 3368,
+        "operatingMargin2025": 50.65,
+        "roe2025": 26.28,
+        "debtRatio2025": 27.73,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      }
+    },
+    {
+      "code": "009540",
+      "name": "HD한국조선해양",
+      "sector": "조선",
+      "cavm": 93,
+      "components": {
+        "moat": 28,
+        "growth": 25,
+        "profitability": 18,
+        "financialHealth": 14,
+        "management": 8
+      },
+      "currentPrice": 398500,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.",
+      "risk": "후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.",
+      "financials": {
+        "revenue2025": 299332,
+        "operatingMargin2025": 13.04,
+        "roe2025": 18.85,
+        "debtRatio2025": 133.86,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 13
+    },
+    {
+      "code": "000270",
+      "officialOrder": 14,
+      "name": "기아",
+      "sector": "자동차",
+      "cavm": 92,
+      "components": {
+        "moat": 28,
+        "growth": 21,
+        "profitability": 19,
+        "financialHealth": 15,
+        "management": 9
+      },
+      "currentPrice": 134900,
+      "priceBasisDate": "2026-08-10",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "reason": "글로벌 브랜드와 생산 유연성, 높은 현금창출 및 주주환원이 장기 복리의 기반이다.",
+      "risk": "관세·환율, 전기차 전환 비용과 주요 시장 인센티브 확대를 점검해야 한다.",
+      "financials": {
+        "revenue2025": 1141409,
+        "operatingMargin2025": 7.95,
+        "roe2025": 12.91,
+        "debtRatio2025": 61.76,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "reviewed",
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
       }
     },
     {
       "code": "138040",
       "name": "메리츠금융지주",
       "sector": "금융",
-      "cavm": 93,
+      "cavm": 92,
       "components": {
         "moat": 28,
         "growth": 21,
-        "profitability": 20,
+        "profitability": 19,
         "financialHealth": 14,
         "management": 10
       },
-      "currentPrice": 119000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 126300,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "높은 자본 효율과 ROE, 이익 범위 내 자사주 매입·소각 중심의 명확한 자본배분 정책이 강점이다.",
-      "risk": "보험 손해율과 부동산 금융 익스포저, 시장성 자산 손익과 규제자본 변화가 핵심 위험이다.",
+      "reason": "높은 자본효율과 ROE, 실제 자사주 매입·소각 중심의 명확한 자본배분이 강점이다.",
+      "risk": "보험 손해율, 증권·부동산 금융 익스포저와 규제자본 변동이 핵심 위험이다.",
       "financials": {
-        "revenue2025": 203170,
-        "operatingMargin2025": 14.14,
-        "roe2025": 21.18,
-        "debtRatio2025": 1102.87,
-        "eps2025": 12903,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260529001907",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 23.6,
-          "debtRatio": 1124.09,
-          "epsCumulative": 3926,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 15
     },
     {
-      "code": "267260",
-      "name": "HD현대일렉트릭",
-      "sector": "전력기기",
-      "cavm": 93,
-      "components": {
-        "moat": 27,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 13,
-        "management": 8
-      },
-      "currentPrice": 782000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "북미 변압기 공급부족, 장기 수주잔고와 생산·인증 진입장벽이 고마진 성장을 지지한다.",
-      "risk": "전력기기 증설 경쟁, 원자재·물류비, 수주 믹스 정상화와 업황 피크아웃을 점검해야 한다.",
-      "financials": {
-        "revenue2025": 40795,
-        "operatingMargin2025": 24.4,
-        "roe2025": 41.34,
-        "debtRatio2025": 134.63,
-        "eps2025": 20354,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002315",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 10365,
-          "operatingMargin": 24.92,
-          "roeAnnualized": 40.36,
-          "debtRatio": 158.34,
-          "epsCumulative": 5781,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "033780",
-      "name": "KT&G",
-      "sector": "필수소비재",
+      "code": "086790",
+      "officialOrder": 16,
+      "name": "하나금융지주",
+      "sector": "금융",
       "cavm": 92,
       "components": {
-        "moat": 29,
-        "growth": 20,
-        "profitability": 18,
+        "moat": 27,
+        "growth": 21,
+        "profitability": 19,
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 177400,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 134700,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "브랜드·전국 유통망·규제장벽과 안정적 현금흐름, 배당 및 실제 자사주 소각 정책이 강점이다.",
-      "risk": "담배 규제와 국내 궐련 감소, 전자담배 해외 성장 실행과 환율·원재료 변동이 위험이다.",
+      "reason": "안정적 은행 이익과 비은행 확장, 개선된 자본비율과 주주환원이 기업가치를 지지한다.",
+      "risk": "환율 민감도, 신용비용과 CET1·NPL·연체율을 지속 점검해야 한다.",
       "financials": {
-        "revenue2025": 65797,
-        "operatingMargin2025": 20.42,
-        "roe2025": 11.79,
-        "debtRatio2025": 51.98,
-        "eps2025": 10220,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002914",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 17036,
-          "operatingMargin": 21.4,
-          "roeAnnualized": 16.21,
-          "debtRatio": 57.59,
-          "epsCumulative": 3666,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": 9.05,
+        "debtRatio2025": 1377.89,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
       }
     },
     {
-      "code": "012450",
-      "name": "한화에어로스페이스",
-      "sector": "방산·항공우주",
+      "code": "000660",
+      "name": "SK하이닉스",
+      "sector": "반도체",
       "cavm": 91,
       "components": {
-        "moat": 28,
-        "growth": 25,
-        "profitability": 19,
-        "financialHealth": 12,
-        "management": 7
-      },
-      "currentPrice": 1156000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "무기체계 인증과 정부·군 고객 관계, K9 등 장기 수출잔고가 높은 성장 가시성과 진입장벽을 만든다.",
-      "risk": "수출 계약 시점과 납기, 지정학·정책 변화, 인수 및 운전자본 증가로 인한 재무부담이 위험이다.",
-      "financials": {
-        "revenue2025": 267029,
-        "operatingMargin2025": 11.57,
-        "roe2025": 15.57,
-        "debtRatio2025": 221.38,
-        "eps2025": 28573,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260513000860",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 57510,
-          "operatingMargin": 11.11,
-          "roeAnnualized": 12.3,
-          "debtRatio": 224.88,
-          "epsCumulative": 4999,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "009540",
-      "name": "HD한국조선해양",
-      "sector": "조선·해양",
-      "cavm": 91,
-      "components": {
-        "moat": 28,
+        "moat": 29,
         "growth": 24,
         "profitability": 18,
-        "financialHealth": 12,
-        "management": 9
+        "financialHealth": 13,
+        "management": 7
       },
-      "currentPrice": 380500,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 1422000,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "LNG선·친환경 선박 설계, 엔진 내재화와 대규모 건조 경험이 수주 경쟁력과 가격결정력을 높인다.",
-      "risk": "후판가와 인건비, 공정 지연, 조선 사이클 및 자회사 투자·지배구조 변화를 확인해야 한다.",
+      "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
+      "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
       "financials": {
-        "revenue2025": 299332,
-        "operatingMargin2025": 13.04,
-        "roe2025": 18.85,
-        "debtRatio2025": 133.86,
-        "eps2025": 30664,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515001799",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 81409,
-          "operatingMargin": 16.66,
-          "roeAnnualized": 26.68,
-          "debtRatio": 143.73,
-          "epsCumulative": 11939,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 971467,
+        "operatingMargin2025": 48.59,
+        "roe2025": 44.14,
+        "debtRatio2025": 45.95,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "HD그룹 공식 보도자료",
-          "url": "https://www.hd.com/kr/newsroom/media-hub/press/view?detailsKey=4199"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "055550",
-      "name": "신한지주",
-      "sector": "금융",
-      "cavm": 91,
-      "components": {
-        "moat": 28,
-        "growth": 20,
-        "profitability": 18,
-        "financialHealth": 15,
-        "management": 10
-      },
-      "currentPrice": 103800,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "은행·카드·증권·보험의 다각화된 고객 기반, 높은 자본적정성과 배당·실제 소각 정책이 강점이다.",
-      "risk": "순이자마진과 부동산 PF, 해외 사업 손익, CET1 자본비율과 신용비용 변화를 점검해야 한다.",
-      "financials": {
-        "revenue2025": 646820,
-        "operatingMargin2025": 10.86,
-        "roe2025": 8.53,
-        "debtRatio2025": 1201.94,
-        "eps2025": 9812,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002273",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 10.83,
-          "debtRatio": 1228.55,
-          "epsCumulative": 3327,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 17
     },
     {
-      "code": "068270",
-      "name": "셀트리온",
-      "sector": "바이오시밀러",
+      "code": "030200",
+      "officialOrder": 18,
+      "name": "KT",
+      "sector": "통신·AX",
       "cavm": 91,
       "components": {
         "moat": 27,
-        "growth": 24,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 9
-      },
-      "currentPrice": 202000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "바이오시밀러 개발·생산 경험과 글로벌 직접판매망, 다수 신제품 출시가 규모의 경제를 강화한다.",
-      "risk": "미국·유럽 가격 경쟁, 신제품 점유율, 재고와 매출채권, 규제기관 승인 일정이 핵심 위험이다.",
-      "financials": {
-        "revenue2025": 41625,
-        "operatingMargin2025": 28.07,
-        "roe2025": 5.91,
-        "debtRatio2025": 28.71,
-        "eps2025": 4668,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515002932",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 11450,
-          "operatingMargin": 28.11,
-          "roeAnnualized": 7.96,
-          "debtRatio": 29.99,
-          "epsCumulative": 1583,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "000810",
-      "name": "삼성화재",
-      "sector": "손해보험",
-      "cavm": 90,
-      "components": {
-        "moat": 29,
-        "growth": 17,
+        "growth": 20,
         "profitability": 19,
         "financialHealth": 15,
         "management": 10
       },
-      "currentPrice": 628000,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 53300,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "브랜드와 판매채널, 보수적 언더라이팅, 높은 자본력과 배당·실제 소각 여력이 경쟁우위다.",
-      "risk": "자동차·장기보험 손해율, 금리 변동, K-ICS 규제자본과 주주환원 실행을 추적해야 한다.",
+      "reason": "통신 현금흐름과 데이터센터·클라우드·AX 확장, 주주환원이 하방을 지지한다.",
+      "risk": "통신 규제, CAPEX와 신사업 실행 속도 및 인건비 부담을 점검해야 한다.",
       "financials": {
-        "revenue2025": 247785,
-        "operatingMargin2025": 10.73,
-        "roe2025": 10.95,
-        "debtRatio2025": 352.98,
-        "eps2025": 47478,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515001950",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 11.18,
-          "debtRatio": 317.02,
-          "epsCumulative": 14930,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
+        "revenue2025": 282442,
+        "operatingMargin2025": 8.74,
+        "roe2025": 9.81,
+        "debtRatio2025": 120.72,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
       }
     },
     {
-      "code": "298040",
-      "name": "효성중공업",
-      "sector": "전력기기",
+      "code": "005930",
+      "name": "삼성전자",
+      "sector": "반도체·전자",
       "cavm": 90,
       "components": {
-        "moat": 28,
-        "growth": 25,
-        "profitability": 19,
-        "financialHealth": 12,
-        "management": 6
-      },
-      "currentPrice": 2892000,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "초고압 변압기 기술과 미국 생산기지, 장기 수주잔고가 전력망 투자 확대의 수혜를 직접 연결한다.",
-      "risk": "높은 레버리지, 증설 집행과 원재료 가격, 수주 믹스 및 건설 부문의 변동성이 위험이다.",
-      "financials": {
-        "revenue2025": 59685,
-        "operatingMargin2025": 12.52,
-        "roe2025": 22.13,
-        "debtRatio2025": 190.31,
-        "eps2025": 55832,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260514001390",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 13582,
-          "operatingMargin": 11.21,
-          "roeAnnualized": 14.53,
-          "debtRatio": 209.68,
-          "epsCumulative": 9370,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "010120",
-      "name": "LS ELECTRIC",
-      "sector": "전력·자동화",
-      "cavm": 90,
-      "components": {
-        "moat": 28,
-        "growth": 25,
-        "profitability": 18,
-        "financialHealth": 12,
+        "moat": 29,
+        "growth": 22,
+        "profitability": 17,
+        "financialHealth": 15,
         "management": 7
       },
-      "currentPrice": 208500,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 231000,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "배전·자동화의 설치 기반과 인증, 데이터센터·북미 전력 인프라 수요가 구조적 성장을 뒷받침한다.",
-      "risk": "증설 투자와 운전자본, 경쟁 심화, 원재료·환율 및 해외 수주의 수익성 변동을 확인해야 한다.",
+      "reason": "메모리·파운드리·모바일·가전의 규모와 재무안정성이 장기 경쟁력의 기반이다.",
+      "risk": "HBM 고객 인증, 파운드리 수율과 메모리 피크 이익의 지속성을 보수적으로 봐야 한다.",
       "financials": {
-        "revenue2025": 49658,
-        "operatingMargin2025": 8.59,
-        "roe2025": 14.1,
-        "debtRatio2025": 131.48,
-        "eps2025": 9647,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260514000847",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 13766,
-          "operatingMargin": 9.19,
-          "roeAnnualized": 22.26,
-          "debtRatio": 151.24,
-          "epsCumulative": 4052,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 3336059,
+        "operatingMargin2025": 13.07,
+        "roe2025": 10.78,
+        "debtRatio2025": 29.94,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
+      },
+      "officialOrder": 19
     },
     {
-      "code": "035420",
-      "name": "NAVER",
-      "sector": "인터넷 플랫폼",
+      "code": "005380",
+      "officialOrder": 20,
+      "name": "현대차",
+      "sector": "자동차",
       "cavm": 89,
       "components": {
-        "moat": 28,
-        "growth": 22,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 8
-      },
-      "currentPrice": 215500,
-      "priceBasisDate": "2026-08-12",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "검색 데이터와 이용자 기반, 커머스·결제 연결, 광고주 네트워크와 국내 콘텐츠 생태계가 해자를 만든다.",
-      "risk": "생성형 AI 검색 전환, 글로벌 플랫폼 경쟁, 규제와 신규 AI 투자 대비 수익화 속도가 변수다.",
-      "financials": {
-        "revenue2025": 120350,
-        "operatingMargin2025": 18.35,
-        "roe2025": 6.5,
-        "debtRatio2025": 41.9,
-        "eps2025": 13009,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515001511",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 32411,
-          "operatingMargin": 16.72,
-          "roeAnnualized": 3.89,
-          "debtRatio": 45.21,
-          "epsCumulative": 1889,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
-        },
-        {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
-      }
-    },
-    {
-      "code": "271560",
-      "name": "오리온",
-      "sector": "식품",
-      "cavm": 88,
-      "components": {
-        "moat": 28,
+        "moat": 27,
         "growth": 20,
         "profitability": 18,
-        "financialHealth": 14,
-        "management": 8
+        "financialHealth": 15,
+        "management": 9
       },
-      "currentPrice": 132800,
-      "priceBasisDate": "2026-08-12",
+      "currentPrice": 395500,
+      "priceBasisDate": "2026-08-10",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "대표 제품 브랜드와 중국·베트남·러시아 현지 유통망, 낮은 부채와 안정적 현금창출이 강점이다.",
-      "risk": "중국 소비 둔화, 현지 통화와 원재료 가격, 식품안전 이슈 및 신사업 자본배분을 점검해야 한다.",
+      "reason": "글로벌 생산·브랜드 포트폴리오, 하이브리드 경쟁력과 주주환원 확대가 강점이다.",
+      "risk": "관세·환율, 전기차 투자 회수와 금융부문 신용비용이 주요 변수다.",
       "financials": {
-        "revenue2025": 33324,
-        "operatingMargin2025": 16.75,
-        "roe2025": 10.44,
-        "debtRatio2025": 17.55,
-        "eps2025": 9682,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11013",
-          "periodLabel": "2026년 1분기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260515000512",
-          "periodEnd": "2026-03-31",
-          "fetchedAt": "2026-08-13T19:31:57+09:00",
-          "revenueEok": 9304,
-          "operatingMargin": 17.79,
-          "roeAnnualized": 12.81,
-          "debtRatio": 19.74,
-          "epsCumulative": 3149,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": 1862545,
+        "operatingMargin2025": 6.16,
+        "roe2025": 8.36,
+        "debtRatio2025": 188.95,
+        "eps2025": null
       },
       "sources": [
         {
-          "label": "2025 연간 재무 스냅샷(초기 수동 교차검증)",
-          "url": "https://opendart.fss.or.kr/intro/main.do"
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
         },
         {
-          "label": "정규장 종가 스냅샷(2026-08-07 교차검증)",
+          "label": "KRX 정보데이터시스템",
           "url": "https://data.krx.co.kr/"
         }
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-08-09",
-        "nextReviewAt": "2026-08-31"
+        "reviewedAt": "2026-08-13",
+        "nextReviewAt": "2026-09-30"
       }
     }
   ],
@@ -1151,7 +837,7 @@
     "latestReportCompleteCount": 15,
     "latestReportPartialCount": 5,
     "latestReportFailedCount": 0,
-    "latestReportSuccessRate": 1.0,
+    "latestReportSuccessRate": 1,
     "minimumSuccessRate": 0.8,
     "annual2025ReportCount": 20,
     "annual2025PartialCount": 6,

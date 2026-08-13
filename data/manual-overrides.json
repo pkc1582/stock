@@ -1,38 +1,104 @@
 {
-  "schemaVersion": 4,
-  "basisDate": "2026-08-09",
-  "status": "draft",
-  "description": "VM 입력값과 정성 점수 조정값을 사람이 검토·수정하는 파일입니다. 일반기업은 3년 예상 EPS와 과거 5년 PER를 기본으로 사용합니다. 은행·금융지주는 정상화 BPS×적정 PBR을 주평가하고 EPS×PER로 교차검증합니다. 증권·복합금융은 PBR·PER를 병행하고 보험은 PBR·CSM·SOTP를 병행합니다. 메모리 반도체는 2~3년 정상화 EPS×정상 PER를 현재가치로 할인합니다. 모든 입력은 공식 컨센서스 확정치가 아닌 검토 가능한 분석 가정입니다.",
+  "schemaVersion": 5,
+  "basisDate": "2026-08-13",
+  "status": "reviewed",
+  "description": "복리자산 2045 국내 TOP20 공식 마스터입니다. 공식 Final VM과 재현 가능한 모델 산출값을 분리해 기록하며, 다음 시세 갱신에서는 공식 VM을 유지한 채 괴리율만 다시 계산합니다.",
   "valuationPolicy": {
     "overseasAdjustmentWeight": 0.3
   },
   "reviewPolicy": {
     "owner": "복리자산 2045 PMO",
-    "nextReviewAt": "2026-08-31",
-    "requiredEvidence": ["최근 실적 발표", "사업보고서 또는 분기보고서", "동종기업 밸류에이션", "핵심 이슈 진행상황"]
+    "nextReviewAt": "2026-09-30",
+    "requiredEvidence": [
+      "최근 실적 발표",
+      "사업보고서 또는 분기보고서",
+      "동종기업 밸류에이션",
+      "핵심 이슈 진행상황"
+    ]
   },
   "companies": {
-    "000660": {
-      "valuationModel": "memory_normalized",
-      "normalizedEps": 512706,
-      "normalizedPer": 7.0,
-      "valuationHorizonYears": 2,
-      "discountRate": 11,
+    "105560": {
+      "valuationModel": "bank_pbr",
+      "normalizedBps": 169091,
+      "targetPbr": 1.1,
+      "normalizedEps": 19579,
+      "crossCheckPer": 9.5,
       "roundingUnit": 1000,
       "componentOverrides": {},
       "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다."
+      "status": "reviewed",
+      "analystNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
+      "officialFinalVm": 186000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
     },
-    "058470": {
-      "forwardEps3y": 3223,
-      "historicalPer5y": 28,
-      "overseasPeerPer": 28,
-      "discountRate": 11,
+    "138040": {
+      "valuationModel": "financial_hybrid",
+      "normalizedBps": 80000,
+      "targetPbr": 1.25,
+      "normalizedEps": 17900,
+      "crossCheckPer": 8,
+      "primaryWeight": 0.5,
+      "roundingUnit": 100,
       "componentOverrides": {},
       "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다."
+      "status": "reviewed",
+      "analystNote": "보험·증권 중심 복합금융 구조를 고려해 BPS×PBR을 60%, EPS×PER를 40% 병행한다. 높은 ROE와 실제 자사주 소각은 프리미엄 요인이지만 보험·증권 이익 변동성을 별도로 점검한다.",
+      "officialFinalVm": 121600,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "140860": {
+      "forwardEps3y": 12969,
+      "historicalPer5y": 25,
+      "overseasPeerPer": 28,
+      "discountRate": 10,
+      "analystNote": "산업용 AFM 기술 해자와 글로벌 계측기업 비교를 반영한다.",
+      "officialFinalVm": 243600,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "192820": {
+      "forwardEps3y": 21882,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 22,
+      "discountRate": 11,
+      "analystNote": "글로벌 ODM 성장과 중국 사업 변동성을 함께 반영한다.",
+      "officialFinalVm": 288000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "207940": {
+      "forwardEps3y": 53589,
+      "historicalPer5y": 30,
+      "overseasPeerPer": 30,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "글로벌 CDMO 성장과 높은 계약 가시성을 반영한다.",
+      "officialFinalVm": 1652000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "214150": {
+      "forwardEps3y": 4659,
+      "historicalPer5y": 22,
+      "overseasPeerPer": 25,
+      "discountRate": 10,
+      "analystNote": "소모품 반복매출과 해외 인허가 확장을 반영한다.",
+      "officialFinalVm": 77000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
     },
     "214450": {
       "forwardEps3y": 25196,
@@ -41,8 +107,167 @@
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다."
+      "status": "reviewed",
+      "analystNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
+      "officialFinalVm": 540000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "267260": {
+      "forwardEps3y": 33311,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
+      "officialFinalVm": 681200,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "298040": {
+      "forwardEps3y": 100224,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
+      "officialFinalVm": 2611100,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "058470": {
+      "forwardEps3y": 3223,
+      "historicalPer5y": 28,
+      "overseasPeerPer": 28,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
+      "officialFinalVm": 69300,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "012450": {
+      "forwardEps3y": 53879,
+      "historicalPer5y": 20,
+      "overseasPeerPer": 20,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
+      "officialFinalVm": 977700,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "003230": {
+      "forwardEps3y": 99021,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다.",
+      "officialFinalVm": 1339100,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "000810": {
+      "valuationModel": "insurance_sotp",
+      "normalizedBps": 500000,
+      "targetPbr": 1.05,
+      "csmSotpAdjustment": 119500,
+      "normalizedEps": 80562,
+      "crossCheckPer": 8,
+      "roundingUnit": 100,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
+      "officialFinalVm": 644500,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "009540": {
+      "forwardEps3y": 62691,
+      "historicalPer5y": 10,
+      "overseasPeerPer": 10,
+      "discountRate": 12,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "LNG선 고선가 물량과 엔진 경쟁력을 반영하되 조선 경기민감도를 적용한다.",
+      "officialFinalVm": 524000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "000270": {
+      "forwardEps3y": 31905,
+      "historicalPer5y": 7,
+      "overseasPeerPer": 7,
+      "discountRate": 11,
+      "analystNote": "자동차 정상화 이익과 글로벌 완성차 배수를 보수적으로 적용한다.",
+      "officialFinalVm": 163300,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "086790": {
+      "valuationModel": "bank_pbr",
+      "normalizedBps": 163158,
+      "targetPbr": 0.95,
+      "normalizedEps": 19375,
+      "crossCheckPer": 8,
+      "roundingUnit": 1000,
+      "analystNote": "정상화 BPS×PBR 0.95배를 주평가하고 정상화 EPS×PER 8배로 교차검증한다.",
+      "officialFinalVm": 155000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "000660": {
+      "valuationModel": "memory_normalized",
+      "normalizedEps": 512706,
+      "normalizedPer": 7,
+      "valuationHorizonYears": 2,
+      "discountRate": 11,
+      "roundingUnit": 1000,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "status": "reviewed",
+      "analystNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
+      "officialFinalVm": 2913000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
+    },
+    "030200": {
+      "forwardEps3y": 9368,
+      "historicalPer5y": 10,
+      "overseasPeerPer": 10,
+      "discountRate": 11,
+      "analystNote": "통신 현금흐름과 AX 성장, 규제 위험을 함께 반영한다.",
+      "officialFinalVm": 68500,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
     },
     "005930": {
       "valuationModel": "memory_normalized",
@@ -53,178 +278,99 @@
       "roundingUnit": 1000,
       "componentOverrides": {},
       "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다."
+      "status": "reviewed",
+      "analystNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다.",
+      "officialFinalVm": 389000,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
     },
-    "207940": {
-      "forwardEps3y": 53589,
-      "historicalPer5y": 30,
-      "overseasPeerPer": 30,
-      "discountRate": 10,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "글로벌 CDMO 성장과 높은 계약 가시성을 반영한다."
-    },
-    "105560": {
-      "valuationModel": "bank_pbr",
-      "normalizedBps": 169091,
-      "targetPbr": 1.10,
-      "normalizedEps": 19579,
-      "crossCheckPer": 9.5,
-      "roundingUnit": 1000,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다."
-    },
-    "003230": {
-      "forwardEps3y": 99021,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "discountRate": 10,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다."
-    },
-    "259960": {
-      "forwardEps3y": 25256,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
+    "005380": {
+      "forwardEps3y": 79989,
+      "historicalPer5y": 8,
+      "overseasPeerPer": 8,
       "discountRate": 11,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "PUBG 장기 라이브서비스와 순현금을 반영하고 신규 IP 위험을 할인한다."
-    },
-    "138040": {
-      "valuationModel": "financial_hybrid",
-      "normalizedBps": 60921,
-      "targetPbr": 1.30,
-      "normalizedEps": 16626,
-      "crossCheckPer": 7.5,
-      "primaryWeight": 0.60,
-      "roundingUnit": 100,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "보험·증권 중심 복합금융 구조를 고려해 BPS×PBR을 60%, EPS×PER를 40% 병행한다. 높은 ROE와 실제 자사주 소각은 프리미엄 요인이지만 보험·증권 이익 변동성을 별도로 점검한다."
-    },
-    "267260": {
-      "forwardEps3y": 33311,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "discountRate": 12,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다."
-    },
-    "033780": {
-      "forwardEps3y": 14609,
-      "historicalPer5y": 11,
-      "overseasPeerPer": 11,
-      "discountRate": 11,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "안정적 현금흐름과 실제 소각을 반영하고 규제·성장 한계를 고려한다."
-    },
-    "012450": {
-      "forwardEps3y": 53879,
-      "historicalPer5y": 20,
-      "overseasPeerPer": 20,
-      "discountRate": 12,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다."
-    },
-    "009540": {
-      "forwardEps3y": 62691,
-      "historicalPer5y": 10,
-      "overseasPeerPer": 10,
-      "discountRate": 12,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "LNG선 고선가 물량과 엔진 경쟁력을 반영하되 조선 경기민감도를 적용한다."
-    },
-    "055550": {
-      "valuationModel": "bank_pbr",
-      "normalizedBps": 115030,
-      "targetPbr": 0.75,
-      "normalizedEps": 14517,
-      "crossCheckPer": 8.0,
-      "roundingUnit": 100,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "정상화 BPS×적정 PBR 0.75배를 주평가하고 정상화 EPS×PER 8.0배로 교차검증한다. ROE의 지속성, CET1, 신용비용과 실제 소각 완료분을 확인해 PBR을 조정한다."
-    },
-    "068270": {
-      "forwardEps3y": 8896,
-      "historicalPer5y": 25,
-      "overseasPeerPer": 25,
-      "discountRate": 10,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "바이오시밀러 신제품 침투와 직접판매 레버리지를 반영한다."
-    },
-    "000810": {
-      "valuationModel": "insurance_sotp",
-      "normalizedBps": 433589,
-      "targetPbr": 1.0,
-      "csmSotpAdjustment": 65000,
-      "normalizedEps": 51220,
-      "crossCheckPer": 8.0,
-      "roundingUnit": 100,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다."
-    },
-    "298040": {
-      "forwardEps3y": 100224,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "discountRate": 12,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다."
-    },
-    "010120": {
-      "forwardEps3y": 4772,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "discountRate": 12,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "주식분할 조정 EPS 기준이며 북미 전력·자동화 성장과 증설 위험을 함께 반영한다."
-    },
-    "035420": {
-      "forwardEps3y": 13785,
-      "historicalPer5y": 20,
-      "overseasPeerPer": 20,
-      "discountRate": 10,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "검색·커머스·결제 생태계와 AI 수익화를 반영하고 플랫폼 전환 위험을 점검한다."
-    },
-    "271560": {
-      "forwardEps3y": 14175,
-      "historicalPer5y": 14,
-      "overseasPeerPer": 14,
-      "discountRate": 11,
-      "componentOverrides": {},
-      "issueOverrides": {},
-      "status": "draft",
-      "analystNote": "해외 브랜드·유통 성장과 우수한 재무구조를 반영하고 지역 변동성을 고려한다."
+      "analystNote": "자동차 정상화 이익과 글로벌 완성차 배수를 적용한다.",
+      "officialFinalVm": 467900,
+      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-13",
+      "multipleReviewedAt": "2026-08-13"
     }
+  },
+  "officialMaster": {
+    "version": "국내 TOP20 공식 마스터 · 2026.08.13",
+    "basisDate": "2026-08-13",
+    "changes": [
+      {
+        "code": "214450",
+        "title": "파마리서치 TOP20 편입",
+        "detail": "CAVM 94 · Final VM 540,000원 · 기준가 375,500원 / 에이피알 후보군 이동"
+      },
+      {
+        "code": "105560",
+        "title": "KB금융 TOP20 편입",
+        "detail": "CAVM 94 · Final VM 186,000원 / 한국콜마 후보군 이동"
+      },
+      {
+        "code": "086790",
+        "title": "하나금융지주 VM 상향",
+        "detail": "122,500원 → 155,000원"
+      },
+      {
+        "code": "005930",
+        "title": "삼성전자 정상화 VM 반영",
+        "detail": "메모리 전용 기준 · Final VM 389,000원"
+      },
+      {
+        "code": "000660",
+        "title": "SK하이닉스 정상화 VM 반영",
+        "detail": "메모리 전용 기준 · Final VM 2,913,000원"
+      }
+    ],
+    "candidates": [
+      {
+        "code": "042700",
+        "name": "한미반도체",
+        "cavm": 94,
+        "finalVm": 205000,
+        "note": "반도체 장비 해자와 HBM CAPEX 민감도를 재검토합니다."
+      },
+      {
+        "code": "319660",
+        "name": "PSK",
+        "cavm": 91,
+        "finalVm": 164000,
+        "note": "공정 장비 점유율과 고객 CAPEX 지속성을 재검토합니다."
+      },
+      {
+        "code": "052690",
+        "name": "한국전력기술",
+        "cavm": 91,
+        "finalVm": 73000,
+        "note": "원전 수주 가시성과 프로젝트 일정을 재검토합니다."
+      },
+      {
+        "code": "034020",
+        "name": "두산에너빌리티",
+        "cavm": 90,
+        "finalVm": 44400,
+        "note": "원전·가스터빈 수주와 재무 개선을 재검토합니다."
+      },
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "cavm": null,
+        "finalVm": null,
+        "note": "파마리서치 편입에 따라 후보군에서 CAVM·VM을 재검토합니다."
+      },
+      {
+        "code": "161890",
+        "name": "한국콜마",
+        "cavm": null,
+        "finalVm": null,
+        "note": "KB금융 편입에 따라 후보군에서 CAVM·VM을 재검토합니다."
+      }
+    ]
   }
 }
