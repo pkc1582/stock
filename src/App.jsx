@@ -1864,6 +1864,7 @@ function Footer({ snapshot }) {
       <div className="page-shell footer-grid">
         <div className="footer-brand"><LogoMark /><div><strong>복리자산 2045</strong><span>CAQM RESEARCH</span></div></div>
         <p>좋은 기업을 적정가보다 싸게 사서 오래 보유한다.</p>
+        <p className="footer-creator">제작자: PKC</p>
         <div className="footer-links">
           <a href={REPOSITORY_URL} target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://opendart.fss.or.kr/" target="_blank" rel="noreferrer">OpenDART ↗</a>
