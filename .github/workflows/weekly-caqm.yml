@@ -1,4 +1,4 @@
-name: Weekly CAVM rebuild
+name: Weekly CAQM rebuild
 
 on:
   schedule:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   rebuild:
-    name: Rebuild CAVM dataset
+    name: Rebuild CAQM dataset
     runs-on: ubuntu-latest
     timeout-minutes: 35
 
@@ -64,7 +64,7 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python scripts/fetch_dart.py
 
-      - name: Recalculate CAVM and public ranking
+      - name: Recalculate CAQM and public ranking
         id: build
         if: always() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python scripts/build_dataset.py
@@ -73,19 +73,19 @@ jobs:
         if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python -m json.tool public/data/latest.json > /dev/null
 
-      - name: Commit weekly CAVM snapshot
+      - name: Commit weekly CAQM snapshot
         if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         shell: bash
         run: |
           git add -- data/companies.json public/data/latest.json
           if git diff --cached --quiet; then
-            echo "No CAVM changes to commit."
+            echo "No CAQM changes to commit."
             exit 0
           fi
 
           git config user.name "compound-asset-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "data: rebuild weekly CAVM ranking"
+          git commit -m "data: rebuild weekly CAQM ranking"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
 

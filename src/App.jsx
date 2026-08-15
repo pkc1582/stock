@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 const REPOSITORY_URL = 'https://github.com/psa1582/stock'
 const DATA_EDIT_URL = `${REPOSITORY_URL}/edit/main/data/manual-overrides.json`
@@ -160,7 +160,7 @@ function normalizeCompany(company, index) {
     code: String(company.code || company.ticker || '').padStart(6, '0'),
     name: company.name || company.companyName || company.nameKo || `기업 ${index + 1}`,
     sector: company.sector || company.industry || '미분류',
-    cavm: firstNumber(company.cavm, company.cavmScore, company.score) ?? 0,
+    caqm: firstNumber(company.caqm, company.cavm, company.caqmScore, company.cavmScore, company.score) ?? 0,
     components: {
       moat: firstNumber(components.moat, components.competitiveAdvantage) ?? 0,
       growth: firstNumber(components.growth) ?? 0,
@@ -249,22 +249,29 @@ function normalizeSnapshot(raw) {
     .map(normalizeCompany)
     .sort((a, b) => a.position - b.position)
   const average = companies.length
-    ? companies.reduce((sum, company) => sum + company.cavm, 0) / companies.length
+    ? companies.reduce((sum, company) => sum + company.caqm, 0) / companies.length
     : 0
+  const rawChanges = raw.changes || {}
 
   return {
     ...raw,
     generatedAt: raw.generatedAt || raw.asOf || null,
     basisDate: raw.basisDate || raw.asOf || null,
     dataStatus: raw.dataStatus || '공개 자료 기반 분석 스냅샷',
-    changes: raw.changes || {
-      comparedAt: null,
-      vm: [], gap: [], cavm: [], entrants: [], exits: [], reports: [],
-      hasMaterialChanges: false,
+    changes: {
+      comparedAt: rawChanges.comparedAt || null,
+      generatedAt: rawChanges.generatedAt || null,
+      vm: rawChanges.vm || [],
+      gap: rawChanges.gap || [],
+      caqm: rawChanges.caqm || rawChanges.cavm || [],
+      entrants: rawChanges.entrants || [],
+      exits: rawChanges.exits || [],
+      reports: rawChanges.reports || [],
+      hasMaterialChanges: rawChanges.hasMaterialChanges || false,
     },
     officialMaster: raw.officialMaster || { version: '', changes: [], candidates: [] },
     methodology: raw.methodology || {
-      version: raw.methodologyVersion || 'CAVM Official v1.0',
+      version: raw.methodologyVersion || 'CAQM Official v1.0',
       weights: {},
       formula: '',
       disclaimer: raw.disclaimer || '',
@@ -272,7 +279,12 @@ function normalizeSnapshot(raw) {
     summary: {
       universeSize: firstNumber(raw.summary?.universeSize, raw.summary?.companyCount) ?? companies.length,
       top20Count: firstNumber(raw.summary?.top20Count) ?? companies.length,
-      averageCavm: firstNumber(raw.summary?.averageCavm, raw.summary?.avgCavm) ?? average,
+      averageCaqm: firstNumber(
+        raw.summary?.averageCaqm,
+        raw.summary?.avgCaqm,
+        raw.summary?.averageCavm,
+        raw.summary?.avgCavm,
+      ) ?? average,
       undervaluedCount: firstNumber(raw.summary?.undervaluedCount)
         ?? companies.filter((company) => company.gapRate !== null && company.gapRate < 0).length,
     },
@@ -424,7 +436,7 @@ function Header({ basisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
     ['#changes', '이번 갱신'],
-    ['#matrix', 'CAVM × 가격'],
+    ['#matrix', 'CAQM × 가격'],
     ['#top20', 'TOP20'],
     ['#candidates', '후보군'],
     ['#company', '기업 분석'],
@@ -439,7 +451,7 @@ function Header({ basisDate }) {
           <LogoMark />
           <span className="brand-copy">
             <strong>복리자산 2045</strong>
-            <small>CAVM RESEARCH</small>
+            <small>CAQM RESEARCH</small>
           </span>
         </a>
         <button
@@ -475,8 +487,8 @@ function Hero({ snapshot }) {
     .sort((a, b) => a.gapRate - b.gapRate)
   const summaryItems = [
     ['검토 유니버스', `${summary.universeSize}개`, '정량·정성 검토 후보'],
-    ['공식 TOP20', `${summary.top20Count}개`, 'CAVM 동점 규칙 반영'],
-    ['평균 품질점수', summary.averageCavm.toFixed(1), '100점 만점'],
+    ['공식 TOP20', `${summary.top20Count}개`, 'CAQM 동점 규칙 반영'],
+    ['평균 품질점수', summary.averageCaqm.toFixed(1), '100점 만점'],
     ['좋은 가격 기업', `${goodPriceCompanies.length}개`, '괴리율 -20% 이하'],
   ]
 
@@ -491,8 +503,20 @@ function Hero({ snapshot }) {
             충분한 가격 매력이 생길 때까지 기다립니다.
           </p>
           <blockquote>
-            “좋은 기업을 찾는 것은 CAVM의 역할이고,<br />좋은 가격을 찾는 것은 VM의 역할이다.”
+            “좋은 기업을 찾는 것은 CAQM의 역할이고,<br />좋은 가격을 찾는 것은 VM의 역할이다.”
           </blockquote>
+          <div className="hero-model-definitions" aria-label="CAQM과 VM 뜻">
+            <article>
+              <span>좋은 기업인가?</span>
+              <div><strong>CAQM</strong><small>Compound Asset Quality Model</small></div>
+              <p>기업이 장기간 복리성장을 만들 수 있는 품질을 평가합니다.</p>
+            </article>
+            <article>
+              <span>좋은 가격인가?</span>
+              <div><strong>VM</strong><small>Value Model</small></div>
+              <p>기업의 예상 이익과 업종별 기준으로 현재 적정가치를 평가합니다.</p>
+            </article>
+          </div>
           <div className="hero-actions">
             <a className="button primary" href="#matrix">오늘의 매트릭스 보기 <span>↘</span></a>
             <a className="button ghost" href="#methodology">산정 기준 확인</a>
@@ -581,16 +605,19 @@ function LatestChanges({ snapshot, onSelect }) {
       label: 'TOP20 진입·탈락',
       tone: 'ranking',
       items: [
-        ...(changes.entrants || []).map((item) => ({ ...item, copy: `신규 진입 · #${item.rank} · CAVM ${item.cavm}` })),
+        ...(changes.entrants || []).map((item) => ({
+          ...item,
+          copy: `신규 진입 · #${item.rank} · CAQM ${firstNumber(item.caqm, item.cavm) ?? '검토 중'}`,
+        })),
         ...(changes.exits || []).map((item) => ({ ...item, copy: `탈락 · ${item.reason}` })),
       ],
     },
     {
       key: 'research',
-      label: 'CAVM·보고서',
+      label: 'CAQM·보고서',
       tone: 'research',
       items: [
-        ...(changes.cavm || []).map((item) => ({ ...item, copy: `CAVM ${item.before} → ${item.after}` })),
+        ...(changes.caqm || []).map((item) => ({ ...item, copy: `CAQM ${item.before} → ${item.after}` })),
         ...(changes.reports || []).map((item) => ({ ...item, copy: `${item.periodLabel || '최신 보고서'} 반영 · ${formatDate(item.after)}` })),
       ],
     },
@@ -603,7 +630,7 @@ function LatestChanges({ snapshot, onSelect }) {
           eyebrow="LATEST UPDATE"
           title="최근 공식 변경 이력"
           titleId="changes-title"
-          description="TOP20 편입·탈락, 중요 VM·CAVM 변경, 가격 판단 구간 전환과 최신 보고서 반영처럼 투자 판단에 의미 있는 변화만 기록합니다."
+          description="TOP20 편입·탈락, 중요 VM·CAQM 변경, 가격 판단 구간 전환과 최신 보고서 반영처럼 투자 판단에 의미 있는 변화만 기록합니다."
           aside={<span className="changes-basis">{officialMaster.version || `비교 기준 ${formatDateTime(changes.comparedAt)}`}</span>}
         />
         {groups.length ? (
@@ -771,7 +798,7 @@ function ScreenerSection({ screener, loadState, error, onRetry }) {
           eyebrow="MARKET-WIDE QUANT SCREEN"
           title="전체시장 스크리너"
           titleId="screener-title"
-          description="국내 상장기업의 공개 시장 데이터와 최근 널리 이용 가능한 연간 사업보고서를 먼저 정량 필터링합니다. 이 결과는 공식 CAVM이나 투자 의견이 아니라 PMO 심층 검토 대상을 좁히기 위한 사전 화면입니다."
+          description="국내 상장기업의 공개 시장 데이터와 최근 널리 이용 가능한 연간 사업보고서를 먼저 정량 필터링합니다. 이 결과는 공식 CAQM이나 투자 의견이 아니라 PMO 심층 검토 대상을 좁히기 위한 사전 화면입니다."
           aside={screener?.generatedAt ? `데이터 ${formatDate(screener.generatedAt)} 기준` : '데이터 연결 상태 확인 중'}
         />
 
@@ -808,7 +835,7 @@ function ScreenerSection({ screener, loadState, error, onRetry }) {
             </div>
 
             <aside className="screener-notices" aria-label="스크리너 데이터 주의사항">
-              <div><span aria-hidden="true">i</span><p><strong>공식 CAVM과 구분됩니다.</strong> 해자·경영진·자본배분은 자동 확정하지 않으며 사람이 근거를 검토한 기업만 공식 TOP20 후보가 됩니다.</p></div>
+              <div><span aria-hidden="true">i</span><p><strong>공식 CAQM과 구분됩니다.</strong> 해자·경영진·자본배분은 자동 확정하지 않으며 사람이 근거를 검토한 기업만 공식 TOP20 후보가 됩니다.</p></div>
               {!screener.managedItemChecked && (
                 <div className="warning"><span aria-hidden="true">!</span><p><strong>관리종목 여부 미확인</strong> 현재 스냅샷은 관리종목·거래정지·상장적격성 상태를 완전히 반영하지 않을 수 있으므로 거래소 공시를 별도로 확인해야 합니다.</p></div>
               )}
@@ -907,7 +934,7 @@ function chartLabelLayout(points, x, y, centerX, top, bottom) {
   const groups = { left: [], right: [] }
 
   points.forEach((company) => {
-    const cx = x(company.cavm)
+    const cx = x(company.caqm)
     const cy = y(company.gapRate)
     const side = cx >= centerX ? 'right' : 'left'
     groups[side].push({ company, cx, cy, labelY: Math.max(top, Math.min(bottom, cy + 4)) })
@@ -933,14 +960,15 @@ function chartLabelLayout(points, x, y, centerX, top, bottom) {
 }
 
 function MatrixChart({ companies, selectedCode, onSelect }) {
-  const points = companies.filter((company) => Number.isFinite(company.cavm) && Number.isFinite(company.gapRate))
+  const scrollRef = useRef(null)
+  const points = companies.filter((company) => Number.isFinite(company.caqm) && Number.isFinite(company.gapRate))
   const width = 1180
   const height = 700
   const margin = { top: 70, right: 190, bottom: 86, left: 190 }
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
-  const rawXMin = Math.min(...points.map((point) => point.cavm), 90)
-  const rawXMax = Math.max(...points.map((point) => point.cavm), 90)
+  const rawXMin = Math.min(...points.map((point) => point.caqm), 90)
+  const rawXMax = Math.max(...points.map((point) => point.caqm), 90)
   const xMin = Math.max(0, Math.floor(rawXMin) - 1)
   const xMax = Math.min(100, Math.max(xMin + 10, Math.ceil(rawXMax) + 1))
   const gapValues = points.map((point) => point.gapRate)
@@ -958,6 +986,18 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
   const selected = points.find((point) => point.code === selectedCode)
   const labels = chartLabelLayout(points, x, y, margin.left + innerWidth / 2, margin.top + 14, height - margin.bottom - 12)
   const renderPoints = [...points].sort((a, b) => Number(a.code === selectedCode) - Number(b.code === selectedCode))
+  const goodPriceCompanies = [...points]
+    .filter((company) => company.gapRate <= -20)
+    .sort((a, b) => b.caqm - a.caqm || a.gapRate - b.gapRate)
+
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container || !window.matchMedia('(max-width: 820px)').matches) return
+    const frame = window.requestAnimationFrame(() => {
+      container.scrollLeft = Math.max(0, x(90) - container.clientWidth / 2)
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [points.length, xMin, xMax])
 
   return (
     <div className="chart-shell">
@@ -973,7 +1013,12 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
           <span className="chart-note-mobile">← 좌우로 이동 · 기업명을 누르면 상세 분석이 바뀝니다 →</span>
         </span>
       </div>
-      <div className="chart-scroll">
+      <div
+        className="chart-scroll"
+        ref={scrollRef}
+        tabIndex="0"
+        aria-label="CAQM 가격 매트릭스. 모바일에서는 좌우로 이동할 수 있습니다."
+      >
         {points.length ? (
           <svg
             className="matrix-chart"
@@ -981,7 +1026,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             role="img"
             aria-labelledby="matrix-title matrix-desc"
           >
-            <title id="matrix-title">한국 TOP20 CAVM과 현재가 괴리율 매트릭스</title>
+            <title id="matrix-title">한국 TOP20 CAQM과 현재가 괴리율 매트릭스</title>
             <desc id="matrix-desc">오른쪽으로 갈수록 기업의 질 점수가 높고 아래로 갈수록 적정가격보다 저렴합니다.</desc>
             <defs>
               <filter id="point-shadow" x="-100%" y="-100%" width="300%" height="300%">
@@ -1007,13 +1052,13 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
             <line x1={cutX} x2={cutX} y1={margin.top} y2={height - margin.bottom} className="cut-line" />
             <line x1={margin.left} x2={width - margin.right} y1={decisionY} y2={decisionY} className="decision-line" />
             <text x={width - margin.right - 8} y={decisionY - 10} className="decision-label" textAnchor="end">관찰 경계 -10%</text>
-            <text x={margin.left} y={42} className="zone-label danger">낮은 CAVM · 관찰</text>
-            <text x={width - margin.right} y={42} className="zone-label caution" textAnchor="end">높은 CAVM · 관찰</text>
+            <text x={margin.left} y={42} className="zone-label danger">낮은 CAQM · 관찰</text>
+            <text x={width - margin.right} y={42} className="zone-label caution" textAnchor="end">높은 CAQM · 관찰</text>
             {renderPoints.map((company) => {
               const tone = gapTone(company.gapRate)
               const isSelected = company.code === selectedCode
               const isGoodOpportunity = company.gapRate <= -20
-              const cx = x(company.cavm)
+              const cx = x(company.caqm)
               const cy = y(company.gapRate)
               const label = labels.get(company.code)
               const labelRight = label?.side === 'right'
@@ -1025,7 +1070,7 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   className={`data-point tone-${tone}${isSelected ? ' is-selected' : ''}`}
                   role="button"
                   tabIndex="0"
-                  aria-label={`${company.name}, CAVM ${company.cavm}점, 괴리율 ${formatPercent(company.gapRate, true)}${isGoodOpportunity ? ', 좋은 기업과 좋은 가격' : ''}`}
+                  aria-label={`${company.name}, CAQM ${company.caqm}점, 괴리율 ${formatPercent(company.gapRate, true)}${isGoodOpportunity ? ', 좋은 기업과 좋은 가격' : ''}`}
                   onClick={() => onSelect(company.code)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter' || event.key === ' ') {
@@ -1052,11 +1097,11 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
                   <text x={labelX} y={labelY} className={`point-label${isSelected ? ' is-selected' : ''}${isGoodOpportunity ? ' is-good-opportunity' : ''}`} textAnchor={labelRight ? 'start' : 'end'}>
                     #{company.rank} {company.name}
                   </text>
-                  <title>{company.name} · CAVM {company.cavm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
+                  <title>{company.name} · CAQM {company.caqm} · 괴리율 {formatPercent(company.gapRate, true)}</title>
                 </g>
               )
             })}
-            <text x={margin.left + innerWidth / 2} y={height - 20} className="axis-title" textAnchor="middle">CAVM 품질 점수 → 오른쪽일수록 우수</text>
+            <text x={margin.left + innerWidth / 2} y={height - 20} className="axis-title" textAnchor="middle">CAQM 품질 점수 → 오른쪽일수록 우수</text>
             <text transform={`translate(27 ${margin.top + innerHeight / 2}) rotate(-90)`} className="axis-title" textAnchor="middle">괴리율 (%) → 아래일수록 저평가</text>
           </svg>
         ) : (
@@ -1067,11 +1112,32 @@ function MatrixChart({ companies, selectedCode, onSelect }) {
         <strong>좋은 기업 · 좋은 가격</strong>
         <span>TOP20 가운데 괴리율 -20% 이하인 기업을 금색 마름모로 표시합니다.</span>
       </div>
+      <div className="matrix-opportunity-list" aria-label="좋은 가격 기업 바로 선택">
+        <div className="matrix-opportunity-heading">
+          <span>GOOD PRICE</span>
+          <strong>괴리율 -20% 이하</strong>
+          <small>그래프를 움직이지 않아도 기업을 바로 선택할 수 있습니다.</small>
+        </div>
+        <div className="matrix-opportunity-buttons">
+          {goodPriceCompanies.map((company) => (
+            <button
+              type="button"
+              className={company.code === selectedCode ? 'is-selected' : ''}
+              onClick={() => onSelect(company.code)}
+              key={company.code}
+            >
+              <strong>{company.name}</strong>
+              <span>CAQM {company.caqm}</span>
+              <b>{formatPercent(company.gapRate, true)}</b>
+            </button>
+          ))}
+        </div>
+      </div>
       {selected && (
         <div className={`selected-chart-card tone-${gapTone(selected.gapRate)}`}>
           <span className="rank-token">#{selected.rank}</span>
           <div><strong>{selected.name}</strong><small>{selected.sector}</small></div>
-          <div><span>CAVM</span><strong>{selected.cavm}</strong></div>
+          <div><span>CAQM</span><strong>{selected.caqm}</strong></div>
           <div><span>괴리율</span><strong>{formatPercent(selected.gapRate, true)}</strong></div>
           <div><span>판단</span><strong>{selected.opinion || gapLabel(selected.gapRate)}</strong></div>
           <a href="#company">상세 보기 →</a>
@@ -1086,9 +1152,9 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
     <section className="matrix-section" id="matrix">
       <div className="page-shell">
         <SectionHeading
-          eyebrow="THE CAVM MATRIX"
+          eyebrow="THE CAQM MATRIX"
           title={<>기업의 질과 가격을<br />한 화면에서 봅니다.</>}
-          description="가로축은 CAVM, 세로축은 현재가의 Final VM 대비 괴리율입니다. 오른쪽 아래에 가까울수록 우리가 기다린 조건에 부합합니다."
+          description="가로축은 CAQM, 세로축은 현재가의 Final VM 대비 괴리율입니다. 오른쪽 아래에 가까울수록 우리가 기다린 조건에 부합합니다."
           aside={<><strong>좋은 가격 기준</strong><span>= 괴리율 -20% 이하</span></>}
         />
         <MatrixChart companies={snapshot.companies} selectedCode={selectedCode} onSelect={onSelect} />
@@ -1098,9 +1164,9 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
 }
 
 function downloadTop20Csv(companies) {
-  const headers = ['순위', '종목코드', '기업', '업종', 'CAVM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '판단']
+  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '판단']
   const rows = companies.map((company) => [
-    company.rank, company.code, company.name, company.sector, company.cavm,
+    company.rank, company.code, company.name, company.sector, company.caqm,
     company.components.moat, company.components.growth, company.components.profitability,
     company.components.financialHealth, company.components.management,
     company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '', company.opinion,
@@ -1130,7 +1196,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
       .filter((company) => !watchedOnly || watchlist.includes(company.code))
       .filter((company) => !normalizedQuery || `${company.name} ${company.code}`.toLowerCase().includes(normalizedQuery))
       .sort((a, b) => {
-        if (sort === 'cavm') return b.cavm - a.cavm || a.position - b.position
+        if (sort === 'caqm') return b.caqm - a.caqm || a.position - b.position
         if (sort === 'gap') return (a.gapRate ?? Infinity) - (b.gapRate ?? Infinity)
         return a.position - b.position
       })
@@ -1146,7 +1212,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
       <div className="page-shell">
         <SectionHeading
           eyebrow="KOREA TOP20"
-          title="CAVM 우선순위"
+          title="CAQM 우선순위"
           description="점수가 같으면 해자 → 성장성 → 현금창출력 → 재무건전성 → 업종분산 순으로 정렬합니다. 가격 판단은 오른쪽 괴리율에서 별도로 확인하세요."
         />
         <div className="table-controls">
@@ -1162,7 +1228,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
             </select>
           </label>
           <div className="sort-tabs" role="group" aria-label="정렬 기준">
-            {[['rank', '공식 순위'], ['cavm', 'CAVM'], ['gap', '가격 매력']].map(([value, label]) => (
+            {[['rank', '공식 순위'], ['caqm', 'CAQM'], ['gap', '가격 매력']].map(([value, label]) => (
               <button type="button" key={value} className={sort === value ? 'active' : ''} onClick={() => setSort(value)}>{label}</button>
             ))}
           </div>
@@ -1175,7 +1241,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
           <table>
             <thead>
               <tr>
-                <th>순위</th><th>기업</th><th>CAVM</th><th>해자</th><th>성장</th><th>수익</th><th>재무</th><th>환원</th><th>현재가</th><th>Final VM</th><th>괴리율</th><th>판단</th>
+                <th>순위</th><th>기업</th><th>CAQM</th><th>해자</th><th>성장</th><th>수익</th><th>재무</th><th>환원</th><th>현재가</th><th>Final VM</th><th>괴리율</th><th>판단</th>
               </tr>
             </thead>
             <tbody>
@@ -1200,7 +1266,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
                       >{watchlist.includes(company.code) ? '★' : '☆'}</button>
                     </div>
                   </td>
-                  <td><strong className="cavm-value">{company.cavm}</strong></td>
+                  <td><strong className="caqm-value">{company.caqm}</strong></td>
                   {SCORE_META.map((meta) => <td key={meta.key} className="component-cell">{company.components[meta.key]}<small>/{meta.max}</small></td>)}
                   <td>{formatWon(company.currentPrice)}</td>
                   <td>{formatWon(company.finalVm)}</td>
@@ -1229,7 +1295,7 @@ function CandidateWatchlist({ master }) {
           title="공식 후보군"
           titleId="candidate-title"
           description="TOP20 밖에서 다음 정기 재선정을 기다리는 핵심 기업입니다. 숫자가 없는 항목은 임의로 채우지 않고 검토 중으로 표시합니다."
-          aside={<><strong>{candidates.length}개 후보</strong><span>CAVM·VM 재검토 대기</span></>}
+          aside={<><strong>{candidates.length}개 후보</strong><span>CAQM·VM 재검토 대기</span></>}
         />
         <div className="candidate-grid">
           {candidates.map((candidate, index) => (
@@ -1237,7 +1303,7 @@ function CandidateWatchlist({ master }) {
               <div className="candidate-topline"><span>{String(index + 1).padStart(2, '0')}</span><small>{candidate.code}</small></div>
               <h3>{candidate.name}</h3>
               <div className="candidate-values">
-                <div><span>CAVM</span><strong>{Number.isFinite(candidate.cavm) ? candidate.cavm : '검토 중'}</strong></div>
+                <div><span>CAQM</span><strong>{Number.isFinite(firstNumber(candidate.caqm, candidate.cavm)) ? firstNumber(candidate.caqm, candidate.cavm) : '검토 중'}</strong></div>
                 <div><span>Final VM</span><strong>{Number.isFinite(candidate.finalVm) ? formatWon(candidate.finalVm) : '검토 중'}</strong></div>
               </div>
               <p>{candidate.note || '정성 근거와 VM 입력값을 재검토합니다.'}</p>
@@ -1263,6 +1329,108 @@ function ScoreBreakdown({ company }) {
         )
       })}
     </div>
+  )
+}
+
+function qualityEvidenceFor(company, meta) {
+  const report = company.financials?.latestReport
+  const reportUrl = report?.rceptNo
+    ? `https://dart.fss.or.kr/dsaf001/main.do?rcpNo=${encodeURIComponent(report.rceptNo)}`
+    : ''
+  const checkedAt = report?.periodEnd || company.review?.reviewedAt
+  const nextReviewAt = company.review?.nextReviewAt
+  const reportSource = reportUrl
+    ? { sourceLabel: 'OpenDART 공시 원문', sourceUrl: reportUrl }
+    : { sourceLabel: '근거 링크 보강 중', sourceUrl: '' }
+  const evidence = {
+    moat: {
+      title: '경쟁우위 판단 근거',
+      detail: company.reason || '브랜드·기술·시장지배력의 정성 근거를 검토 중입니다.',
+      status: company.reason ? 'reviewed' : 'pending',
+      sourceLabel: '정성 근거 링크 보강 중',
+      sourceUrl: '',
+      checkedAt: company.review?.reviewedAt,
+      nextReviewAt,
+    },
+    growth: {
+      title: '최근 보고서 성장 지표',
+      detail: report
+        ? `${report.periodLabel || '최근 보고서'} 매출 ${formatEok(report.revenueEok)} · 장기 매출·EPS 추세와 산업 확장성을 함께 검토합니다.`
+        : '최근 분기·반기 보고서의 매출과 EPS 추세 연결이 필요합니다.',
+      status: report?.rceptNo ? 'verified' : 'pending',
+      ...reportSource,
+      checkedAt,
+      nextReviewAt,
+    },
+    profitability: {
+      title: '수익성과 현금창출 근거',
+      detail: report
+        ? `영업이익률 ${formatPercent(report.operatingMargin)} · 연환산 ROE ${formatPercent(report.roeAnnualized)}. FCF와 현금전환은 별도 검토합니다.`
+        : 'ROE·영업이익률·FCF의 최신 공시 근거 연결이 필요합니다.',
+      status: report?.rceptNo ? 'verified' : 'pending',
+      ...reportSource,
+      checkedAt,
+      nextReviewAt,
+    },
+    financialHealth: {
+      title: '재무건전성 근거',
+      detail: report
+        ? `최근 보고서 부채비율 ${formatPercent(report.debtRatio)}. 금융·보험사는 CET1·NPL·K-ICS 등 업종 전용 지표를 추가 확인합니다.`
+        : '부채·현금·자본비율의 최신 공시 근거 연결이 필요합니다.',
+      status: report?.rceptNo ? 'verified' : 'pending',
+      ...reportSource,
+      checkedAt,
+      nextReviewAt,
+    },
+    management: {
+      title: '경영진·주주환원 근거',
+      detail: '최근 3년 배당과 실제 자사주 소각 완료분을 기준으로 검토합니다. 매입 발표만으로는 점수를 확정하지 않습니다.',
+      status: 'pending',
+      sourceLabel: '실행 내역 근거 보강 중',
+      sourceUrl: '',
+      checkedAt: company.review?.reviewedAt,
+      nextReviewAt,
+    },
+  }
+  return {
+    ...evidence[meta.key],
+    score: company.components[meta.key],
+    max: meta.max,
+  }
+}
+
+function QualityEvidenceLedger({ company }) {
+  return (
+    <details className="quality-evidence">
+      <summary>
+        <span><strong>CAQM 점수 근거 장부</strong><small>항목별 판단·출처·검토일</small></span>
+        <i aria-hidden="true">+</i>
+      </summary>
+      <div className="quality-evidence-list">
+        {SCORE_META.map((meta) => {
+          const evidence = qualityEvidenceFor(company, meta)
+          return (
+            <article key={meta.key}>
+              <div className="quality-evidence-heading">
+                <div><span>{meta.short}</span><strong>{evidence.title}</strong></div>
+                <b>{evidence.score} / {evidence.max}</b>
+              </div>
+              <p>{evidence.detail}</p>
+              <div className="quality-evidence-meta">
+                <span className={`evidence-status is-${evidence.status}`}>
+                  {evidence.status === 'verified' ? '공시 확인' : evidence.status === 'reviewed' ? '정성 검토' : '근거 보강 중'}
+                </span>
+                {evidence.sourceUrl ? (
+                  <a href={evidence.sourceUrl} target="_blank" rel="noreferrer">{evidence.sourceLabel} ↗</a>
+                ) : <span>{evidence.sourceLabel}</span>}
+                <time>확인 {formatDate(evidence.checkedAt)}</time>
+                <time>다음 {formatDate(evidence.nextReviewAt)}</time>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+    </details>
   )
 }
 
@@ -1463,7 +1631,7 @@ function CompanyDetail({ company, isWatched, onToggleWatch }) {
     url.hash = `company=${company.code}`
     try {
       if (navigator.share) {
-        await navigator.share({ title: `${company.name} · 복리자산 2045`, text: `${company.name} CAVM·VM 분석`, url: url.toString() })
+        await navigator.share({ title: `${company.name} · 복리자산 2045`, text: `${company.name} CAQM·VM 분석`, url: url.toString() })
         setShareState('공유 완료')
       } else {
         await navigator.clipboard.writeText(url.toString())
@@ -1491,14 +1659,15 @@ function CompanyDetail({ company, isWatched, onToggleWatch }) {
             </div>
           </div>
           <div className="company-score-card">
-            <span>CAVM</span><strong>{company.cavm}</strong><small>/ 100</small>
+            <span>CAQM</span><strong>{company.caqm}</strong><small>/ 100</small>
           </div>
         </div>
 
         <div className="company-layout">
           <article className="detail-card score-card">
-            <div className="card-heading"><span>01</span><div><small>QUALITY MODEL</small><h3>CAVM 세부 점수</h3></div></div>
+            <div className="card-heading"><span>01</span><div><small>QUALITY MODEL</small><h3>CAQM 세부 점수</h3></div></div>
             <ScoreBreakdown company={company} />
+            <QualityEvidenceLedger company={company} />
           </article>
 
           <article className="detail-card valuation-card">
@@ -1605,8 +1774,8 @@ function Methodology({ methodology }) {
       <div className="page-shell">
         <SectionHeading
           eyebrow={methodology.version || 'OFFICIAL v1.0'}
-          title="CAVM과 VM은 이렇게 구분합니다."
-          description="CAVM(Compound Asset Valuation Model)은 기업이 장기간 복리성장을 만들 수 있는지를 평가하고, VM(Value Model)은 그 기업의 현재 적정가치를 평가합니다."
+          title="CAQM과 VM은 이렇게 구분합니다."
+          description="CAQM(Compound Asset Quality Model)은 기업이 장기간 복리성장을 만들 수 있는지를 평가하고, VM(Value Model)은 그 기업의 현재 적정가치를 평가합니다."
         />
         <div className="method-grid">
           {[
@@ -1624,7 +1793,7 @@ function Methodology({ methodology }) {
           ))}
         </div>
         <div className="method-flow">
-          <div><span>STEP 1</span><strong>CAVM</strong><small>Compound Asset Valuation Model</small><p>복리자산 가치평가 · 좋은 기업인가?</p></div>
+          <div><span>STEP 1</span><strong>CAQM</strong><small>Compound Asset Quality Model</small><p>복리자산 품질평가 · 좋은 기업인가?</p></div>
           <i>+</i>
           <div><span>STEP 2</span><strong>VM</strong><small>Value Model</small><p>적정가치 평가 · 좋은 가격인가?</p></div>
           <i>=</i>
@@ -1692,7 +1861,7 @@ function Footer({ snapshot }) {
   return (
     <footer>
       <div className="page-shell footer-grid">
-        <div className="footer-brand"><LogoMark /><div><strong>복리자산 2045</strong><span>CAVM RESEARCH</span></div></div>
+        <div className="footer-brand"><LogoMark /><div><strong>복리자산 2045</strong><span>CAQM RESEARCH</span></div></div>
         <p>좋은 기업을 적정가보다 싸게 사서 오래 보유한다.</p>
         <div className="footer-links">
           <a href={REPOSITORY_URL} target="_blank" rel="noreferrer">GitHub ↗</a>

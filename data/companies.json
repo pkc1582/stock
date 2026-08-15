@@ -12,7 +12,7 @@
       "code": "058470",
       "name": "리노공업",
       "sector": "반도체 장비·부품",
-      "cavm": 96,
+      "caqm": 96,
       "components": {
         "moat": 30,
         "growth": 24,
@@ -69,7 +69,7 @@
       "code": "267260",
       "name": "HD현대일렉트릭",
       "sector": "전력기기",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 29,
         "growth": 25,
@@ -126,7 +126,7 @@
       "code": "207940",
       "name": "삼성바이오로직스",
       "sector": "바이오 CDMO",
-      "cavm": 95,
+      "caqm": 95,
       "components": {
         "moat": 29,
         "growth": 25,
@@ -186,7 +186,7 @@
       "officialOrder": 4,
       "name": "파크시스템스",
       "sector": "반도체 계측",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 30,
         "growth": 24,
@@ -243,7 +243,7 @@
       "officialOrder": 5,
       "name": "코스맥스",
       "sector": "화장품 ODM",
-      "cavm": 92,
+      "caqm": 92,
       "components": {
         "moat": 28,
         "growth": 25,
@@ -299,7 +299,7 @@
       "code": "012450",
       "name": "한화에어로스페이스",
       "sector": "방산",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 29,
         "growth": 25,
@@ -356,7 +356,7 @@
       "code": "003230",
       "name": "삼양식품",
       "sector": "글로벌 식품",
-      "cavm": 95,
+      "caqm": 95,
       "components": {
         "moat": 29,
         "growth": 25,
@@ -413,7 +413,7 @@
       "code": "000810",
       "name": "삼성화재",
       "sector": "보험",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 28,
         "growth": 22,
@@ -473,7 +473,7 @@
       "code": "298040",
       "name": "효성중공업",
       "sector": "전력기기",
-      "cavm": 93,
+      "caqm": 93,
       "components": {
         "moat": 28,
         "growth": 25,
@@ -530,7 +530,7 @@
       "code": "105560",
       "name": "KB금융",
       "sector": "금융",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 29,
         "growth": 21,
@@ -590,7 +590,7 @@
       "code": "214450",
       "name": "파마리서치",
       "sector": "바이오·의료미용",
-      "cavm": 95,
+      "caqm": 95,
       "components": {
         "moat": 28,
         "growth": 25,
@@ -648,7 +648,7 @@
       "officialOrder": 12,
       "name": "클래시스",
       "sector": "의료미용기기",
-      "cavm": 94,
+      "caqm": 94,
       "components": {
         "moat": 28,
         "growth": 24,
@@ -704,7 +704,7 @@
       "code": "009540",
       "name": "HD한국조선해양",
       "sector": "조선",
-      "cavm": 92,
+      "caqm": 92,
       "components": {
         "moat": 28,
         "growth": 25,
@@ -762,7 +762,7 @@
       "officialOrder": 14,
       "name": "기아",
       "sector": "자동차",
-      "cavm": 91,
+      "caqm": 91,
       "components": {
         "moat": 28,
         "growth": 21,
@@ -818,7 +818,7 @@
       "code": "138040",
       "name": "메리츠금융지주",
       "sector": "금융",
-      "cavm": 93,
+      "caqm": 93,
       "components": {
         "moat": 28,
         "growth": 22,
@@ -879,7 +879,7 @@
       "officialOrder": 16,
       "name": "하나금융지주",
       "sector": "금융",
-      "cavm": 92,
+      "caqm": 92,
       "components": {
         "moat": 27,
         "growth": 21,
@@ -938,7 +938,7 @@
       "code": "000660",
       "name": "SK하이닉스",
       "sector": "반도체",
-      "cavm": 93,
+      "caqm": 93,
       "components": {
         "moat": 29,
         "growth": 25,
@@ -996,7 +996,7 @@
       "officialOrder": 18,
       "name": "KT",
       "sector": "통신·AX",
-      "cavm": 89,
+      "caqm": 89,
       "components": {
         "moat": 27,
         "growth": 19,
@@ -1052,7 +1052,7 @@
       "code": "005930",
       "name": "삼성전자",
       "sector": "반도체·전자",
-      "cavm": 91,
+      "caqm": 91,
       "components": {
         "moat": 29,
         "growth": 23,
@@ -1110,7 +1110,7 @@
       "officialOrder": 20,
       "name": "현대차",
       "sector": "자동차",
-      "cavm": 89,
+      "caqm": 89,
       "components": {
         "moat": 27,
         "growth": 20,

@@ -74,7 +74,7 @@ body:
     attributes:
       label: 확인
       options:
-        - label: 정량 후보와 공식 CAVM TOP20이 다르다는 점을 확인했습니다.
+        - label: 정량 후보와 공식 CAQM TOP20이 다르다는 점을 확인했습니다.
           required: true
         - label: AI 요약이 아니라 원문 근거를 함께 제출했습니다.
           required: true

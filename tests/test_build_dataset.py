@@ -113,7 +113,7 @@ class ValuationModelTests(unittest.TestCase):
         self.assertEqual(grade, "C")
         self.assertIn("VM 가정 최종 승인 전", reasons)
 
-    def test_change_log_detects_vm_gap_cavm_and_report_changes(self):
+    def test_change_log_detects_vm_gap_caqm_and_report_changes(self):
         previous = {
             "generatedAt": "2026-08-12T10:00:00+09:00",
             "companies": [{
@@ -122,7 +122,7 @@ class ValuationModelTests(unittest.TestCase):
                 "rank": 1,
                 "finalVm": 500_000,
                 "gapRate": -40,
-                "cavm": 90,
+                "caqm": 90,
                 "financials": {"latestReport": {"rceptNo": "old", "periodEnd": "2025-12-31"}},
             }],
         }
@@ -132,7 +132,7 @@ class ValuationModelTests(unittest.TestCase):
             "rank": 1,
             "finalVm": 389_000,
             "gapRate": -30,
-            "cavm": 92,
+            "caqm": 92,
             "financials": {"latestReport": {"rceptNo": "new", "periodEnd": "2026-03-31", "periodLabel": "1분기"}},
         }]
 
@@ -141,7 +141,7 @@ class ValuationModelTests(unittest.TestCase):
         self.assertTrue(changes["hasMaterialChanges"])
         self.assertEqual(len(changes["vm"]), 1)
         self.assertEqual(len(changes["gap"]), 1)
-        self.assertEqual(len(changes["cavm"]), 1)
+        self.assertEqual(len(changes["caqm"]), 1)
         self.assertEqual(len(changes["reports"]), 1)
 
     def test_change_log_omits_internal_and_minor_market_noise(self):
@@ -153,7 +153,7 @@ class ValuationModelTests(unittest.TestCase):
                 "rank": 1,
                 "finalVm": 389_000,
                 "gapRate": -25,
-                "cavm": 90,
+                "caqm": 90,
                 "financials": {"latestReport": {"rceptNo": "old", "periodEnd": "2026-03-31"}},
             }],
         }
@@ -163,7 +163,7 @@ class ValuationModelTests(unittest.TestCase):
             "rank": 1,
             "finalVm": 389_000,
             "gapRate": -23,
-            "cavm": 91,
+            "caqm": 91,
             "financials": {"latestReport": {"rceptNo": "amended", "periodEnd": "2026-03-31"}},
         }]
 
@@ -171,7 +171,7 @@ class ValuationModelTests(unittest.TestCase):
 
         self.assertFalse(changes["hasMaterialChanges"])
         self.assertEqual(changes["gap"], [])
-        self.assertEqual(changes["cavm"], [])
+        self.assertEqual(changes["caqm"], [])
         self.assertEqual(changes["reports"], [])
 
     def test_change_log_keeps_price_judgement_boundary_crossing(self):
@@ -183,7 +183,7 @@ class ValuationModelTests(unittest.TestCase):
                 "rank": 1,
                 "finalVm": 389_000,
                 "gapRate": -19.5,
-                "cavm": 91,
+                "caqm": 91,
                 "financials": {},
             }],
         }
@@ -193,7 +193,7 @@ class ValuationModelTests(unittest.TestCase):
             "rank": 1,
             "finalVm": 389_000,
             "gapRate": -20.1,
-            "cavm": 91,
+            "caqm": 91,
             "financials": {},
         }]
 

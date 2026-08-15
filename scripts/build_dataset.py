@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the public CAVM/VM snapshot from reviewed and human-editable inputs.
+"""Build the public CAQM/VM snapshot from reviewed and human-editable inputs.
 
 Only derived values are written to ``public/data/latest.json``. API keys and raw
 provider responses are never read or written by this module.
@@ -361,7 +361,7 @@ def change_log_for(
         "generatedAt": generated_at,
         "vm": [],
         "gap": [],
-        "cavm": [],
+        "caqm": [],
         "entrants": [],
         "exits": [],
         "reports": [],
@@ -379,7 +379,7 @@ def change_log_for(
                 "code": code,
                 "name": company.get("name"),
                 "rank": company.get("rank"),
-                "cavm": company.get("cavm"),
+                "caqm": company.get("caqm"),
             })
             continue
         if old.get("finalVm") != company.get("finalVm"):
@@ -402,15 +402,15 @@ def change_log_for(
                 "after": new_gap,
                 "delta": gap_delta,
             })
-        old_cavm = old.get("cavm")
-        new_cavm = company.get("cavm")
-        cavm_delta = new_cavm - old_cavm if isinstance(old_cavm, (int, float)) and isinstance(new_cavm, (int, float)) else None
-        if cavm_delta is not None and (abs(cavm_delta) >= 2 or old.get("rank") != company.get("rank")):
-            empty["cavm"].append({
+        old_caqm = old.get("caqm", old.get("cavm"))
+        new_caqm = company.get("caqm")
+        caqm_delta = new_caqm - old_caqm if isinstance(old_caqm, (int, float)) and isinstance(new_caqm, (int, float)) else None
+        if caqm_delta is not None and (abs(caqm_delta) >= 2 or old.get("rank") != company.get("rank")):
+            empty["caqm"].append({
                 "code": code,
                 "name": company.get("name"),
-                "before": old.get("cavm"),
-                "after": company.get("cavm"),
+                "before": old.get("caqm"),
+                "after": company.get("caqm"),
             })
         old_report = ((old.get("financials") or {}).get("latestReport") or {})
         new_report = ((company.get("financials") or {}).get("latestReport") or {})
@@ -429,18 +429,18 @@ def change_log_for(
                 "code": code,
                 "name": company.get("name"),
                 "previousRank": company.get("rank"),
-                "reason": "CAVM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동",
+                "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동",
             })
 
     empty["gap"].sort(key=lambda item: abs(item["delta"]), reverse=True)
-    empty["hasMaterialChanges"] = any(empty[key] for key in ("vm", "gap", "cavm", "entrants", "exits", "reports"))
+    empty["hasMaterialChanges"] = any(empty[key] for key in ("vm", "gap", "caqm", "entrants", "exits", "reports"))
     return empty
 
 
-def rating_for(cavm: int, gap_rate: float | None) -> tuple[str, str]:
-    if cavm < 70:
+def rating_for(caqm: int, gap_rate: float | None) -> tuple[str, str]:
+    if caqm < 70:
         return "★☆☆☆☆", "투자 제외"
-    if cavm < 80:
+    if caqm < 80:
         return "★★☆☆☆", "후보"
     if gap_rate is None:
         return "★★★☆☆", "VM 검토 필요"
@@ -719,12 +719,12 @@ def main() -> None:
         assumption = overrides.get(code)
         if not isinstance(assumption, dict):
             raise ValueError(f"missing manual VM assumption for {code}")
-        declared_cavm = require_number(company.get("cavm"), f"{code}.cavm", 0)
+        declared_caqm = require_number(company.get("caqm", company.get("cavm")), f"{code}.caqm", 0)
         base_total = sum(require_number((company.get("components") or {}).get(key), f"{code}.components.{key}", 0) for key in COMPONENT_LIMITS)
-        if declared_cavm != base_total:
-            raise ValueError(f"{code}: declared CAVM does not equal the component sum")
+        if declared_caqm != base_total:
+            raise ValueError(f"{code}: declared CAQM does not equal the component sum")
         components = component_scores(company, assumption)
-        cavm = sum(components.values())
+        caqm = sum(components.values())
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
         valuation = valuation_for(code, assumption, overseas_adjustment_weight)
@@ -732,7 +732,7 @@ def main() -> None:
         vm_scenarios = valuation_scenarios_for(valuation, assumption)
         final_vm = int(valuation["finalVm"])
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
-        rating, opinion = rating_for(cavm, gap_rate)
+        rating, opinion = rating_for(caqm, gap_rate)
         vm_status = str(assumption.get("status", overrides_data.get("status", "draft")))
         if vm_status != "reviewed":
             opinion = {
@@ -756,7 +756,7 @@ def main() -> None:
                 "officialOrder": int(require_number(company.get("officialOrder", len(built) + 1), f"{code}.officialOrder", 1)),
                 "name": str(company.get("name", "")),
                 "sector": str(company.get("sector", "")),
-                "cavm": cavm,
+                "caqm": caqm,
                 "components": components,
                 "currentPrice": current_price,
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
@@ -779,7 +779,7 @@ def main() -> None:
                 "financials": company.get("financials", {}),
                 "sources": company.get("sources", []),
                 "review": {
-                    "status": f"CAVM {base_review.get('status', 'pending')} / VM {assumption.get('status', overrides_data.get('status', 'draft'))}",
+                    "status": f"CAQM {base_review.get('status', 'pending')} / VM {assumption.get('status', overrides_data.get('status', 'draft'))}",
                     "reviewedAt": str(base_review.get("reviewedAt", companies_data.get("basisDate", ""))),
                     "nextReviewAt": next_review,
                     "basisDates": {
@@ -795,7 +795,7 @@ def main() -> None:
 
     built.sort(
         key=lambda item: (
-            -item["cavm"],
+            -item["caqm"],
             item["officialOrder"],
             -item["components"]["moat"],
             -item["components"]["growth"],
@@ -804,12 +804,12 @@ def main() -> None:
             item["name"],
         )
     )
-    previous_cavm: int | None = None
+    previous_caqm: int | None = None
     display_rank = 0
     for position, item in enumerate(built, start=1):
-        if item["cavm"] != previous_cavm:
+        if item["caqm"] != previous_caqm:
             display_rank = position
-            previous_cavm = item["cavm"]
+            previous_caqm = item["caqm"]
         item["rank"] = display_rank
         item["position"] = position
         # Keep rank first for easier review and stable UI consumption.
@@ -844,17 +844,17 @@ def main() -> None:
         "changes": changes,
         "officialMaster": overrides_data.get("officialMaster", {}),
         "methodology": {
-            "version": "CAVM Official v1.1 · Sector VM v2.0",
+            "version": "CAQM Official v1.1 · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-            "ratingPolicy": "CAVM은 가격과 VM을 제외하고 해자 30점, 성장성 25점, 수익성 20점, 재무건전성 15점, 경영진·주주환원 10점으로 평가한다. CAVM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
-            "selectionPolicy": "공식 마스터는 CAVM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
-            "disclaimer": "CAVM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
+            "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자 30점, 성장성 25점, 수익성 20점, 재무건전성 15점, 경영진·주주환원 10점으로 평가한다. CAQM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+            "selectionPolicy": "공식 마스터는 CAQM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
+            "disclaimer": "CAQM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },
         "summary": {
             "universeSize": int(companies_data.get("universeSize", len(built))),
             "top20Count": len(built),
-            "averageCavm": round(sum(item["cavm"] for item in built) / len(built), 1) if built else 0,
+            "averageCaqm": round(sum(item["caqm"] for item in built) / len(built), 1) if built else 0,
             "undervaluedCount": sum(1 for item in built if item["gapRate"] is not None and item["gapRate"] < 0),
         },
         "companies": built,

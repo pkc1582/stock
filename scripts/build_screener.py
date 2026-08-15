@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Combine universe, market, and OpenDART data into a transparent pre-screen.
 
-This is a quantitative *candidate funnel*, not a CAVM result.  Every unreviewed
-company keeps ``cavm: null``.  The output contains at most 200 candidates and a
+This is a quantitative *candidate funnel*, not a CAQM result.  Every unreviewed
+company keeps ``caqm: null``.  The output contains at most 200 candidates and a
 reasoned record for every company that was rejected or fell below the cutoff.
 """
 
@@ -594,7 +594,7 @@ def evaluate_company(
         market_name = record_alias(market, "market", "mrktCtg", "marketName", "corpCls", "corp_cls")
     sector = record_alias(universe, "sector", "industry", "industryName", "indutyNm")
 
-    pending_checks = ["cavm_qualitative_review"]
+    pending_checks = ["caqm_qualitative_review"]
     if operating_cash_flow is None:
         pending_checks.append("operating_cash_flow_full_statement_fetch")
     if fcf_status != "available":
@@ -607,8 +607,8 @@ def evaluate_company(
         "companyType": financial_type,
         "quantScore": quant_score,
         "scoreComponents": score_components,
-        "cavm": None,
-        "cavmStatus": "not_reviewed",
+        "caqm": None,
+        "caqmStatus": "not_reviewed",
         "reportPeriod": report_period(financial),
         "metrics": {
             **market_values,
@@ -646,7 +646,7 @@ def evaluate_company(
 def methodology() -> dict[str, Any]:
     return {
         "version": "quant-pre-screen-v1",
-        "purpose": "코스피·코스닥 정량 후보 압축; CAVM 정성평가를 대체하지 않음",
+        "purpose": "코스피·코스닥 정량 후보 압축; CAQM 정성평가를 대체하지 않음",
         "candidateLimit": MAX_CANDIDATES,
         "gates": [
             {"id": "market_cap", "appliesTo": "all", "rule": f">= {MIN_MARKET_CAP} KRW"},
@@ -809,7 +809,7 @@ def build_screener(
             "candidateCount": len(candidates),
             "rejectedCount": len(rejected),
             "financialCandidateCount": sum(item["companyType"] == "financial" for item in candidates),
-            "cavmReviewedCount": 0,
+            "caqmReviewedCount": 0,
         },
         "companies": all_companies,
         "candidates": candidates,

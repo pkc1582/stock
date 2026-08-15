@@ -6,7 +6,7 @@ on:
   workflow_run:
     workflows:
       - Daily data refresh
-      - Weekly CAVM rebuild
+      - Weekly CAQM rebuild
       - Full market screener refresh
     types: [completed]
   workflow_dispatch:

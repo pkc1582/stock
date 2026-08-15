@@ -1,6 +1,6 @@
-name: CAVM / VM 조정 요청
-description: 업종별 VM 입력값, CAVM 세부 점수, 가치평가 가정을 근거와 함께 조정 요청합니다.
-title: "[CAVM] "
+name: CAQM / VM 조정 요청
+description: 업종별 VM 입력값, CAQM 세부 점수, 가치평가 가정을 근거와 함께 조정 요청합니다.
+title: "[CAQM] "
 body:
   - type: markdown
     attributes:
@@ -90,7 +90,7 @@ body:
     id: rationale
     attributes:
       label: 판단 근거
-      description: 변경이 필요한 이유와 CAVM/VM에 주는 영향을 설명해 주세요.
+      description: 변경이 필요한 이유와 CAQM/VM에 주는 영향을 설명해 주세요.
     validations:
       required: true
 

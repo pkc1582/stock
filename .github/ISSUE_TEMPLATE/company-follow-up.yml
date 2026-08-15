@@ -55,7 +55,7 @@ body:
         - 신규
         - 확인 중
         - 기업 발표 대기
-        - CAVM 재평가 필요
+        - CAQM 재평가 필요
         - VM 재산정 필요
         - 종료 가능
     validations:

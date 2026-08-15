@@ -2,7 +2,7 @@
   "schemaVersion": 5,
   "basisDate": "2026-08-13",
   "status": "reviewed",
-  "description": "복리자산 2045 국내 TOP20 공식 마스터입니다. CAVM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.",
+  "description": "복리자산 2045 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.",
   "valuationPolicy": {
     "overseasAdjustmentWeight": 0.3
   },
@@ -305,12 +305,12 @@
       {
         "code": "214450",
         "title": "파마리서치 TOP20 신규 편입",
-        "detail": "CAVM 95 · Final VM 540,000원 / 에이피알 후보군 이동"
+        "detail": "CAQM 95 · Final VM 540,000원 / 에이피알 후보군 이동"
       },
       {
         "code": "105560",
         "title": "KB금융 TOP20 신규 편입",
-        "detail": "CAVM 94 · Final VM 186,000원 / 한국콜마 후보군 이동"
+        "detail": "CAQM 94 · Final VM 186,000원 / 한국콜마 후보군 이동"
       },
       {
         "code": "086790",
@@ -332,44 +332,44 @@
       {
         "code": "042700",
         "name": "한미반도체",
-        "cavm": 94,
+        "caqm": 94,
         "finalVm": 205000,
         "note": "반도체 장비 해자와 HBM CAPEX 민감도를 재검토합니다."
       },
       {
         "code": "319660",
         "name": "PSK",
-        "cavm": 91,
+        "caqm": 91,
         "finalVm": 164000,
         "note": "공정 장비 점유율과 고객 CAPEX 지속성을 재검토합니다."
       },
       {
         "code": "052690",
         "name": "한국전력기술",
-        "cavm": 91,
+        "caqm": 91,
         "finalVm": 73000,
         "note": "원전 수주 가시성과 프로젝트 일정을 재검토합니다."
       },
       {
         "code": "034020",
         "name": "두산에너빌리티",
-        "cavm": 90,
+        "caqm": 90,
         "finalVm": 44400,
         "note": "원전·가스터빈 수주와 재무 개선을 재검토합니다."
       },
       {
         "code": "278470",
         "name": "에이피알",
-        "cavm": null,
+        "caqm": null,
         "finalVm": null,
-        "note": "파마리서치 편입에 따라 후보군에서 CAVM·VM을 재검토합니다."
+        "note": "파마리서치 편입에 따라 후보군에서 CAQM·VM을 재검토합니다."
       },
       {
         "code": "161890",
         "name": "한국콜마",
-        "cavm": null,
+        "caqm": null,
         "finalVm": null,
-        "note": "KB금융 편입에 따라 후보군에서 CAVM·VM을 재검토합니다."
+        "note": "KB금융 편입에 따라 후보군에서 CAQM·VM을 재검토합니다."
       }
     ]
   }

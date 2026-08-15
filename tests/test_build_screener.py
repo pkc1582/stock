@@ -90,8 +90,8 @@ class ScreeningPolicyTests(unittest.TestCase):
         financial_candidate = next(item for item in output["candidates"] if item["code"] == "000002")
         self.assertEqual(financial_candidate["companyType"], "financial")
         self.assertGreater(financial_candidate["metrics"]["debtRatioPct"], 250)
-        self.assertIsNone(financial_candidate["cavm"])
-        self.assertEqual(financial_candidate["cavmStatus"], "not_reviewed")
+        self.assertIsNone(financial_candidate["caqm"])
+        self.assertEqual(financial_candidate["caqmStatus"], "not_reviewed")
         self.assertEqual(financial_candidate["screenStatus"], "review_pending")
         self.assertEqual(financial_candidate["metrics"]["fcfStatus"], "pending_capex_not_collected")
 
