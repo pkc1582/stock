@@ -1605,8 +1605,8 @@ function Methodology({ methodology }) {
       <div className="page-shell">
         <SectionHeading
           eyebrow={methodology.version || 'OFFICIAL v1.0'}
-          title="CAVM은 이렇게 계산합니다."
-          description="숫자로 확인할 수 있는 항목은 공식 재무자료로 갱신하고, 해자와 경영 판단은 근거와 검토일을 남겨 사람이 책임 있게 평가합니다."
+          title="CAVM과 VM은 이렇게 구분합니다."
+          description="CAVM(Compound Asset Valuation Model)은 기업이 장기간 복리성장을 만들 수 있는지를 평가하고, VM(Value Model)은 그 기업의 현재 적정가치를 평가합니다."
         />
         <div className="method-grid">
           {[
@@ -1624,9 +1624,9 @@ function Methodology({ methodology }) {
           ))}
         </div>
         <div className="method-flow">
-          <div><span>STEP 1</span><strong>CAVM</strong><p>좋은 기업인가?</p></div>
+          <div><span>STEP 1</span><strong>CAVM</strong><small>Compound Asset Valuation Model</small><p>복리자산 가치평가 · 좋은 기업인가?</p></div>
           <i>+</i>
-          <div><span>STEP 2</span><strong>VM</strong><p>좋은 가격인가?</p></div>
+          <div><span>STEP 2</span><strong>VM</strong><small>Value Model</small><p>적정가치 평가 · 좋은 가격인가?</p></div>
           <i>=</i>
           <div className="flow-result"><span>DECISION</span><strong>두 조건의 교집합</strong><p>그때 투자를 검토합니다.</p></div>
         </div>

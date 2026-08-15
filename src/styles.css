@@ -450,6 +450,7 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .method-flow > i { align-self: center; color: #7b8982; font-size: 20px; font-style: normal; }
 .method-flow span { display: block; color: #84908a; font-size: 8px; letter-spacing: 1.2px; }
 .method-flow strong { display: block; margin-top: 10px; color: var(--deep); font-size: 21px; }
+.method-flow small { display: block; margin-top: 4px; color: #64756e; font-size: 9px; font-weight: 700; letter-spacing: .25px; }
 .method-flow p { margin: 3px 0 0; color: var(--muted); font-size: 10px; }
 .method-flow .flow-result { border-color: var(--green); background: var(--deep); color: white; }
 .method-flow .flow-result span { color: #6f9488; }
