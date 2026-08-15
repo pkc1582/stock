@@ -497,7 +497,7 @@ function Hero({ snapshot }) {
       <div className="hero-grid page-shell">
         <div className="hero-copy">
           <div className="eyebrow"><span /> COMPOUND ASSET RESEARCH</div>
-          <h1>좋은 기업과<br /><em>좋은 가격</em>이 만나는 곳.</h1>
+          <h1>좋은 기업과<br /><em>좋은 가격</em>이<span className="hero-desktop-break"><br /></span>{' '}만나는 곳.</h1>
           <p className="hero-lead">
             주가를 예측하지 않습니다. 경쟁우위와 현금창출력을 먼저 평가하고,
             충분한 가격 매력이 생길 때까지 기다립니다.
@@ -630,7 +630,7 @@ function LatestChanges({ snapshot, onSelect }) {
           eyebrow="LATEST UPDATE"
           title="최근 공식 변경 이력"
           titleId="changes-title"
-          description="TOP20 편입·탈락, 중요 VM·CAQM 변경, 가격 판단 구간 전환과 최신 보고서 반영처럼 투자 판단에 의미 있는 변화만 기록합니다."
+          description="TOP20 편입·탈락, 중요 VM·CAQM 변경, 가격 판단 전환, 최신 보고서 반영처럼 투자 판단에 의미 있는 변화만 기록합니다."
           aside={<span className="changes-basis">{officialMaster.version || `비교 기준 ${formatDateTime(changes.comparedAt)}`}</span>}
         />
         {groups.length ? (
@@ -1237,7 +1237,8 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
           </button>
           <button type="button" className="csv-export" onClick={() => downloadTop20Csv(visible)}>CSV 저장</button>
         </div>
-        <div className="table-wrap">
+        <p className="table-mobile-note" id="top20-table-note">← 표를 좌우로 밀어 현재가·Final VM·괴리율까지 확인하세요 →</p>
+        <div className="table-wrap" tabIndex="0" role="region" aria-labelledby="top20-table-note">
           <table>
             <thead>
               <tr>
