@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T09:54:52+09:00",
+  "generatedAt": "2026-08-17T15:32:40+09:00",
   "basisDate": "2026-08-13",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,106 +9,21 @@
     "latestReportPartialCount": 5
   },
   "changes": {
-    "comparedAt": "2026-08-14T19:38:09+09:00",
-    "generatedAt": "2026-08-15T09:54:52+09:00",
-    "vm": [],
+    "comparedAt": "2026-08-15T09:54:52+09:00",
+    "generatedAt": "2026-08-17T15:32:40+09:00",
+    "vm": [
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "before": 77000,
+        "after": 72400
+      }
+    ],
     "gap": [],
     "caqm": [],
     "entrants": [],
     "exits": [],
-    "reports": [
-      {
-        "code": "207940",
-        "name": "삼성바이오로직스",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "138040",
-        "name": "메리츠금융지주",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "086790",
-        "name": "하나금융지주",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "000270",
-        "name": "기아",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "030200",
-        "name": "KT",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      },
-      {
-        "code": "005380",
-        "name": "현대차",
-        "before": "2026-03-31",
-        "after": "2026-06-30",
-        "periodLabel": "2026년 반기 누적"
-      }
-    ],
+    "reports": [],
     "hasMaterialChanges": true
   },
   "officialMaster": {
@@ -1455,23 +1370,23 @@
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
       "valuationHorizonYears": 3,
-      "forwardEps3y": 4659,
+      "forwardEps3y": 4380,
       "historicalPer5y": 22,
       "overseasPeerPer": 25,
       "overseasCorrectionPer": 0.9,
       "overseasAdjustmentWeightPct": 30.0,
       "appliedPer": 22.9,
       "discountRate": 10,
-      "primaryVm": 80200,
+      "primaryVm": 75400,
       "crossCheckVm": null,
-      "finalVm": 77000,
-      "modelCalculatedVm": 80200,
+      "finalVm": 72400,
+      "modelCalculatedVm": 75400,
       "officialVmOverride": true,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "복리자산 2045 VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 56500,
+          "finalVm": 53200,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1480,7 +1395,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 77000,
+          "finalVm": 72400,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1489,7 +1404,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 100100,
+          "finalVm": 94100,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1507,12 +1422,12 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "소모품 반복매출과 해외 인허가 확장을 반영한다.",
-      "gapRate": -43.1,
+      "vmNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
+      "gapRate": -39.5,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
-      "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다.",
+      "risk": "국내 장비·소모품 매출 둔화와 브라질 유통 직영 전환 초기 실적 불확실성을 점검해야 한다. 경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용도 지속 확인이 필요하다.",
       "issues": [],
       "financials": {
         "revenue2025": 3368,
@@ -1554,7 +1469,7 @@
         "basisDates": {
           "price": "2026-08-12",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-13",
+          "eps": "2026-08-17",
           "multiple": "2026-08-13",
           "nextReview": "2026-09-30"
         }
