@@ -1,7 +1,7 @@
 {
   "id": "/stock/",
-  "name": "CAP",
-  "short_name": "CAP",
+  "name": "CAR",
+  "short_name": "CAR",
   "description": "CAQM과 VM으로 좋은 기업과 좋은 가격을 분리해 보는 국내주식 리서치 앱",
   "lang": "ko-KR",
   "dir": "ltr",

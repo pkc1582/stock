@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T15:54:53+09:00",
+  "generatedAt": "2026-08-17T16:25:15+09:00",
   "basisDate": "2026-08-13",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,8 +9,8 @@
     "latestReportPartialCount": 5
   },
   "changes": {
-    "comparedAt": "2026-08-17T15:46:53+09:00",
-    "generatedAt": "2026-08-17T15:54:53+09:00",
+    "comparedAt": "2026-08-17T15:54:53+09:00",
+    "generatedAt": "2026-08-17T16:25:15+09:00",
     "vm": [],
     "gap": [],
     "caqm": [],
@@ -147,7 +147,7 @@
       "finalVm": 69300,
       "modelCalculatedVm": 66000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -284,7 +284,7 @@
       "finalVm": 1652000,
       "modelCalculatedVm": 1207900,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -423,7 +423,7 @@
       "finalVm": 1339100,
       "modelCalculatedVm": 1339100,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -560,7 +560,7 @@
       "finalVm": 540000,
       "modelCalculatedVm": 473300,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -697,7 +697,7 @@
       "finalVm": 681200,
       "modelCalculatedVm": 426800,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -834,7 +834,7 @@
       "finalVm": 243600,
       "modelCalculatedVm": 252400,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -960,7 +960,7 @@
       "finalVm": 977700,
       "modelCalculatedVm": 767000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1098,7 +1098,7 @@
       "finalVm": 644500,
       "modelCalculatedVm": 644500,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1238,7 +1238,7 @@
       "finalVm": 186000,
       "modelCalculatedVm": 186000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1375,7 +1375,7 @@
       "finalVm": 74000,
       "modelCalculatedVm": 75400,
       "officialVmOverride": true,
-      "officialVmSource": "CAP VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영, 최종값 74,000원으로 재조정)",
+      "officialVmSource": "CAR VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영, 최종값 74,000원으로 재조정)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1501,7 +1501,7 @@
       "finalVm": 2611100,
       "modelCalculatedVm": 1284100,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1639,7 +1639,7 @@
       "finalVm": 121600,
       "modelCalculatedVm": 121600,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1781,7 +1781,7 @@
       ],
       "modelCalculatedVm": 2913000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1918,7 +1918,7 @@
       "finalVm": 288000,
       "modelCalculatedVm": 307200,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2044,7 +2044,7 @@
       "finalVm": 524000,
       "modelCalculatedVm": 446200,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2181,7 +2181,7 @@
       "finalVm": 155000,
       "modelCalculatedVm": 155000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2307,7 +2307,7 @@
       "finalVm": 163300,
       "modelCalculatedVm": 163300,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2438,7 +2438,7 @@
       ],
       "modelCalculatedVm": 389000,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2575,7 +2575,7 @@
       "finalVm": 68500,
       "modelCalculatedVm": 68500,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2701,7 +2701,7 @@
       "finalVm": 467900,
       "modelCalculatedVm": 467900,
       "officialVmOverride": true,
-      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
       "vmScenarios": {
         "conservative": {
           "label": "보수",

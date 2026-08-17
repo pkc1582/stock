@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="CAP">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="CAR">
   <rect width="512" height="512" fill="#071b18"/>
   <circle cx="416" cy="96" r="116" fill="none" stroke="#c5a95e" stroke-opacity=".14" stroke-width="18"/>
   <path d="M256 112 400 256 256 400 112 256Z" fill="#0d2b25" stroke="#d9c57e" stroke-width="10"/>
-  <text x="256" y="277" fill="#f4e7ad" font-family="Arial, sans-serif" font-size="60" font-weight="800" text-anchor="middle" letter-spacing="2">CAP</text>
+  <text x="256" y="277" fill="#f4e7ad" font-family="Arial, sans-serif" font-size="60" font-weight="800" text-anchor="middle" letter-spacing="2">CAR</text>
 </svg>

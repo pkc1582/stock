@@ -351,7 +351,7 @@ const gapLabel = (gap) => {
 function LogoMark() {
   return (
     <span className="logo-mark" aria-hidden="true">
-      <span>CAP</span>
+      <span>CAR</span>
     </span>
   )
 }
@@ -447,10 +447,10 @@ function Header({ basisDate }) {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#top" aria-label="CAP 홈">
+        <a className="brand" href="#top" aria-label="CAR 홈">
           <LogoMark />
           <span className="brand-copy">
-            <strong>CAP</strong>
+            <strong>CAR</strong>
             <small>CAQM RESEARCH</small>
           </span>
         </a>
@@ -528,7 +528,7 @@ function Hero({ snapshot }) {
             <span>{formatDate(snapshot.basisDate)} 기준</span>
           </div>
         </div>
-        <div className="hero-panel hero-summary-panel" aria-label="CAP 데이터 요약">
+        <div className="hero-panel hero-summary-panel" aria-label="CAR 데이터 요약">
           <div className="hero-summary-grid">
             {summaryItems.map(([label, value, note]) => (
               <div className="hero-summary-item" key={label}>
@@ -727,7 +727,7 @@ function DataPolicy() {
         <div className="data-policy-note">
           <div>
             <span aria-hidden="true">i</span>
-            <p><strong>사이트의 ‘예상 EPS’는 자동 수집된 시장 컨센서스와 같은 뜻이 아닙니다.</strong> 별도 출처가 표시되지 않은 값은 CAP PMO가 공개 자료를 바탕으로 검토한 분석 가정입니다.</p>
+            <p><strong>사이트의 ‘예상 EPS’는 자동 수집된 시장 컨센서스와 같은 뜻이 아닙니다.</strong> 별도 출처가 표시되지 않은 값은 CAR PMO가 공개 자료를 바탕으로 검토한 분석 가정입니다.</p>
           </div>
           <div className="data-policy-links" aria-label="주요 공식 데이터 출처">
             <a href="https://opendart.fss.or.kr/" target="_blank" rel="noreferrer">OpenDART ↗</a>
@@ -1632,7 +1632,7 @@ function CompanyDetail({ company, isWatched, onToggleWatch }) {
     url.hash = `company=${company.code}`
     try {
       if (navigator.share) {
-        await navigator.share({ title: `${company.name} · CAP`, text: `${company.name} CAQM·VM 분석`, url: url.toString() })
+        await navigator.share({ title: `${company.name} · CAR`, text: `${company.name} CAQM·VM 분석`, url: url.toString() })
         setShareState('공유 완료')
       } else {
         await navigator.clipboard.writeText(url.toString())
@@ -1862,7 +1862,7 @@ function Footer({ snapshot }) {
   return (
     <footer>
       <div className="page-shell footer-grid">
-        <div className="footer-brand"><LogoMark /><div><strong>CAP</strong><span>CAQM RESEARCH</span></div></div>
+        <div className="footer-brand"><LogoMark /><div><strong>CAR</strong><span>CAQM RESEARCH</span></div></div>
         <p>좋은 기업을 적정가보다 싸게 사서 오래 보유한다.</p>
         <p className="footer-creator">제작자: PKC</p>
         <div className="footer-links">
@@ -1879,7 +1879,7 @@ function LoadingScreen() {
   return (
     <main className="loading-screen" aria-live="polite">
       <LogoMark />
-      <div><strong>CAP</strong><span>최신 리서치 데이터를 불러오는 중입니다.</span></div>
+      <div><strong>CAR</strong><span>최신 리서치 데이터를 불러오는 중입니다.</span></div>
       <span className="loading-bar"><i /></span>
     </main>
   )
