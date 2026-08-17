@@ -40,7 +40,7 @@ button { color: inherit; }
 .site-header { position: sticky; z-index: 50; top: 0; height: 76px; border-bottom: 1px solid rgba(255,255,255,.1); background: rgba(7,27,24,.94); color: white; backdrop-filter: blur(16px); }
 .header-inner { width: min(1360px, calc(100% - 40px)); height: 100%; margin: auto; display: flex; align-items: center; gap: 34px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 230px; }
-.logo-mark { width: 42px; height: 42px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; border: 1px solid rgba(197,169,94,.75); color: #ddc87f; font-size: 10px; font-weight: 800; letter-spacing: -.5px; transform: rotate(45deg); }
+.logo-mark { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(197,169,94,.75); color: #ddc87f; font-size: 10px; font-weight: 800; letter-spacing: -.5px; transform: rotate(45deg); }
 .logo-mark span { transform: rotate(-45deg); text-align: center; }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-copy strong { font-size: 15px; letter-spacing: -.3px; }

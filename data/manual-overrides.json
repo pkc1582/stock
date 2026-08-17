@@ -2,12 +2,12 @@
   "schemaVersion": 5,
   "basisDate": "2026-08-13",
   "status": "reviewed",
-  "description": "복리자산 2045 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.",
+  "description": "CAP 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.",
   "valuationPolicy": {
     "overseasAdjustmentWeight": 0.3
   },
   "reviewPolicy": {
-    "owner": "복리자산 2045 PMO",
+    "owner": "CAP PMO",
     "nextReviewAt": "2026-09-30",
     "requiredEvidence": [
       "최근 실적 발표",
@@ -29,7 +29,7 @@
       "status": "reviewed",
       "analystNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
       "officialFinalVm": 186000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -46,7 +46,7 @@
       "status": "reviewed",
       "analystNote": "보험·증권 중심 복합금융 구조를 고려해 BPS×PBR을 60%, EPS×PER를 40% 병행한다. 높은 ROE와 실제 자사주 소각은 프리미엄 요인이지만 보험·증권 이익 변동성을 별도로 점검한다.",
       "officialFinalVm": 121600,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -57,7 +57,7 @@
       "discountRate": 10,
       "analystNote": "산업용 AFM 기술 해자와 글로벌 계측기업 비교를 반영한다.",
       "officialFinalVm": 243600,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
@@ -69,7 +69,7 @@
       "discountRate": 11,
       "analystNote": "글로벌 ODM 성장과 중국 사업 변동성을 함께 반영한다.",
       "officialFinalVm": 288000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
@@ -84,20 +84,20 @@
       "status": "reviewed",
       "analystNote": "글로벌 CDMO 성장과 높은 계약 가시성을 반영한다.",
       "officialFinalVm": 1652000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
     "214150": {
-      "forwardEps3y": 4659,
+      "forwardEps3y": 4380,
       "historicalPer5y": 22,
       "overseasPeerPer": 25,
       "discountRate": 10,
-      "analystNote": "소모품 반복매출과 해외 인허가 확장을 반영한다.",
-      "officialFinalVm": 77000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "analystNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
+      "officialFinalVm": 74000,
+      "officialVmSource": "CAP VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영, 최종값 74,000원으로 재조정)",
       "status": "reviewed",
-      "epsReviewedAt": "2026-08-13",
+      "epsReviewedAt": "2026-08-17",
       "multipleReviewedAt": "2026-08-13"
     },
     "214450": {
@@ -110,7 +110,7 @@
       "status": "reviewed",
       "analystNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
       "officialFinalVm": 540000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -124,7 +124,7 @@
       "status": "reviewed",
       "analystNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
       "officialFinalVm": 681200,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -138,7 +138,7 @@
       "status": "reviewed",
       "analystNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
       "officialFinalVm": 2611100,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -152,7 +152,7 @@
       "status": "reviewed",
       "analystNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
       "officialFinalVm": 69300,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -166,7 +166,7 @@
       "status": "reviewed",
       "analystNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
       "officialFinalVm": 977700,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -180,7 +180,7 @@
       "status": "reviewed",
       "analystNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다.",
       "officialFinalVm": 1339100,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -197,7 +197,7 @@
       "status": "reviewed",
       "analystNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
       "officialFinalVm": 644500,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -211,7 +211,7 @@
       "status": "reviewed",
       "analystNote": "LNG선 고선가 물량과 엔진 경쟁력을 반영하되 조선 경기민감도를 적용한다.",
       "officialFinalVm": 524000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -222,7 +222,7 @@
       "discountRate": 11,
       "analystNote": "자동차 정상화 이익과 글로벌 완성차 배수를 보수적으로 적용한다.",
       "officialFinalVm": 163300,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
@@ -236,7 +236,7 @@
       "roundingUnit": 1000,
       "analystNote": "정상화 BPS×PBR 0.95배를 주평가하고 정상화 EPS×PER 8배로 교차검증한다.",
       "officialFinalVm": 155000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
@@ -253,7 +253,7 @@
       "status": "reviewed",
       "analystNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
       "officialFinalVm": 2913000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -264,7 +264,7 @@
       "discountRate": 11,
       "analystNote": "통신 현금흐름과 AX 성장, 규제 위험을 함께 반영한다.",
       "officialFinalVm": 68500,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
@@ -281,7 +281,7 @@
       "status": "reviewed",
       "analystNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다.",
       "officialFinalVm": 389000,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
     },
@@ -292,7 +292,7 @@
       "discountRate": 11,
       "analystNote": "자동차 정상화 이익과 글로벌 완성차 배수를 적용한다.",
       "officialFinalVm": 467900,
-      "officialVmSource": "복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13",
+      "officialVmSource": "CAP 국내 TOP20 공식 마스터 · 2026.08.13",
       "status": "reviewed",
       "epsReviewedAt": "2026-08-13",
       "multipleReviewedAt": "2026-08-13"
