@@ -1,7 +1,7 @@
 {
   "id": "/stock/",
-  "name": "복리자산 2045",
-  "short_name": "복리자산2045",
+  "name": "CAP",
+  "short_name": "CAP",
   "description": "CAQM과 VM으로 좋은 기업과 좋은 가격을 분리해 보는 국내주식 리서치 앱",
   "lang": "ko-KR",
   "dir": "ltr",

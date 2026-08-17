@@ -676,7 +676,7 @@ def apply_official_final_vm(
     result["finalVm"] = int(official_vm)
     result["officialVmOverride"] = True
     result["officialVmSource"] = str(
-        assumption.get("officialVmSource", "복리자산 2045 국내 TOP20 공식 마스터")
+        assumption.get("officialVmSource", "CAP 국내 TOP20 공식 마스터")
     )
     return result
 

@@ -103,7 +103,7 @@ const newAssumptions = {
 overridesData.schemaVersion = 5
 overridesData.basisDate = '2026-08-13'
 overridesData.status = 'reviewed'
-overridesData.description = '복리자산 2045 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.'
+overridesData.description = 'CAP 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.'
 overridesData.reviewPolicy = {
   ...(overridesData.reviewPolicy || {}),
   nextReviewAt: '2026-09-30',
@@ -135,7 +135,7 @@ overridesData.companies = Object.fromEntries(master.map((item) => {
     ...previous,
     ...(newAssumptions[item.code] || {}),
     officialFinalVm: item.finalVm,
-    officialVmSource: '복리자산 2045 국내 TOP20 공식 마스터 · 2026.08.13',
+    officialVmSource: 'CAP 국내 TOP20 공식 마스터 · 2026.08.13',
     status: 'reviewed',
     epsReviewedAt: '2026-08-13',
     multipleReviewedAt: '2026-08-13',
