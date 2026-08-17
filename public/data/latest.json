@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T15:32:40+09:00",
+  "generatedAt": "2026-08-17T15:46:53+09:00",
   "basisDate": "2026-08-13",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,14 +9,14 @@
     "latestReportPartialCount": 5
   },
   "changes": {
-    "comparedAt": "2026-08-15T09:54:52+09:00",
-    "generatedAt": "2026-08-17T15:32:40+09:00",
+    "comparedAt": "2026-08-17T15:32:40+09:00",
+    "generatedAt": "2026-08-17T15:46:53+09:00",
     "vm": [
       {
         "code": "214150",
         "name": "클래시스",
-        "before": 77000,
-        "after": 72400
+        "before": 72400,
+        "after": 74000
       }
     ],
     "gap": [],
@@ -1379,14 +1379,14 @@
       "discountRate": 10,
       "primaryVm": 75400,
       "crossCheckVm": null,
-      "finalVm": 72400,
+      "finalVm": 74000,
       "modelCalculatedVm": 75400,
       "officialVmOverride": true,
-      "officialVmSource": "복리자산 2045 VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영)",
+      "officialVmSource": "복리자산 2045 VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영, 최종값 74,000원으로 재조정)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 53200,
+          "finalVm": 54300,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1395,7 +1395,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 72400,
+          "finalVm": 74000,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1404,7 +1404,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 94100,
+          "finalVm": 96200,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1423,7 +1423,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
-      "gapRate": -39.5,
+      "gapRate": -40.8,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
