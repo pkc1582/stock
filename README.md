@@ -1,5 +1,7 @@
 # CAR
 
+공개 사이트: **[https://pkc1582.github.io/stock/](https://pkc1582.github.io/stock/)**
+
 국내 기업을 **CAQM(Compound Asset Quality Model·복리자산 품질모형)**로 평가하고, 일반기업·금융·보험·반도체의 업종 특성에 맞춘 Final VM과 현재 주가를 분리해 보는 공개 리서치 대시보드입니다.
 
 > 좋은 기업을 찾는 것은 CAQM의 역할이고, 좋은 가격을 찾는 것은 VM의 역할입니다. 두 조건이 동시에 충족될 때만 투자를 검토합니다.
@@ -75,7 +77,7 @@ data/issues.json ─────────────────────
 
 ## 자동 갱신 설정
 
-GitHub 저장소의 **Settings → Secrets and variables → Actions → New repository secret**에 다음 값을 등록합니다.
+이 fork는 `pkc1582/stock`의 GitHub Actions에서 독립적으로 데이터를 갱신합니다. 저장소의 **Settings → Secrets and variables → Actions → New repository secret**에 다음 값을 등록합니다. Secret 값은 코드·로그·웹 산출물에 기록하지 않습니다.
 
 | Secret | 용도 |
 |---|---|
@@ -84,14 +86,14 @@ GitHub 저장소의 **Settings → Secrets and variables → Actions → New rep
 | `STOCK_API_ENDPOINT` | 선택 사항. 미등록 시 공공데이터포털 주식시세 기본 endpoint 사용 |
 | `STOCK_API_SERVICE_KEY` | 시세 API 서비스키 |
 
-이후 **Settings → Actions → General → Workflow permissions**에서 Actions가 데이터 스냅샷을 커밋할 수 있도록 `Read and write permissions`를 선택합니다. 예약 작업은 Actions 화면의 `Run workflow`로도 즉시 실행할 수 있습니다.
+이후 **Settings → Actions → General → Workflow permissions**에서 Actions가 데이터 스냅샷을 커밋할 수 있도록 `Read and write permissions`를 선택합니다. 공개 저장소를 fork하면 예약 워크플로가 기본적으로 비활성화될 수 있으므로 [Actions](https://github.com/pkc1582/stock/actions)에서 아래 세 데이터 워크플로를 한 번씩 활성화해야 합니다. 각 워크플로의 `Run workflow`로 예약 시각을 기다리지 않고 즉시 검증할 수 있습니다.
 
 | 워크플로 | 실행 시각 | 작업 |
 |---|---|---|
-| `Daily data refresh` | 평일 18:20 KST | 종가·공시·재무 갱신, 공개 JSON 재생성 |
-| `Full market screener refresh` | 매주 월요일 20:40 KST | 코스피·코스닥 전체 목록·시세·재무 동기화, 정량 후보와 탈락 사유 재생성 |
-| `Weekly CAQM rebuild` | 매주 토요일 09:00 KST | 최신 입력으로 CAQM 합계·VM·TOP20 재산정 |
-| `Deploy GitHub Pages` | `main` 변경 후 | 웹 사이트 빌드·배포 |
+| [`Daily data refresh`](https://github.com/pkc1582/stock/actions/workflows/daily-data.yml) | 평일 18:20 KST | TOP20 종가·공시·재무 갱신, 공개 JSON 재생성 |
+| [`Full market screener refresh`](https://github.com/pkc1582/stock/actions/workflows/full-market-screen.yml) | 매주 월요일 20:40 KST | 코스피·코스닥 전체 목록·시세·재무 동기화, 정량 후보와 탈락 사유 재생성 |
+| [`Weekly CAQM rebuild`](https://github.com/pkc1582/stock/actions/workflows/weekly-caqm.yml) | 매주 토요일 09:00 KST | 최신 입력으로 CAQM 합계·VM·TOP20 재산정 |
+| [`Deploy GitHub Pages`](https://github.com/pkc1582/stock/actions/workflows/pages.yml) | `main` 변경 또는 데이터 갱신 완료 후 | 웹 사이트 빌드·배포 |
 
 GitHub 예약 실행은 부하에 따라 일부 지연될 수 있습니다. 시세 API는 실시간이 아니라 통상 다음 영업일에 공개되는 종가 기준이며, 휴장일·공시 미제출·API 오류가 있으면 날짜가 섞인 부분 갱신 대신 마지막으로 검증된 스냅샷을 보존합니다. 기존 TOP20의 기업별 재무는 `반기 → 1분기 → 직전 사업보고서`처럼 이용 가능한 가장 최근 보고서까지 자동 대체 탐색합니다. 전체시장 1차 스크리너는 비교 가능성과 API 호출량을 위해 최근 널리 이용 가능한 연간 사업보고서를 사용하며 최신 분기 수치가 아닙니다.
 
@@ -150,5 +152,3 @@ pnpm run build
 ## 주의
 
 CAQM은 대상을 줄이기 위한 일관된 분석 프레임이지 미래 수익을 보장하는 모형이 아닙니다. CAQM이 높더라도 VM과 현재가 비교, 업종 위험, 최신 공시를 별도로 확인해야 합니다.
-t e s t  
- 
