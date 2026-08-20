@@ -62,7 +62,9 @@ jobs:
         run: python scripts/fetch_market_universe.py
 
       - name: Fetch OpenDART batch fundamentals
-        timeout-minutes: 25
+        # The current full-market batch is close to 25 minutes on hosted
+        # runners, so keep enough headroom for normal API and runner jitter.
+        timeout-minutes: 35
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python scripts/fetch_screen_financials.py --market data/market-universe.json
