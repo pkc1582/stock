@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-24T23:09:08+09:00",
-  "basisDate": "2026-08-21",
+  "generatedAt": "2026-08-31T20:47:17+09:00",
+  "basisDate": "2026-08-28",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -26,16 +26,16 @@
     "KRX 공식 종목분류와 지정 상태를 교차검증하기 전에는 1차 정량 선별에만 사용해야 합니다."
   ],
   "counts": {
-    "providerRows": 2759,
-    "kospi": 831,
-    "kosdaq": 1819,
+    "providerRows": 2760,
+    "kospi": 832,
+    "kosdaq": 1820,
     "classified": {
-      "common_candidate": 2551,
+      "common_candidate": 2553,
       "name_likely_preferred": 3,
       "name_likely_spac": 71,
       "name_likely_reit": 25
     },
-    "preliminaryEligible": 2551,
+    "preliminaryEligible": 2553,
     "knownExcluded": 99
   },
   "companies": [
@@ -1739,6 +1739,20 @@
       "name": "삼륭물산",
       "corporationName": "삼륭물산(주)",
       "corporateRegistrationNumber": "1156110001401",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0155E0",
+      "isin": "KR70155E0001",
+      "name": "해치텍",
+      "corporationName": "(주)해치텍",
+      "corporateRegistrationNumber": "1501110231617",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -12643,7 +12657,7 @@
       "code": "123010",
       "isin": "KR7123010001",
       "name": "MSDI",
-      "corporationName": "(주)알엔티엑스",
+      "corporationName": "(주)엠에스디아이",
       "corporateRegistrationNumber": "1101112870784",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -18044,20 +18058,6 @@
       "exclusionReason": null
     },
     {
-      "code": "269620",
-      "isin": "KR7269620001",
-      "name": "시스웍",
-      "corporationName": "(주)시스웍",
-      "corporateRegistrationNumber": "1601110176572",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
       "code": "270520",
       "isin": "KR7270520000",
       "name": "앱튼",
@@ -22557,6 +22557,20 @@
       "name": "나노팀",
       "corporationName": "나노팀 주식회사",
       "corporateRegistrationNumber": "1601110444581",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "417030",
+      "isin": "KR7417030004",
+      "name": "니어스랩",
+      "corporationName": "주식회사 니어스랩",
+      "corporateRegistrationNumber": "1314110342669",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -29932,8 +29946,8 @@
     {
       "code": "009810",
       "isin": "KR7009810003",
-      "name": "플레이그램",
-      "corporationName": "(주)플레이그램",
+      "name": "MDS스피어",
+      "corporationName": "(주)MDS스피어",
       "corporateRegistrationNumber": "1101110286412",
       "market": "KOSPI",
       "classification": "common_candidate",
@@ -31685,6 +31699,20 @@
       "name": "세원정공",
       "corporationName": "(주)세원정공",
       "corporateRegistrationNumber": "1701110039207",
+      "market": "KOSPI",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0220W0",
+      "isin": "KR70220W0000",
+      "name": "한화머시너리앤서비스홀딩스",
+      "corporationName": "한화머시너리앤서비스홀딩스 주식회사",
+      "corporateRegistrationNumber": "1101110966625",
       "market": "KOSPI",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
