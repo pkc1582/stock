@@ -39,7 +39,7 @@
           "fsDiv": "OFS",
           "rceptNo": "20260814000445",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 2430,
           "operatingMargin": 49.73,
           "roeAnnualized": 28.2,
@@ -96,7 +96,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004200",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 12.72,
@@ -144,11 +144,27 @@
       "reason": "리테일·해외주식 브로커리지 점유율과 낮은 비용구조, 자기자본 확대에 따른 이익 레버리지가 강점이다.",
       "risk": "거래대금·금리 민감도가 높고 해외주식 관련 규제·환율 변동이 이익 변동성을 키운다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 171217,
+        "operatingMargin2025": 8.69,
+        "roe2025": 18.05,
+        "debtRatio2025": 1107.51,
+        "eps2025": 44379,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260813001767",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 254691,
+          "operatingMargin": 5.54,
+          "roeAnnualized": 32.38,
+          "debtRatio": 1329.15,
+          "epsCumulative": 44130,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -197,7 +213,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003992",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 9.56,
@@ -247,9 +263,28 @@
       "financials": {
         "revenue2025": null,
         "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "roe2025": 8.53,
+        "debtRatio2025": 1201.94,
+        "eps2025": 9812,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003306",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 11.38,
+          "debtRatio": 1245.01,
+          "epsCumulative": 7075,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -286,11 +321,27 @@
       "reason": "정밀유도무기·항공전자 수출 레퍼런스와 수주잔고 확대가 성장 가시성을 높인다.",
       "risk": "계약 일정 지연과 원가 상승, 지정학적·정책 변수에 민감하다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 43069,
+        "operatingMargin2025": 7.42,
+        "roe2025": 17.33,
+        "debtRatio2025": 446.35,
+        "eps2025": 11604,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260825000158",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 22780,
+          "operatingMargin": 12.15,
+          "roeAnnualized": 27.41,
+          "debtRatio": 434.05,
+          "epsCumulative": 10187,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -327,11 +378,27 @@
       "reason": "해외법인 네트워크와 IB·자산운용 다각화, 자기자본 활용도가 강점이다.",
       "risk": "해외법인 손익 변동성과 시장 변동성에 따른 트레이딩·평가손익 리스크가 있다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 292830,
+        "operatingMargin2025": 6.54,
+        "roe2025": 12.3,
+        "debtRatio2025": 1015.01,
+        "eps2025": 2680,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004118",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 360601,
+          "operatingMargin": 10.72,
+          "roeAnnualized": 39.12,
+          "debtRatio": 1103.73,
+          "epsCumulative": 4951,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -380,7 +447,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001554",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 30452,
           "operatingMargin": 13.68,
           "roeAnnualized": 20.16,
@@ -437,7 +504,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002997",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 3248,
           "operatingMargin": 38.1,
           "roeAnnualized": 27.76,
@@ -484,9 +551,28 @@
       "financials": {
         "revenue2025": null,
         "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "roe2025": 9.03,
+        "debtRatio2025": 287.13,
+        "eps2025": 1587,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260828000557",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 18.03,
+          "debtRatio": 266.39,
+          "epsCumulative": 1730,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -535,7 +621,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003228",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 21783,
           "operatingMargin": 25.03,
           "roeAnnualized": 38.57,
@@ -580,11 +666,27 @@
       "reason": "전력기기·자동화 포트폴리오와 해외 생산거점 확대가 안정적 수주잔고를 지지한다.",
       "risk": "원자재 가격과 해외 수주 경쟁, 전력기기 사이클 정상화가 주요 위험이다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 49658,
+        "operatingMargin2025": 8.59,
+        "roe2025": 14.1,
+        "debtRatio2025": 131.48,
+        "eps2025": 9647,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003088",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 29535,
+          "operatingMargin": 10.33,
+          "roeAnnualized": 21.64,
+          "debtRatio": 172.12,
+          "epsCumulative": 1607,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -633,7 +735,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003509",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 1318950,
           "operatingMargin": 74.42,
           "roeAnnualized": 140.1,
@@ -690,7 +792,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003699",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 3053729,
           "operatingMargin": 48.05,
           "roeAnnualized": 46.81,
@@ -735,11 +837,27 @@
       "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
       "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다. 최대주주 베인캐피탈의 잔여지분 매각 가능성도 주가 변동 요인이다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 3368,
+        "operatingMargin2025": 50.65,
+        "roe2025": 26.28,
+        "debtRatio2025": 27.73,
+        "eps2025": 2017,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004072",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 1927,
+          "operatingMargin": 42.11,
+          "roeAnnualized": 21.21,
+          "debtRatio": 39.57,
+          "epsCumulative": 950,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -777,11 +895,27 @@
       "reason": "담배 본업의 안정적 현금흐름과 건강기능식품·해외 담배 성장이 방어적 복리자산을 만든다.",
       "risk": "궐련 판매량 장기 감소 추세와 해외 규제, 신사업 투자 회수 속도가 위험이다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 65797,
+        "operatingMargin2025": 20.42,
+        "roe2025": 11.79,
+        "debtRatio2025": 51.98,
+        "eps2025": 10220,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004174",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 34052,
+          "operatingMargin": 22.88,
+          "roeAnnualized": 15.54,
+          "debtRatio": 54.65,
+          "epsCumulative": 7175,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -818,11 +952,27 @@
       "reason": "정수기·공기청정기 렌탈 구독 모델의 반복매출과 해외 확장이 안정적 현금창출을 지지한다.",
       "risk": "국내 렌탈 시장 경쟁 심화와 해외 사업 확장 비용, 금리 변동에 따른 판매 방식 손익 변동이 있다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 49636,
+        "operatingMargin2025": 17.7,
+        "roe2025": 18.14,
+        "debtRatio2025": 93.71,
+        "eps2025": 8630,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814002001",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 27719,
+          "operatingMargin": 18.19,
+          "roeAnnualized": 19.38,
+          "debtRatio": 103.56,
+          "epsCumulative": 5122,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -871,7 +1021,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003198",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 150439,
           "operatingMargin": 13.32,
           "roeAnnualized": 17.36,
@@ -916,11 +1066,27 @@
       "reason": "원전 설계·엔지니어링 독점적 지위와 신규 원전 수주 파이프라인이 장기 성장 동력이다.",
       "risk": "배당 삭감 이력이 있어 주주환원 지속성을 점검해야 하며, 원전 정책·수주 일정 지연이 위험이다.",
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 5188,
+        "operatingMargin2025": 6.83,
+        "roe2025": 14.2,
+        "debtRatio2025": 41.69,
+        "eps2025": 2244,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814001293",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 2166,
+          "operatingMargin": 7.87,
+          "roeAnnualized": 5.53,
+          "debtRatio": 33.54,
+          "epsCumulative": 442,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -970,7 +1136,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 924,
           "operatingMargin": 6.83,
           "roeAnnualized": 5.46,
@@ -998,18 +1164,18 @@
     }
   ],
   "financialDataSummary": {
-    "checkedAt": "2026-09-04T18:30:26+09:00",
-    "asOf": "2026-09-04",
+    "checkedAt": "2026-09-05T08:24:59+09:00",
+    "asOf": "2026-09-05",
     "companyCount": 20,
     "latestReportSuccessCount": 20,
-    "latestReportCompleteCount": 15,
-    "latestReportPartialCount": 5,
+    "latestReportCompleteCount": 16,
+    "latestReportPartialCount": 4,
     "latestReportFailedCount": 0,
     "latestReportSuccessRate": 1.0,
     "minimumSuccessRate": 0.8,
     "annual2025ReportCount": 20,
-    "annual2025PartialCount": 6,
-    "annual2025ChangedCount": 0,
+    "annual2025PartialCount": 5,
+    "annual2025ChangedCount": 10,
     "preservedNewerReportCount": 0
   }
 }

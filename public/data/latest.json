@@ -1,337 +1,93 @@
 {
-  "generatedAt": "2026-09-04T21:34:56+09:00",
+  "generatedAt": "2026-09-05T08:26:02+09:00",
   "basisDate": "2026-09-04",
-  "dataStatus": "OpenDART 최신 보고서 확인 10/20 · 주요지표 완전 8/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
+  "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 16/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
     "companyCount": 20,
-    "latestReportSuccessCount": 10,
-    "latestReportCompleteCount": 8,
-    "latestReportPartialCount": 2
+    "latestReportSuccessCount": 20,
+    "latestReportCompleteCount": 16,
+    "latestReportPartialCount": 4
   },
   "changes": {
-    "comparedAt": "2026-09-04T18:31:32+09:00",
-    "generatedAt": "2026-09-04T21:34:56+09:00",
-    "vm": [
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 69300,
-        "after": 93900
-      },
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "before": 198844,
-        "after": 186000
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 604600,
-        "after": 785000
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 2547600,
-        "after": 3924900
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": 540000,
-        "after": 417800
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 649400,
-        "after": 1298500
-      },
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 2343000,
-        "after": 493300
-      },
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": 409719,
-        "after": 493300
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": 1156000,
-        "after": 1433700
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "before": 221500,
-        "after": 355800
-      }
-    ],
-    "gap": [
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": -39.0,
-        "after": 0.0,
-        "delta": 39.0
-      },
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": -31.9,
-        "after": 0.0,
-        "delta": 31.9
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": -29.4,
-        "after": 0.0,
-        "delta": 29.4
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 16.1,
-        "after": 0.0,
-        "delta": -16.1
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "before": 14.7,
-        "after": 0.0,
-        "delta": -14.7
-      },
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "before": -10.5,
-        "after": 0.0,
-        "delta": 10.5
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": -9.4,
-        "after": 0.0,
-        "delta": 9.4
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 8.7,
-        "after": 0.0,
-        "delta": -8.7
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": -7.2,
-        "after": 0.0,
-        "delta": 7.2
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 7.0,
-        "after": 0.0,
-        "delta": -7.0
-      }
-    ],
-    "caqm": [
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 96,
-        "after": 94
-      },
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "before": 95,
-        "after": 91
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 94,
-        "after": 91
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 96,
-        "after": 88
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": 95,
-        "after": 86
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 95,
-        "after": 85
-      },
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 96,
-        "after": 83
-      },
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": 94,
-        "after": 83
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": 94,
-        "after": 80
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "before": 95,
-        "after": 76
-      }
-    ],
-    "entrants": [
+    "comparedAt": "2026-09-04T21:34:56+09:00",
+    "generatedAt": "2026-09-05T08:26:02+09:00",
+    "vm": [],
+    "gap": [],
+    "caqm": [],
+    "entrants": [],
+    "exits": [],
+    "reports": [
       {
         "code": "039490",
         "name": "키움증권",
-        "rank": 2,
-        "caqm": 91
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "055550",
         "name": "신한지주",
-        "rank": 5,
-        "caqm": 90
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "079550",
         "name": "LIG디펜스앤에어로스페이스",
-        "rank": 6,
-        "caqm": 89
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "006800",
         "name": "미래에셋증권",
-        "rank": 6,
-        "caqm": 89
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "003690",
         "name": "코리안리재보험",
-        "rank": 9,
-        "caqm": 87
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "010120",
         "name": "LS ELECTRIC",
-        "rank": 12,
-        "caqm": 84
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "214150",
         "name": "클래시스",
-        "rank": 15,
-        "caqm": 81
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "033780",
         "name": "KT&G",
-        "rank": 16,
-        "caqm": 80
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "021240",
         "name": "코웨이",
-        "rank": 16,
-        "caqm": 80
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       },
       {
         "code": "052690",
         "name": "한전기술",
-        "rank": 19,
-        "caqm": 78
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       }
     ],
-    "exits": [
-      {
-        "code": "207940",
-        "name": "삼성바이오로직스",
-        "previousRank": 4,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "192820",
-        "name": "코스맥스",
-        "previousRank": 9,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "003230",
-        "name": "삼양식품",
-        "previousRank": 9,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "138040",
-        "name": "메리츠금융지주",
-        "previousRank": 9,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "278470",
-        "name": "에이피알",
-        "previousRank": 15,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "161890",
-        "name": "한국콜마",
-        "previousRank": 15,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "086790",
-        "name": "하나금융지주",
-        "previousRank": 17,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "000270",
-        "name": "기아",
-        "previousRank": 18,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "030200",
-        "name": "KT",
-        "previousRank": 18,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "previousRank": 20,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      }
-    ],
-    "reports": [],
     "hasMaterialChanges": true
   },
   "officialMaster": {
@@ -589,7 +345,7 @@
           "fsDiv": "OFS",
           "rceptNo": "20260814000445",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 2430,
           "operatingMargin": 49.73,
           "roeAnnualized": 28.2,
@@ -725,7 +481,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004200",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 12.72,
@@ -822,10 +578,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -841,11 +597,27 @@
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 171217,
+        "operatingMargin2025": 8.69,
+        "roe2025": 18.05,
+        "debtRatio2025": 1107.51,
+        "eps2025": 44379,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260813001767",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 254691,
+          "operatingMargin": 5.54,
+          "roeAnnualized": 32.38,
+          "debtRatio": 1329.15,
+          "epsCumulative": 44130,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -863,7 +635,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-28",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-28",
           "multiple": "2026-08-28",
           "nextReview": "2026-09-30"
@@ -977,7 +749,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003992",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 9.56,
@@ -1074,10 +846,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 일부 계정 미수신",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -1106,9 +878,28 @@
       "financials": {
         "revenue2025": null,
         "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "roe2025": 8.53,
+        "debtRatio2025": 1201.94,
+        "eps2025": 9812,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003306",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 11.38,
+          "debtRatio": 1245.01,
+          "epsCumulative": 7075,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -1126,7 +917,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-28",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-28",
           "multiple": "2026-08-28",
           "nextReview": "2026-09-30"
@@ -1197,10 +988,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -1216,11 +1007,27 @@
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 43069,
+        "operatingMargin2025": 7.42,
+        "roe2025": 17.33,
+        "debtRatio2025": 446.35,
+        "eps2025": 11604,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260825000158",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 22780,
+          "operatingMargin": 12.15,
+          "roeAnnualized": 27.41,
+          "debtRatio": 434.05,
+          "epsCumulative": 10187,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -1238,7 +1045,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-07",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-07",
           "multiple": "2026-08-07",
           "nextReview": "2026-09-30"
@@ -1306,10 +1113,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -1325,11 +1132,27 @@
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 292830,
+        "operatingMargin2025": 6.54,
+        "roe2025": 12.3,
+        "debtRatio2025": 1015.01,
+        "eps2025": 2680,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004118",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 360601,
+          "operatingMargin": 10.72,
+          "roeAnnualized": 39.12,
+          "debtRatio": 1103.73,
+          "epsCumulative": 4951,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -1347,7 +1170,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-28",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-28",
           "multiple": "2026-08-28",
           "nextReview": "2026-09-30"
@@ -1460,7 +1283,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001554",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 30452,
           "operatingMargin": 13.68,
           "roeAnnualized": 20.16,
@@ -1558,10 +1381,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 일부 계정 미수신",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -1579,9 +1402,28 @@
       "financials": {
         "revenue2025": null,
         "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "roe2025": 9.03,
+        "debtRatio2025": 287.13,
+        "eps2025": 1587,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260828000557",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 18.03,
+          "debtRatio": 266.39,
+          "epsCumulative": 1730,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
       },
       "sources": [
         {
@@ -1599,7 +1441,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-28",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-28",
           "multiple": "2026-08-28",
           "nextReview": "2026-09-30"
@@ -1712,7 +1554,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002997",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 3248,
           "operatingMargin": 38.1,
           "roeAnnualized": 27.76,
@@ -1851,7 +1693,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003228",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 21783,
           "operatingMargin": 25.03,
           "roeAnnualized": 38.57,
@@ -1948,10 +1790,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -1978,11 +1820,27 @@
         }
       ],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 49658,
+        "operatingMargin2025": 8.59,
+        "roe2025": 14.1,
+        "debtRatio2025": 131.48,
+        "eps2025": 9647,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003088",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 29535,
+          "operatingMargin": 10.33,
+          "roeAnnualized": 21.64,
+          "debtRatio": 172.12,
+          "epsCumulative": 1607,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2000,7 +1858,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-07-23",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-07-23",
           "multiple": "2026-07-23",
           "nextReview": "2026-09-30"
@@ -2118,7 +1976,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003509",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 1318950,
           "operatingMargin": 74.42,
           "roeAnnualized": 140.1,
@@ -2262,7 +2120,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003699",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 3053729,
           "operatingMargin": 48.05,
           "roeAnnualized": 46.81,
@@ -2359,10 +2217,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -2378,11 +2236,27 @@
       "warning": "최대주주 베인캐피탈 경영권 매각 추진 이력, 잔여지분 54% 보유중",
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 3368,
+        "operatingMargin2025": 50.65,
+        "roe2025": 26.28,
+        "debtRatio2025": 27.73,
+        "eps2025": 2017,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004072",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 1927,
+          "operatingMargin": 42.11,
+          "roeAnnualized": 21.21,
+          "debtRatio": 39.57,
+          "epsCumulative": 950,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2400,7 +2274,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-19",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-19",
           "multiple": "2026-08-19",
           "nextReview": "2026-09-30"
@@ -2471,10 +2345,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -2501,11 +2375,27 @@
         }
       ],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 65797,
+        "operatingMargin2025": 20.42,
+        "roe2025": 11.79,
+        "debtRatio2025": 51.98,
+        "eps2025": 10220,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814004174",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 34052,
+          "operatingMargin": 22.88,
+          "roeAnnualized": 15.54,
+          "debtRatio": 54.65,
+          "epsCumulative": 7175,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2523,7 +2413,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-06",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-06",
           "multiple": "2026-08-06",
           "nextReview": "2026-09-30"
@@ -2594,10 +2484,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -2613,11 +2503,27 @@
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 49636,
+        "operatingMargin2025": 17.7,
+        "roe2025": 18.14,
+        "debtRatio2025": 93.71,
+        "eps2025": 8630,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814002001",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 27719,
+          "operatingMargin": 18.19,
+          "roeAnnualized": 19.38,
+          "debtRatio": 103.56,
+          "epsCumulative": 5122,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2635,7 +2541,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-07",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-07",
           "multiple": "2026-08-07",
           "nextReview": "2026-09-30"
@@ -2748,7 +2654,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003198",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 150439,
           "operatingMargin": 13.32,
           "roeAnnualized": 17.36,
@@ -2845,10 +2751,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -2864,11 +2770,27 @@
       "warning": "배당 삭감 확인(2025→2026E)",
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 5188,
+        "operatingMargin2025": 6.83,
+        "roe2025": 14.2,
+        "debtRatio2025": 41.69,
+        "eps2025": 2244,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814001293",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
+          "revenueEok": 2166,
+          "operatingMargin": 7.87,
+          "roeAnnualized": 5.53,
+          "debtRatio": 33.54,
+          "epsCumulative": 442,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2886,7 +2808,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-08-07",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-08-07",
           "multiple": "2026-08-07",
           "nextReview": "2026-09-30"
@@ -2988,7 +2910,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-04T18:30:26+09:00",
+          "fetchedAt": "2026-09-05T08:24:59+09:00",
           "revenueEok": 924,
           "operatingMargin": 6.83,
           "roeAnnualized": 5.46,
