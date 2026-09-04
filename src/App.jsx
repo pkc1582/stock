@@ -209,6 +209,8 @@ function normalizeCompany(company, index) {
     ratingStars: typeof company.rating === 'string' ? company.rating : rating.stars || '',
     ratingLabel: rating.label || company.opinion || company.action || '',
     opinion: company.opinion || rating.label || company.action || '',
+    signal: company.signal || null,
+    warning: company.warning || null,
     reason: company.reason || company.thesis || company.summary || '분석 근거 검토 중',
     risk: company.risk || company.risks || '핵심 위험 요인 검토 중',
     issues: Array.isArray(company.issues) ? company.issues : [],
@@ -346,6 +348,22 @@ const gapLabel = (gap) => {
   if (gap <= -20) return '적극 검토 구간'
   if (gap <= -10) return '분할 검토 구간'
   return '관찰 구간'
+}
+
+const gapSign = (gap) => {
+  if (gap === null || gap === undefined) return ''
+  if (gap < 0) return 'gap-neg'
+  if (gap > 0) return 'gap-pos'
+  return ''
+}
+
+const signalTone = (signal) => (signal === '매수검토' ? 'buy' : 'watch')
+
+const caqmTier = (caqm) => {
+  if (caqm >= 90) return 'gold'
+  if (caqm >= 80) return 'silver'
+  if (caqm >= 70) return 'bronze'
+  return ''
 }
 
 function LogoMark() {
@@ -1164,12 +1182,13 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
 }
 
 function downloadTop20Csv(companies) {
-  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '판단']
+  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '매수신호', '판단', '경고']
   const rows = companies.map((company) => [
     company.rank, company.code, company.name, company.sector, company.caqm,
     company.components.moat, company.components.growth, company.components.profitability,
     company.components.financialHealth, company.components.management,
-    company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '', company.opinion,
+    company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '',
+    company.signal || '', company.opinion, company.warning || '',
   ])
   const escape = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`
   const csv = `\uFEFF${[headers, ...rows].map((row) => row.map(escape).join(',')).join('\r\n')}`
@@ -1242,7 +1261,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
           <table>
             <thead>
               <tr>
-                <th>순위</th><th>기업</th><th>CAQM</th><th>해자</th><th>성장</th><th>수익</th><th>재무</th><th>환원</th><th>현재가</th><th>Final VM</th><th>괴리율</th><th>판단</th>
+                <th>순위</th><th>종목명</th><th>섹터</th><th>CAQM</th><th>현재가</th><th>Final VM</th><th>괴리율</th><th>매수신호</th>
               </tr>
             </thead>
             <tbody>
@@ -1256,8 +1275,13 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
                   <td>
                     <div className="company-cell-wrap">
                       <button className="company-cell" type="button" onClick={() => choose(company)}>
-                        <strong>{company.name}</strong><small>{company.code} · {company.sector}</small>
-                        <em>{company.valuationModelLabel}</em>
+                        <strong>
+                          {company.name}
+                          {company.warning && (
+                            <span className="warning-icon" title={company.warning} aria-label={`주의: ${company.warning}`}>⚠</span>
+                          )}
+                        </strong>
+                        <small>{company.code}</small>
                       </button>
                       <button
                         type="button"
@@ -1267,12 +1291,15 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
                       >{watchlist.includes(company.code) ? '★' : '☆'}</button>
                     </div>
                   </td>
-                  <td><strong className="caqm-value">{company.caqm}</strong></td>
-                  {SCORE_META.map((meta) => <td key={meta.key} className="component-cell">{company.components[meta.key]}<small>/{meta.max}</small></td>)}
+                  <td>{company.sector}</td>
+                  <td><strong className={`caqm-value tier-${caqmTier(company.caqm)}`}>{company.caqm}</strong></td>
                   <td>{formatWon(company.currentPrice)}</td>
                   <td>{formatWon(company.finalVm)}</td>
-                  <td><span className={`gap-pill ${gapTone(company.gapRate)}`}>{formatPercent(company.gapRate, true)}</span></td>
-                  <td><span className="opinion-text">{company.opinion || gapLabel(company.gapRate)}</span></td>
+                  <td><span className={`gap-pill ${gapTone(company.gapRate)} ${gapSign(company.gapRate)}`}>{formatPercent(company.gapRate, true)}</span></td>
+                  <td>{company.signal
+                    ? <span className={`signal-badge ${signalTone(company.signal)}`}>{company.signal}</span>
+                    : <span className="opinion-text">{company.opinion || gapLabel(company.gapRate)}</span>}
+                  </td>
                 </tr>
               ))}
             </tbody>
