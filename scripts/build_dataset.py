@@ -437,6 +437,21 @@ def change_log_for(
     return empty
 
 
+def signal_for(caqm: int, gap_rate: float | None) -> str | None:
+    """Tiered buy-review signal: higher CAQM tolerates a shallower discount."""
+    if gap_rate is None:
+        return None
+    if caqm >= 90:
+        threshold = -15
+    elif caqm >= 80:
+        threshold = -20
+    elif caqm >= 70:
+        threshold = -30
+    else:
+        threshold = -40
+    return "매수검토" if gap_rate <= threshold else "관망"
+
+
 def rating_for(caqm: int, gap_rate: float | None) -> tuple[str, str]:
     if caqm < 70:
         return "★☆☆☆☆", "투자 제외"
@@ -733,6 +748,7 @@ def main() -> None:
         final_vm = int(valuation["finalVm"])
         gap_rate = round((current_price - final_vm) / final_vm * 100, 1) if final_vm > 0 else None
         rating, opinion = rating_for(caqm, gap_rate)
+        signal = signal_for(caqm, gap_rate)
         vm_status = str(assumption.get("status", overrides_data.get("status", "draft")))
         if vm_status != "reviewed":
             opinion = {
@@ -773,8 +789,10 @@ def main() -> None:
                 "gapRate": gap_rate,
                 "rating": rating,
                 "opinion": opinion,
+                "signal": signal,
                 "reason": str(company.get("reason", "")),
                 "risk": str(company.get("risk", "")),
+                "warning": str(company["warning"]) if company.get("warning") else None,
                 "issues": public_issues(code, issues, issue_overrides),
                 "financials": company.get("financials", {}),
                 "sources": company.get("sources", []),

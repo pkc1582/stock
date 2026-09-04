@@ -1,6 +1,6 @@
 {
   "schemaVersion": 5,
-  "basisDate": "2026-08-22",
+  "basisDate": "2026-09-04",
   "status": "reviewed",
   "description": "CAR 국내 TOP20 공식 마스터입니다. CAQM은 해자·성장성·수익성·재무건전성·경영진과 주주환원을 평가하고, 공식 Final VM과 재현 가능한 모델 산출값은 분리해 관리합니다.",
   "valuationPolicy": {
@@ -28,10 +28,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
-      "officialFinalVm": 198844,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 186000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
     },
     "138040": {
       "valuationModel": "financial_hybrid",
@@ -56,11 +56,11 @@
       "overseasPeerPer": 28,
       "discountRate": 10,
       "analystNote": "산업용 AFM 기술 해자와 글로벌 계측기업 비교를 반영한다.",
-      "officialFinalVm": 221500,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
+      "officialFinalVm": 355800,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-07-31)",
       "status": "reviewed",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "epsReviewedAt": "2026-07-31",
+      "multipleReviewedAt": "2026-07-31"
     },
     "192820": {
       "forwardEps3y": 21882,
@@ -94,11 +94,11 @@
       "overseasPeerPer": 25,
       "discountRate": 10,
       "analystNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
-      "officialFinalVm": 74000,
-      "officialVmSource": "CAR VM 재검토 · 2026.08.17 (2Q26 실적 및 증권사 목표주가 하향 반영, 최종값 74,000원으로 재조정)",
+      "officialFinalVm": 106600,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-19)",
       "status": "reviewed",
-      "epsReviewedAt": "2026-08-17",
-      "multipleReviewedAt": "2026-08-13"
+      "epsReviewedAt": "2026-08-19",
+      "multipleReviewedAt": "2026-08-19"
     },
     "214450": {
       "forwardEps3y": 25196,
@@ -109,10 +109,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
-      "officialFinalVm": 540000,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.13",
-      "epsReviewedAt": "2026-08-13",
-      "multipleReviewedAt": "2026-08-13"
+      "officialFinalVm": 417800,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-09-03)",
+      "epsReviewedAt": "2026-09-03",
+      "multipleReviewedAt": "2026-09-03"
     },
     "267260": {
       "forwardEps3y": 33311,
@@ -123,10 +123,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
-      "officialFinalVm": 649400,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 1298500,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
+      "epsReviewedAt": "2026-08-21",
+      "multipleReviewedAt": "2026-08-21"
     },
     "298040": {
       "forwardEps3y": 100224,
@@ -137,10 +137,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
-      "officialFinalVm": 2547600,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 3924900,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
+      "epsReviewedAt": "2026-08-21",
+      "multipleReviewedAt": "2026-08-21"
     },
     "058470": {
       "forwardEps3y": 3223,
@@ -151,10 +151,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
-      "officialFinalVm": 69300,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 93900,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-05-21)",
+      "epsReviewedAt": "2026-05-21",
+      "multipleReviewedAt": "2026-05-21"
     },
     "012450": {
       "forwardEps3y": 53879,
@@ -165,10 +165,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
-      "officialFinalVm": 1156000,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 1433700,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
+      "epsReviewedAt": "2026-08-21",
+      "multipleReviewedAt": "2026-08-21"
     },
     "003230": {
       "forwardEps3y": 99021,
@@ -196,10 +196,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
-      "officialFinalVm": 604600,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 785000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
     },
     "009540": {
       "forwardEps3y": 62691,
@@ -252,10 +252,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
-      "officialFinalVm": 2343000,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 493300,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-24)",
+      "epsReviewedAt": "2026-08-24",
+      "multipleReviewedAt": "2026-08-24"
     },
     "030200": {
       "forwardEps3y": 9368,
@@ -280,10 +280,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다.",
-      "officialFinalVm": 409719,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 493300,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-25)",
+      "epsReviewedAt": "2026-08-25",
+      "multipleReviewedAt": "2026-08-25"
     },
     "005380": {
       "forwardEps3y": 79989,
@@ -338,136 +338,265 @@
       "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
       "epsReviewedAt": "2026-08-22",
       "multipleReviewedAt": "2026-08-22"
+    },
+    "039490": {
+      "valuationModel": "bank_pbr",
+      "normalizedBps": 309091,
+      "targetPbr": 1.1,
+      "normalizedEps": 35789,
+      "crossCheckPer": 9.5,
+      "roundingUnit": 1000,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 340000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
+    },
+    "055550": {
+      "valuationModel": "bank_pbr",
+      "normalizedBps": 129884,
+      "targetPbr": 0.87,
+      "normalizedEps": 14125,
+      "crossCheckPer": 8,
+      "roundingUnit": 1000,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 113000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
+    },
+    "079550": {
+      "valuationModel": "standard_per",
+      "forwardEps3y": 60648,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 758100,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-07",
+      "multipleReviewedAt": "2026-08-07"
+    },
+    "006800": {
+      "valuationModel": "bank_pbr",
+      "normalizedBps": 31818,
+      "targetPbr": 1.1,
+      "normalizedEps": 3684,
+      "crossCheckPer": 9.5,
+      "roundingUnit": 100,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 35000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
+    },
+    "003690": {
+      "valuationModel": "insurance_sotp",
+      "normalizedBps": 18000,
+      "targetPbr": 1.0,
+      "csmSotpAdjustment": 0,
+      "normalizedEps": 1800,
+      "crossCheckPer": 10,
+      "roundingUnit": 100,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 18000,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-28",
+      "multipleReviewedAt": "2026-08-28"
+    },
+    "010120": {
+      "valuationModel": "standard_per",
+      "forwardEps3y": 14957,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "discountRate": 11,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 186700,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-07-23)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-07-23",
+      "multipleReviewedAt": "2026-07-23"
+    },
+    "033780": {
+      "valuationModel": "standard_per",
+      "forwardEps3y": 12220,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 152500,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-06)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-06",
+      "multipleReviewedAt": "2026-08-06"
+    },
+    "021240": {
+      "valuationModel": "standard_per",
+      "forwardEps3y": 9363,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 116900,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-07",
+      "multipleReviewedAt": "2026-08-07"
+    },
+    "052690": {
+      "valuationModel": "standard_per",
+      "forwardEps3y": 13253,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "discountRate": 10,
+      "componentOverrides": {},
+      "issueOverrides": {},
+      "officialFinalVm": 165400,
+      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
+      "status": "reviewed",
+      "epsReviewedAt": "2026-08-07",
+      "multipleReviewedAt": "2026-08-07"
     }
   },
   "officialMaster": {
-    "version": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-    "basisDate": "2026-08-22",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-04",
+    "basisDate": "2026-09-04",
     "changes": [
       {
-        "code": "298040",
-        "title": "효성중공업 VM 2028E EPS 기준 재계산",
-        "detail": "2,611,100원 → 2,547,600원"
+        "code": "039490",
+        "title": "키움증권 TOP20 신규 편입",
+        "detail": "CAQM 91 · Final VM 340,000원"
       },
       {
-        "code": "267260",
-        "title": "HD현대일렉트릭 VM 2028E EPS 기준 재계산",
-        "detail": "681,200원 → 649,400원"
+        "code": "055550",
+        "title": "신한지주 TOP20 신규 편입",
+        "detail": "CAQM 90 · Final VM 113,000원"
+      },
+      {
+        "code": "079550",
+        "title": "LIG디펜스앤에어로스페이스 TOP20 신규 편입",
+        "detail": "CAQM 89 · Final VM 758,100원"
+      },
+      {
+        "code": "006800",
+        "title": "미래에셋증권 TOP20 신규 편입",
+        "detail": "CAQM 89 · Final VM 35,000원"
+      },
+      {
+        "code": "003690",
+        "title": "코리안리재보험 TOP20 신규 편입",
+        "detail": "CAQM 87 · Final VM 18,000원"
       },
       {
         "code": "010120",
-        "title": "LS ELECTRIC 후보군 신규 편입",
-        "detail": "CAQM 87 · Final VM 130,600원 (2028E EPS 기준 재계산). TOP20 20위 산정되었으나 파마리서치 유지로 후보군으로 조정"
-      },
-      {
-        "code": "329180",
-        "title": "HD현대중공업 TOP20 신규 편입",
-        "detail": "CAQM 90 · Final VM 391,000원"
-      },
-      {
-        "code": "278470",
-        "title": "에이피알 TOP20 신규 편입",
-        "detail": "CAQM 93 · Final VM 476,100원 / 후보군에서 복귀"
-      },
-      {
-        "code": "161890",
-        "title": "한국콜마 TOP20 신규 편입",
-        "detail": "CAQM 93 · Final VM 107,700원 / 후보군에서 복귀"
-      },
-      {
-        "code": "105560",
-        "title": "KB금융 VM 갱신",
-        "detail": "186,000원 → 198,844원"
-      },
-      {
-        "code": "009540",
-        "title": "HD한국조선해양 TOP20 제외 → 후보군 이동",
-        "detail": "HD현대중공업과 지분 중복(69~75% 보유 지주사 관계), CAQM 95(잠정치, 정식 재산정 보류) · VM 530,000원"
+        "title": "LS ELECTRIC TOP20 신규 편입",
+        "detail": "CAQM 84 · Final VM 186,700원"
       },
       {
         "code": "214150",
-        "title": "클래시스 TOP20 탈락 → 후보군 이동",
-        "detail": "CAQM 85로 하락(재검토 결과), VM 54,000원"
+        "title": "클래시스 TOP20 신규 편입",
+        "detail": "CAQM 81 · Final VM 106,600원 · 최대주주 매각 이력 경고 반영"
       },
       {
-        "code": "005380",
-        "title": "현대차 TOP20·후보군 완전 제외",
-        "detail": "CAQM 68로 재산정(관세 타격 반영), 후보군 기준(80점) 미달"
+        "code": "033780",
+        "title": "KT&G TOP20 신규 편입",
+        "detail": "CAQM 80 · Final VM 152,500원"
       },
       {
-        "code": "214450",
-        "title": "파마리서치 TOP20 유지",
-        "detail": "2026-08-22 스펙 문서 표에서 누락되어 있었으나 삭제 사유가 없어 TOP20을 유지함. CAQM·VM 변경 없음"
+        "code": "021240",
+        "title": "코웨이 TOP20 신규 편입",
+        "detail": "CAQM 80 · Final VM 116,900원"
       },
       {
-        "code": "",
-        "title": "할인기간 원칙(13장) 소급 적용",
-        "detail": "대다수 종목 VM 재계산, 평균 약 -9% 조정. 현재가 대비 괴리율은 다음 세션에서 재계산 예정"
+        "code": "052690",
+        "title": "한전기술 TOP20 신규 편입",
+        "detail": "CAQM 78 · Final VM 165,400원 · 배당 삭감 경고 반영"
+      },
+      {
+        "code": "207940",
+        "title": "삼성바이오로직스 후보군 이동",
+        "detail": "CAQM 73 · Final VM 1,597,300원"
+      },
+      {
+        "code": "192820",
+        "title": "코스맥스 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "003230",
+        "title": "삼양식품 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "138040",
+        "title": "메리츠금융지주 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "278470",
+        "title": "에이피알 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "161890",
+        "title": "한국콜마 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "086790",
+        "title": "하나금융지주 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "000270",
+        "title": "기아 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "030200",
+        "title": "KT TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
+      },
+      {
+        "code": "329180",
+        "title": "HD현대중공업 TOP20 제외",
+        "detail": "정기 재선정에서 순위 밖으로 이동"
       }
     ],
     "candidates": [
       {
-        "code": "009540",
-        "name": "HD한국조선해양",
-        "caqm": 95,
-        "finalVm": 530000,
-        "note": "TOP20에서 이동. HD현대중공업과 지분 중복으로 CAQM 정식 재산정 보류 중(잠정치)."
+        "code": "207940",
+        "name": "삼성바이오로직스",
+        "caqm": 73,
+        "finalVm": 1597300,
+        "note": "글로벌 CDMO 대형 증설 가동률과 고객 집중도를 재검토 중인 후보군입니다."
       },
       {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "caqm": 87,
-        "finalVm": 130600,
-        "note": "전력기기 3사 2028E EPS 재계산 반영. TOP20 20위권이었으나 파마리서치 유지로 후보군에 배치."
+        "code": "271560",
+        "name": "오리온",
+        "caqm": 72,
+        "finalVm": 151300,
+        "note": "중국·베트남 등 해외 법인 성장성과 환율 민감도를 재검토 중인 후보군입니다."
       },
       {
-        "code": "319660",
-        "name": "PSK(피에스케이)",
-        "caqm": 86,
-        "finalVm": 183900,
-        "note": "반도체 후공정 세정·건식 식각 장비 점유율과 고객 CAPEX 지속성을 재검토합니다."
-      },
-      {
-        "code": "041830",
-        "name": "인바디",
-        "caqm": 86,
+        "code": "071050",
+        "name": "한국금융지주",
+        "caqm": 63.7,
         "finalVm": null,
-        "note": "TOP20 진입 전까지 VM은 산정하지 않는 운영 원칙에 따라 VM 산정 예정으로 표기합니다."
-      },
-      {
-        "code": "052690",
-        "name": "한국전력기술",
-        "caqm": 85,
-        "finalVm": 67980,
-        "note": "원전 수주 가시성과 프로젝트 일정을 재검토합니다."
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "caqm": 85,
-        "finalVm": 54000,
-        "note": "TOP20 탈락. 국내 장비·소모품 매출 둔화와 브라질 유통 전환 초기 실적을 재검토합니다."
-      },
-      {
-        "code": "340570",
-        "name": "티앤엘",
-        "caqm": 84,
-        "finalVm": null,
-        "note": "TOP20 진입 전까지 VM은 산정하지 않는 운영 원칙에 따라 VM 산정 예정으로 표기합니다."
-      },
-      {
-        "code": "060720",
-        "name": "KH바텍",
-        "caqm": 82,
-        "finalVm": 15000,
-        "note": "폴더블 힌지 점유율과 고객 다변화를 재검토합니다."
-      },
-      {
-        "code": "095340",
-        "name": "ISC",
-        "caqm": 80,
-        "finalVm": null,
-        "note": "TOP20 진입 전까지 VM은 산정하지 않는 운영 원칙에 따라 VM 산정 예정으로 표기합니다."
+        "note": "VM 재계산이 필요한 후보군입니다."
       }
     ]
   }

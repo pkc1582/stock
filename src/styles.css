@@ -288,12 +288,21 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .company-cell small { margin-top: 4px; color: #85908b; font-size: 9px; }
 .company-cell em { margin-top: 5px; padding: 3px 6px; border-radius: 10px; background: #edf2eb; color: #607069; font-size: 8px; font-style: normal; }
 .caqm-value { color: var(--green); font-size: 16px; }
+.caqm-value.tier-gold { padding: 2px 8px; border-radius: 8px; background: #fdf1cf; color: #8a6a12; }
+.caqm-value.tier-silver { padding: 2px 8px; border-radius: 8px; background: #eceff3; color: #55606b; }
+.caqm-value.tier-bronze { padding: 2px 8px; border-radius: 8px; background: #f3e3d4; color: #8a5327; }
 .component-cell small { color: #9aa39f; font-size: 8px; }
 .gap-pill { min-width: 54px; display: inline-block; padding: 6px 7px; border-radius: 20px; font-weight: 700; }
 .gap-pill.attractive { background: #ddf0e5; color: #08704d; }
 .gap-pill.fair { background: #f3ead7; color: #97601e; }
 .gap-pill.expensive { background: #f6e2de; color: #a34138; }
+.gap-pill.gap-neg { color: #1a56c4; }
+.gap-pill.gap-pos { color: #c0342c; }
 .opinion-text { font-weight: 600; }
+.warning-icon { margin-left: 5px; color: #b3261e; font-size: 11px; cursor: help; }
+.signal-badge { display: inline-block; padding: 6px 10px; border-radius: 20px; font-weight: 700; font-size: 11px; }
+.signal-badge.buy { background: #ddf0e5; color: #08704d; }
+.signal-badge.watch { background: #e6e7e5; color: #565f5a; }
 .table-footnote { margin: 14px 0 0; color: #7b8782; font-size: 10px; }
 
 .candidate-section { border-top: 1px solid #d4dbd2; background: #f7f7f1; }
