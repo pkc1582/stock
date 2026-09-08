@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T18:50:56+09:00",
+  "generatedAt": "2026-09-08T18:41:40+09:00",
   "basisDate": "2026-09-04",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 16/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,135 +9,15 @@
     "latestReportPartialCount": 4
   },
   "changes": {
-    "comparedAt": "2026-09-05T09:19:57+09:00",
-    "generatedAt": "2026-09-07T18:50:56+09:00",
+    "comparedAt": "2026-09-07T18:50:56+09:00",
+    "generatedAt": "2026-09-08T18:41:40+09:00",
     "vm": [],
-    "gap": [
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 0.0,
-        "after": 233.9,
-        "delta": 233.9
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "before": 0.0,
-        "after": -70.2,
-        "delta": -70.2
-      },
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": 0.0,
-        "after": -48.2,
-        "delta": -48.2
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 0.0,
-        "after": -45.0,
-        "delta": -45.0
-      },
-      {
-        "code": "052690",
-        "name": "한전기술",
-        "before": 0.0,
-        "after": -34.9,
-        "delta": -34.9
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 0.0,
-        "after": -30.4,
-        "delta": -30.4
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 0.0,
-        "after": -29.1,
-        "delta": -29.1
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": 0.0,
-        "after": -26.4,
-        "delta": -26.4
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "before": 0.0,
-        "after": -26.2,
-        "delta": -26.2
-      },
-      {
-        "code": "039490",
-        "name": "키움증권",
-        "before": 0.0,
-        "after": -20.4,
-        "delta": -20.4
-      },
-      {
-        "code": "003690",
-        "name": "코리안리재보험",
-        "before": 0.0,
-        "after": -19.4,
-        "delta": -19.4
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 0.0,
-        "after": -15.5,
-        "delta": -15.5
-      },
-      {
-        "code": "021240",
-        "name": "코웨이",
-        "before": 0.0,
-        "after": -15.0,
-        "delta": -15.0
-      },
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "before": 0.0,
-        "after": -14.0,
-        "delta": -14.0
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 0.0,
-        "after": 13.1,
-        "delta": 13.1
-      },
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "before": 0.0,
-        "after": -7.5,
-        "delta": -7.5
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": 0.0,
-        "after": -7.5,
-        "delta": -7.5
-      }
-    ],
+    "gap": [],
     "caqm": [],
     "entrants": [],
     "exits": [],
     "reports": [],
-    "hasMaterialChanges": true
+    "hasMaterialChanges": false
   },
   "officialMaster": {
     "version": "국내 TOP20 공식 마스터 · 2026-09-04",
@@ -394,7 +274,7 @@
           "fsDiv": "OFS",
           "rceptNo": "20260814000445",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 2430,
           "operatingMargin": 49.73,
           "roeAnnualized": 28.2,
@@ -530,7 +410,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004200",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 12.72,
@@ -658,7 +538,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001767",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 254691,
           "operatingMargin": 5.54,
           "roeAnnualized": 32.38,
@@ -798,7 +678,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003992",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 9.56,
@@ -937,7 +817,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003306",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 11.38,
@@ -1068,7 +948,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260825000158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 22780,
           "operatingMargin": 12.15,
           "roeAnnualized": 27.41,
@@ -1193,7 +1073,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004118",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 360601,
           "operatingMargin": 10.72,
           "roeAnnualized": 39.12,
@@ -1332,7 +1212,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001554",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 30452,
           "operatingMargin": 13.68,
           "roeAnnualized": 20.16,
@@ -1461,7 +1341,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260828000557",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 18.03,
@@ -1603,7 +1483,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002997",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 3248,
           "operatingMargin": 38.1,
           "roeAnnualized": 27.76,
@@ -1742,7 +1622,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003228",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 21783,
           "operatingMargin": 25.03,
           "roeAnnualized": 38.57,
@@ -1881,7 +1761,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003088",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 29535,
           "operatingMargin": 10.33,
           "roeAnnualized": 21.64,
@@ -2025,7 +1905,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003509",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 1318950,
           "operatingMargin": 74.42,
           "roeAnnualized": 140.1,
@@ -2169,7 +2049,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003699",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 3053729,
           "operatingMargin": 48.05,
           "roeAnnualized": 46.81,
@@ -2297,7 +2177,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004072",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 1927,
           "operatingMargin": 42.11,
           "roeAnnualized": 21.21,
@@ -2436,7 +2316,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004174",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 34052,
           "operatingMargin": 22.88,
           "roeAnnualized": 15.54,
@@ -2564,7 +2444,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002001",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 27719,
           "operatingMargin": 18.19,
           "roeAnnualized": 19.38,
@@ -2703,7 +2583,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003198",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 150439,
           "operatingMargin": 13.32,
           "roeAnnualized": 17.36,
@@ -2831,7 +2711,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814001293",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 2166,
           "operatingMargin": 7.87,
           "roeAnnualized": 5.53,
@@ -2959,7 +2839,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-07T18:41:30+09:00",
+          "fetchedAt": "2026-09-08T18:32:51+09:00",
           "revenueEok": 924,
           "operatingMargin": 6.83,
           "roeAnnualized": 5.46,
