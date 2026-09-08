@@ -1,28 +1,90 @@
 {
-  "generatedAt": "2026-09-08T18:41:40+09:00",
+  "generatedAt": "2026-09-08T23:11:54+09:00",
   "basisDate": "2026-09-04",
-  "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 16/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
+  "dataStatus": "OpenDART 최신 보고서 확인 19/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
     "companyCount": 20,
-    "latestReportSuccessCount": 20,
-    "latestReportCompleteCount": 16,
+    "latestReportSuccessCount": 19,
+    "latestReportCompleteCount": 15,
     "latestReportPartialCount": 4
   },
   "changes": {
-    "comparedAt": "2026-09-07T18:50:56+09:00",
-    "generatedAt": "2026-09-08T18:41:40+09:00",
-    "vm": [],
-    "gap": [],
+    "comparedAt": "2026-09-08T18:41:40+09:00",
+    "generatedAt": "2026-09-08T23:11:54+09:00",
+    "vm": [
+      {
+        "code": "000660",
+        "name": "SK하이닉스",
+        "before": 493300,
+        "after": 2879100
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": 152500,
+        "after": 167700
+      }
+    ],
+    "gap": [
+      {
+        "code": "000660",
+        "name": "SK하이닉스",
+        "before": 233.9,
+        "after": -42.8,
+        "delta": -276.7
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": 13.1,
+        "after": 2.9,
+        "delta": -10.2
+      }
+    ],
     "caqm": [],
-    "entrants": [],
-    "exits": [],
+    "entrants": [
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "rank": 15,
+        "caqm": 82
+      }
+    ],
+    "exits": [
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "previousRank": 15,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      }
+    ],
     "reports": [],
-    "hasMaterialChanges": false
+    "hasMaterialChanges": true
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-04",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-04 (2026-09-08 정정 반영)",
     "basisDate": "2026-09-04",
     "changes": [
+      {
+        "code": "000660",
+        "title": "SK하이닉스 VM 정정",
+        "detail": "493,300원 → 2,879,100원 (삼성전자 VM 오기입 정정)"
+      },
+      {
+        "code": "033780",
+        "title": "KT&G VM 정정",
+        "detail": "152,500원 → 167,700원"
+      },
+      {
+        "code": "214150",
+        "title": "클래시스 TOP20 제외 · 후보군 이동",
+        "detail": "CAQM 81 · 정기 재선정에서 후보군으로 이동"
+      },
+      {
+        "code": "278470",
+        "title": "에이피알 TOP20 재편입",
+        "detail": "CAQM 82 · Final VM 407,700원 · 클래시스 대체, 15위 편입"
+      },
       {
         "code": "039490",
         "title": "키움증권 TOP20 신규 편입",
@@ -125,6 +187,13 @@
       }
     ],
     "candidates": [
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "caqm": 81,
+        "finalVm": 106600,
+        "note": "최대주주 베인캐피탈 경영권 매각 추진 이력(잔여지분 54% 보유)에 따른 불확실성으로 TOP20에서 제외, 후보군으로 이동했습니다."
+      },
       {
         "code": "207940",
         "name": "삼성바이오로직스",
@@ -1822,7 +1891,7 @@
       "discountRate": 11,
       "primaryVm": 3589000,
       "crossCheckVm": null,
-      "finalVm": 493300,
+      "finalVm": 2879100,
       "cycleChecks": [
         "DRAM 계약가격",
         "HBM 가격·출하량",
@@ -1832,11 +1901,11 @@
       ],
       "modelCalculatedVm": 2913000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-24)",
+      "officialVmSource": "CAR VM 정정 · 2026.09.08 (기존 493,300원은 삼성전자 VM이 잘못 입력된 오류로 확인되어 2,879,100원으로 정정)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 346000,
+          "finalVm": 2018000,
           "assumptions": [
             "EPS -20%",
             "배수 -10%",
@@ -1845,7 +1914,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 493300,
+          "finalVm": 2879100,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1854,7 +1923,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 635000,
+          "finalVm": 3708000,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1873,10 +1942,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
-      "gapRate": 233.9,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
+      "gapRate": -42.8,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "매수검토",
       "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
       "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
       "warning": null,
@@ -1932,8 +2001,8 @@
         "basisDates": {
           "price": "2026-09-04",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-24",
-          "multiple": "2026-08-24",
+          "eps": "2026-09-08",
+          "multiple": "2026-09-08",
           "nextReview": "2026-09-30"
         }
       },
@@ -2085,41 +2154,41 @@
     },
     {
       "rank": 15,
-      "code": "214150",
+      "code": "278470",
       "officialOrder": 15,
-      "name": "클래시스",
-      "sector": "화장품/미용기기",
-      "caqm": 81,
+      "name": "에이피알",
+      "sector": "화장품/미용",
+      "caqm": 82,
       "components": {
-        "moat": 25,
+        "moat": 26,
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
         "management": 8
       },
-      "currentPrice": 31800,
-      "priceBasisDate": "2026-09-04",
+      "currentPrice": 407700,
+      "priceBasisDate": "2026-09-08",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
       "valuationHorizonYears": 3,
-      "forwardEps3y": 4380,
-      "historicalPer5y": 22,
-      "overseasPeerPer": 25,
+      "forwardEps3y": 11600,
+      "historicalPer5y": 25,
+      "overseasPeerPer": 28,
       "overseasCorrectionPer": 0.9,
       "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 22.9,
+      "appliedPer": 25.9,
       "discountRate": 10,
-      "primaryVm": 75400,
+      "primaryVm": 225700,
       "crossCheckVm": null,
-      "finalVm": 106600,
-      "modelCalculatedVm": 75400,
+      "finalVm": 407700,
+      "modelCalculatedVm": 225700,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-19)",
+      "officialVmSource": "CAR TOP20 재편입 · 2026.09.08 (클래시스 대체 편입)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 78300,
+          "finalVm": 299500,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2128,7 +2197,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 106600,
+          "finalVm": 407700,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2137,7 +2206,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 138500,
+          "finalVm": 530100,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2146,46 +2215,30 @@
         }
       },
       "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
         "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
+          "최신 보고서 핵심 지표 확인 필요",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
-      "gapRate": -70.2,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
-      "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다. 최대주주 베인캐피탈의 잔여지분 매각 가능성도 주가 변동 요인이다.",
-      "warning": "최대주주 베인캐피탈 경영권 매각 추진 이력, 잔여지분 54% 보유중",
+      "vmNote": "메디큐브·에이지알의 해외 확장과 뷰티 디바이스 성장성을 반영하되 채널 재고와 신제품 주기 리스크를 할인한다.",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "메디큐브·에이지알 브랜드의 해외 확장과 뷰티 디바이스 성장성이 높은 CAQM을 지지한다.",
+      "risk": "채널 재고와 신제품 주기 리스크, 해외 유통 실행력을 점검해야 한다.",
+      "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": 3368,
-        "operatingMargin2025": 50.65,
-        "roe2025": 26.28,
-        "debtRatio2025": 27.73,
-        "eps2025": 2017,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814004072",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
-          "revenueEok": 1927,
-          "operatingMargin": 42.11,
-          "roeAnnualized": 21.21,
-          "debtRatio": 39.57,
-          "epsCumulative": 950,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
@@ -2199,13 +2252,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-08",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-09-04",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-19",
-          "multiple": "2026-08-19",
+          "price": "2026-09-08",
+          "financialReport": "2026-09-04",
+          "eps": "2026-09-08",
+          "multiple": "2026-09-08",
           "nextReview": "2026-09-30"
         }
       },
@@ -2240,14 +2293,14 @@
       "discountRate": 10,
       "primaryVm": 114800,
       "crossCheckVm": null,
-      "finalVm": 152500,
+      "finalVm": 167700,
       "modelCalculatedVm": 114800,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-06)",
+      "officialVmSource": "CAR VM 정정 · 2026.09.08 (152,500원 → 167,700원)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 112000,
+          "finalVm": 123100,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2256,7 +2309,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 152500,
+          "finalVm": 167700,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2265,7 +2318,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 198200,
+          "finalVm": 218000,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2284,7 +2337,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "",
-      "gapRate": 13.1,
+      "gapRate": 2.9,
       "rating": "★★★☆☆",
       "opinion": "관찰",
       "signal": "관망",
@@ -2343,8 +2396,8 @@
         "basisDates": {
           "price": "2026-09-04",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-06",
-          "multiple": "2026-08-06",
+          "eps": "2026-09-08",
+          "multiple": "2026-09-08",
           "nextReview": "2026-09-30"
         }
       },

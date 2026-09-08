@@ -819,45 +819,29 @@
       }
     },
     {
-      "code": "214150",
+      "code": "278470",
       "officialOrder": 15,
-      "name": "클래시스",
-      "sector": "화장품/미용기기",
-      "caqm": 81,
+      "name": "에이피알",
+      "sector": "화장품/미용",
+      "caqm": 82,
       "components": {
-        "moat": 25,
+        "moat": 26,
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
         "management": 8
       },
-      "currentPrice": 31800,
-      "priceBasisDate": "2026-09-04",
+      "currentPrice": 407700,
+      "priceBasisDate": "2026-09-08",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
-      "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다. 최대주주 베인캐피탈의 잔여지분 매각 가능성도 주가 변동 요인이다.",
+      "reason": "메디큐브·에이지알 브랜드의 해외 확장과 뷰티 디바이스 성장성이 높은 CAQM을 지지한다.",
+      "risk": "채널 재고와 신제품 주기 리스크, 해외 유통 실행력을 점검해야 한다.",
       "financials": {
-        "revenue2025": 3368,
-        "operatingMargin2025": 50.65,
-        "roe2025": 26.28,
-        "debtRatio2025": 27.73,
-        "eps2025": 2017,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814004072",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
-          "revenueEok": 1927,
-          "operatingMargin": 42.11,
-          "roeAnnualized": 21.21,
-          "debtRatio": 39.57,
-          "epsCumulative": 950,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
@@ -871,10 +855,9 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-08",
         "nextReviewAt": "2026-09-30"
-      },
-      "warning": "최대주주 베인캐피탈 경영권 매각 추진 이력, 잔여지분 54% 보유중"
+      }
     },
     {
       "code": "033780",
