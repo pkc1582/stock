@@ -252,10 +252,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
-      "officialFinalVm": 493300,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-24)",
-      "epsReviewedAt": "2026-08-24",
-      "multipleReviewedAt": "2026-08-24"
+      "officialFinalVm": 2879100,
+      "officialVmSource": "CAR VM 정정 · 2026.09.08 (기존 493,300원은 삼성전자 VM이 잘못 입력된 오류로 확인되어 2,879,100원으로 정정)",
+      "epsReviewedAt": "2026-09-08",
+      "multipleReviewedAt": "2026-09-08"
     },
     "030200": {
       "forwardEps3y": 9368,
@@ -306,10 +306,10 @@
       "issueOverrides": {},
       "status": "reviewed",
       "analystNote": "메디큐브·에이지알의 해외 확장과 뷰티 디바이스 성장성을 반영하되 채널 재고와 신제품 주기 리스크를 할인한다.",
-      "officialFinalVm": 476100,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.08.22",
-      "epsReviewedAt": "2026-08-22",
-      "multipleReviewedAt": "2026-08-22"
+      "officialFinalVm": 407700,
+      "officialVmSource": "CAR TOP20 재편입 · 2026.09.08 (클래시스 대체 편입)",
+      "epsReviewedAt": "2026-09-08",
+      "multipleReviewedAt": "2026-09-08"
     },
     "161890": {
       "forwardEps3y": 9980,
@@ -436,11 +436,11 @@
       "discountRate": 10,
       "componentOverrides": {},
       "issueOverrides": {},
-      "officialFinalVm": 152500,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-06)",
+      "officialFinalVm": 167700,
+      "officialVmSource": "CAR VM 정정 · 2026.09.08 (152,500원 → 167,700원)",
       "status": "reviewed",
-      "epsReviewedAt": "2026-08-06",
-      "multipleReviewedAt": "2026-08-06"
+      "epsReviewedAt": "2026-09-08",
+      "multipleReviewedAt": "2026-09-08"
     },
     "021240": {
       "valuationModel": "standard_per",
@@ -472,9 +472,29 @@
     }
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-04",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-04 (2026-09-08 정정 반영)",
     "basisDate": "2026-09-04",
     "changes": [
+      {
+        "code": "000660",
+        "title": "SK하이닉스 VM 정정",
+        "detail": "493,300원 → 2,879,100원 (삼성전자 VM 오기입 정정)"
+      },
+      {
+        "code": "033780",
+        "title": "KT&G VM 정정",
+        "detail": "152,500원 → 167,700원"
+      },
+      {
+        "code": "214150",
+        "title": "클래시스 TOP20 제외 · 후보군 이동",
+        "detail": "CAQM 81 · 정기 재선정에서 후보군으로 이동"
+      },
+      {
+        "code": "278470",
+        "title": "에이피알 TOP20 재편입",
+        "detail": "CAQM 82 · Final VM 407,700원 · 클래시스 대체, 15위 편입"
+      },
       {
         "code": "039490",
         "title": "키움증권 TOP20 신규 편입",
@@ -577,6 +597,13 @@
       }
     ],
     "candidates": [
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "caqm": 81,
+        "finalVm": 106600,
+        "note": "최대주주 베인캐피탈 경영권 매각 추진 이력(잔여지분 54% 보유)에 따른 불확실성으로 TOP20에서 제외, 후보군으로 이동했습니다."
+      },
       {
         "code": "207940",
         "name": "삼성바이오로직스",
