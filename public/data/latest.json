@@ -1,64 +1,30 @@
 {
-  "generatedAt": "2026-09-08T23:11:54+09:00",
+  "generatedAt": "2026-09-09T18:34:09+09:00",
   "basisDate": "2026-09-04",
-  "dataStatus": "OpenDART 최신 보고서 확인 19/20 · 주요지표 완전 15/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
+  "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 16/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
     "companyCount": 20,
-    "latestReportSuccessCount": 19,
-    "latestReportCompleteCount": 15,
+    "latestReportSuccessCount": 20,
+    "latestReportCompleteCount": 16,
     "latestReportPartialCount": 4
   },
   "changes": {
-    "comparedAt": "2026-09-08T18:41:40+09:00",
-    "generatedAt": "2026-09-08T23:11:54+09:00",
-    "vm": [
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 493300,
-        "after": 2879100
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 152500,
-        "after": 167700
-      }
-    ],
-    "gap": [
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 233.9,
-        "after": -42.8,
-        "delta": -276.7
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 13.1,
-        "after": 2.9,
-        "delta": -10.2
-      }
-    ],
+    "comparedAt": "2026-09-08T23:11:54+09:00",
+    "generatedAt": "2026-09-09T18:34:09+09:00",
+    "vm": [],
+    "gap": [],
     "caqm": [],
-    "entrants": [
+    "entrants": [],
+    "exits": [],
+    "reports": [
       {
         "code": "278470",
         "name": "에이피알",
-        "rank": 15,
-        "caqm": 82
+        "before": null,
+        "after": "2026-06-30",
+        "periodLabel": "2026년 반기 누적"
       }
     ],
-    "exits": [
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "previousRank": 15,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      }
-    ],
-    "reports": [],
     "hasMaterialChanges": true
   },
   "officialMaster": {
@@ -343,7 +309,7 @@
           "fsDiv": "OFS",
           "rceptNo": "20260814000445",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 2430,
           "operatingMargin": 49.73,
           "roeAnnualized": 28.2,
@@ -479,7 +445,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004200",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 12.72,
@@ -607,7 +573,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001767",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 254691,
           "operatingMargin": 5.54,
           "roeAnnualized": 32.38,
@@ -747,7 +713,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003992",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 9.56,
@@ -886,7 +852,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003306",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 11.38,
@@ -1017,7 +983,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260825000158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 22780,
           "operatingMargin": 12.15,
           "roeAnnualized": 27.41,
@@ -1142,7 +1108,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004118",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 360601,
           "operatingMargin": 10.72,
           "roeAnnualized": 39.12,
@@ -1281,7 +1247,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260813001554",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 30452,
           "operatingMargin": 13.68,
           "roeAnnualized": 20.16,
@@ -1410,7 +1376,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260828000557",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": null,
           "operatingMargin": null,
           "roeAnnualized": 18.03,
@@ -1552,7 +1518,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002997",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 3248,
           "operatingMargin": 38.1,
           "roeAnnualized": 27.76,
@@ -1691,7 +1657,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003228",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 21783,
           "operatingMargin": 25.03,
           "roeAnnualized": 38.57,
@@ -1830,7 +1796,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003088",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 29535,
           "operatingMargin": 10.33,
           "roeAnnualized": 21.64,
@@ -1974,7 +1940,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003509",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 1318950,
           "operatingMargin": 74.42,
           "roeAnnualized": 140.1,
@@ -2118,7 +2084,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003699",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 3053729,
           "operatingMargin": 48.05,
           "roeAnnualized": 46.81,
@@ -2215,10 +2181,10 @@
         }
       },
       "vmConfidence": {
-        "grade": "D",
-        "label": "핵심 데이터 보강 필요",
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
         "reasons": [
-          "최신 보고서 핵심 지표 확인 필요",
+          "최신 보고서 주요 지표 수신 완료",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
@@ -2234,11 +2200,27 @@
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": null,
-        "debtRatio2025": null,
-        "eps2025": null
+        "revenue2025": 15273,
+        "operatingMargin2025": 23.93,
+        "roe2025": 75.3,
+        "debtRatio2025": 73.11,
+        "eps2025": 7765,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814002503",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
+          "revenueEok": 13609,
+          "operatingMargin": 25.19,
+          "roeAnnualized": 94.64,
+          "debtRatio": 70.07,
+          "epsCumulative": 6913,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
       },
       "sources": [
         {
@@ -2256,7 +2238,7 @@
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-08",
-          "financialReport": "2026-09-04",
+          "financialReport": "2026-06-30",
           "eps": "2026-09-08",
           "multiple": "2026-09-08",
           "nextReview": "2026-09-30"
@@ -2369,7 +2351,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004174",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 34052,
           "operatingMargin": 22.88,
           "roeAnnualized": 15.54,
@@ -2497,7 +2479,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814002001",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 27719,
           "operatingMargin": 18.19,
           "roeAnnualized": 19.38,
@@ -2636,7 +2618,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814003198",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 150439,
           "operatingMargin": 13.32,
           "roeAnnualized": 17.36,
@@ -2764,7 +2746,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814001293",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 2166,
           "operatingMargin": 7.87,
           "roeAnnualized": 5.53,
@@ -2892,7 +2874,7 @@
           "fsDiv": "CFS",
           "rceptNo": "20260814004158",
           "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-08T18:32:51+09:00",
+          "fetchedAt": "2026-09-09T18:33:06+09:00",
           "revenueEok": 924,
           "operatingMargin": 6.83,
           "roeAnnualized": 5.46,
