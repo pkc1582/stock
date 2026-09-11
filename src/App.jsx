@@ -170,6 +170,15 @@ function normalizeCompany(company, index) {
       management: firstNumber(components.management) ?? 0,
       shareholderReturn: firstNumber(components.shareholderReturn) ?? 0,
     },
+    isFinancial: Boolean(company.isFinancial),
+    componentLimits: {
+      moat: firstNumber(company.componentLimits?.moat) ?? 30,
+      growth: firstNumber(company.componentLimits?.growth) ?? 25,
+      profitability: firstNumber(company.componentLimits?.profitability) ?? 20,
+      financialHealth: firstNumber(company.componentLimits?.financialHealth) ?? 15,
+      management: firstNumber(company.componentLimits?.management) ?? 5,
+      shareholderReturn: firstNumber(company.componentLimits?.shareholderReturn) ?? 5,
+    },
     currentPrice,
     priceBasisDate: company.priceBasisDate || market.priceAsOf || market.asOf || null,
     valuationModel: company.valuationModel || valuation.model || 'standard_per',
@@ -1427,12 +1436,16 @@ function CandidateWatchlist({ master }) {
 function ScoreBreakdown({ company }) {
   return (
     <div className="score-breakdown">
+      {company.isFinancial && (
+        <p className="score-breakdown-note">금융업(은행·증권·보험) 배점 적용 · 해자 25·성장성 20·수익성 20·재무건전성 15·경영진 10·주주환원 10</p>
+      )}
       {SCORE_META.map((meta) => {
+        const max = company.componentLimits?.[meta.key] ?? meta.max
         const value = company.components[meta.key]
-        const percent = Math.max(0, Math.min(100, (value / meta.max) * 100))
+        const percent = Math.max(0, Math.min(100, (value / max) * 100))
         return (
           <div className="score-row" key={meta.key}>
-            <div><span>{meta.label}</span><strong>{value}<small> / {meta.max}</small></strong></div>
+            <div><span>{meta.label}</span><strong>{value}<small> / {max}</small></strong></div>
             <div className="score-track"><span style={{ width: `${percent}%` }} /></div>
           </div>
         )
@@ -1513,7 +1526,7 @@ function qualityEvidenceFor(company, meta) {
   return {
     ...evidence[meta.key],
     score: company.components[meta.key],
-    max: meta.max,
+    max: company.componentLimits?.[meta.key] ?? meta.max,
   }
 }
 
@@ -1897,11 +1910,12 @@ function Methodology({ methodology }) {
         />
         <div className="method-grid">
           {[
-            ['01', '경쟁우위·해자', '30점', '브랜드, 시장지배력, 기술·IP, 네트워크 효과, 전환비용, 원가·규제 장벽'],
-            ['02', '장기 성장성', '25점', '매출과 EPS 추세, 산업 성장, 수주 가시성, 해외 확장, AI·신사업'],
-            ['03', '수익성·현금창출', '20점', 'ROE와 ROIC, 영업이익률, FCF, 현금전환, 이익의 지속 가능성'],
-            ['04', '재무건전성', '15점', '순차입금, 유동성, 이자부담, 신용등급, 위기 대응력과 자본비율'],
-            ['05', '경영진·주주환원', '10점', '자본배분, 배당 지속성, 지배구조, 실제 자사주 소각과 총주주환원'],
+            ['01', '경쟁우위·해자', '30점 (금융 25점)', '10년 관점의 산업내 경쟁력과 전산업 관점 경쟁력을 각 절반씩 평가합니다.'],
+            ['02', '성장성', '25점 (금융 20점)', '과거 3년 대비 향후 3년 성장가속 여부를 평가하고 수주잔고를 가점으로 반영합니다.'],
+            ['03', '수익성·현금창출력', '20점', 'ROE 절대수준과 ROE 추세를 각 절반씩 평가합니다.'],
+            ['04', '재무건전성', '15점', '부채비율, 순현금·순차입, 위기 대응력을 평가합니다.'],
+            ['05', '경영진', '5점 (금융 10점)', '지배구조, 대주주 도덕성, M&A 판단, 지분매각 오버행 리스크를 평가합니다.'],
+            ['06', '주주환원(배당)', '5점 (금융 10점)', '배당성장 지속성과 자사주 매입·소각의 실제 이행 여부를 평가합니다.'],
           ].map(([numberLabel, title, score, copy]) => (
             <article key={numberLabel}>
               <div><span>{numberLabel}</span><strong>{score}</strong></div>
@@ -1910,6 +1924,7 @@ function Methodology({ methodology }) {
             </article>
           ))}
         </div>
+        <p className="method-financial-note">※ 은행·증권·보험은 별도 배점을 적용합니다: 해자 25 · 성장성 20 · 수익성 20 · 재무건전성 15 · 경영진 10 · 주주환원 10 (합계 100, 경영진·주주환원 2배 가중 · CEO 확정)</p>
         <div className="method-flow">
           <div><span>STEP 1</span><strong>CAQM</strong><small>Compound Asset Quality Model</small><p>복리자산 품질평가 · 좋은 기업인가?</p></div>
           <i>+</i>
