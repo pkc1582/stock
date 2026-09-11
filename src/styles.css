@@ -311,6 +311,12 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .signal-badge { display: inline-block; padding: 6px 10px; border-radius: 20px; font-weight: 700; font-size: 11px; }
 .signal-badge.buy { background: #ddf0e5; color: #08704d; }
 .signal-badge.watch { background: #e6e7e5; color: #565f5a; }
+.sector-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; background: #dce7f5; color: #1d4e89; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.status-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; font-weight: 700; white-space: nowrap; }
+.status-badge.status-top20 { background: #ddf0e5; color: #08704d; }
+.status-badge.status-candidate { background: #f3ead7; color: #97601e; }
+.status-badge.status-watch { background: #e6ddf5; color: #5b3a99; }
+.status-badge.status-observe { background: #eceef0; color: #5b6570; border: 1px solid #cfd5da; }
 .table-footnote { margin: 14px 0 0; color: #7b8782; font-size: 10px; }
 
 tbody tr.expandable-row { cursor: pointer; }
@@ -332,12 +338,31 @@ tr.detail-row td { padding: 0; border-bottom: 1px solid #cad2c8; background: var
 .candidate-grid article { min-width: 0; min-height: 240px; padding: 24px; border-right: 1px solid #cdd5cc; border-bottom: 1px solid #cdd5cc; background: #fbfcf8; }
 .candidate-topline { display: flex; align-items: center; justify-content: space-between; color: #718079; font-size: 11px; font-weight: 800; }
 .candidate-topline small { font-size: 11px; }
-.candidate-grid h3 { margin: 34px 0 18px; color: var(--deep); font-size: 21px; letter-spacing: -.7px; }
+.candidate-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.candidate-grid h3 { margin: 18px 0 18px; color: var(--deep); font-size: 21px; letter-spacing: -.7px; }
 .candidate-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #dfe5dd; }
 .candidate-values div { min-width: 0; padding: 13px; background: #f1f4ee; text-align: center; }
 .candidate-values span { display: block; color: #728078; font-size: 10px; }
 .candidate-values strong { display: block; margin-top: 5px; overflow: hidden; color: var(--green); font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
 .candidate-grid p { margin: 17px 0 0; color: #65736d; font-size: 13.5px; line-height: 1.75; }
+
+.sector-section { border-top: 1px solid #d4dbd2; background: var(--paper); }
+.sector-accordion { display: grid; gap: 10px; }
+.sector-group { border: 1px solid #cad2c8; background: #fbfcf8; }
+.sector-group summary { min-height: 58px; display: flex; align-items: center; gap: 16px; padding: 14px 20px; cursor: pointer; list-style: none; }
+.sector-group summary::-webkit-details-marker { display: none; }
+.sector-group-name { flex: 0 0 auto; color: var(--deep); font-size: 14px; font-weight: 800; }
+.sector-group-meta { flex: 1; color: #718079; font-size: 12px; }
+.sector-group summary i { width: 26px; height: 26px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid #cad2c8; color: #4e645a; font-size: 16px; font-style: normal; transition: transform .2s ease; }
+.sector-group[open] summary i { transform: rotate(45deg); }
+.sector-item-list { display: grid; border-top: 1px solid #e2e7e1; }
+.sector-item { min-width: 0; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; padding: 12px 20px; border: 0; border-bottom: 1px solid #e2e7e1; background: transparent; text-align: left; cursor: pointer; }
+.sector-item:last-child { border-bottom: 0; }
+.sector-item:hover { background: #eef4ed; }
+.sector-item.sector-item-static { cursor: default; }
+.sector-item.is-selected { box-shadow: inset 3px 0 var(--green); background: #edf5ee; }
+.sector-item-name { display: flex; flex-direction: column; gap: 3px; min-width: 0; color: var(--deep); font-size: 13px; font-weight: 700; }
+.sector-item-name small { color: #85908b; font-size: 10px; font-weight: 600; }
 
 .company-section { background: var(--deep); color: white; }
 .company-header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; padding-bottom: 46px; border-bottom: 1px solid rgba(255,255,255,.12); }

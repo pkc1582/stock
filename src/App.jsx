@@ -377,6 +377,14 @@ const caqmTier = (caqm) => {
   return ''
 }
 
+const STATUS_TONES = {
+  TOP20: 'status-top20',
+  후보군: 'status-candidate',
+  관심종목: 'status-watch',
+  관찰기업: 'status-observe',
+}
+const statusTone = (status) => STATUS_TONES[status] || 'status-candidate'
+
 function LogoMark() {
   return (
     <span className="logo-mark" aria-hidden="true">
@@ -468,6 +476,7 @@ function Header({ basisDate }) {
     ['#matrix', 'CAQM × 가격'],
     ['#top20', 'TOP20'],
     ['#candidates', '후보군'],
+    ['#sectors', '산업별 보기'],
     ['#company', '기업 분석'],
     ['#methodology', '평가 기준'],
     ['#screener', '전체시장 스크리너'],
@@ -1372,7 +1381,7 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
                           >{watchlist.includes(company.code) ? '★' : '☆'}</button>
                         </div>
                       </td>
-                      <td>{company.sector}</td>
+                      <td><span className="sector-badge">{company.sector}</span></td>
                       <td><strong className={`caqm-value tier-${caqmTier(company.caqm)}`}>{company.caqm}</strong></td>
                       <td>{formatWon(company.currentPrice)}</td>
                       <td>{formatWon(company.finalVm)}</td>
@@ -1412,20 +1421,122 @@ function CandidateWatchlist({ master }) {
           eyebrow="NEXT REVIEW"
           title="공식 후보군"
           titleId="candidate-title"
-          description="TOP20 밖에서 다음 정기 재선정을 기다리는 핵심 기업입니다. 숫자가 없는 항목은 임의로 채우지 않고 검토 중으로 표시합니다."
-          aside={<><strong>{candidates.length}개 후보</strong><span>CAQM·VM 재검토 대기</span></>}
+          description="TOP20 밖에서 다음 정기 재선정을 기다리는 후보군·관심종목·관찰기업입니다. 숫자가 없는 항목은 임의로 채우지 않고 검토 중으로 표시합니다."
+          aside={<><strong>{candidates.length}개 추적 중</strong><span>CAQM·VM 재검토 대기</span></>}
         />
         <div className="candidate-grid">
           {candidates.map((candidate, index) => (
             <article key={candidate.code || candidate.name}>
-              <div className="candidate-topline"><span>{String(index + 1).padStart(2, '0')}</span><small>{candidate.code}</small></div>
-              <h3>{candidate.name}</h3>
+              <div className="candidate-topline">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{candidate.code}</small>
+              </div>
+              <div className="candidate-badges">
+                {candidate.sector && <span className="sector-badge">{candidate.sector}</span>}
+                <span className={`status-badge ${statusTone(candidate.status)}`}>{candidate.status || '후보군'}</span>
+              </div>
+              <h3>
+                {candidate.name}
+                {candidate.warning && (
+                  <span className="warning-icon" title={candidate.warning} aria-label={`주의: ${candidate.warning}`}>⚠</span>
+                )}
+              </h3>
               <div className="candidate-values">
                 <div><span>CAQM</span><strong>{Number.isFinite(firstNumber(candidate.caqm, candidate.cavm)) ? firstNumber(candidate.caqm, candidate.cavm) : '검토 중'}</strong></div>
                 <div><span>Final VM</span><strong>{Number.isFinite(candidate.finalVm) ? formatWon(candidate.finalVm) : '검토 중'}</strong></div>
               </div>
               <p>{candidate.note || '정성 근거와 VM 입력값을 재검토합니다.'}</p>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SectorView({ companies, candidates, selectedCode, onSelect }) {
+  const groups = useMemo(() => {
+    const bySector = new Map()
+    const addItem = (item) => {
+      const key = item.sector || '미분류'
+      if (!bySector.has(key)) bySector.set(key, [])
+      bySector.get(key).push(item)
+    }
+    companies.forEach((company) => addItem({
+      code: company.code,
+      name: company.name,
+      caqm: company.caqm,
+      sector: company.sector,
+      status: 'TOP20',
+      selectable: true,
+    }))
+    candidates.forEach((candidate) => addItem({
+      code: candidate.code,
+      name: candidate.name,
+      caqm: firstNumber(candidate.caqm, candidate.cavm),
+      sector: candidate.sector || '미분류',
+      status: candidate.status || '후보군',
+      selectable: false,
+    }))
+    return Array.from(bySector.entries())
+      .map(([sector, items]) => {
+        const caqmValues = items.map((item) => item.caqm).filter((value) => Number.isFinite(value))
+        const average = caqmValues.length ? caqmValues.reduce((sum, value) => sum + value, 0) / caqmValues.length : null
+        return {
+          sector,
+          items: [...items].sort((a, b) => (b.caqm ?? -Infinity) - (a.caqm ?? -Infinity)),
+          count: items.length,
+          average,
+        }
+      })
+      .sort((a, b) => (b.average ?? -Infinity) - (a.average ?? -Infinity))
+  }, [companies, candidates])
+
+  if (!groups.length) return null
+
+  const choose = (item) => {
+    if (!item.selectable) return
+    onSelect(item.code)
+    window.requestAnimationFrame(() => document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' }))
+  }
+
+  return (
+    <section className="sector-section" id="sectors" aria-labelledby="sector-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="BY SECTOR"
+          title="산업별 보기"
+          titleId="sector-title"
+          description="TOP20과 후보군·관심종목·관찰기업을 섹터별로 묶어 평균 CAQM과 함께 보여줍니다."
+        />
+        <div className="sector-accordion">
+          {groups.map((group) => (
+            <details className="sector-group" key={group.sector}>
+              <summary>
+                <span className="sector-group-name">{group.sector}</span>
+                <span className="sector-group-meta">
+                  {group.count}종목 · 평균 CAQM {Number.isFinite(group.average) ? group.average.toFixed(1) : '—'}
+                </span>
+                <i aria-hidden="true">+</i>
+              </summary>
+              <div className="sector-item-list">
+                {group.items.map((item) => {
+                  const Tag = item.selectable ? 'button' : 'div'
+                  return (
+                    <Tag
+                      key={item.code || item.name}
+                      type={item.selectable ? 'button' : undefined}
+                      className={`sector-item${item.selectable ? '' : ' sector-item-static'}${selectedCode === item.code ? ' is-selected' : ''}`}
+                      onClick={item.selectable ? () => choose(item) : undefined}
+                    >
+                      <span className="sector-item-name">{item.name}<small>{item.code}</small></span>
+                      <strong className={`caqm-value tier-${caqmTier(item.caqm ?? 0)}`}>{Number.isFinite(item.caqm) ? item.caqm : '—'}</strong>
+                      <span className={`status-badge ${statusTone(item.status)}`}>{item.status}</span>
+                    </Tag>
+                  )
+                })}
+              </div>
+            </details>
           ))}
         </div>
       </div>
@@ -2159,6 +2270,12 @@ export default function App() {
           onToggleWatch={toggleWatchlist}
         />
         <CandidateWatchlist master={snapshot.officialMaster} />
+        <SectorView
+          companies={snapshot.companies}
+          candidates={snapshot.officialMaster.candidates || []}
+          selectedCode={selectedCompany?.code}
+          onSelect={selectCompany}
+        />
         <CompanyDetail
           key={selectedCompany?.code}
           company={selectedCompany}
