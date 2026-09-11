@@ -19,7 +19,8 @@
         "growth": 24,
         "profitability": 19,
         "financialHealth": 14,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 66600,
       "priceBasisDate": "2026-09-04",
@@ -76,7 +77,8 @@
         "growth": 23,
         "profitability": 18,
         "financialHealth": 14,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 172000,
       "priceBasisDate": "2026-09-04",
@@ -136,7 +138,8 @@
         "growth": 23,
         "profitability": 18,
         "financialHealth": 14,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 270500,
       "priceBasisDate": "2026-09-04",
@@ -193,7 +196,8 @@
         "growth": 23,
         "profitability": 18,
         "financialHealth": 14,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 663000,
       "priceBasisDate": "2026-09-04",
@@ -253,7 +257,8 @@
         "growth": 22,
         "profitability": 18,
         "financialHealth": 14,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 110300,
       "priceBasisDate": "2026-09-04",
@@ -313,7 +318,8 @@
         "growth": 22,
         "profitability": 18,
         "financialHealth": 13,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 652000,
       "priceBasisDate": "2026-09-04",
@@ -370,7 +376,8 @@
         "growth": 22,
         "profitability": 18,
         "financialHealth": 13,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 34450,
       "priceBasisDate": "2026-09-04",
@@ -427,7 +434,8 @@
         "growth": 22,
         "profitability": 18,
         "financialHealth": 13,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 2732000,
       "priceBasisDate": "2026-09-04",
@@ -484,7 +492,8 @@
         "growth": 22,
         "profitability": 17,
         "financialHealth": 13,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 386500,
       "priceBasisDate": "2026-09-04",
@@ -541,7 +550,8 @@
         "growth": 22,
         "profitability": 17,
         "financialHealth": 13,
-        "management": 9
+        "management": 5,
+        "shareholderReturn": 4
       },
       "currentPrice": 14500,
       "priceBasisDate": "2026-09-04",
@@ -601,7 +611,8 @@
         "growth": 21,
         "profitability": 17,
         "financialHealth": 13,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 714000,
       "priceBasisDate": "2026-09-04",
@@ -658,7 +669,8 @@
         "growth": 21,
         "profitability": 17,
         "financialHealth": 13,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 195300,
       "priceBasisDate": "2026-09-04",
@@ -715,7 +727,8 @@
         "growth": 21,
         "profitability": 17,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 1647000,
       "priceBasisDate": "2026-09-04",
@@ -772,7 +785,8 @@
         "growth": 21,
         "profitability": 17,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 255500,
       "priceBasisDate": "2026-09-04",
@@ -829,7 +843,8 @@
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 407700,
       "priceBasisDate": "2026-09-08",
@@ -886,7 +901,8 @@
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 172500,
       "priceBasisDate": "2026-09-04",
@@ -943,7 +959,8 @@
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 99400,
       "priceBasisDate": "2026-09-04",
@@ -1000,7 +1017,8 @@
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 1055000,
       "priceBasisDate": "2026-09-04",
@@ -1057,7 +1075,8 @@
         "growth": 20,
         "profitability": 16,
         "financialHealth": 12,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 107600,
       "priceBasisDate": "2026-09-04",
@@ -1115,7 +1134,8 @@
         "growth": 19,
         "profitability": 15,
         "financialHealth": 11,
-        "management": 8
+        "management": 4,
+        "shareholderReturn": 4
       },
       "currentPrice": 262500,
       "priceBasisDate": "2026-09-04",

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 
 const REPOSITORY_URL = 'https://github.com/psa1582/stock'
 const DATA_EDIT_URL = `${REPOSITORY_URL}/edit/main/data/manual-overrides.json`
@@ -18,7 +18,8 @@ const SCORE_META = [
   { key: 'growth', label: '장기 성장성', max: 25, short: '성장' },
   { key: 'profitability', label: '수익성·현금창출', max: 20, short: '수익' },
   { key: 'financialHealth', label: '재무건전성', max: 15, short: '재무' },
-  { key: 'management', label: '경영진·주주환원', max: 10, short: '환원' },
+  { key: 'management', label: '경영진', max: 5, short: '경영' },
+  { key: 'shareholderReturn', label: '주주환원', max: 5, short: '환원' },
 ]
 
 const number = (value) => {
@@ -166,7 +167,8 @@ function normalizeCompany(company, index) {
       growth: firstNumber(components.growth) ?? 0,
       profitability: firstNumber(components.profitability, components.profit) ?? 0,
       financialHealth: firstNumber(components.financialHealth, components.financial) ?? 0,
-      management: firstNumber(components.management, components.shareholderReturn) ?? 0,
+      management: firstNumber(components.management) ?? 0,
+      shareholderReturn: firstNumber(components.shareholderReturn) ?? 0,
     },
     currentPrice,
     priceBasisDate: company.priceBasisDate || market.priceAsOf || market.asOf || null,
@@ -596,8 +598,12 @@ function LatestChanges({ snapshot, onSelect }) {
       tone: 'official',
       items: (officialMaster.changes || []).map((item) => ({
         ...item,
-        name: item.title || item.name,
-        copy: item.detail || '',
+        name: item.name || item.title,
+        copy: (item.before !== undefined && item.before !== null) || (item.after !== undefined && item.after !== null)
+          ? `${item.field ? `${item.field}: ` : ''}${item.before ?? '—'} → ${item.after ?? '—'}`
+          : item.detail || '',
+        date: item.date || '',
+        reason: item.reason || '',
       })),
     },
     {
@@ -657,11 +663,28 @@ function LatestChanges({ snapshot, onSelect }) {
               <article className={`change-group tone-${group.tone}`} key={group.key}>
                 <div className="change-group-title"><span>{group.label}</span><strong>{group.items.length}건</strong></div>
                 <div className="change-items">
-                  {group.items.map((item, index) => (
-                    <button type="button" key={`${item.code}-${index}`} onClick={() => choose(item.code)}>
-                      <span>{item.name}</span><strong>{item.copy}</strong><i aria-hidden="true">↘</i>
-                    </button>
-                  ))}
+                  {group.items.map((item, index) => {
+                    const Tag = item.code ? 'button' : 'div'
+                    return (
+                      <Tag
+                        type={item.code ? 'button' : undefined}
+                        className={item.code ? '' : 'change-item-static'}
+                        key={`${item.code || 'na'}-${index}`}
+                        onClick={item.code ? () => choose(item.code) : undefined}
+                      >
+                        <div className="change-item-main">
+                          <span>{item.name}</span><strong>{item.copy}</strong>
+                          {item.code && <i aria-hidden="true">↘</i>}
+                        </div>
+                        {group.key === 'official' && (item.date || item.reason) && (
+                          <div className="change-item-meta">
+                            {item.date && <time>{formatDate(item.date)}</time>}
+                            {item.reason && <p>{item.reason}</p>}
+                          </div>
+                        )}
+                      </Tag>
+                    )
+                  })}
                 </div>
               </article>
             ))}
@@ -1182,11 +1205,11 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
 }
 
 function downloadTop20Csv(companies) {
-  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진·주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '매수신호', '판단', '경고']
+  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진', '주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '매수신호', '판단', '경고']
   const rows = companies.map((company) => [
     company.rank, company.code, company.name, company.sector, company.caqm,
     company.components.moat, company.components.growth, company.components.profitability,
-    company.components.financialHealth, company.components.management,
+    company.components.financialHealth, company.components.management, company.components.shareholderReturn,
     company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '',
     company.signal || '', company.opinion, company.warning || '',
   ])
@@ -1200,6 +1223,30 @@ function downloadTop20Csv(companies) {
   link.click()
   link.remove()
   URL.revokeObjectURL(url)
+}
+
+function InlineCompanyDetail({ company, onOpenFull }) {
+  return (
+    <div className="inline-detail" onClick={(event) => event.stopPropagation()}>
+      <div className="inline-detail-grid">
+        <div className="inline-detail-block">
+          <h4>CAQM 세부점수</h4>
+          <ScoreBreakdown company={company} />
+        </div>
+        <div className="inline-detail-block">
+          <h4>VM 산출근거</h4>
+          <ValuationModelPanel company={company} />
+          <p className="inline-detail-basis">현재가 기준일 · {formatDate(company.priceBasisDate)}</p>
+        </div>
+        <div className="inline-detail-block">
+          <h4>리스크 추적 요인</h4>
+          <p>{company.risk}</p>
+          {company.warning && <p className="inline-detail-warning"><span aria-hidden="true">⚠</span> {company.warning}</p>}
+        </div>
+      </div>
+      <button type="button" className="inline-detail-more" onClick={onOpenFull}>전체 상세 페이지 보기 ↗</button>
+    </div>
+  )
 }
 
 function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatch }) {
@@ -1221,9 +1268,21 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
       })
   }, [companies, query, sector, sort, watchedOnly, watchlist])
 
+  const [expandedCode, setExpandedCode] = useState(null)
+
   const choose = (company) => {
     onSelect(company.code)
     window.requestAnimationFrame(() => document.getElementById('company')?.scrollIntoView({ behavior: 'smooth' }))
+  }
+
+  const isInlineExpandable = (company) => Number.isFinite(company.gapRate) && Math.abs(company.gapRate) <= 20
+
+  const activate = (company) => {
+    if (isInlineExpandable(company)) {
+      setExpandedCode((current) => (current === company.code ? null : company.code))
+    } else {
+      choose(company)
+    }
   }
 
   return (
@@ -1265,43 +1324,65 @@ function Top20Table({ companies, selectedCode, onSelect, watchlist, onToggleWatc
               </tr>
             </thead>
             <tbody>
-              {visible.map((company) => (
-                <tr
-                  key={company.code}
-                  className={selectedCode === company.code ? 'selected-row' : ''}
-                  onClick={() => choose(company)}
-                >
-                  <td><span className={`table-rank rank-${company.rank}`}>{company.rank}</span></td>
-                  <td>
-                    <div className="company-cell-wrap">
-                      <button className="company-cell" type="button" onClick={() => choose(company)}>
-                        <strong>
-                          {company.name}
-                          {company.warning && (
-                            <span className="warning-icon" title={company.warning} aria-label={`주의: ${company.warning}`}>⚠</span>
-                          )}
-                        </strong>
-                        <small>{company.code}</small>
-                      </button>
-                      <button
-                        type="button"
-                        className={watchlist.includes(company.code) ? 'table-watch is-active' : 'table-watch'}
-                        aria-label={`${company.name} 관심기업 ${watchlist.includes(company.code) ? '해제' : '추가'}`}
-                        onClick={(event) => { event.stopPropagation(); onToggleWatch(company.code) }}
-                      >{watchlist.includes(company.code) ? '★' : '☆'}</button>
-                    </div>
-                  </td>
-                  <td>{company.sector}</td>
-                  <td><strong className={`caqm-value tier-${caqmTier(company.caqm)}`}>{company.caqm}</strong></td>
-                  <td>{formatWon(company.currentPrice)}</td>
-                  <td>{formatWon(company.finalVm)}</td>
-                  <td><span className={`gap-pill ${gapTone(company.gapRate)} ${gapSign(company.gapRate)}`}>{formatPercent(company.gapRate, true)}</span></td>
-                  <td>{company.signal
-                    ? <span className={`signal-badge ${signalTone(company.signal)}`}>{company.signal}</span>
-                    : <span className="opinion-text">{company.opinion || gapLabel(company.gapRate)}</span>}
-                  </td>
-                </tr>
-              ))}
+              {visible.map((company) => {
+                const expandable = isInlineExpandable(company)
+                const expanded = expandedCode === company.code
+                return (
+                  <Fragment key={company.code}>
+                    <tr
+                      className={[
+                        selectedCode === company.code ? 'selected-row' : '',
+                        expandable ? 'expandable-row' : '',
+                        expanded ? 'is-expanded' : '',
+                      ].filter(Boolean).join(' ')}
+                      onClick={() => activate(company)}
+                      aria-expanded={expandable ? expanded : undefined}
+                    >
+                      <td><span className={`table-rank rank-${company.rank}`}>{company.rank}</span></td>
+                      <td>
+                        <div className="company-cell-wrap">
+                          <button
+                            className="company-cell"
+                            type="button"
+                            onClick={(event) => { event.stopPropagation(); activate(company) }}
+                          >
+                            <strong>
+                              {company.name}
+                              {company.warning && (
+                                <span className="warning-icon" title={company.warning} aria-label={`주의: ${company.warning}`}>⚠</span>
+                              )}
+                              {expandable && <i className={`expand-caret${expanded ? ' is-open' : ''}`} aria-hidden="true">▾</i>}
+                            </strong>
+                            <small>{company.code}</small>
+                          </button>
+                          <button
+                            type="button"
+                            className={watchlist.includes(company.code) ? 'table-watch is-active' : 'table-watch'}
+                            aria-label={`${company.name} 관심기업 ${watchlist.includes(company.code) ? '해제' : '추가'}`}
+                            onClick={(event) => { event.stopPropagation(); onToggleWatch(company.code) }}
+                          >{watchlist.includes(company.code) ? '★' : '☆'}</button>
+                        </div>
+                      </td>
+                      <td>{company.sector}</td>
+                      <td><strong className={`caqm-value tier-${caqmTier(company.caqm)}`}>{company.caqm}</strong></td>
+                      <td>{formatWon(company.currentPrice)}</td>
+                      <td>{formatWon(company.finalVm)}</td>
+                      <td><span className={`gap-pill ${gapTone(company.gapRate)} ${gapSign(company.gapRate)}`}>{formatPercent(company.gapRate, true)}</span></td>
+                      <td>{company.signal
+                        ? <span className={`signal-badge ${signalTone(company.signal)}`}>{company.signal}</span>
+                        : <span className="opinion-text">{company.opinion || gapLabel(company.gapRate)}</span>}
+                      </td>
+                    </tr>
+                    {expanded && (
+                      <tr className="detail-row">
+                        <td colSpan={8}>
+                          <InlineCompanyDetail company={company} onOpenFull={() => choose(company)} />
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                )
+              })}
             </tbody>
           </table>
           {!visible.length && <div className="empty-state">조건에 맞는 기업이 없습니다.</div>}
@@ -1411,7 +1492,16 @@ function qualityEvidenceFor(company, meta) {
       nextReviewAt,
     },
     management: {
-      title: '경영진·주주환원 근거',
+      title: '경영진 근거',
+      detail: '경영진의 자본배분 판단, 의사결정 이력과 지배구조 리스크를 기준으로 검토합니다.',
+      status: 'pending',
+      sourceLabel: '실행 내역 근거 보강 중',
+      sourceUrl: '',
+      checkedAt: company.review?.reviewedAt,
+      nextReviewAt,
+    },
+    shareholderReturn: {
+      title: '주주환원(배당) 근거',
       detail: '최근 3년 배당과 실제 자사주 소각 완료분을 기준으로 검토합니다. 매입 발표만으로는 점수를 확정하지 않습니다.',
       status: 'pending',
       sourceLabel: '실행 내역 근거 보강 중',
