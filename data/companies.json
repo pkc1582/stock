@@ -15,12 +15,12 @@
       "sector": "반도체소부장",
       "caqm": 94,
       "components": {
-        "moat": 28,
+        "moat": 30,
         "growth": 24,
-        "profitability": 19,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 4
+        "profitability": 17,
+        "financialHealth": 15,
+        "management": 3,
+        "shareholderReturn": 5
       },
       "currentPrice": 66600,
       "priceBasisDate": "2026-09-04",
@@ -73,12 +73,12 @@
       "sector": "금융-은행",
       "caqm": 91,
       "components": {
-        "moat": 27,
-        "growth": 23,
+        "moat": 23,
+        "growth": 18,
         "profitability": 18,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 4
+        "financialHealth": 13,
+        "management": 9,
+        "shareholderReturn": 10
       },
       "currentPrice": 172000,
       "priceBasisDate": "2026-09-04",
@@ -125,7 +125,8 @@
         "status": "reviewed",
         "reviewedAt": "2026-09-04",
         "nextReviewAt": "2026-09-30"
-      }
+      },
+      "isFinancial": true
     },
     {
       "code": "039490",
@@ -134,12 +135,12 @@
       "sector": "금융-증권",
       "caqm": 91,
       "components": {
-        "moat": 27,
-        "growth": 23,
+        "moat": 23,
+        "growth": 18,
         "profitability": 18,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 4
+        "financialHealth": 13,
+        "management": 9,
+        "shareholderReturn": 10
       },
       "currentPrice": 270500,
       "priceBasisDate": "2026-09-04",
@@ -183,7 +184,8 @@
         "status": "reviewed",
         "reviewedAt": "2026-09-04",
         "nextReviewAt": "2026-09-30"
-      }
+      },
+      "isFinancial": true
     },
     {
       "code": "000810",
@@ -192,12 +194,12 @@
       "sector": "금융-보험",
       "caqm": 91,
       "components": {
-        "moat": 27,
-        "growth": 23,
-        "profitability": 18,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 4
+        "moat": 24,
+        "growth": 16,
+        "profitability": 19,
+        "financialHealth": 13,
+        "management": 9,
+        "shareholderReturn": 10
       },
       "currentPrice": 663000,
       "priceBasisDate": "2026-09-04",
@@ -244,7 +246,8 @@
         "status": "reviewed",
         "reviewedAt": "2026-09-04",
         "nextReviewAt": "2026-09-30"
-      }
+      },
+      "isFinancial": true
     },
     {
       "code": "055550",
@@ -253,12 +256,12 @@
       "sector": "금융-은행",
       "caqm": 90,
       "components": {
-        "moat": 27,
-        "growth": 22,
-        "profitability": 18,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 4
+        "moat": 22,
+        "growth": 18,
+        "profitability": 17,
+        "financialHealth": 13,
+        "management": 10,
+        "shareholderReturn": 10
       },
       "currentPrice": 110300,
       "priceBasisDate": "2026-09-04",
@@ -305,7 +308,8 @@
         "status": "reviewed",
         "reviewedAt": "2026-09-04",
         "nextReviewAt": "2026-09-30"
-      }
+      },
+      "isFinancial": true
     },
     {
       "code": "079550",
@@ -314,12 +318,12 @@
       "sector": "방산",
       "caqm": 89,
       "components": {
-        "moat": 27,
-        "growth": 22,
+        "moat": 26,
+        "growth": 25,
         "profitability": 18,
         "financialHealth": 13,
-        "management": 5,
-        "shareholderReturn": 4
+        "management": 4,
+        "shareholderReturn": 3
       },
       "currentPrice": 652000,
       "priceBasisDate": "2026-09-04",
@@ -430,12 +434,12 @@
       "sector": "전력기기",
       "caqm": 88,
       "components": {
-        "moat": 26,
-        "growth": 22,
+        "moat": 27,
+        "growth": 25,
         "profitability": 18,
         "financialHealth": 13,
-        "management": 5,
-        "shareholderReturn": 4
+        "management": 3,
+        "shareholderReturn": 2
       },
       "currentPrice": 2732000,
       "priceBasisDate": "2026-09-04",
@@ -490,10 +494,10 @@
       "components": {
         "moat": 25,
         "growth": 22,
-        "profitability": 17,
-        "financialHealth": 13,
-        "management": 5,
-        "shareholderReturn": 4
+        "profitability": 19,
+        "financialHealth": 14,
+        "management": 4,
+        "shareholderReturn": 2
       },
       "currentPrice": 386500,
       "priceBasisDate": "2026-09-04",
@@ -608,11 +612,11 @@
       "caqm": 85,
       "components": {
         "moat": 26,
-        "growth": 21,
-        "profitability": 17,
-        "financialHealth": 13,
-        "management": 4,
-        "shareholderReturn": 4
+        "growth": 24,
+        "profitability": 18,
+        "financialHealth": 12,
+        "management": 3,
+        "shareholderReturn": 2
       },
       "currentPrice": 714000,
       "priceBasisDate": "2026-09-04",
@@ -666,10 +670,10 @@
       "caqm": 84,
       "components": {
         "moat": 25,
-        "growth": 21,
+        "growth": 23,
         "profitability": 17,
-        "financialHealth": 13,
-        "management": 4,
+        "financialHealth": 12,
+        "management": 3,
         "shareholderReturn": 4
       },
       "currentPrice": 195300,
@@ -723,12 +727,12 @@
       "sector": "반도체",
       "caqm": 83,
       "components": {
-        "moat": 25,
-        "growth": 21,
-        "profitability": 17,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
+        "moat": 26,
+        "growth": 20,
+        "profitability": 15,
+        "financialHealth": 14,
+        "management": 5,
+        "shareholderReturn": 3
       },
       "currentPrice": 1647000,
       "priceBasisDate": "2026-09-04",
@@ -782,11 +786,11 @@
       "caqm": 83,
       "components": {
         "moat": 25,
-        "growth": 21,
+        "growth": 20,
         "profitability": 17,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
+        "financialHealth": 15,
+        "management": 3,
+        "shareholderReturn": 3
       },
       "currentPrice": 255500,
       "priceBasisDate": "2026-09-04",
@@ -839,12 +843,12 @@
       "sector": "화장품/미용",
       "caqm": 82,
       "components": {
-        "moat": 26,
-        "growth": 20,
-        "profitability": 16,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
+        "moat": 24,
+        "growth": 24,
+        "profitability": 17,
+        "financialHealth": 13,
+        "management": 3,
+        "shareholderReturn": 1
       },
       "currentPrice": 407700,
       "priceBasisDate": "2026-09-08",
@@ -955,10 +959,10 @@
       "sector": "렌탈구독",
       "caqm": 80,
       "components": {
-        "moat": 24,
-        "growth": 20,
-        "profitability": 16,
-        "financialHealth": 12,
+        "moat": 25,
+        "growth": 22,
+        "profitability": 14,
+        "financialHealth": 11,
         "management": 4,
         "shareholderReturn": 4
       },
@@ -1130,12 +1134,12 @@
       "sector": "반도체소부장",
       "caqm": 76,
       "components": {
-        "moat": 23,
-        "growth": 19,
-        "profitability": 15,
-        "financialHealth": 11,
-        "management": 4,
-        "shareholderReturn": 4
+        "moat": 27,
+        "growth": 20,
+        "profitability": 11,
+        "financialHealth": 13,
+        "management": 3,
+        "shareholderReturn": 2
       },
       "currentPrice": 262500,
       "priceBasisDate": "2026-09-04",

@@ -28,6 +28,16 @@ COMPONENT_LIMITS = {
     "management": 5,
     "shareholderReturn": 5,
 }
+# 금융업(은행/증권/보험)은 해자·성장성 배점을 낮추고 경영진·주주환원 배점을
+# 2배로 가중한다 (CEO 확정 · 2026-09-11). 합계는 동일하게 100점이다.
+FINANCIAL_COMPONENT_LIMITS = {
+    "moat": 25,
+    "growth": 20,
+    "profitability": 20,
+    "financialHealth": 15,
+    "management": 10,
+    "shareholderReturn": 10,
+}
 DEFAULT_OVERSEAS_ADJUSTMENT_WEIGHT = 0.30
 DEFAULT_ROUNDING_UNIT = 100
 VALUATION_MODEL_LABELS = {
@@ -72,6 +82,10 @@ def require_number(value: Any, label: str, minimum: float | None = None) -> floa
     return number
 
 
+def component_limits_for(company: dict[str, Any]) -> dict[str, int]:
+    return FINANCIAL_COMPONENT_LIMITS if company.get("isFinancial") else COMPONENT_LIMITS
+
+
 def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[str, int]:
     base = company.get("components")
     if not isinstance(base, dict):
@@ -81,8 +95,9 @@ def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[
     if not isinstance(manual_components, dict):
         raise ValueError(f"{company.get('code')}: componentOverrides must be an object")
 
+    limits = component_limits_for(company)
     result: dict[str, int] = {}
-    for key, maximum in COMPONENT_LIMITS.items():
+    for key, maximum in limits.items():
         raw = manual_components.get(key, base.get(key))
         score = require_number(raw, f"{company.get('code')}.{key}", 0)
         if score > maximum:
@@ -101,11 +116,11 @@ def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[
         delta = adjustment.get("delta", 0)
         if component is None and delta == 0:
             continue
-        if component not in COMPONENT_LIMITS:
+        if component not in limits:
             raise ValueError(f"{company.get('code')}.{issue_id}: unknown component")
         numeric_delta = require_number(delta, f"{company.get('code')}.{issue_id}.delta")
         adjusted = result[component] + numeric_delta
-        if adjusted < 0 or adjusted > COMPONENT_LIMITS[component]:
+        if adjusted < 0 or adjusted > limits[component]:
             raise ValueError(f"{company.get('code')}.{issue_id}: adjusted score is out of range")
         if not adjusted.is_integer():
             raise ValueError(f"{company.get('code')}.{issue_id}: adjusted score must be an integer")
@@ -775,6 +790,8 @@ def main() -> None:
                 "sector": str(company.get("sector", "")),
                 "caqm": caqm,
                 "components": components,
+                "componentLimits": component_limits_for(company),
+                "isFinancial": bool(company.get("isFinancial", False)),
                 "currentPrice": current_price,
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
                 "priceSource": str(company.get("priceSource", "")),
@@ -864,9 +881,9 @@ def main() -> None:
         "officialMaster": overrides_data.get("officialMaster", {}),
         "methodology": {
             "version": "CAQM Official v1.1 · Sector VM v2.0",
-            "weights": COMPONENT_LIMITS,
+            "weights": {"standard": COMPONENT_LIMITS, "financial": FINANCIAL_COMPONENT_LIMITS},
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-            "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자 30점, 성장성 25점, 수익성 20점, 재무건전성 15점, 경영진 5점, 주주환원 5점으로 평가한다. CAQM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+            "ratingPolicy": "CAQM은 가격과 VM을 제외하고 일반기업 기준 해자 30점, 성장성 25점, 수익성 20점, 재무건전성 15점, 경영진 5점, 주주환원 5점으로 평가한다. 은행·증권·보험 등 금융업은 해자 25점, 성장성 20점, 수익성 20점, 재무건전성 15점, 경영진 10점, 주주환원 10점으로 경영진·주주환원 배점을 2배 가중한다. CAQM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
             "selectionPolicy": "공식 마스터는 CAQM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
             "disclaimer": "CAQM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },
