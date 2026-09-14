@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-31T20:47:17+09:00",
-  "basisDate": "2026-08-28",
+  "generatedAt": "2026-09-14T20:52:14+09:00",
+  "basisDate": "2026-09-11",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -26,17 +26,17 @@
     "KRX 공식 종목분류와 지정 상태를 교차검증하기 전에는 1차 정량 선별에만 사용해야 합니다."
   ],
   "counts": {
-    "providerRows": 2760,
-    "kospi": 832,
-    "kosdaq": 1820,
+    "providerRows": 2758,
+    "kospi": 831,
+    "kosdaq": 1819,
     "classified": {
-      "common_candidate": 2553,
+      "common_candidate": 2552,
       "name_likely_preferred": 3,
-      "name_likely_spac": 71,
+      "name_likely_spac": 70,
       "name_likely_reit": 25
     },
-    "preliminaryEligible": 2553,
-    "knownExcluded": 99
+    "preliminaryEligible": 2552,
+    "knownExcluded": 98
   },
   "companies": [
     {
@@ -2196,6 +2196,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0197V0",
+      "isin": "KR70197V0000",
+      "name": "엔에이치스팩34호",
+      "corporationName": "엔에이치기업인수목적34호 주식회사",
+      "corporateRegistrationNumber": "1101110958324",
+      "market": "KOSDAQ",
+      "classification": "name_likely_spac",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": false,
+      "exclusionReason": "name_indicates_spac"
+    },
+    {
       "code": "019990",
       "isin": "KR7019990001",
       "name": "에너토크",
@@ -4214,7 +4228,7 @@
     {
       "code": "038060",
       "isin": "KR7038060000",
-      "name": "루멘스",
+      "name": "루멘스바이오스",
       "corporationName": "(주)루멘스",
       "corporateRegistrationNumber": "1301110038918",
       "market": "KOSDAQ",
@@ -11044,20 +11058,6 @@
       "exclusionReason": null
     },
     {
-      "code": "096610",
-      "isin": "KR7096610001",
-      "name": "알에프세미",
-      "corporationName": "주식회사알에프세미",
-      "corporateRegistrationNumber": "1601110088660",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
       "code": "096630",
       "isin": "KR7096630009",
       "name": "에스코넥",
@@ -17122,7 +17122,7 @@
     {
       "code": "242040",
       "isin": "KR7242040004",
-      "name": "나무에이엑스",
+      "name": "나무AX",
       "corporationName": "나무에이엑스(주)",
       "corporateRegistrationNumber": "1101116016673",
       "market": "KOSDAQ",
@@ -21838,6 +21838,20 @@
       "exclusionReason": null
     },
     {
+      "code": "386380",
+      "isin": "KR7386380000",
+      "name": "스카이랩스",
+      "corporationName": "주식회사 스카이랩스",
+      "corporateRegistrationNumber": "1345110270691",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "387570",
       "isin": "KR7387570005",
       "name": "파인메딕스",
@@ -22176,8 +22190,8 @@
     {
       "code": "396300",
       "isin": "KR7396300006",
-      "name": "세아메카닉스",
-      "corporationName": "(주)세아메카닉스",
+      "name": "HT로보틱스",
+      "corporationName": "(주)에이치티로보틱스",
       "corporateRegistrationNumber": "1760110019792",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -24162,20 +24176,6 @@
       "exclusionReason": "name_indicates_spac"
     },
     {
-      "code": "471050",
-      "isin": "KR7471050005",
-      "name": "대신밸런스제17호스팩",
-      "corporationName": "대신밸런스제17호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118766820",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
-    },
-    {
       "code": "471820",
       "isin": "KR7471820001",
       "name": "셀로맥스사이언스",
@@ -24188,20 +24188,6 @@
       "managementStatus": "unverified",
       "eligibleForPreliminaryScreen": true,
       "exclusionReason": null
-    },
-    {
-      "code": "472220",
-      "isin": "KR7472220003",
-      "name": "신영스팩10호",
-      "corporationName": "신영해피투모로우제10호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118781779",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
     },
     {
       "code": "472230",
@@ -26992,8 +26978,8 @@
     {
       "code": "002420",
       "isin": "KR7002420008",
-      "name": "세기상사",
-      "corporationName": "세기상사(주)",
+      "name": "우양피앤엘",
+      "corporationName": "우양피앤엘(주)",
       "corporateRegistrationNumber": "1101110015853",
       "market": "KOSPI",
       "classification": "common_candidate",
@@ -33799,20 +33785,6 @@
       "name": "미스토홀딩스",
       "corporationName": "(주)미스토홀딩스",
       "corporateRegistrationNumber": "1101110792667",
-      "market": "KOSPI",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
-      "code": "082640",
-      "isin": "KR7082640004",
-      "name": "동양생명",
-      "corporationName": "동양생명보험(주)",
-      "corporateRegistrationNumber": "1101110624688",
       "market": "KOSPI",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
