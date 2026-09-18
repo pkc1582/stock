@@ -2021,12 +2021,12 @@ function Methodology({ methodology }) {
         />
         <div className="method-grid">
           {[
-            ['01', '경쟁우위·해자', '30점 (금융 25점)', '10년 관점의 산업내 경쟁력과 전산업 관점 경쟁력을 각 절반씩 평가합니다.'],
-            ['02', '성장성', '25점 (금융 20점)', '과거 3년 대비 향후 3년 성장가속 여부를 평가하고 수주잔고를 가점으로 반영합니다.'],
-            ['03', '수익성·현금창출력', '20점', 'ROE 절대수준과 ROE 추세를 각 절반씩 평가합니다.'],
-            ['04', '재무건전성', '15점', '부채비율, 순현금·순차입, 위기 대응력을 평가합니다.'],
-            ['05', '경영진', '5점 (금융 10점)', '지배구조, 대주주 도덕성, M&A 판단, 지분매각 오버행 리스크를 평가합니다.'],
-            ['06', '주주환원(배당)', '5점 (금융 10점)', '배당성장 지속성과 자사주 매입·소각의 실제 이행 여부를 평가합니다.'],
+            ['01', '해자(경쟁우위)', '30점', '산업내 경쟁력 20점과 전산업 관점 경쟁력 10점으로 평가합니다.'],
+            ['02', '성장성', '20점', 'EPS 성장률을 기준으로 평가하며, 업종별 만점기준을 차등 적용합니다.'],
+            ['03', '수익성(ROE)', '20점', '절대 ROE를 단일계량으로 평가합니다.'],
+            ['04', '재무건전성', '15점', '부채비율 7.5점과 이자보상배율 7.5점으로 평가합니다.'],
+            ['05', '경영진', '5점', '도덕성 2.5점과 경영성과 2.5점으로 평가합니다.'],
+            ['06', '주주환원', '10점', '환원 수준 5점과 지속성장 5점으로 평가합니다.'],
           ].map(([numberLabel, title, score, copy]) => (
             <article key={numberLabel}>
               <div><span>{numberLabel}</span><strong>{score}</strong></div>
@@ -2035,7 +2035,21 @@ function Methodology({ methodology }) {
             </article>
           ))}
         </div>
-        <p className="method-financial-note">※ 은행·증권·보험은 별도 배점을 적용합니다: 해자 25 · 성장성 20 · 수익성 20 · 재무건전성 15 · 경영진 10 · 주주환원 10 (합계 100, 경영진·주주환원 2배 가중 · CEO 확정)</p>
+        <div className="growth-cap-table">
+          <span>업종별 성장성 만점기준</span>
+          <div className="growth-cap-grid">
+            {[
+              ['반도체·AI인프라', '50%'],
+              ['방산·전력기기·화장품', '40%'],
+              ['바이오·CDMO', '30%'],
+              ['일반제조·소비재', '20%'],
+              ['금융-증권', '15%'],
+              ['금융-은행·보험', '8%'],
+            ].map(([label, value]) => (
+              <div key={label}><span>{label}</span><b>{value}</b></div>
+            ))}
+          </div>
+        </div>
         <div className="method-flow">
           <div><span>STEP 1</span><strong>CAQM</strong><small>Compound Asset Quality Model</small><p>복리자산 품질평가 · 좋은 기업인가?</p></div>
           <i>+</i>
@@ -2044,9 +2058,16 @@ function Methodology({ methodology }) {
           <div className="flow-result"><span>DECISION</span><strong>두 조건의 교집합</strong><p>그때 투자를 검토합니다.</p></div>
         </div>
         <div className="formula-card">
-          <div><span>GENERAL VALUE MODEL</span><h3>일반기업 Final VM</h3></div>
-          <p><strong>3년 예상 EPS</strong><i>×</i><strong>기준 PER + 해외 보정</strong><i>→</i><strong>3년 후 가치</strong><i>÷</i><strong>(1 + 할인율)<sup>3</sup></strong></p>
-          <small>기준 PER은 과거 5년 평균입니다. 해외 보정은 (해외 유사기업 PER - 기준 PER)의 30%만 반영합니다. 할인율은 성장 10% · 일반 11% · 경기민감 12%가 원칙이며, 현재 PER 입력값은 근거 검토 전 초기 이관값입니다.</small>
+          <div><span>VM 산정 프로세스</span><h3>적정 PER은 4단계로 결정합니다.</h3></div>
+          <div className="vm-process-steps">
+            <div><span>STEP 1</span><strong>과거 확정PER</strong><p>5년 평균, 아이투자/밸류라인 기준</p></div>
+            <i>→</i>
+            <div><span>STEP 2</span><strong>프리미엄 결정</strong><p>계량가속폭 × Peer비교 × 구조적변화 3요소 종합판단, 연속함수로 보수적 적용</p></div>
+            <i>→</i>
+            <div><span>STEP 3</span><strong>Peer PER 검증</strong><p>동일업종 Peer PER 최종 검증</p></div>
+            <i>→</i>
+            <div><span>STEP 4</span><strong>목표주가 참고</strong><p>증권사 목표주가(3개월/6개월) 참고 비교</p></div>
+          </div>
         </div>
         <div className="sector-model-grid">
           <article>
@@ -2091,6 +2112,22 @@ function Methodology({ methodology }) {
             <li><strong>★★★☆☆</strong><span>-10% 초과</span><small>관찰</small></li>
           </ul>
           <p>{methodology.ratingPolicy}</p>
+        </div>
+        <div className="decision-policy signal-policy">
+          <div>
+            <span>BUY REVIEW RULE</span>
+            <h3>매수검토 판단 기준 · 전 종목 동일 기준 적용</h3>
+          </div>
+          <ul>
+            <li><strong>1차관심</strong><span>괴리율 -20% 이하</span></li>
+            <li><strong>적극검토</strong><span>괴리율 -30% 이하</span></li>
+            <li><strong>강한안전마진</strong><span>괴리율 -40% 이하</span></li>
+          </ul>
+          <p>CAQM 등급에 따라 기준을 차등 적용하지 않고, 모든 종목에 동일한 괴리율 기준을 적용합니다.</p>
+        </div>
+        <div className="exclusion-note">
+          <span aria-hidden="true">i</span>
+          <p>한화오션, HD한국조선해양은 HD현대중공업으로 조선업 대표 종목이 확정되어 검토 대상에서 제외됩니다 (2026-09-12)</p>
         </div>
         <aside className="disclaimer">
           <span aria-hidden="true">!</span>
