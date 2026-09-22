@@ -1,2187 +1,548 @@
 {
-  "generatedAt": "2026-09-22T00:57:42+09:00",
-  "basisDate": "2026-09-04",
-  "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 16/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
+  "generatedAt": "2026-09-22T22:38:01+09:00",
+  "basisDate": "2026-09-22",
+  "dataStatus": "OpenDART 최신 보고서 확인 12/20 · 주요지표 완전 10/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
     "companyCount": 20,
-    "latestReportSuccessCount": 20,
-    "latestReportCompleteCount": 16,
-    "latestReportPartialCount": 4
+    "latestReportSuccessCount": 12,
+    "latestReportCompleteCount": 10,
+    "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-09-19T09:26:29+09:00",
-    "generatedAt": "2026-09-22T00:57:42+09:00",
+    "comparedAt": "2026-09-22T00:57:42+09:00",
+    "generatedAt": "2026-09-22T22:38:01+09:00",
     "vm": [],
     "gap": [],
-    "caqm": [],
-    "entrants": [],
-    "exits": [],
-    "reports": [],
-    "hasMaterialChanges": false
-  },
-  "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-11 (산업별 섹터 분류 반영)",
-    "basisDate": "2026-09-04",
-    "changes": [
+    "caqm": [
+      {
+        "code": "005930",
+        "name": "삼성전자",
+        "before": 83,
+        "after": 92.5
+      },
+      {
+        "code": "000660",
+        "name": "SK하이닉스",
+        "before": 83,
+        "after": 92.4
+      },
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": 85,
+        "after": 90.3
+      },
+      {
+        "code": "298040",
+        "name": "효성중공업",
+        "before": 88,
+        "after": 83.5
+      },
+      {
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": 80,
+        "after": 79.9
+      },
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "before": 82,
+        "after": 79.7
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": 80,
+        "after": 79.1
+      },
+      {
+        "code": "000810",
+        "name": "삼성화재",
+        "before": 91,
+        "after": 78.8
+      },
+      {
+        "code": "058470",
+        "name": "리노공업",
+        "before": 94,
+        "after": 78.3
+      },
       {
         "code": "214450",
         "name": "파마리서치",
-        "date": "2026-09-11",
-        "field": "섹터 분류",
-        "before": "화장품/의료기기",
-        "after": "화장품/미용",
-        "reason": "확정 산업별 섹터 분류 데이터에 맞춰 통일했습니다."
+        "before": 86,
+        "after": 78.2
       },
       {
-        "code": null,
-        "name": "후보군 8종목",
-        "date": "2026-09-11",
-        "field": "후보군 섹터·Final VM",
-        "before": "섹터 미표시, VM 미산출 6종목",
-        "after": "섹터 표시 및 산일전기·에스티팜·HD현대중공업·한국콜마·코스맥스 Final VM 신규 반영",
-        "reason": "확정 산업별 섹터 분류 데이터의 Final VM을 반영했습니다."
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "before": 84,
+        "after": 78.0
       },
       {
-        "code": "060720",
-        "name": "KH바텍",
-        "date": "2026-09-11",
-        "field": "분류 상태",
-        "before": "후보군",
-        "after": "관심종목",
-        "reason": "폴더블 힌지에서 로봇·전장 부품으로의 사업 전환을 지켜보는 관심종목으로 재분류했습니다."
-      },
-      {
-        "code": "402340",
-        "name": "삼성SDI",
-        "date": "2026-09-11",
-        "field": "신규 추적",
-        "before": "—",
-        "after": "관찰기업 추가 (CAQM 67 · 2차전지)",
-        "reason": "CAQM 80점 기본 품질 통과선에 못 미쳐 후보군이 아닌 관찰기업으로 신규 추적을 시작합니다."
+        "code": "055550",
+        "name": "신한지주",
+        "before": 90,
+        "after": 77.1
       }
     ],
-    "candidates": [
+    "entrants": [
       {
-        "code": "062040",
-        "name": "산일전기",
-        "sector": "전력기기",
-        "status": "후보군",
-        "caqm": 86,
-        "finalVm": 203600,
-        "components": {
-          "moat": 25,
-          "growth": 25,
-          "profitability": 18,
-          "financialHealth": 14,
-          "management": 2,
-          "shareholderReturn": 2
-        },
-        "note": "전력기기 수요 확대와 수주잔고를 반영한 후보군입니다."
+        "code": "403870",
+        "name": "HPSP",
+        "rank": 3,
+        "caqm": 91.5
       },
       {
-        "code": "237690",
-        "name": "에스티팜",
-        "sector": "바이오",
-        "status": "후보군",
-        "caqm": 82,
-        "finalVm": 168100,
-        "components": {
-          "moat": 25,
-          "growth": 23,
-          "profitability": 16,
-          "financialHealth": 13,
-          "management": 3,
-          "shareholderReturn": 2
-        },
-        "note": "올리고뉴클레오타이드 CDMO 성장성을 반영한 후보군입니다."
+        "code": "007660",
+        "name": "이수페타시스",
+        "rank": 6,
+        "caqm": 82.8
       },
       {
         "code": "329180",
         "name": "HD현대중공업",
-        "sector": "방산",
-        "status": "후보군",
-        "caqm": 82,
-        "finalVm": 646000,
-        "components": {
-          "moat": 26,
-          "growth": 25,
-          "profitability": 14,
-          "financialHealth": 12,
-          "management": 3,
-          "shareholderReturn": 2
-        },
-        "note": "방산 수출과 조선 업황 개선을 반영한 후보군입니다."
+        "rank": 7,
+        "caqm": 82.1
       },
       {
-        "code": "161890",
-        "name": "한국콜마",
-        "sector": "화장품/미용",
-        "status": "후보군",
-        "caqm": 80,
-        "finalVm": 99800,
-        "components": {
-          "moat": 22,
-          "growth": 24,
-          "profitability": 17,
-          "financialHealth": 12,
-          "management": 3,
-          "shareholderReturn": 2
-        },
-        "note": "화장품 ODM 성장성을 반영한 후보군입니다."
+        "code": "062040",
+        "name": "산일전기",
+        "rank": 8,
+        "caqm": 81.5
+      },
+      {
+        "code": "003230",
+        "name": "삼양식품",
+        "rank": 9,
+        "caqm": 80.2
       },
       {
         "code": "214150",
         "name": "클래시스",
-        "sector": "화장품/미용",
-        "status": "후보군",
-        "caqm": 81,
-        "finalVm": 106600,
-        "components": {
-          "moat": 23,
-          "growth": 23,
-          "profitability": 19,
-          "financialHealth": 12,
-          "management": 2,
-          "shareholderReturn": 2
-        },
-        "warning": "경영권매각추진리스크",
-        "note": "최대주주 베인캐피탈 경영권 매각 추진 이력(잔여지분 54% 보유)에 따른 불확실성으로 TOP20에서 제외, 후보군으로 이동했습니다."
+        "rank": 13,
+        "caqm": 79.0
       },
       {
-        "code": "192820",
-        "name": "코스맥스",
-        "sector": "화장품/미용",
-        "status": "후보군",
-        "caqm": 79,
-        "finalVm": 312500,
-        "components": {
-          "moat": 24,
-          "growth": 20,
-          "profitability": 17,
-          "financialHealth": 13,
-          "management": 3,
-          "shareholderReturn": 2
-        },
-        "note": "화장품 ODM 글로벌 확장을 반영한 후보군입니다."
+        "code": "237690",
+        "name": "에스티팜",
+        "rank": 15,
+        "caqm": 78.3
+      },
+      {
+        "code": "005290",
+        "name": "동진쎄미켐",
+        "rank": 20,
+        "caqm": 77.0
+      }
+    ],
+    "exits": [
+      {
+        "code": "105560",
+        "name": "KB금융",
+        "previousRank": 2,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "039490",
+        "name": "키움증권",
+        "previousRank": 2,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "previousRank": 6,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "006800",
+        "name": "미래에셋증권",
+        "previousRank": 6,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "003690",
+        "name": "코리안리재보험",
+        "previousRank": 9,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "021240",
+        "name": "코웨이",
+        "previousRank": 16,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "052690",
+        "name": "한전기술",
+        "previousRank": 19,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      },
+      {
+        "code": "140860",
+        "name": "파크시스템스",
+        "previousRank": 20,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      }
+    ],
+    "reports": [],
+    "hasMaterialChanges": true
+  },
+  "officialMaster": {
+    "version": "국내 TOP20 공식 마스터 · 2026-09-22 (v3 CAQM 전종목 재검증)",
+    "basisDate": "2026-09-22",
+    "changes": [
+      {
+        "code": null,
+        "name": "TOP20 전종목",
+        "date": "2026-09-22",
+        "field": "TOP20 전면 재정렬 (v3)",
+        "before": "구 TOP20 로스터 및 6항목 배점(해자30·성장25·수익20·재무15·경영5·환원5, 금융업 별도 배점)",
+        "after": "v3 재검증 결과 기준 신규 TOP20 20종목, 7항목 배점(해자①20+해자②10+성장20+수익20+재무15+경영5+환원10=100)으로 전 종목 통일",
+        "reason": "전종목(TOP20+후보군+관찰기업) CAQM v3 재검증 및 CAQM 점수 기준 전면 재정렬을 완료했습니다. 금융업 별도 배점(경영진·주주환원 2배 가중) 방식은 폐기하고 전 종목 동일 배점을 적용합니다."
+      },
+      {
+        "code": null,
+        "name": "LIG디펜스앤에어로스페이스·미래에셋증권·파크시스템스·코리안리재보험·코웨이",
+        "date": "2026-09-22",
+        "field": "TOP20 → 후보군 강등",
+        "before": "TOP20",
+        "after": "후보군",
+        "reason": "v3 재검증 결과 CAQM 70~76점대로 하락해 후보군으로 이동했습니다."
+      },
+      {
+        "code": null,
+        "name": "KB금융·한전기술",
+        "date": "2026-09-22",
+        "field": "TOP20 → 관찰기업 강등",
+        "before": "TOP20",
+        "after": "관찰기업",
+        "reason": "v3 재검증 결과 CAQM이 70점 컷라인에 미달해(각 69.9점, 69.7점) 관찰기업으로 이동했습니다."
+      },
+      {
+        "code": null,
+        "name": "HPSP·이수페타시스·HD현대중공업·산일전기·삼양식품·클래시스·에스티팜·동진쎄미켐",
+        "date": "2026-09-22",
+        "field": "TOP20 신규 편입",
+        "before": "TOP20 밖",
+        "after": "TOP20 신규 편입",
+        "reason": "v3 재검증 결과 CAQM 77~91.5점으로 확인되어 TOP20에 신규 편입했습니다."
+      },
+      {
+        "code": "039490",
+        "name": "키움증권",
+        "date": "2026-09-22",
+        "field": "검토대상 제외",
+        "before": "TOP20 (CAQM 91)",
+        "after": "제외",
+        "reason": "v3 재검증 결과 CAQM 91→53.6점으로 대폭 하락해 검토대상에서 완전히 제외했습니다 (2026-09-19 확정)."
       },
       {
         "code": "207940",
         "name": "삼성바이오로직스",
-        "sector": "바이오",
-        "status": "후보군",
-        "caqm": 73,
-        "finalVm": 1597300,
-        "components": {
-          "moat": 24,
-          "growth": 18,
-          "profitability": 14,
-          "financialHealth": 13,
-          "management": 3,
-          "shareholderReturn": 1
-        },
-        "note": "글로벌 CDMO 대형 증설 가동률과 고객 집중도를 재검토 중인 후보군입니다."
+        "date": "2026-09-22",
+        "field": "Final VM 재계산",
+        "before": "1,597,300원",
+        "after": "1,266,900원",
+        "reason": "2026-09-22 2차 재계산. 인적분할로 자사 과거 PER이 무효화되어 peer 최고 PER + 경쟁력 프리미엄 방식으로 방법론 자체를 변경해 재산출했습니다. CAQM 70.1점으로 70점 컷라인을 근소 통과해 후보군에 신규 편입합니다."
       },
       {
-        "code": "060720",
-        "name": "KH바텍",
-        "sector": "로봇/전장전환",
-        "status": "관심종목",
-        "caqm": 73,
-        "finalVm": 17000,
+        "code": null,
+        "name": "기아·KT·HD한국조선해양·한화오션",
+        "date": "2026-09-22",
+        "field": "검토대상 제외 (유지)",
+        "before": "제외",
+        "after": "제외 (유지)",
+        "reason": "기아·KT는 기존 제외가 유지됩니다. HD한국조선해양·한화오션은 CEO 지시로 조선업 대표 종목이 HD현대중공업으로 확정되어 검토대상에서 제외됩니다."
+      }
+    ],
+    "candidates": [
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "sector": "방산",
+        "status": "후보군",
+        "caqm": 76.0,
+        "finalVm": 758100,
+        "note": "구LIG넥스원",
         "components": {
-          "moat": 23,
-          "growth": 25,
-          "profitability": 7,
-          "financialHealth": 12,
-          "management": 2,
-          "shareholderReturn": 3
-        },
-        "note": "폴더블 힌지에서 로봇·전장 부품으로의 사업 전환을 지켜보는 관심종목입니다. CAQM 세부배점 합계(72)가 제시된 총점(73)과 1점 차이가 있어 재확인이 필요합니다."
+          "moatIndustry": 20.0,
+          "moatCross": 8.8,
+          "growth": 14.8,
+          "profitability": 15.9,
+          "financialHealth": 8.5,
+          "management": 5.0,
+          "shareholderReturn": 3.0
+        }
+      },
+      {
+        "code": "006800",
+        "name": "미래에셋증권",
+        "sector": "금융-증권",
+        "status": "후보군",
+        "caqm": 73.6,
+        "finalVm": 35000,
+        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "components": {
+          "moatIndustry": 15.0,
+          "moatCross": 7.8,
+          "growth": 20.0,
+          "profitability": 9.3,
+          "financialHealth": 14.0,
+          "management": 4.5,
+          "shareholderReturn": 3.0
+        }
+      },
+      {
+        "code": "140860",
+        "name": "파크시스템스",
+        "sector": "반도체소부장",
+        "status": "후보군",
+        "caqm": 73.4,
+        "finalVm": 355800,
+        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "components": {
+          "moatIndustry": 20.0,
+          "moatCross": 7.2,
+          "growth": 13.67,
+          "profitability": 9.56,
+          "financialHealth": 14.5,
+          "management": 5.0,
+          "shareholderReturn": 3.5
+        }
+      },
+      {
+        "code": "003690",
+        "name": "코리안리재보험",
+        "sector": "금융-보험",
+        "status": "후보군",
+        "caqm": 72.9,
+        "finalVm": 18000,
+        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "components": {
+          "moatIndustry": 20.0,
+          "moatCross": 7.0,
+          "growth": 13.8,
+          "profitability": 7.6,
+          "financialHealth": 11.0,
+          "management": 4.5,
+          "shareholderReturn": 9.0
+        }
       },
       {
         "code": "271560",
         "name": "오리온",
         "sector": "소비재",
         "status": "후보군",
-        "caqm": 72,
+        "caqm": 72.3,
         "finalVm": 151300,
+        "note": "경영진 중대감점(오너2인 오래된 확정유죄, 중간수준)",
         "components": {
-          "moat": 23,
-          "growth": 21,
-          "profitability": 8,
-          "financialHealth": 13,
-          "management": 4,
-          "shareholderReturn": 3
-        },
-        "note": "중국·베트남 등 해외 법인 성장성과 환율 민감도를 재검토 중인 후보군입니다."
+          "moatIndustry": 19.0,
+          "moatCross": 5.6,
+          "growth": 15.4,
+          "profitability": 8.3,
+          "financialHealth": 15.0,
+          "management": 2.0,
+          "shareholderReturn": 7.0
+        }
       },
       {
-        "code": "402340",
+        "code": "021240",
+        "name": "코웨이",
+        "sector": "렌탈구독",
+        "status": "후보군",
+        "caqm": 70.6,
+        "finalVm": 116900,
+        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "components": {
+          "moatIndustry": 16.0,
+          "moatCross": 5.0,
+          "growth": 13.8,
+          "profitability": 12.0,
+          "financialHealth": 10.3,
+          "management": 5.0,
+          "shareholderReturn": 8.5
+        }
+      },
+      {
+        "code": "207940",
+        "name": "삼성바이오로직스",
+        "sector": "바이오CDMO",
+        "status": "후보군",
+        "caqm": 70.1,
+        "finalVm": 1266900,
+        "note": "2026-09-22 2차재계산(인적분할로 자사과거PER 무효화, peer최고PER+경쟁력프리미엄 방식 적용). 70점 컷라인 근소통과",
+        "components": {
+          "moatIndustry": 20.0,
+          "moatCross": 9.0,
+          "growth": 10.7,
+          "profitability": 10.4,
+          "financialHealth": 15.0,
+          "management": 5.0,
+          "shareholderReturn": 0.0
+        }
+      },
+      {
+        "code": "105560",
+        "name": "KB금융",
+        "sector": "금융-은행",
+        "status": "관찰기업",
+        "caqm": 69.9,
+        "finalVm": 186000,
+        "note": "구TOP20(2위)였으나 재정렬시 70점컷라인 미달로 강등",
+        "components": {
+          "moatIndustry": 15.0,
+          "moatCross": 7.6,
+          "growth": 12.65,
+          "profitability": 7.12,
+          "financialHealth": 14.0,
+          "management": 5.0,
+          "shareholderReturn": 8.5
+        }
+      },
+      {
+        "code": "052690",
+        "name": "한전기술",
+        "sector": "원전",
+        "status": "관찰기업",
+        "caqm": 69.7,
+        "finalVm": 165400,
+        "note": "구TOP20(18위)였으나 재정렬시 70점컷라인 미달로 강등, 배당재삭감이력",
+        "components": {
+          "moatIndustry": 20.0,
+          "moatCross": 7.0,
+          "growth": 12.45,
+          "profitability": 9.21,
+          "financialHealth": 14.0,
+          "management": 4.5,
+          "shareholderReturn": 2.5
+        }
+      },
+      {
+        "code": "161890",
+        "name": "한국콜마",
+        "sector": "화장품ODM",
+        "status": "관찰기업",
+        "caqm": 69.9,
+        "finalVm": 99800,
+        "note": "70점 후보군 컷라인 근소미달",
+        "components": {
+          "moatIndustry": 12.0,
+          "moatCross": 7.4,
+          "growth": 18.26,
+          "profitability": 10.43,
+          "financialHealth": 11.8,
+          "management": 5.0,
+          "shareholderReturn": 5.0
+        }
+      },
+      {
+        "code": "192820",
+        "name": "코스맥스",
+        "sector": "화장품ODM",
+        "status": "관찰기업",
+        "caqm": 67.1,
+        "finalVm": 312500,
+        "note": "재무건전성 취약(부채비율222%대)",
+        "components": {
+          "moatIndustry": 16.1,
+          "moatCross": 7.4,
+          "growth": 11.32,
+          "profitability": 14.83,
+          "financialHealth": 6.9,
+          "management": 5.0,
+          "shareholderReturn": 5.5
+        }
+      },
+      {
+        "code": "060720",
+        "name": "KH바텍",
+        "sector": "폴더블부품",
+        "status": "관찰기업",
+        "caqm": 67.7,
+        "finalVm": 17000,
+        "note": "잠정치(재무건전성 등 다수 데이터갭)",
+        "components": {
+          "moatIndustry": 15.0,
+          "moatCross": 5.0,
+          "growth": 18.25,
+          "profitability": 5.91,
+          "financialHealth": 12.5,
+          "management": 5.0,
+          "shareholderReturn": 6.0
+        }
+      },
+      {
+        "code": "006400",
         "name": "삼성SDI",
         "sector": "2차전지",
         "status": "관찰기업",
         "caqm": 67,
         "finalVm": null,
-        "note": "CAQM 80점 기본 품질 통과선에 못 미쳐 후보군이 아닌 관찰기업으로 분류합니다. VM은 아직 산출하지 않았습니다."
+        "note": "순이익음수로 EPS×PER 불가, PBR참고. 3분기 흑자전환 지속여부 확인대기"
+      },
+      {
+        "code": "051910",
+        "name": "LG화학",
+        "sector": "화학/2차전지",
+        "status": "관찰기업",
+        "caqm": 58,
+        "finalVm": 258500,
+        "note": "VM은 PBR참고치, ROE지속마이너스로 EPS×PER 불가"
       }
     ]
   },
   "methodology": {
-    "version": "CAQM Official v1.1 · Sector VM v2.0",
+    "version": "CAQM Official v3.0 · Sector VM v2.0",
     "weights": {
-      "standard": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "financial": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 10,
-        "shareholderReturn": 10
-      }
+      "moatIndustry": 20,
+      "moatCross": 10,
+      "growth": 20,
+      "profitability": 20,
+      "financialHealth": 15,
+      "management": 5,
+      "shareholderReturn": 10
     },
     "formula": "일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 30%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-    "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자(경쟁우위) 30점(산업내 경쟁력 20+전산업 관점 10), 성장성 20점(EPS 성장률 기준, 업종별 만점기준 차등), 수익성(ROE) 20점(절대 ROE 단일계량), 재무건전성 15점(부채비율 7.5+이자보상배율 7.5), 경영진 5점(도덕성 2.5+경영성과 2.5), 주주환원 10점(수준 5+지속성장 5)으로 평가한다. 신규 확정된 배점 원칙이며 종목별 세부점수 재계산은 별도 데이터 업데이트에서 진행한다. CAQM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+    "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자(경쟁우위) 30점(산업내 경쟁력 20+전산업 관점 10), 성장성 20점(EPS 성장률 기준, 업종별 만점기준 차등), 수익성(ROE) 20점(절대 ROE 단일계량), 재무건전성 15점(부채비율 7.5+이자보상배율 7.5), 경영진 5점(도덕성 2.5+경영성과 2.5), 주주환원 10점(수준 5+지속성장 5)으로 평가한다. 업종 구분 없이 전 종목에 동일 배점을 적용한다(과거 금융업 별도 배점 방식은 폐기). CAQM 80점 이상을 기본 품질 통과, 70점 이상을 후보군 컷라인으로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
     "selectionPolicy": "공식 마스터는 CAQM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
     "disclaimer": "CAQM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다."
   },
   "summary": {
     "universeSize": 20,
     "top20Count": 20,
-    "averageCaqm": 85.3,
-    "undervaluedCount": 17
+    "averageCaqm": 82.0,
+    "undervaluedCount": 9
   },
   "companies": [
     {
       "rank": 1,
-      "code": "058470",
-      "officialOrder": 1,
-      "name": "리노공업",
-      "sector": "반도체소부장",
-      "caqm": 94,
-      "components": {
-        "moat": 30,
-        "growth": 24,
-        "profitability": 17,
-        "financialHealth": 15,
-        "management": 3,
-        "shareholderReturn": 5
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 66400,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 3223,
-      "historicalPer5y": 28,
-      "overseasPeerPer": 28,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 28,
-      "discountRate": 11,
-      "primaryVm": 66000,
-      "crossCheckVm": null,
-      "finalVm": 93900,
-      "modelCalculatedVm": 66000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-05-21)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 69000,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 93900,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 122000,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
-      "gapRate": -29.3,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
-      "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "058470-capacity-customers",
-          "title": "신규 생산능력 가동률과 고객 다변화",
-          "category": "moat",
-          "priority": "medium",
-          "status": "monitoring",
-          "impact": "가동률과 고객 믹스가 고마진 지속성 및 전환비용 검증의 핵심이다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-11-15"
-        }
-      ],
-      "financials": {
-        "revenue2025": 3725,
-        "operatingMargin2025": 47.51,
-        "roe2025": 22.45,
-        "debtRatio2025": 8.3,
-        "eps2025": 2002,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "OFS",
-          "rceptNo": "20260814000445",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 2430,
-          "operatingMargin": 49.73,
-          "roeAnnualized": 28.2,
-          "debtRatio": 10.31,
-          "epsCumulative": 1401,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-05-21",
-          "multiple": "2026-05-21",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 1
-    },
-    {
-      "rank": 2,
-      "code": "105560",
-      "officialOrder": 2,
-      "name": "KB금융",
-      "sector": "금융-은행",
-      "caqm": 91,
-      "components": {
-        "moat": 23,
-        "growth": 18,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 9,
-        "shareholderReturn": 10
-      },
-      "componentLimits": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 10,
-        "shareholderReturn": 10
-      },
-      "isFinancial": true,
-      "currentPrice": 179200,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "bank_pbr",
-      "valuationModelLabel": "은행·금융지주 BPS·PBR",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 19579,
-      "normalizedEps": 19579,
-      "normalizedPer": 9.5,
-      "normalizedBps": 169091,
-      "targetPbr": 1.1,
-      "appliedPer": 9.5,
-      "discountRate": 0,
-      "primaryVm": 186000,
-      "crossCheckVm": 186000,
-      "finalVm": 186000,
-      "modelCalculatedVm": 186000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 159000,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 186000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 215000,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "C",
-        "label": "EPS 또는 배수 검토 필요",
-        "reasons": [
-          "최신 보고서 일부 계정 미수신",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
-      "gapRate": -3.7,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
-      "reason": "은행·카드·증권·보험의 다각화, 우수한 자본력과 실제 소각을 포함한 주주환원이 강점이다.",
-      "risk": "부동산 PF, 신용비용과 CET1·NPL·연체율 변화를 점검해야 한다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "105560-capital-pf",
-          "title": "CET1·부동산 PF·자사주 소각",
-          "category": "financialHealth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "자본비율과 신용비용은 환원 여력 및 재무건전성 평가의 핵심이다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": 9.68,
-        "debtRatio2025": 1211.73,
-        "eps2025": 15410,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814004200",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 12.72,
-          "debtRatio": 1282.56,
-          "epsCumulative": 10670,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 2
-    },
-    {
-      "rank": 2,
-      "code": "039490",
-      "officialOrder": 3,
-      "name": "키움증권",
-      "sector": "금융-증권",
-      "caqm": 91,
-      "components": {
-        "moat": 23,
-        "growth": 18,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 9,
-        "shareholderReturn": 10
-      },
-      "componentLimits": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 10,
-        "shareholderReturn": 10
-      },
-      "isFinancial": true,
-      "currentPrice": 263000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "bank_pbr",
-      "valuationModelLabel": "은행·금융지주 BPS·PBR",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 35789,
-      "normalizedEps": 35789,
-      "normalizedPer": 9.5,
-      "normalizedBps": 309091,
-      "targetPbr": 1.1,
-      "appliedPer": 9.5,
-      "discountRate": 0,
-      "primaryVm": 340000,
-      "crossCheckVm": 340000,
-      "finalVm": 340000,
-      "modelCalculatedVm": 340000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 291000,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 340000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 393000,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": -22.6,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "리테일·해외주식 브로커리지 점유율과 낮은 비용구조, 자기자본 확대에 따른 이익 레버리지가 강점이다.",
-      "risk": "거래대금·금리 민감도가 높고 해외주식 관련 규제·환율 변동이 이익 변동성을 키운다.",
-      "warning": null,
-      "issues": [],
-      "financials": {
-        "revenue2025": 171217,
-        "operatingMargin2025": 8.69,
-        "roe2025": 18.05,
-        "debtRatio2025": 1107.51,
-        "eps2025": 44379,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260813001767",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 254691,
-          "operatingMargin": 5.54,
-          "roeAnnualized": 32.38,
-          "debtRatio": 1329.15,
-          "epsCumulative": 44130,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 3
-    },
-    {
-      "rank": 2,
-      "code": "000810",
-      "officialOrder": 4,
-      "name": "삼성화재",
-      "sector": "금융-보험",
-      "caqm": 91,
-      "components": {
-        "moat": 24,
-        "growth": 16,
-        "profitability": 19,
-        "financialHealth": 13,
-        "management": 9,
-        "shareholderReturn": 10
-      },
-      "componentLimits": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 10,
-        "shareholderReturn": 10
-      },
-      "isFinancial": true,
-      "currentPrice": 666000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "insurance_sotp",
-      "valuationModelLabel": "보험 PBR·CSM·SOTP",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 80562,
-      "normalizedEps": 80562,
-      "normalizedPer": 8,
-      "normalizedBps": 500000,
-      "targetPbr": 1.05,
-      "appliedPer": 8,
-      "discountRate": 0,
-      "csmSotpAdjustment": 119500,
-      "primaryVm": 644500,
-      "crossCheckVm": 644500,
-      "finalVm": 785000,
-      "modelCalculatedVm": 644500,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 670400,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%",
-            "CSM·SOTP -15%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 785000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수",
-            "공식 CSM·SOTP"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 905900,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%",
-            "CSM·SOTP +15%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "C",
-        "label": "EPS 또는 배수 검토 필요",
-        "reasons": [
-          "최신 보고서 일부 계정 미수신",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
-      "gapRate": -15.2,
-      "rating": "★★★★☆",
-      "opinion": "분할매수",
-      "signal": "매수검토",
-      "reason": "우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.",
-      "risk": "손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "000810-loss-ratio-kics",
-          "title": "보험 손해율과 K-ICS 자본비율",
-          "category": "financialHealth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "보험이익의 질과 규제자본이 주주환원 여력을 결정한다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": 10.95,
-        "debtRatio2025": 352.98,
-        "eps2025": 47478,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814003992",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 9.56,
-          "debtRatio": 219.01,
-          "epsCumulative": 32283,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 4
-    },
-    {
-      "rank": 5,
-      "code": "055550",
-      "officialOrder": 5,
-      "name": "신한지주",
-      "sector": "금융-은행",
-      "caqm": 90,
-      "components": {
-        "moat": 22,
-        "growth": 18,
-        "profitability": 17,
-        "financialHealth": 13,
-        "management": 10,
-        "shareholderReturn": 10
-      },
-      "componentLimits": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 10,
-        "shareholderReturn": 10
-      },
-      "isFinancial": true,
-      "currentPrice": 113300,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "bank_pbr",
-      "valuationModelLabel": "은행·금융지주 BPS·PBR",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 14125,
-      "normalizedEps": 14125,
-      "normalizedPer": 8,
-      "normalizedBps": 129884,
-      "targetPbr": 0.87,
-      "appliedPer": 8,
-      "discountRate": 0,
-      "primaryVm": 113000,
-      "crossCheckVm": 113000,
-      "finalVm": 113000,
-      "modelCalculatedVm": 113000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 97000,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 113000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 131000,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "C",
-        "label": "EPS 또는 배수 검토 필요",
-        "reasons": [
-          "최신 보고서 일부 계정 미수신",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 0.3,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
-      "reason": "은행·카드·증권의 균형 잡힌 포트폴리오와 자본배분 규율, 안정적 주주환원이 강점이다.",
-      "risk": "신용비용, 부동산 PF 익스포저와 CET1·연체율 변화를 지속 점검해야 한다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "055550-cet1-credit",
-          "title": "CET1과 신용비용·주주환원",
-          "category": "financialHealth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "자본비율과 PF 비용은 배당·소각 지속성의 선행지표다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": 8.53,
-        "debtRatio2025": 1201.94,
-        "eps2025": 9812,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814003306",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 11.38,
-          "debtRatio": 1245.01,
-          "epsCumulative": 7075,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 5
-    },
-    {
-      "rank": 6,
-      "code": "079550",
-      "officialOrder": 6,
-      "name": "LIG디펜스앤에어로스페이스",
-      "sector": "방산",
-      "caqm": 89,
-      "components": {
-        "moat": 26,
-        "growth": 25,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 4,
-        "shareholderReturn": 3
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 708000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 60648,
-      "historicalPer5y": 12.5,
-      "overseasPeerPer": 12.5,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 12.5,
-      "discountRate": 11,
-      "primaryVm": 554300,
-      "crossCheckVm": null,
-      "finalVm": 758100,
-      "modelCalculatedVm": 554300,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 557100,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 758100,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 985400,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": -6.6,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
-      "reason": "정밀유도무기·항공전자 수출 레퍼런스와 수주잔고 확대가 성장 가시성을 높인다.",
-      "risk": "계약 일정 지연과 원가 상승, 지정학적·정책 변수에 민감하다.",
-      "warning": null,
-      "issues": [],
-      "financials": {
-        "revenue2025": 43069,
-        "operatingMargin2025": 7.42,
-        "roe2025": 17.33,
-        "debtRatio2025": 446.35,
-        "eps2025": 11604,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260825000158",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 22780,
-          "operatingMargin": 12.15,
-          "roeAnnualized": 27.41,
-          "debtRatio": 434.05,
-          "epsCumulative": 10187,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-07",
-          "multiple": "2026-08-07",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 6
-    },
-    {
-      "rank": 6,
-      "code": "006800",
-      "officialOrder": 7,
-      "name": "미래에셋증권",
-      "sector": "금융-증권",
-      "caqm": 89,
-      "components": {
-        "moat": 27,
-        "growth": 22,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 5,
-        "shareholderReturn": 4
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 31800,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "bank_pbr",
-      "valuationModelLabel": "은행·금융지주 BPS·PBR",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 3684,
-      "normalizedEps": 3684,
-      "normalizedPer": 9.5,
-      "normalizedBps": 31818,
-      "targetPbr": 1.1,
-      "appliedPer": 9.5,
-      "discountRate": 0,
-      "primaryVm": 35000,
-      "crossCheckVm": 35000,
-      "finalVm": 35000,
-      "modelCalculatedVm": 35000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 29900,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 35000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 40400,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": -9.1,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
-      "reason": "해외법인 네트워크와 IB·자산운용 다각화, 자기자본 활용도가 강점이다.",
-      "risk": "해외법인 손익 변동성과 시장 변동성에 따른 트레이딩·평가손익 리스크가 있다.",
-      "warning": null,
-      "issues": [],
-      "financials": {
-        "revenue2025": 292830,
-        "operatingMargin2025": 6.54,
-        "roe2025": 12.3,
-        "debtRatio2025": 1015.01,
-        "eps2025": 2680,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814004118",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 360601,
-          "operatingMargin": 10.72,
-          "roeAnnualized": 39.12,
-          "debtRatio": 1103.73,
-          "epsCumulative": 4951,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 7
-    },
-    {
-      "rank": 8,
-      "code": "298040",
-      "officialOrder": 8,
-      "name": "효성중공업",
-      "sector": "전력기기",
-      "caqm": 88,
-      "components": {
-        "moat": 27,
-        "growth": 25,
-        "profitability": 18,
-        "financialHealth": 13,
-        "management": 3,
-        "shareholderReturn": 2
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 2861000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 100224,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 18,
-      "discountRate": 12,
-      "primaryVm": 1284100,
-      "crossCheckVm": null,
-      "finalVm": 3924900,
-      "modelCalculatedVm": 1284100,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 2885000,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 3924900,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 5100300,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
-      "gapRate": -27.1,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
-      "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "298040-us-capex-debt",
-          "title": "미국 변압기 증설과 순차입금",
-          "category": "financialHealth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "증설 수익성과 부채 축소 속도가 현재 고성장의 질을 검증한다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": 59685,
-        "operatingMargin2025": 12.52,
-        "roe2025": 22.13,
-        "debtRatio2025": 190.31,
-        "eps2025": 55832,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260813001554",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 30452,
-          "operatingMargin": 13.68,
-          "roeAnnualized": 20.16,
-          "debtRatio": 213.51,
-          "epsCumulative": 27905,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-21",
-          "multiple": "2026-08-21",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 8
-    },
-    {
-      "rank": 9,
-      "code": "003690",
-      "officialOrder": 10,
-      "name": "코리안리재보험",
-      "sector": "금융-보험",
-      "caqm": 87,
-      "components": {
-        "moat": 26,
-        "growth": 22,
-        "profitability": 17,
-        "financialHealth": 13,
-        "management": 5,
-        "shareholderReturn": 4
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 15180,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "insurance_sotp",
-      "valuationModelLabel": "보험 PBR·CSM·SOTP",
-      "valuationHorizonYears": 0,
-      "forwardEps3y": 1800,
-      "normalizedEps": 1800,
-      "normalizedPer": 10,
-      "normalizedBps": 18000,
-      "targetPbr": 1,
-      "appliedPer": 10,
-      "discountRate": 0,
-      "csmSotpAdjustment": 0,
-      "primaryVm": 18000,
-      "crossCheckVm": 18000,
-      "finalVm": 18000,
-      "modelCalculatedVm": 18000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 15400,
-          "assumptions": [
-            "BPS·EPS -5%",
-            "PBR·PER -10%",
-            "CSM·SOTP -15%"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 18000,
-          "assumptions": [
-            "공식 적용 BPS·EPS",
-            "공식 적용 배수",
-            "공식 CSM·SOTP"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 20800,
-          "assumptions": [
-            "BPS·EPS +5%",
-            "PBR·PER +10%",
-            "CSM·SOTP +15%"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "C",
-        "label": "EPS 또는 배수 검토 필요",
-        "reasons": [
-          "최신 보고서 일부 계정 미수신",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": -15.7,
-      "rating": "★★★★☆",
-      "opinion": "분할매수",
-      "signal": "관망",
-      "reason": "국내 유일 재보험사로서의 과점적 지위와 해외 원수보험 네트워크가 안정적 이익 기반이다.",
-      "risk": "해외 원수보험 손해율과 대형 재해 손실, 환율 변동이 이익 변동성을 키운다.",
-      "warning": null,
-      "issues": [],
-      "financials": {
-        "revenue2025": null,
-        "operatingMargin2025": null,
-        "roe2025": 9.03,
-        "debtRatio2025": 287.13,
-        "eps2025": 1587,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260828000557",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": null,
-          "operatingMargin": null,
-          "roeAnnualized": 18.03,
-          "debtRatio": 266.39,
-          "epsCumulative": 1730,
-          "dataQuality": "partial",
-          "missingMetrics": [
-            "revenueEok",
-            "operatingMargin"
-          ]
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-28",
-          "multiple": "2026-08-28",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 9
-    },
-    {
-      "rank": 10,
-      "code": "214450",
-      "officialOrder": 9,
-      "name": "파마리서치",
-      "sector": "화장품/미용",
-      "caqm": 86,
-      "components": {
-        "moat": 25,
-        "growth": 22,
-        "profitability": 19,
-        "financialHealth": 14,
-        "management": 4,
-        "shareholderReturn": 2
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 329500,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 25196,
-      "historicalPer5y": 25,
-      "overseasPeerPer": 25,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 25,
-      "discountRate": 10,
-      "primaryVm": 473300,
-      "crossCheckVm": null,
-      "finalVm": 417800,
-      "modelCalculatedVm": 473300,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-09-03)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 306900,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 417800,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 543100,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
-      "gapRate": -21.1,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
-      "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "214450-global-approvals",
-          "title": "리쥬란 해외 인허가와 유통 확장",
-          "category": "growth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "주요 국가 승인과 반복 주문이 장기 성장률 및 브랜드 해자를 결정한다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": 5363,
-        "operatingMargin2025": 39.98,
-        "roe2025": 26.02,
-        "debtRatio2025": 44.21,
-        "eps2025": 14933,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814002997",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 3248,
-          "operatingMargin": 38.1,
-          "roeAnnualized": 27.76,
-          "debtRatio": 40.35,
-          "epsCumulative": 10024,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-09-03",
-          "multiple": "2026-09-03",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 10
-    },
-    {
-      "rank": 11,
-      "code": "267260",
-      "officialOrder": 11,
-      "name": "HD현대일렉트릭",
-      "sector": "전력기기",
-      "caqm": 85,
-      "components": {
-        "moat": 26,
-        "growth": 24,
-        "profitability": 18,
-        "financialHealth": 12,
-        "management": 3,
-        "shareholderReturn": 2
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 712000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 33311,
-      "historicalPer5y": 18,
-      "overseasPeerPer": 18,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 18,
-      "discountRate": 12,
-      "primaryVm": 426800,
-      "crossCheckVm": null,
-      "finalVm": 1298500,
-      "modelCalculatedVm": 426800,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 954400,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 1298500,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 1687300,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
-      "gapRate": -45.2,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
-      "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "267260-backlog-margin",
-          "title": "북미 수주잔고와 수익성 정상화",
-          "category": "profitability",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "수주 가격과 납기가 현재의 높은 마진 및 3년 EPS 지속성을 좌우한다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": 40795,
-        "operatingMargin2025": 24.4,
-        "roe2025": 41.34,
-        "debtRatio2025": 134.63,
-        "eps2025": 20354,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814003228",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 21783,
-          "operatingMargin": 25.03,
-          "roeAnnualized": 38.57,
-          "debtRatio": 143.18,
-          "epsCumulative": 11521,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-21",
-          "multiple": "2026-08-21",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 11
-    },
-    {
-      "rank": 12,
-      "code": "010120",
-      "officialOrder": 12,
-      "name": "LS ELECTRIC",
-      "sector": "전력기기",
-      "caqm": 84,
-      "components": {
-        "moat": 25,
-        "growth": 23,
-        "profitability": 17,
-        "financialHealth": 12,
-        "management": 3,
-        "shareholderReturn": 4
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 202000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 14957,
-      "historicalPer5y": 12.5,
-      "overseasPeerPer": 12.5,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 12.5,
-      "discountRate": 11,
-      "primaryVm": 136700,
-      "crossCheckVm": null,
-      "finalVm": 186700,
-      "modelCalculatedVm": 136700,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-07-23)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 137200,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 186700,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 242700,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 8.2,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
-      "reason": "전력기기·자동화 포트폴리오와 해외 생산거점 확대가 안정적 수주잔고를 지지한다.",
-      "risk": "원자재 가격과 해외 수주 경쟁, 전력기기 사이클 정상화가 주요 위험이다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "010120-na-orders-margin",
-          "title": "북미 데이터센터 수주와 마진",
-          "category": "growth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "북미 수주가 매출뿐 아니라 전사 수익성 개선으로 이어지는지 확인한다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": 49658,
-        "operatingMargin2025": 8.59,
-        "roe2025": 14.1,
-        "debtRatio2025": 131.48,
-        "eps2025": 9647,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814003088",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 29535,
-          "operatingMargin": 10.33,
-          "roeAnnualized": 21.64,
-          "debtRatio": 172.12,
-          "epsCumulative": 1607,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-07-23",
-          "multiple": "2026-07-23",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 12
-    },
-    {
-      "rank": 13,
-      "code": "000660",
-      "officialOrder": 13,
-      "name": "SK하이닉스",
-      "sector": "반도체",
-      "caqm": 83,
-      "components": {
-        "moat": 26,
-        "growth": 20,
-        "profitability": 15,
-        "financialHealth": 14,
-        "management": 5,
-        "shareholderReturn": 3
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 1745000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "memory_normalized",
-      "valuationModelLabel": "메모리 정상화 EPS·PER",
-      "valuationHorizonYears": 2,
-      "forwardEps3y": 512706,
-      "normalizedEps": 512706,
-      "normalizedPer": 7,
-      "appliedPer": 7,
-      "discountRate": 11,
-      "primaryVm": 3589000,
-      "crossCheckVm": null,
-      "finalVm": 2879100,
-      "cycleChecks": [
-        "DRAM 계약가격",
-        "HBM 가격·출하량",
-        "재고",
-        "CAPEX",
-        "고객사 재고"
-      ],
-      "modelCalculatedVm": 2913000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR VM 정정 · 2026.09.08 (기존 493,300원은 삼성전자 VM이 잘못 입력된 오류로 확인되어 2,879,100원으로 정정)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 2018000,
-          "assumptions": [
-            "EPS -20%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 2879100,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 3708000,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
-      "gapRate": -39.4,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
-      "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
-      "warning": null,
-      "issues": [
-        {
-          "id": "000660-hbm4-cycle",
-          "title": "HBM4 고객 인증과 메모리 가격 사이클",
-          "category": "growth",
-          "priority": "high",
-          "status": "monitoring",
-          "impact": "HBM 출하·가격과 설비투자 효율이 성장·수익성 가정에 직접 영향을 준다.",
-          "openedAt": "2026-08-09",
-          "nextReviewAt": "2026-10-31"
-        }
-      ],
-      "financials": {
-        "revenue2025": 971467,
-        "operatingMargin2025": 48.59,
-        "roe2025": 44.14,
-        "debtRatio2025": 45.95,
-        "eps2025": 62044,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814003509",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 1318950,
-          "operatingMargin": 74.42,
-          "roeAnnualized": 140.1,
-          "debtRatio": 32.8,
-          "epsCumulative": 189546,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-09-08",
-          "multiple": "2026-09-08",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 13
-    },
-    {
-      "rank": 13,
       "code": "005930",
-      "officialOrder": 14,
+      "officialOrder": 1,
       "name": "삼성전자",
       "sector": "반도체",
-      "caqm": 83,
+      "caqm": 92.5,
       "components": {
-        "moat": 25,
-        "growth": 20,
-        "profitability": 17,
-        "financialHealth": 15,
-        "management": 3,
-        "shareholderReturn": 3
+        "moatIndustry": 20.0,
+        "moatCross": 9.0,
+        "growth": 20.0,
+        "profitability": 20.0,
+        "financialHealth": 15.0,
+        "management": 4.5,
+        "shareholderReturn": 4.0
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
       "currentPrice": 252500,
       "priceBasisDate": "2026-09-17",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
@@ -2205,7 +566,7 @@
       ],
       "modelCalculatedVm": 389000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-25)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2300,42 +661,1274 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-17",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-25",
-          "multiple": "2026-08-25",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },
-      "position": 14
+      "position": 1
     },
     {
-      "rank": 15,
-      "code": "278470",
-      "officialOrder": 15,
-      "name": "에이피알",
-      "sector": "화장품/미용",
-      "caqm": 82,
+      "rank": 2,
+      "code": "000660",
+      "officialOrder": 2,
+      "name": "SK하이닉스",
+      "sector": "반도체",
+      "caqm": 92.4,
       "components": {
-        "moat": 24,
-        "growth": 24,
-        "profitability": 17,
-        "financialHealth": 13,
-        "management": 3,
-        "shareholderReturn": 1
+        "moatIndustry": 20.0,
+        "moatCross": 8.4,
+        "growth": 20.0,
+        "profitability": 20.0,
+        "financialHealth": 15.0,
+        "management": 5.0,
+        "shareholderReturn": 4.0
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
+      "currentPrice": 1745000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "memory_normalized",
+      "valuationModelLabel": "메모리 정상화 EPS·PER",
+      "valuationHorizonYears": 2,
+      "forwardEps3y": 512706,
+      "normalizedEps": 512706,
+      "normalizedPer": 7,
+      "appliedPer": 7,
+      "discountRate": 11,
+      "primaryVm": 3589000,
+      "crossCheckVm": null,
+      "finalVm": 2879100,
+      "cycleChecks": [
+        "DRAM 계약가격",
+        "HBM 가격·출하량",
+        "재고",
+        "CAPEX",
+        "고객사 재고"
+      ],
+      "modelCalculatedVm": 2913000,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 2018000,
+          "assumptions": [
+            "EPS -20%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 2879100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 3708000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
+      "gapRate": -39.4,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "매수검토",
+      "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
+      "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "000660-hbm4-cycle",
+          "title": "HBM4 고객 인증과 메모리 가격 사이클",
+          "category": "growth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "HBM 출하·가격과 설비투자 효율이 성장·수익성 가정에 직접 영향을 준다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": 971467,
+        "operatingMargin2025": 48.59,
+        "roe2025": 44.14,
+        "debtRatio2025": 45.95,
+        "eps2025": 62044,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003509",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 1318950,
+          "operatingMargin": 74.42,
+          "roeAnnualized": 140.1,
+          "debtRatio": 32.8,
+          "epsCumulative": 189546,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 2
+    },
+    {
+      "rank": 3,
+      "code": "403870",
+      "officialOrder": 3,
+      "name": "HPSP",
+      "sector": "반도체소부장",
+      "caqm": 91.5,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 7.8,
+        "growth": 19.75,
+        "profitability": 19.95,
+        "financialHealth": 15.0,
+        "management": 5.0,
+        "shareholderReturn": 4.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 57700,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 4808,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 12,
+      "discountRate": 10,
+      "primaryVm": 43300,
+      "crossCheckVm": null,
+      "finalVm": 57700,
+      "modelCalculatedVm": 43300,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 42400,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 57700,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 75100,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "고압수소어닐링(HPA) 장비의 독보적 시장 지배력과 반도체 미세공정 확대가 높은 수익성을 지지한다.",
+      "risk": "특정 장비·고객 집중과 반도체 장비 투자 사이클 변동이 핵심 위험이다.",
+      "warning": null,
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 3
+    },
+    {
+      "rank": 4,
+      "code": "267260",
+      "officialOrder": 4,
+      "name": "HD현대일렉트릭",
+      "sector": "전력기기",
+      "caqm": 90.3,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 8.4,
+        "growth": 16.4,
+        "profitability": 20.0,
+        "financialHealth": 15.0,
+        "management": 5.0,
+        "shareholderReturn": 5.5
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 712000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 33311,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 18,
+      "discountRate": 12,
+      "primaryVm": 426800,
+      "crossCheckVm": null,
+      "finalVm": 1298500,
+      "modelCalculatedVm": 426800,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 954400,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1298500,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1687300,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
+      "gapRate": -45.2,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "매수검토",
+      "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
+      "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "267260-backlog-margin",
+          "title": "북미 수주잔고와 수익성 정상화",
+          "category": "profitability",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "수주 가격과 납기가 현재의 높은 마진 및 3년 EPS 지속성을 좌우한다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": 40795,
+        "operatingMargin2025": 24.4,
+        "roe2025": 41.34,
+        "debtRatio2025": 134.63,
+        "eps2025": 20354,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003228",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 21783,
+          "operatingMargin": 25.03,
+          "roeAnnualized": 38.57,
+          "debtRatio": 143.18,
+          "epsCumulative": 11521,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 4
+    },
+    {
+      "rank": 5,
+      "code": "298040",
+      "officialOrder": 5,
+      "name": "효성중공업",
+      "sector": "전력기기",
+      "caqm": 83.5,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 9.0,
+        "growth": 20.0,
+        "profitability": 20.0,
+        "financialHealth": 10.0,
+        "management": 1.0,
+        "shareholderReturn": 3.5
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 2861000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 100224,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 18,
+      "discountRate": 12,
+      "primaryVm": 1284100,
+      "crossCheckVm": null,
+      "finalVm": 3924900,
+      "modelCalculatedVm": 1284100,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (경영진 중대감점(조현준 회장 횡령 확정판결))",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 2885000,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 3924900,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 5100300,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
+      "gapRate": -27.1,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "매수검토",
+      "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
+      "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다. 조현준 회장의 횡령 확정판결에 따른 경영진 점수 중대 감점 요인이 있다.",
+      "warning": "조현준 회장 횡령 확정판결(경영진 중대감점)",
+      "issues": [
+        {
+          "id": "298040-us-capex-debt",
+          "title": "미국 변압기 증설과 순차입금",
+          "category": "financialHealth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "증설 수익성과 부채 축소 속도가 현재 고성장의 질을 검증한다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": 59685,
+        "operatingMargin2025": 12.52,
+        "roe2025": 22.13,
+        "debtRatio2025": 190.31,
+        "eps2025": 55832,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260813001554",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 30452,
+          "operatingMargin": 13.68,
+          "roeAnnualized": 20.16,
+          "debtRatio": 213.51,
+          "epsCumulative": 27905,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 5
+    },
+    {
+      "rank": 6,
+      "code": "007660",
+      "officialOrder": 6,
+      "name": "이수페타시스",
+      "sector": "PCB/AI서버기판",
+      "caqm": 82.8,
+      "components": {
+        "moatIndustry": 15.0,
+        "moatCross": 6.8,
+        "growth": 20.0,
+        "profitability": 20.0,
+        "financialHealth": 14.0,
+        "management": 4.0,
+        "shareholderReturn": 3.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 168800,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 14067,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 12,
+      "discountRate": 10,
+      "primaryVm": 126800,
+      "crossCheckVm": null,
+      "finalVm": 168800,
+      "modelCalculatedVm": 126800,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 124000,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 168800,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 219500,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "AI 서버용 고다층 PCB 수요 확대와 북미 고객사향 공급 확대가 높은 성장성을 지지한다.",
+      "risk": "고객·업황 집중과 원자재 가격, 증설 이후 가동률 변동이 위험이다.",
+      "warning": null,
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 6
+    },
+    {
+      "rank": 7,
+      "code": "329180",
+      "officialOrder": 7,
+      "name": "HD현대중공업",
+      "sector": "조선",
+      "caqm": 82.1,
+      "components": {
+        "moatIndustry": 18.0,
+        "moatCross": 7.8,
+        "growth": 20.0,
+        "profitability": 15.93,
+        "financialHealth": 10.4,
+        "management": 5.0,
+        "shareholderReturn": 5.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 646000,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 21580,
+      "historicalPer5y": 10,
+      "overseasPeerPer": 10,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 10,
+      "discountRate": 12,
+      "primaryVm": 153600,
+      "crossCheckVm": null,
+      "finalVm": 646000,
+      "modelCalculatedVm": 153600,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 474900,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 646000,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 839500,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "고부가 선종 수주잔고와 방산·해양플랜트 포트폴리오를 반영하되 조선 경기민감도와 HD한국조선해양과의 밸류체인 중복을 할인한다.",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.",
+      "risk": "후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.",
+      "warning": null,
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 7
+    },
+    {
+      "rank": 8,
+      "code": "062040",
+      "officialOrder": 8,
+      "name": "산일전기",
+      "sector": "전력기기",
+      "caqm": 81.5,
+      "components": {
+        "moatIndustry": 13.0,
+        "moatCross": 8.4,
+        "growth": 16.06,
+        "profitability": 20.0,
+        "financialHealth": 15.0,
+        "management": 5.0,
+        "shareholderReturn": 4.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 203600,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 16967,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 12,
+      "discountRate": 10,
+      "primaryVm": 153000,
+      "crossCheckVm": null,
+      "finalVm": 203600,
+      "modelCalculatedVm": 153000,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 149500,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 203600,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 264700,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "전력기기 수요 확대와 수주잔고 성장이 안정적 이익 기반을 지지한다.",
+      "risk": "수주 변동성과 생산능력 확장 속도, 전력기기 업황 사이클이 위험이다.",
+      "warning": null,
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 8
+    },
+    {
+      "rank": 9,
+      "code": "003230",
+      "officialOrder": 9,
+      "name": "삼양식품",
+      "sector": "소비재",
+      "caqm": 80.2,
+      "components": {
+        "moatIndustry": 16.0,
+        "moatCross": 5.2,
+        "growth": 20.0,
+        "profitability": 20.0,
+        "financialHealth": 14.0,
+        "management": 1.0,
+        "shareholderReturn": 4.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 1427500,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 99021,
+      "historicalPer5y": 18,
+      "overseasPeerPer": 18,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 18,
+      "discountRate": 10,
+      "primaryVm": 1339100,
+      "crossCheckVm": null,
+      "finalVm": 1427500,
+      "modelCalculatedVm": 1339100,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (경영진 중대감점(창업주 전인장 前회장 반복확정유죄))",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 1048600,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1427500,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1856000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다.",
+      "gapRate": 0.0,
+      "rating": "★★★☆☆",
+      "opinion": "관찰",
+      "signal": "관망",
+      "reason": "불닭 브랜드의 글로벌 확장과 생산능력 증설이 높은 성장성과 수익성을 뒷받침한다.",
+      "risk": "단일 브랜드 집중, 원재료·환율 변동과 해외 소비 트렌드 변화가 위험이다. 창업주 전인장 전 회장의 반복된 확정유죄 판결에 따른 경영진 점수 중대 감점 요인이 있다.",
+      "warning": "창업주 전인장 전 회장 반복확정유죄(경영진 중대감점)",
+      "issues": [
+        {
+          "id": "003230-plant-brand",
+          "title": "신공장 램프업과 불닭 브랜드 확장",
+          "category": "growth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "생산능력 확대로 해외 품절을 해소하는지와 브랜드 확장성이 성장 가정에 영향을 준다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 9
+    },
+    {
+      "rank": 10,
+      "code": "012450",
+      "officialOrder": 10,
+      "name": "한화에어로스페이스",
+      "sector": "방산",
+      "caqm": 79.9,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 9.0,
+        "growth": 20.0,
+        "profitability": 13.95,
+        "financialHealth": 8.8,
+        "management": 4.5,
+        "shareholderReturn": 4.5
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 1097000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 53879,
+      "historicalPer5y": 20,
+      "overseasPeerPer": 20,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 20,
+      "discountRate": 12,
+      "primaryVm": 767000,
+      "crossCheckVm": null,
+      "finalVm": 1433700,
+      "modelCalculatedVm": 767000,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (세부배점 합계(80.75)가 CAQM 총점(79.9)과 0.85점 차이 — 원본 데이터 그대로 반영, 총점 기준 확정 유지)",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 1053900,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 1433700,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 1863100,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
+      "gapRate": -23.5,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
+      "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "012450-export-leverage",
+          "title": "방산 수출 납기와 재무 레버리지",
+          "category": "financialHealth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "수출 선수금·운전자본과 인수 부담이 성장의 현금 전환율을 좌우한다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": 267029,
+        "operatingMargin2025": 11.57,
+        "roe2025": 15.57,
+        "debtRatio2025": 221.38,
+        "eps2025": null,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003198",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 150439,
+          "operatingMargin": 13.32,
+          "roeAnnualized": 17.36,
+          "debtRatio": 190.27,
+          "epsCumulative": 17202,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 10
+    },
+    {
+      "rank": 11,
+      "code": "278470",
+      "officialOrder": 11,
+      "name": "에이피알",
+      "sector": "화장품/미용",
+      "caqm": 79.7,
+      "components": {
+        "moatIndustry": 12.0,
+        "moatCross": 5.8,
+        "growth": 19.9,
+        "profitability": 20.0,
+        "financialHealth": 14.0,
+        "management": 4.0,
+        "shareholderReturn": 4.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
       "currentPrice": 353000,
       "priceBasisDate": "2026-09-17",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
@@ -2354,7 +1947,7 @@
       "finalVm": 407700,
       "modelCalculatedVm": 225700,
       "officialVmOverride": true,
-      "officialVmSource": "CAR TOP20 재편입 · 2026.09.08 (클래시스 대체 편입)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2396,8 +1989,8 @@
       "vmStatus": "reviewed",
       "vmNote": "메디큐브·에이지알의 해외 확장과 뷰티 디바이스 성장성을 반영하되 채널 재고와 신제품 주기 리스크를 할인한다.",
       "gapRate": -13.4,
-      "rating": "★★★★☆",
-      "opinion": "분할매수",
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
       "signal": "관망",
       "reason": "메디큐브·에이지알 브랜드의 해외 확장과 뷰티 디바이스 성장성이 높은 CAQM을 지지한다.",
       "risk": "채널 재고와 신제품 주기 리스크, 해외 유통 실행력을 점검해야 한다.",
@@ -2438,42 +2031,43 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-08",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-17",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-08",
-          "multiple": "2026-09-08",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },
-      "position": 15
+      "position": 11
     },
     {
-      "rank": 16,
+      "rank": 12,
       "code": "033780",
-      "officialOrder": 16,
+      "officialOrder": 12,
       "name": "KT&G",
       "sector": "소비재",
-      "caqm": 80,
+      "caqm": 79.1,
       "components": {
-        "moat": 24,
-        "growth": 20,
-        "profitability": 16,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
+        "moatIndustry": 19.0,
+        "moatCross": 8.2,
+        "growth": 15.6,
+        "profitability": 8.8,
+        "financialHealth": 14.0,
+        "management": 5.0,
+        "shareholderReturn": 8.5
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
       "currentPrice": 173800,
       "priceBasisDate": "2026-09-17",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
@@ -2492,7 +2086,7 @@
       "finalVm": 167700,
       "modelCalculatedVm": 114800,
       "officialVmOverride": true,
-      "officialVmSource": "CAR VM 정정 · 2026.09.08 (152,500원 → 167,700원)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -2534,8 +2128,8 @@
       "vmStatus": "reviewed",
       "vmNote": "",
       "gapRate": 3.6,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
       "signal": "관망",
       "reason": "담배 본업의 안정적 현금흐름과 건강기능식품·해외 담배 성장이 방어적 복리자산을 만든다.",
       "risk": "궐련 판매량 장기 감소 추세와 해외 규제, 신사업 투자 회수 속도가 위험이다.",
@@ -2587,65 +2181,66 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-17",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-08",
-          "multiple": "2026-09-08",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },
-      "position": 16
+      "position": 12
     },
     {
-      "rank": 16,
-      "code": "021240",
-      "officialOrder": 17,
-      "name": "코웨이",
-      "sector": "렌탈구독",
-      "caqm": 80,
+      "rank": 13,
+      "code": "214150",
+      "officialOrder": 13,
+      "name": "클래시스",
+      "sector": "화장품/미용",
+      "caqm": 79.0,
       "components": {
-        "moat": 25,
-        "growth": 22,
-        "profitability": 14,
-        "financialHealth": 11,
-        "management": 4,
-        "shareholderReturn": 4
+        "moatIndustry": 11.0,
+        "moatCross": 7.8,
+        "growth": 18.55,
+        "profitability": 18.6,
+        "financialHealth": 14.5,
+        "management": 5.0,
+        "shareholderReturn": 3.5
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
-      "currentPrice": 107500,
-      "priceBasisDate": "2026-09-17",
+      "currentPrice": 106600,
+      "priceBasisDate": "2026-09-22",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
       "valuationHorizonYears": 3,
-      "forwardEps3y": 9363,
-      "historicalPer5y": 12.5,
-      "overseasPeerPer": 12.5,
-      "overseasCorrectionPer": 0,
+      "forwardEps3y": 4380,
+      "historicalPer5y": 22,
+      "overseasPeerPer": 25,
+      "overseasCorrectionPer": 0.9,
       "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 12.5,
+      "appliedPer": 22.9,
       "discountRate": 10,
-      "primaryVm": 87900,
+      "primaryVm": 75400,
       "crossCheckVm": null,
-      "finalVm": 116900,
-      "modelCalculatedVm": 87900,
+      "finalVm": 106600,
+      "modelCalculatedVm": 75400,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 85900,
+          "finalVm": 78300,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2654,7 +2249,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 116900,
+          "finalVm": 106600,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2663,7 +2258,707 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 152000,
+          "finalVm": 138500,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
+      "gapRate": 0.0,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "집속초음파 장비와 소모품 반복매출, 글로벌 유통 확장이 높은 수익성을 지지한다.",
+      "risk": "경쟁 장비 확산, 국가별 인허가와 해외 마케팅 비용을 점검해야 한다. 최대주주 베인캐피탈의 잔여지분 매각 가능성도 주가 변동 요인이다.",
+      "warning": "최대주주 베인캐피탈 경영권 매각 추진 이력, 잔여지분 54% 보유중",
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 13
+    },
+    {
+      "rank": 14,
+      "code": "000810",
+      "officialOrder": 14,
+      "name": "삼성화재",
+      "sector": "금융-보험",
+      "caqm": 78.8,
+      "components": {
+        "moatIndustry": 19.0,
+        "moatCross": 7.6,
+        "growth": 20.0,
+        "profitability": 6.21,
+        "financialHealth": 14.5,
+        "management": 4.5,
+        "shareholderReturn": 7.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 666000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "insurance_sotp",
+      "valuationModelLabel": "보험 PBR·CSM·SOTP",
+      "valuationHorizonYears": 0,
+      "forwardEps3y": 80562,
+      "normalizedEps": 80562,
+      "normalizedPer": 8,
+      "normalizedBps": 500000,
+      "targetPbr": 1.05,
+      "appliedPer": 8,
+      "discountRate": 0,
+      "csmSotpAdjustment": 119500,
+      "primaryVm": 644500,
+      "crossCheckVm": 644500,
+      "finalVm": 785000,
+      "modelCalculatedVm": 644500,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 670400,
+          "assumptions": [
+            "BPS·EPS -5%",
+            "PBR·PER -10%",
+            "CSM·SOTP -15%"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 785000,
+          "assumptions": [
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수",
+            "공식 CSM·SOTP"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 905900,
+          "assumptions": [
+            "BPS·EPS +5%",
+            "PBR·PER +10%",
+            "CSM·SOTP +15%"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
+        "reasons": [
+          "최신 보고서 일부 계정 미수신",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
+      "gapRate": -15.2,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "우수한 보험수익성·자본력과 안정적 투자자산, 지속적인 주주환원이 프리미엄 요인이다.",
+      "risk": "손해율, K-ICS, CSM 전개와 투자자산 평가손익을 함께 점검해야 한다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "000810-loss-ratio-kics",
+          "title": "보험 손해율과 K-ICS 자본비율",
+          "category": "financialHealth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "보험이익의 질과 규제자본이 주주환원 여력을 결정한다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": 10.95,
+        "debtRatio2025": 352.98,
+        "eps2025": 47478,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814003992",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 9.56,
+          "debtRatio": 219.01,
+          "epsCumulative": 32283,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 14
+    },
+    {
+      "rank": 15,
+      "code": "058470",
+      "officialOrder": 15,
+      "name": "리노공업",
+      "sector": "반도체소부장",
+      "caqm": 78.3,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 7.2,
+        "growth": 11.4,
+        "profitability": 14.7,
+        "financialHealth": 15.0,
+        "management": 5.0,
+        "shareholderReturn": 5.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 66400,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 3223,
+      "historicalPer5y": 28,
+      "overseasPeerPer": 28,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 28,
+      "discountRate": 11,
+      "primaryVm": 66000,
+      "crossCheckVm": null,
+      "finalVm": 93900,
+      "modelCalculatedVm": 66000,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 69000,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 93900,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 122000,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
+      "gapRate": -29.3,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
+      "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "058470-capacity-customers",
+          "title": "신규 생산능력 가동률과 고객 다변화",
+          "category": "moat",
+          "priority": "medium",
+          "status": "monitoring",
+          "impact": "가동률과 고객 믹스가 고마진 지속성 및 전환비용 검증의 핵심이다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-11-15"
+        }
+      ],
+      "financials": {
+        "revenue2025": 3725,
+        "operatingMargin2025": 47.51,
+        "roe2025": 22.45,
+        "debtRatio2025": 8.3,
+        "eps2025": 2002,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "OFS",
+          "rceptNo": "20260814000445",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 2430,
+          "operatingMargin": 49.73,
+          "roeAnnualized": 28.2,
+          "debtRatio": 10.31,
+          "epsCumulative": 1401,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 15
+    },
+    {
+      "rank": 15,
+      "code": "237690",
+      "officialOrder": 16,
+      "name": "에스티팜",
+      "sector": "바이오CDMO",
+      "caqm": 78.3,
+      "components": {
+        "moatIndustry": 19.0,
+        "moatCross": 7.8,
+        "growth": 20.0,
+        "profitability": 9.08,
+        "financialHealth": 14.4,
+        "management": 5.0,
+        "shareholderReturn": 3.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 168100,
+      "priceBasisDate": "2026-09-22",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 14008,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 12,
+      "discountRate": 10,
+      "primaryVm": 126300,
+      "crossCheckVm": null,
+      "finalVm": 168100,
+      "modelCalculatedVm": 126300,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (동점(78.3) 타이브레이크로 리노공업 다음 순위)",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 123500,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 168100,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 218500,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
+        "reasons": [
+          "최신 보고서 핵심 지표 확인 필요",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "",
+      "gapRate": 0.0,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "올리고뉴클레오타이드 원료의약품(API) CDMO 경쟁력과 글로벌 신약 파이프라인 확대가 성장성을 지지한다.",
+      "risk": "고객사 파이프라인 실패 리스크와 원료의약품 가격 변동, 수익성 변동성이 위험이다.",
+      "warning": null,
+      "issues": [],
+      "financials": {
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 16
+    },
+    {
+      "rank": 17,
+      "code": "214450",
+      "officialOrder": 17,
+      "name": "파마리서치",
+      "sector": "화장품/의료기기",
+      "caqm": 78.2,
+      "components": {
+        "moatIndustry": 20.0,
+        "moatCross": 9.0,
+        "growth": 8.85,
+        "profitability": 17.3,
+        "financialHealth": 14.0,
+        "management": 4.0,
+        "shareholderReturn": 5.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 329500,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 25196,
+      "historicalPer5y": 25,
+      "overseasPeerPer": 25,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 25,
+      "discountRate": 10,
+      "primaryVm": 473300,
+      "crossCheckVm": null,
+      "finalVm": 417800,
+      "modelCalculatedVm": 473300,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 306900,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 417800,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 543100,
+          "assumptions": [
+            "EPS +15%",
+            "배수 +10%",
+            "할인율 -1%p"
+          ]
+        }
+      },
+      "vmConfidence": {
+        "grade": "B",
+        "label": "근거 확인 완료 · 일부 분석 가정",
+        "reasons": [
+          "최신 보고서 주요 지표 수신 완료",
+          "VM 가정 검토 완료",
+          "근거 자료 2건 이상 연결"
+        ]
+      },
+      "vmStatus": "reviewed",
+      "vmNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
+      "gapRate": -21.1,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
+      "signal": "관망",
+      "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
+      "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "214450-global-approvals",
+          "title": "리쥬란 해외 인허가와 유통 확장",
+          "category": "growth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "주요 국가 승인과 반복 주문이 장기 성장률 및 브랜드 해자를 결정한다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
+      "financials": {
+        "revenue2025": 5363,
+        "operatingMargin2025": 39.98,
+        "roe2025": 26.02,
+        "debtRatio2025": 44.21,
+        "eps2025": 14933,
+        "latestReport": {
+          "reportYear": 2026,
+          "reportCode": "11012",
+          "periodLabel": "2026년 반기 누적",
+          "fsDiv": "CFS",
+          "rceptNo": "20260814002997",
+          "periodEnd": "2026-06-30",
+          "fetchedAt": "2026-09-22T00:56:41+09:00",
+          "revenueEok": 3248,
+          "operatingMargin": 38.1,
+          "roeAnnualized": 27.76,
+          "debtRatio": 40.35,
+          "epsCumulative": 10024,
+          "dataQuality": "complete",
+          "missingMetrics": []
+        }
+      },
+      "sources": [
+        {
+          "label": "OpenDART 정기보고서",
+          "url": "https://opendart.fss.or.kr/"
+        },
+        {
+          "label": "KRX 정보데이터시스템",
+          "url": "https://data.krx.co.kr/"
+        }
+      ],
+      "review": {
+        "status": "CAQM reviewed / VM reviewed",
+        "reviewedAt": "2026-09-22",
+        "nextReviewAt": "2026-09-30",
+        "basisDates": {
+          "price": "2026-09-17",
+          "financialReport": "2026-06-30",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
+          "nextReview": "2026-09-30"
+        }
+      },
+      "position": 17
+    },
+    {
+      "rank": 18,
+      "code": "010120",
+      "officialOrder": 18,
+      "name": "LS ELECTRIC",
+      "sector": "전력기기",
+      "caqm": 78.0,
+      "components": {
+        "moatIndustry": 15.0,
+        "moatCross": 8.4,
+        "growth": 20.0,
+        "profitability": 13.3,
+        "financialHealth": 11.3,
+        "management": 5.0,
+        "shareholderReturn": 5.0
+      },
+      "componentLimits": {
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
+        "profitability": 20,
+        "financialHealth": 15,
+        "management": 5,
+        "shareholderReturn": 10
+      },
+      "currentPrice": 202000,
+      "priceBasisDate": "2026-09-17",
+      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
+      "valuationModel": "standard_per",
+      "valuationModelLabel": "일반기업 EPS·PER",
+      "valuationHorizonYears": 3,
+      "forwardEps3y": 14957,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
+      "overseasCorrectionPer": 0,
+      "overseasAdjustmentWeightPct": 30.0,
+      "appliedPer": 12.5,
+      "discountRate": 11,
+      "primaryVm": 136700,
+      "crossCheckVm": null,
+      "finalVm": 186700,
+      "modelCalculatedVm": 136700,
+      "officialVmOverride": true,
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "vmScenarios": {
+        "conservative": {
+          "label": "보수",
+          "finalVm": 137200,
+          "assumptions": [
+            "EPS -15%",
+            "배수 -10%",
+            "할인율 +1.5%p"
+          ]
+        },
+        "base": {
+          "label": "기준",
+          "finalVm": 186700,
+          "assumptions": [
+            "공식 적용 EPS",
+            "공식 적용 배수",
+            "공식 할인율"
+          ]
+        },
+        "optimistic": {
+          "label": "낙관",
+          "finalVm": 242700,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2682,182 +2977,44 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "",
-      "gapRate": -8.0,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
+      "gapRate": 8.2,
+      "rating": "★★☆☆☆",
+      "opinion": "후보",
       "signal": "관망",
-      "reason": "정수기·공기청정기 렌탈 구독 모델의 반복매출과 해외 확장이 안정적 현금창출을 지지한다.",
-      "risk": "국내 렌탈 시장 경쟁 심화와 해외 사업 확장 비용, 금리 변동에 따른 판매 방식 손익 변동이 있다.",
-      "warning": null,
-      "issues": [],
-      "financials": {
-        "revenue2025": 49636,
-        "operatingMargin2025": 17.7,
-        "roe2025": 18.14,
-        "debtRatio2025": 93.71,
-        "eps2025": 8630,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814002001",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 27719,
-          "operatingMargin": 18.19,
-          "roeAnnualized": 19.38,
-          "debtRatio": 103.56,
-          "epsCumulative": 5122,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
-      },
-      "sources": [
-        {
-          "label": "OpenDART 정기보고서",
-          "url": "https://opendart.fss.or.kr/"
-        },
-        {
-          "label": "KRX 정보데이터시스템",
-          "url": "https://data.krx.co.kr/"
-        }
-      ],
-      "review": {
-        "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
-        "nextReviewAt": "2026-09-30",
-        "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-08-07",
-          "multiple": "2026-08-07",
-          "nextReview": "2026-09-30"
-        }
-      },
-      "position": 17
-    },
-    {
-      "rank": 16,
-      "code": "012450",
-      "officialOrder": 18,
-      "name": "한화에어로스페이스",
-      "sector": "방산",
-      "caqm": 80,
-      "components": {
-        "moat": 24,
-        "growth": 20,
-        "profitability": 16,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
-      },
-      "componentLimits": {
-        "moat": 30,
-        "growth": 25,
-        "profitability": 20,
-        "financialHealth": 15,
-        "management": 5,
-        "shareholderReturn": 5
-      },
-      "isFinancial": false,
-      "currentPrice": 1097000,
-      "priceBasisDate": "2026-09-17",
-      "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 53879,
-      "historicalPer5y": 20,
-      "overseasPeerPer": 20,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 20,
-      "discountRate": 12,
-      "primaryVm": 767000,
-      "crossCheckVm": null,
-      "finalVm": 1433700,
-      "modelCalculatedVm": 767000,
-      "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-21)",
-      "vmScenarios": {
-        "conservative": {
-          "label": "보수",
-          "finalVm": 1053900,
-          "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
-          ]
-        },
-        "base": {
-          "label": "기준",
-          "finalVm": 1433700,
-          "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
-          ]
-        },
-        "optimistic": {
-          "label": "낙관",
-          "finalVm": 1863100,
-          "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
-          ]
-        }
-      },
-      "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
-        "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
-          "VM 가정 검토 완료",
-          "근거 자료 2건 이상 연결"
-        ]
-      },
-      "vmStatus": "reviewed",
-      "vmNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
-      "gapRate": -23.5,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "매수검토",
-      "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
-      "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
+      "reason": "전력기기·자동화 포트폴리오와 해외 생산거점 확대가 안정적 수주잔고를 지지한다.",
+      "risk": "원자재 가격과 해외 수주 경쟁, 전력기기 사이클 정상화가 주요 위험이다.",
       "warning": null,
       "issues": [
         {
-          "id": "012450-export-leverage",
-          "title": "방산 수출 납기와 재무 레버리지",
-          "category": "financialHealth",
+          "id": "010120-na-orders-margin",
+          "title": "북미 데이터센터 수주와 마진",
+          "category": "growth",
           "priority": "high",
           "status": "monitoring",
-          "impact": "수출 선수금·운전자본과 인수 부담이 성장의 현금 전환율을 좌우한다.",
+          "impact": "북미 수주가 매출뿐 아니라 전사 수익성 개선으로 이어지는지 확인한다.",
           "openedAt": "2026-08-09",
           "nextReviewAt": "2026-10-31"
         }
       ],
       "financials": {
-        "revenue2025": 267029,
-        "operatingMargin2025": 11.57,
-        "roe2025": 15.57,
-        "debtRatio2025": 221.38,
-        "eps2025": null,
+        "revenue2025": 49658,
+        "operatingMargin2025": 8.59,
+        "roe2025": 14.1,
+        "debtRatio2025": 131.48,
+        "eps2025": 9647,
         "latestReport": {
           "reportYear": 2026,
           "reportCode": "11012",
           "periodLabel": "2026년 반기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003198",
+          "rceptNo": "20260814003088",
           "periodEnd": "2026-06-30",
           "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 150439,
-          "operatingMargin": 13.32,
-          "roeAnnualized": 17.36,
-          "debtRatio": 190.27,
-          "epsCumulative": 17202,
+          "revenueEok": 29535,
+          "operatingMargin": 10.33,
+          "roeAnnualized": 21.64,
+          "debtRatio": 172.12,
+          "epsCumulative": 1607,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2874,13 +3031,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-17",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-21",
-          "multiple": "2026-08-21",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },
@@ -2888,116 +3045,128 @@
     },
     {
       "rank": 19,
-      "code": "052690",
+      "code": "055550",
       "officialOrder": 19,
-      "name": "한전기술",
-      "sector": "원전",
-      "caqm": 78,
+      "name": "신한지주",
+      "sector": "금융-은행",
+      "caqm": 77.1,
       "components": {
-        "moat": 22,
-        "growth": 20,
-        "profitability": 16,
-        "financialHealth": 12,
-        "management": 4,
-        "shareholderReturn": 4
+        "moatIndustry": 15.0,
+        "moatCross": 7.6,
+        "growth": 20.0,
+        "profitability": 8.49,
+        "financialHealth": 13.5,
+        "management": 5.0,
+        "shareholderReturn": 7.5
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
-      "currentPrice": 137600,
+      "currentPrice": 113300,
       "priceBasisDate": "2026-09-17",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "valuationModel": "standard_per",
-      "valuationModelLabel": "일반기업 EPS·PER",
-      "valuationHorizonYears": 3,
-      "forwardEps3y": 13253,
-      "historicalPer5y": 12.5,
-      "overseasPeerPer": 12.5,
-      "overseasCorrectionPer": 0,
-      "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 12.5,
-      "discountRate": 10,
-      "primaryVm": 124500,
-      "crossCheckVm": null,
-      "finalVm": 165400,
-      "modelCalculatedVm": 124500,
+      "valuationModel": "bank_pbr",
+      "valuationModelLabel": "은행·금융지주 BPS·PBR",
+      "valuationHorizonYears": 0,
+      "forwardEps3y": 14125,
+      "normalizedEps": 14125,
+      "normalizedPer": 8,
+      "normalizedBps": 129884,
+      "targetPbr": 0.87,
+      "appliedPer": 8,
+      "discountRate": 0,
+      "primaryVm": 113000,
+      "crossCheckVm": 113000,
+      "finalVm": 113000,
+      "modelCalculatedVm": 113000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-07)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 121500,
+          "finalVm": 97000,
           "assumptions": [
-            "EPS -15%",
-            "배수 -10%",
-            "할인율 +1.5%p"
+            "BPS·EPS -5%",
+            "PBR·PER -10%"
           ]
         },
         "base": {
           "label": "기준",
-          "finalVm": 165400,
+          "finalVm": 113000,
           "assumptions": [
-            "공식 적용 EPS",
-            "공식 적용 배수",
-            "공식 할인율"
+            "공식 적용 BPS·EPS",
+            "공식 적용 배수"
           ]
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 215000,
+          "finalVm": 131000,
           "assumptions": [
-            "EPS +15%",
-            "배수 +10%",
-            "할인율 -1%p"
+            "BPS·EPS +5%",
+            "PBR·PER +10%"
           ]
         }
       },
       "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
+        "grade": "C",
+        "label": "EPS 또는 배수 검토 필요",
         "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
+          "최신 보고서 일부 계정 미수신",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
       },
       "vmStatus": "reviewed",
       "vmNote": "",
-      "gapRate": -16.8,
+      "gapRate": 0.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
-      "reason": "원전 설계·엔지니어링 독점적 지위와 신규 원전 수주 파이프라인이 장기 성장 동력이다.",
-      "risk": "배당 삭감 이력이 있어 주주환원 지속성을 점검해야 하며, 원전 정책·수주 일정 지연이 위험이다.",
-      "warning": "배당 삭감 확인(2025→2026E)",
-      "issues": [],
+      "reason": "은행·카드·증권의 균형 잡힌 포트폴리오와 자본배분 규율, 안정적 주주환원이 강점이다.",
+      "risk": "신용비용, 부동산 PF 익스포저와 CET1·연체율 변화를 지속 점검해야 한다.",
+      "warning": null,
+      "issues": [
+        {
+          "id": "055550-cet1-credit",
+          "title": "CET1과 신용비용·주주환원",
+          "category": "financialHealth",
+          "priority": "high",
+          "status": "monitoring",
+          "impact": "자본비율과 PF 비용은 배당·소각 지속성의 선행지표다.",
+          "openedAt": "2026-08-09",
+          "nextReviewAt": "2026-10-31"
+        }
+      ],
       "financials": {
-        "revenue2025": 5188,
-        "operatingMargin2025": 6.83,
-        "roe2025": 14.2,
-        "debtRatio2025": 41.69,
-        "eps2025": 2244,
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": 8.53,
+        "debtRatio2025": 1201.94,
+        "eps2025": 9812,
         "latestReport": {
           "reportYear": 2026,
           "reportCode": "11012",
           "periodLabel": "2026년 반기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814001293",
+          "rceptNo": "20260814003306",
           "periodEnd": "2026-06-30",
           "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 2166,
-          "operatingMargin": 7.87,
-          "roeAnnualized": 5.53,
-          "debtRatio": 33.54,
-          "epsCumulative": 442,
-          "dataQuality": "complete",
-          "missingMetrics": []
+          "revenueEok": null,
+          "operatingMargin": null,
+          "roeAnnualized": 11.38,
+          "debtRatio": 1245.01,
+          "epsCumulative": 7075,
+          "dataQuality": "partial",
+          "missingMetrics": [
+            "revenueEok",
+            "operatingMargin"
+          ]
         }
       },
       "sources": [
@@ -3012,13 +3181,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-17",
           "financialReport": "2026-06-30",
-          "eps": "2026-08-07",
-          "multiple": "2026-08-07",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },
@@ -3026,51 +3195,52 @@
     },
     {
       "rank": 20,
-      "code": "140860",
+      "code": "005290",
       "officialOrder": 20,
-      "name": "파크시스템스",
-      "sector": "반도체소부장",
-      "caqm": 76,
+      "name": "동진쎄미켐",
+      "sector": "반도체소재",
+      "caqm": 77.0,
       "components": {
-        "moat": 27,
-        "growth": 20,
-        "profitability": 11,
-        "financialHealth": 13,
-        "management": 3,
-        "shareholderReturn": 2
+        "moatIndustry": 19.0,
+        "moatCross": 6.0,
+        "growth": 20.0,
+        "profitability": 11.1,
+        "financialHealth": 11.4,
+        "management": 4.5,
+        "shareholderReturn": 5.0
       },
       "componentLimits": {
-        "moat": 30,
-        "growth": 25,
+        "moatIndustry": 20,
+        "moatCross": 10,
+        "growth": 20,
         "profitability": 20,
         "financialHealth": 15,
         "management": 5,
-        "shareholderReturn": 5
+        "shareholderReturn": 10
       },
-      "isFinancial": false,
-      "currentPrice": 259500,
-      "priceBasisDate": "2026-09-17",
+      "currentPrice": 41400,
+      "priceBasisDate": "2026-09-22",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
       "valuationHorizonYears": 3,
-      "forwardEps3y": 12969,
-      "historicalPer5y": 25,
-      "overseasPeerPer": 28,
-      "overseasCorrectionPer": 0.9,
+      "forwardEps3y": 3450,
+      "historicalPer5y": 12,
+      "overseasPeerPer": 12,
+      "overseasCorrectionPer": 0,
       "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 25.9,
+      "appliedPer": 12,
       "discountRate": 10,
-      "primaryVm": 252400,
+      "primaryVm": 31100,
       "crossCheckVm": null,
-      "finalVm": 355800,
-      "modelCalculatedVm": 252400,
+      "finalVm": 41400,
+      "modelCalculatedVm": 31100,
       "officialVmOverride": true,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-07-31)",
+      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (잠정확정, 최근 원문 리포트 부재로 데이터한계 큼)",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 261300,
+          "finalVm": 30400,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -3079,7 +3249,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 355800,
+          "finalVm": 41400,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -3088,7 +3258,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 462500,
+          "finalVm": 53800,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -3097,46 +3267,30 @@
         }
       },
       "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
         "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
+          "최신 보고서 핵심 지표 확인 필요",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "산업용 AFM 기술 해자와 글로벌 계측기업 비교를 반영한다.",
-      "gapRate": -27.1,
+      "vmNote": "",
+      "gapRate": 0.0,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
-      "reason": "산업용 AFM의 비접촉식 계측 기술과 고객 인증, 반복 수요가 독점적 지위를 지지한다.",
-      "risk": "고평가 부담, 반도체 고객 CAPEX와 신규 장비 채택 속도를 점검해야 한다.",
+      "reason": "반도체 포토레지스트 국산화와 디스플레이 소재 다각화가 안정적 수요 기반을 만든다.",
+      "risk": "특정 소재·고객 집중과 최근 원문 리포트 공백에 따른 데이터 한계가 있어 보수적 접근이 필요하다.",
       "warning": null,
       "issues": [],
       "financials": {
-        "revenue2025": 2056,
-        "operatingMargin2025": 20.52,
-        "roe2025": 16.69,
-        "debtRatio2025": 55.44,
-        "eps2025": 4963,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814004158",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-22T00:56:41+09:00",
-          "revenueEok": 924,
-          "operatingMargin": 6.83,
-          "roeAnnualized": 5.46,
-          "debtRatio": 39.26,
-          "epsCumulative": 1110,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
@@ -3150,13 +3304,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-04",
+        "reviewedAt": "2026-09-22",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-09-17",
-          "financialReport": "2026-06-30",
-          "eps": "2026-07-31",
-          "multiple": "2026-07-31",
+          "price": "2026-09-22",
+          "financialReport": "2026-09-22",
+          "eps": "2026-09-22",
+          "multiple": "2026-09-22",
           "nextReview": "2026-09-30"
         }
       },

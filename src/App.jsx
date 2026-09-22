@@ -14,12 +14,13 @@ const companyCodeFromHash = () => {
 }
 
 const SCORE_META = [
-  { key: 'moat', label: '경쟁우위·해자', max: 30, short: '해자' },
-  { key: 'growth', label: '장기 성장성', max: 25, short: '성장' },
-  { key: 'profitability', label: '수익성·현금창출', max: 20, short: '수익' },
+  { key: 'moatIndustry', label: '해자·산업내 경쟁력', max: 20, short: '해자①' },
+  { key: 'moatCross', label: '해자·전산업 관점', max: 10, short: '해자②' },
+  { key: 'growth', label: '성장성', max: 20, short: '성장' },
+  { key: 'profitability', label: '수익성(ROE)', max: 20, short: '수익' },
   { key: 'financialHealth', label: '재무건전성', max: 15, short: '재무' },
   { key: 'management', label: '경영진', max: 5, short: '경영' },
-  { key: 'shareholderReturn', label: '주주환원', max: 5, short: '환원' },
+  { key: 'shareholderReturn', label: '주주환원', max: 10, short: '환원' },
 ]
 
 const number = (value) => {
@@ -163,21 +164,22 @@ function normalizeCompany(company, index) {
     sector: company.sector || company.industry || '미분류',
     caqm: firstNumber(company.caqm, company.cavm, company.caqmScore, company.cavmScore, company.score) ?? 0,
     components: {
-      moat: firstNumber(components.moat, components.competitiveAdvantage) ?? 0,
+      moatIndustry: firstNumber(components.moatIndustry) ?? 0,
+      moatCross: firstNumber(components.moatCross) ?? 0,
       growth: firstNumber(components.growth) ?? 0,
       profitability: firstNumber(components.profitability, components.profit) ?? 0,
       financialHealth: firstNumber(components.financialHealth, components.financial) ?? 0,
       management: firstNumber(components.management) ?? 0,
       shareholderReturn: firstNumber(components.shareholderReturn) ?? 0,
     },
-    isFinancial: Boolean(company.isFinancial),
     componentLimits: {
-      moat: firstNumber(company.componentLimits?.moat) ?? 30,
-      growth: firstNumber(company.componentLimits?.growth) ?? 25,
+      moatIndustry: firstNumber(company.componentLimits?.moatIndustry) ?? 20,
+      moatCross: firstNumber(company.componentLimits?.moatCross) ?? 10,
+      growth: firstNumber(company.componentLimits?.growth) ?? 20,
       profitability: firstNumber(company.componentLimits?.profitability) ?? 20,
       financialHealth: firstNumber(company.componentLimits?.financialHealth) ?? 15,
       management: firstNumber(company.componentLimits?.management) ?? 5,
-      shareholderReturn: firstNumber(company.componentLimits?.shareholderReturn) ?? 5,
+      shareholderReturn: firstNumber(company.componentLimits?.shareholderReturn) ?? 10,
     },
     currentPrice,
     priceBasisDate: company.priceBasisDate || market.priceAsOf || market.asOf || null,
@@ -1223,10 +1225,10 @@ function MatrixSection({ snapshot, selectedCode, onSelect }) {
 }
 
 function downloadTop20Csv(companies) {
-  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자', '성장', '수익성', '재무건전성', '경영진', '주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '매수신호', '판단', '경고']
+  const headers = ['순위', '종목코드', '기업', '업종', 'CAQM', '해자①', '해자②', '성장', '수익성', '재무건전성', '경영진', '주주환원', '현재가', 'Final VM', '괴리율', 'VM 신뢰도', '매수신호', '판단', '경고']
   const rows = companies.map((company) => [
     company.rank, company.code, company.name, company.sector, company.caqm,
-    company.components.moat, company.components.growth, company.components.profitability,
+    company.components.moatIndustry, company.components.moatCross, company.components.growth, company.components.profitability,
     company.components.financialHealth, company.components.management, company.components.shareholderReturn,
     company.currentPrice, company.finalVm, company.gapRate, company.vmConfidence?.grade || '',
     company.signal || '', company.opinion, company.warning || '',
@@ -1547,9 +1549,6 @@ function SectorView({ companies, candidates, selectedCode, onSelect }) {
 function ScoreBreakdown({ company }) {
   return (
     <div className="score-breakdown">
-      {company.isFinancial && (
-        <p className="score-breakdown-note">금융업(은행·증권·보험) 배점 적용 · 해자 25·성장성 20·수익성 20·재무건전성 15·경영진 10·주주환원 10</p>
-      )}
       {SCORE_META.map((meta) => {
         const max = company.componentLimits?.[meta.key] ?? meta.max
         const value = company.components[meta.key]
@@ -1576,9 +1575,18 @@ function qualityEvidenceFor(company, meta) {
     ? { sourceLabel: 'OpenDART 공시 원문', sourceUrl: reportUrl }
     : { sourceLabel: '근거 링크 보강 중', sourceUrl: '' }
   const evidence = {
-    moat: {
-      title: '경쟁우위 판단 근거',
-      detail: company.reason || '브랜드·기술·시장지배력의 정성 근거를 검토 중입니다.',
+    moatIndustry: {
+      title: '해자·산업내 경쟁력 판단 근거',
+      detail: company.reason || '산업 내 시장지배력·전환비용의 정성 근거를 검토 중입니다.',
+      status: company.reason ? 'reviewed' : 'pending',
+      sourceLabel: '정성 근거 링크 보강 중',
+      sourceUrl: '',
+      checkedAt: company.review?.reviewedAt,
+      nextReviewAt,
+    },
+    moatCross: {
+      title: '해자·전산업 관점 판단 근거',
+      detail: '브랜드·기술·네트워크 효과가 산업 경계를 넘어서도 대체 불가능한지를 기준으로 검토합니다.',
       status: company.reason ? 'reviewed' : 'pending',
       sourceLabel: '정성 근거 링크 보강 중',
       sourceUrl: '',

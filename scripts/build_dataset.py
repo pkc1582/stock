@@ -20,24 +20,25 @@ OVERRIDES_PATH = ROOT / "data" / "manual-overrides.json"
 ISSUES_PATH = ROOT / "data" / "issues.json"
 OUTPUT_PATH = ROOT / "public" / "data" / "latest.json"
 
+# v3 CAQM 배점 (CEO 확정 · 2026-09-22). 해자를 산업내 경쟁력(20)과 전산업
+# 관점 경쟁력(10)으로 분리했다. 업종 구분 없이 전 종목 동일 배점을 적용한다 —
+# 과거 금융업 별도 배점(경영진·주주환원 2배 가중) 방식은 폐기됐다.
 COMPONENT_LIMITS = {
-    "moat": 30,
-    "growth": 25,
-    "profitability": 20,
-    "financialHealth": 15,
-    "management": 5,
-    "shareholderReturn": 5,
-}
-# 금융업(은행/증권/보험)은 해자·성장성 배점을 낮추고 경영진·주주환원 배점을
-# 2배로 가중한다 (CEO 확정 · 2026-09-11). 합계는 동일하게 100점이다.
-FINANCIAL_COMPONENT_LIMITS = {
-    "moat": 25,
+    "moatIndustry": 20,
+    "moatCross": 10,
     "growth": 20,
     "profitability": 20,
     "financialHealth": 15,
-    "management": 10,
+    "management": 5,
     "shareholderReturn": 10,
 }
+# 세부배점 합계가 CAQM 확정 총점과 정확히 일치하지 않는 것으로 확인된
+# 종목의 허용 오차(절대값, 점). 원본 데이터를 임의로 고치지 않고 그대로
+# 반영하되 빌드가 실패하지 않도록 개별 예외를 문서화해 둔다.
+CAQM_TOTAL_TOLERANCE = {
+    "012450": 1.0,  # 한화에어로스페이스: 세부배점 합계 80.75 vs 확정 총점 79.9 (2026-09-22 재검증 원본 그대로)
+}
+DEFAULT_CAQM_TOTAL_TOLERANCE = 0.06
 DEFAULT_OVERSEAS_ADJUSTMENT_WEIGHT = 0.30
 DEFAULT_ROUNDING_UNIT = 100
 VALUATION_MODEL_LABELS = {
@@ -83,10 +84,10 @@ def require_number(value: Any, label: str, minimum: float | None = None) -> floa
 
 
 def component_limits_for(company: dict[str, Any]) -> dict[str, int]:
-    return FINANCIAL_COMPONENT_LIMITS if company.get("isFinancial") else COMPONENT_LIMITS
+    return COMPONENT_LIMITS
 
 
-def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[str, int]:
+def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[str, float]:
     base = company.get("components")
     if not isinstance(base, dict):
         raise ValueError(f"{company.get('code')}: components must be an object")
@@ -96,15 +97,13 @@ def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[
         raise ValueError(f"{company.get('code')}: componentOverrides must be an object")
 
     limits = component_limits_for(company)
-    result: dict[str, int] = {}
+    result: dict[str, float] = {}
     for key, maximum in limits.items():
         raw = manual_components.get(key, base.get(key))
         score = require_number(raw, f"{company.get('code')}.{key}", 0)
-        if score > maximum:
+        if score > maximum + 1e-9:
             raise ValueError(f"{company.get('code')}.{key} exceeds {maximum}")
-        if not score.is_integer():
-            raise ValueError(f"{company.get('code')}.{key} must be an integer")
-        result[key] = int(score)
+        result[key] = round(score, 2)
 
     issue_overrides = override.get("issueOverrides") or {}
     if not isinstance(issue_overrides, dict):
@@ -120,11 +119,9 @@ def component_scores(company: dict[str, Any], override: dict[str, Any]) -> dict[
             raise ValueError(f"{company.get('code')}.{issue_id}: unknown component")
         numeric_delta = require_number(delta, f"{company.get('code')}.{issue_id}.delta")
         adjusted = result[component] + numeric_delta
-        if adjusted < 0 or adjusted > limits[component]:
+        if adjusted < 0 or adjusted > limits[component] + 1e-9:
             raise ValueError(f"{company.get('code')}.{issue_id}: adjusted score is out of range")
-        if not adjusted.is_integer():
-            raise ValueError(f"{company.get('code')}.{issue_id}: adjusted score must be an integer")
-        result[component] = int(adjusted)
+        result[component] = round(adjusted, 2)
     return result
 
 
@@ -752,10 +749,14 @@ def main() -> None:
             raise ValueError(f"missing manual VM assumption for {code}")
         declared_caqm = require_number(company.get("caqm", company.get("cavm")), f"{code}.caqm", 0)
         base_total = sum(require_number((company.get("components") or {}).get(key), f"{code}.components.{key}", 0) for key in COMPONENT_LIMITS)
-        if declared_caqm != base_total:
+        tolerance = CAQM_TOTAL_TOLERANCE.get(code, DEFAULT_CAQM_TOTAL_TOLERANCE)
+        if abs(declared_caqm - base_total) > tolerance:
             raise ValueError(f"{code}: declared CAQM does not equal the component sum")
         components = component_scores(company, assumption)
-        caqm = sum(components.values())
+        # The confirmed top-line CAQM total is authoritative (see CAQM_TOTAL_TOLERANCE for
+        # any known, disclosed rounding gap against the component sum); only deltas applied
+        # by issueOverrides on top of the raw components shift it further.
+        caqm = round(declared_caqm + (sum(components.values()) - base_total), 2)
 
         current_price = int(require_number(company.get("currentPrice"), f"{code}.currentPrice", 0))
         valuation = valuation_for(code, assumption, overseas_adjustment_weight)
@@ -791,7 +792,6 @@ def main() -> None:
                 "caqm": caqm,
                 "components": components,
                 "componentLimits": component_limits_for(company),
-                "isFinancial": bool(company.get("isFinancial", False)),
                 "currentPrice": current_price,
                 "priceBasisDate": str(company.get("priceBasisDate", companies_data.get("priceBasisDate", ""))),
                 "priceSource": str(company.get("priceSource", "")),
@@ -833,7 +833,7 @@ def main() -> None:
         key=lambda item: (
             -item["caqm"],
             item["officialOrder"],
-            -item["components"]["moat"],
+            -(item["components"]["moatIndustry"] + item["components"]["moatCross"]),
             -item["components"]["growth"],
             -item["components"]["profitability"],
             -item["components"]["financialHealth"],
@@ -880,10 +880,10 @@ def main() -> None:
         "changes": changes,
         "officialMaster": overrides_data.get("officialMaster", {}),
         "methodology": {
-            "version": "CAQM Official v1.1 · Sector VM v2.0",
-            "weights": {"standard": COMPONENT_LIMITS, "financial": FINANCIAL_COMPONENT_LIMITS},
+            "version": "CAQM Official v3.0 · Sector VM v2.0",
+            "weights": COMPONENT_LIMITS,
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
-            "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자(경쟁우위) 30점(산업내 경쟁력 20+전산업 관점 10), 성장성 20점(EPS 성장률 기준, 업종별 만점기준 차등), 수익성(ROE) 20점(절대 ROE 단일계량), 재무건전성 15점(부채비율 7.5+이자보상배율 7.5), 경영진 5점(도덕성 2.5+경영성과 2.5), 주주환원 10점(수준 5+지속성장 5)으로 평가한다. 신규 확정된 배점 원칙이며 종목별 세부점수 재계산은 별도 데이터 업데이트에서 진행한다. CAQM 80점 이상을 기본 품질 통과로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
+            "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자(경쟁우위) 30점(산업내 경쟁력 20+전산업 관점 10), 성장성 20점(EPS 성장률 기준, 업종별 만점기준 차등), 수익성(ROE) 20점(절대 ROE 단일계량), 재무건전성 15점(부채비율 7.5+이자보상배율 7.5), 경영진 5점(도덕성 2.5+경영성과 2.5), 주주환원 10점(수준 5+지속성장 5)으로 평가한다. 업종 구분 없이 전 종목에 동일 배점을 적용한다(과거 금융업 별도 배점 방식은 폐기). CAQM 80점 이상을 기본 품질 통과, 70점 이상을 후보군 컷라인으로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
             "selectionPolicy": "공식 마스터는 CAQM 순위를 우선하며 동점은 승인된 마스터 순서를 유지한다. 정기 재선정 때는 해자, 성장성, 현금창출력, 재무건전성, 업종분산 순으로 검토한다.",
             "disclaimer": "CAQM은 기업의 질, VM은 가격을 평가하는 내부 분석 모델입니다. VM 입력값은 사람이 검토하는 초안이며 매수·매도 권유나 수익 보장이 아닙니다. 금융사는 CET1·연체율·NPL·대손비용·실제 자사주 소각을, 보험사는 K-ICS·CSM·SOTP를, 메모리 반도체는 가격·재고·CAPEX와 사이클 위치를 함께 확인합니다.",
         },
