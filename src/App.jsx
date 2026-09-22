@@ -370,7 +370,13 @@ const gapSign = (gap) => {
   return ''
 }
 
-const signalTone = (signal) => (signal === '매수검토' ? 'buy' : 'watch')
+const SIGNAL_TONES = {
+  강한안전마진: 'strong',
+  적극검토: 'active',
+  '1차관심': 'watchlist',
+  관망: 'watch',
+}
+const signalTone = (signal) => SIGNAL_TONES[signal] || 'watch'
 
 const caqmTier = (caqm) => {
   if (caqm >= 90) return 'gold'

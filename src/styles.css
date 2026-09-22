@@ -309,8 +309,10 @@ tbody tr.selected-row { box-shadow: inset 3px 0 var(--green); }
 .opinion-text { font-weight: 600; }
 .warning-icon { margin-left: 5px; color: #b3261e; font-size: 11px; cursor: help; }
 .signal-badge { display: inline-block; padding: 6px 10px; border-radius: 20px; font-weight: 700; font-size: 11px; }
-.signal-badge.buy { background: #ddf0e5; color: #08704d; }
 .signal-badge.watch { background: #e6e7e5; color: #565f5a; }
+.signal-badge.watchlist { background: #e3f0d9; color: #3f6b2f; }
+.signal-badge.active { background: #ddf0e5; color: #08704d; }
+.signal-badge.strong { background: #fdf1cf; color: #8a6a12; }
 .sector-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; background: #dce7f5; color: #1d4e89; font-size: 11px; font-weight: 700; white-space: nowrap; }
 .status-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; font-weight: 700; white-space: nowrap; }
 .status-badge.status-top20 { background: #ddf0e5; color: #08704d; }

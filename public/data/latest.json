@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T22:38:01+09:00",
+  "generatedAt": "2026-09-22T22:44:35+09:00",
   "basisDate": "2026-09-22",
   "dataStatus": "OpenDART 최신 보고서 확인 12/20 · 주요지표 완전 10/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,186 +9,15 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-09-22T00:57:42+09:00",
-    "generatedAt": "2026-09-22T22:38:01+09:00",
+    "comparedAt": "2026-09-22T22:38:01+09:00",
+    "generatedAt": "2026-09-22T22:44:35+09:00",
     "vm": [],
     "gap": [],
-    "caqm": [
-      {
-        "code": "005930",
-        "name": "삼성전자",
-        "before": 83,
-        "after": 92.5
-      },
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": 83,
-        "after": 92.4
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 85,
-        "after": 90.3
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 88,
-        "after": 83.5
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": 80,
-        "after": 79.9
-      },
-      {
-        "code": "278470",
-        "name": "에이피알",
-        "before": 82,
-        "after": 79.7
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 80,
-        "after": 79.1
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 91,
-        "after": 78.8
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 94,
-        "after": 78.3
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": 86,
-        "after": 78.2
-      },
-      {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "before": 84,
-        "after": 78.0
-      },
-      {
-        "code": "055550",
-        "name": "신한지주",
-        "before": 90,
-        "after": 77.1
-      }
-    ],
-    "entrants": [
-      {
-        "code": "403870",
-        "name": "HPSP",
-        "rank": 3,
-        "caqm": 91.5
-      },
-      {
-        "code": "007660",
-        "name": "이수페타시스",
-        "rank": 6,
-        "caqm": 82.8
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "rank": 7,
-        "caqm": 82.1
-      },
-      {
-        "code": "062040",
-        "name": "산일전기",
-        "rank": 8,
-        "caqm": 81.5
-      },
-      {
-        "code": "003230",
-        "name": "삼양식품",
-        "rank": 9,
-        "caqm": 80.2
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "rank": 13,
-        "caqm": 79.0
-      },
-      {
-        "code": "237690",
-        "name": "에스티팜",
-        "rank": 15,
-        "caqm": 78.3
-      },
-      {
-        "code": "005290",
-        "name": "동진쎄미켐",
-        "rank": 20,
-        "caqm": 77.0
-      }
-    ],
-    "exits": [
-      {
-        "code": "105560",
-        "name": "KB금융",
-        "previousRank": 2,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "039490",
-        "name": "키움증권",
-        "previousRank": 2,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "previousRank": 6,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "006800",
-        "name": "미래에셋증권",
-        "previousRank": 6,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "003690",
-        "name": "코리안리재보험",
-        "previousRank": 9,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "021240",
-        "name": "코웨이",
-        "previousRank": 16,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "052690",
-        "name": "한전기술",
-        "previousRank": 19,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      },
-      {
-        "code": "140860",
-        "name": "파크시스템스",
-        "previousRank": 20,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      }
-    ],
+    "caqm": [],
+    "entrants": [],
+    "exits": [],
     "reports": [],
-    "hasMaterialChanges": true
+    "hasMaterialChanges": false
   },
   "officialMaster": {
     "version": "국내 TOP20 공식 마스터 · 2026-09-22 (v3 CAQM 전종목 재검증)",
@@ -610,7 +439,7 @@
       "gapRate": -48.8,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "매수검토",
+      "signal": "강한안전마진",
       "reason": "메모리·파운드리·모바일·가전의 규모와 재무안정성이 장기 경쟁력의 기반이다.",
       "risk": "HBM 고객 인증, 파운드리 수율과 메모리 피크 이익의 지속성을 보수적으로 봐야 한다.",
       "warning": null,
@@ -765,7 +594,7 @@
       "gapRate": -39.4,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "매수검토",
+      "signal": "적극검토",
       "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
       "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
       "warning": null,
@@ -1038,7 +867,7 @@
       "gapRate": -45.2,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "매수검토",
+      "signal": "강한안전마진",
       "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
       "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
       "warning": null,
@@ -1188,7 +1017,7 @@
       "gapRate": -27.1,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "매수검토",
+      "signal": "1차관심",
       "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
       "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다. 조현준 회장의 횡령 확정판결에 따른 경영진 점수 중대 감점 요인이 있다.",
       "warning": "조현준 회장 횡령 확정판결(경영진 중대감점)",
@@ -1841,7 +1670,7 @@
       "gapRate": -23.5,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "관망",
+      "signal": "1차관심",
       "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
       "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
       "warning": null,
@@ -2557,7 +2386,7 @@
       "gapRate": -29.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "관망",
+      "signal": "1차관심",
       "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
       "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
       "warning": null,
@@ -2830,7 +2659,7 @@
       "gapRate": -21.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "관망",
+      "signal": "1차관심",
       "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
       "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
       "warning": null,

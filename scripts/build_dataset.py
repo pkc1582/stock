@@ -451,18 +451,18 @@ def change_log_for(
 
 
 def signal_for(caqm: int, gap_rate: float | None) -> str | None:
-    """Tiered buy-review signal: higher CAQM tolerates a shallower discount."""
+    """Buy-review signal: one uniform gap-rate rule applied to every stock,
+    regardless of CAQM tier (CEO 확정 · 2026-09-22, 매수검토 판단 기준 · 전
+    종목 동일 기준 적용)."""
     if gap_rate is None:
         return None
-    if caqm >= 90:
-        threshold = -15
-    elif caqm >= 80:
-        threshold = -20
-    elif caqm >= 70:
-        threshold = -30
-    else:
-        threshold = -40
-    return "매수검토" if gap_rate <= threshold else "관망"
+    if gap_rate <= -40:
+        return "강한안전마진"
+    if gap_rate <= -30:
+        return "적극검토"
+    if gap_rate <= -20:
+        return "1차관심"
+    return "관망"
 
 
 def rating_for(caqm: int, gap_rate: float | None) -> tuple[str, str]:
