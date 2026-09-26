@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "basisDate": "2026-09-22",
+  "basisDate": "2026-09-26",
   "priceBasisDate": "2026-09-22",
   "universeSize": 20,
   "currency": "KRW",
@@ -63,8 +63,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -122,8 +122,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -181,8 +181,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -240,8 +240,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -299,8 +299,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       },
       "warning": "조현준 회장 횡령 확정판결(경영진 중대감점)"
     },
@@ -359,8 +359,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -418,8 +418,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -477,8 +477,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -536,8 +536,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       },
       "warning": "창업주 전인장 전 회장 반복확정유죄(경영진 중대감점)"
     },
@@ -596,8 +596,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -655,8 +655,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -714,8 +714,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -773,8 +773,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       },
       "warning": "최대주주 베인캐피탈 경영권 매각 추진 이력, 잔여지분 54% 보유중"
     },
@@ -836,8 +836,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -895,8 +895,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -954,8 +954,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -1013,8 +1013,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -1072,8 +1072,8 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
@@ -1134,52 +1134,36 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
       }
     },
     {
-      "code": "005290",
+      "code": "079550",
       "officialOrder": 20,
-      "name": "동진쎄미켐",
-      "sector": "반도체소재",
-      "caqm": 77.0,
+      "name": "LIG디펜스앤에어로스페이스",
+      "sector": "방산",
+      "caqm": 74.0,
       "components": {
-        "moatIndustry": 19.0,
-        "moatCross": 6.0,
-        "growth": 20.0,
-        "profitability": 11.1,
-        "financialHealth": 11.4,
-        "management": 4.5,
-        "shareholderReturn": 5.0
+        "moatIndustry": 20.0,
+        "moatCross": 8.8,
+        "growth": 14.8,
+        "profitability": 15.9,
+        "financialHealth": 8.5,
+        "management": 3.0,
+        "shareholderReturn": 3.0
       },
-      "currentPrice": 42950,
-      "priceBasisDate": "2026-09-22",
+      "currentPrice": 699000,
+      "priceBasisDate": "2026-09-23",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
-      "reason": "반도체 포토레지스트 국산화와 디스플레이 소재 다각화가 안정적 수요 기반을 만든다.",
-      "risk": "특정 소재·고객 집중과 최근 원문 리포트 공백에 따른 데이터 한계가 있어 보수적 접근이 필요하다.",
+      "reason": "정밀유도무기(천궁-Ⅱ·L-SAM) 국내 사실상 독점과 중동 수출 레퍼런스, 수주잔고 확대가 성장 가시성을 높인다.",
+      "risk": "임원 뇌물 기소(2026-08-20)에 따른 방사청 입찰참가 제한 여부, 수주-매출 인식 시차와 환율 변동을 점검해야 한다.",
       "financials": {
-        "revenue2025": 11941,
-        "operatingMargin2025": 14.44,
-        "roe2025": 8.87,
-        "debtRatio2025": 82.11,
-        "eps2025": 1927,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814002890",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-26T12:58:32+09:00",
-          "revenueEok": 6750,
-          "operatingMargin": 18.65,
-          "roeAnnualized": 25.92,
-          "debtRatio": 81.59,
-          "epsCumulative": 3020,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
@@ -1193,9 +1177,10 @@
       ],
       "review": {
         "status": "reviewed",
-        "reviewedAt": "2026-09-22",
-        "nextReviewAt": "2026-09-30"
-      }
+        "reviewedAt": "2026-09-26",
+        "nextReviewAt": "2026-10-31"
+      },
+      "warning": "임원 2명 방사청 뇌물 혐의 기소(2026-08-20) — 부정당업자 제재 결정 대기"
     }
   ],
   "financialDataSummary": {
