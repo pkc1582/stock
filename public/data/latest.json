@@ -1,28 +1,248 @@
 {
-  "generatedAt": "2026-09-26T12:59:37+09:00",
-  "basisDate": "2026-09-22",
-  "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
+  "generatedAt": "2026-09-26T14:16:38+09:00",
+  "basisDate": "2026-09-26",
+  "dataStatus": "OpenDART 최신 보고서 확인 19/20 · 주요지표 완전 17/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
     "companyCount": 20,
-    "latestReportSuccessCount": 20,
-    "latestReportCompleteCount": 18,
+    "latestReportSuccessCount": 19,
+    "latestReportCompleteCount": 17,
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-09-25T23:47:24+09:00",
-    "generatedAt": "2026-09-26T12:59:37+09:00",
-    "vm": [],
-    "gap": [],
+    "comparedAt": "2026-09-26T12:59:37+09:00",
+    "generatedAt": "2026-09-26T14:16:38+09:00",
+    "vm": [
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": 1298500,
+        "after": 954200
+      },
+      {
+        "code": "298040",
+        "name": "효성중공업",
+        "before": 3924900,
+        "after": 3472000
+      },
+      {
+        "code": "329180",
+        "name": "HD현대중공업",
+        "before": 646000,
+        "after": 516900
+      },
+      {
+        "code": "062040",
+        "name": "산일전기",
+        "before": 203600,
+        "after": 274700
+      },
+      {
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": 1433700,
+        "after": 1025500
+      },
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "before": 407700,
+        "after": 524100
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": 167700,
+        "after": 164900
+      },
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "before": 106600,
+        "after": 60300
+      },
+      {
+        "code": "000810",
+        "name": "삼성화재",
+        "before": 785000,
+        "after": 629500
+      },
+      {
+        "code": "058470",
+        "name": "리노공업",
+        "before": 93900,
+        "after": 75200
+      },
+      {
+        "code": "237690",
+        "name": "에스티팜",
+        "before": 168100,
+        "after": 171500
+      },
+      {
+        "code": "214450",
+        "name": "파마리서치",
+        "before": 417800,
+        "after": 479300
+      },
+      {
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "before": 186700,
+        "after": 151700
+      },
+      {
+        "code": "055550",
+        "name": "신한지주",
+        "before": 113000,
+        "after": 99500
+      }
+    ],
+    "gap": [
+      {
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": -26.3,
+        "after": 3.1,
+        "delta": 29.4
+      },
+      {
+        "code": "062040",
+        "name": "산일전기",
+        "before": 0.7,
+        "after": -25.4,
+        "delta": -26.1
+      },
+      {
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "before": 13.6,
+        "after": 39.7,
+        "delta": 26.1
+      },
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "before": -71.3,
+        "after": -49.3,
+        "delta": 22.0
+      },
+      {
+        "code": "000810",
+        "name": "삼성화재",
+        "before": -16.6,
+        "after": 4.1,
+        "delta": 20.7
+      },
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": -45.0,
+        "after": -25.2,
+        "delta": 19.8
+      },
+      {
+        "code": "058470",
+        "name": "리노공업",
+        "before": -20.1,
+        "after": -0.3,
+        "delta": 19.8
+      },
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "before": -11.3,
+        "after": -31.0,
+        "delta": -19.7
+      },
+      {
+        "code": "329180",
+        "name": "HD현대중공업",
+        "before": -29.5,
+        "after": -11.9,
+        "delta": 17.6
+      },
+      {
+        "code": "055550",
+        "name": "신한지주",
+        "before": 0.2,
+        "after": 13.8,
+        "delta": 13.6
+      },
+      {
+        "code": "214450",
+        "name": "파마리서치",
+        "before": -22.5,
+        "after": -32.4,
+        "delta": -9.9
+      },
+      {
+        "code": "298040",
+        "name": "효성중공업",
+        "before": -26.1,
+        "after": -16.4,
+        "delta": 9.7
+      }
+    ],
     "caqm": [],
-    "entrants": [],
-    "exits": [],
+    "entrants": [
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "rank": 20,
+        "caqm": 74.0
+      }
+    ],
+    "exits": [
+      {
+        "code": "005290",
+        "name": "동진쎄미켐",
+        "previousRank": 20,
+        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
+      }
+    ],
     "reports": [],
-    "hasMaterialChanges": false
+    "hasMaterialChanges": true
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-22 (v3 CAQM 전종목 재검증)",
-    "basisDate": "2026-09-22",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-26 (TOP20 VM 새 기준 재검증 완료)",
+    "basisDate": "2026-09-26",
     "changes": [
+      {
+        "code": null,
+        "name": "TOP20 전종목",
+        "date": "2026-09-26",
+        "field": "Final VM 재검증 (새 기준)",
+        "before": "종목별 기존 VM(단일 증권사 EPS·임의 프리미엄 혼재)",
+        "after": "복수 증권사 EPS 평균 + K×D 선반영 체크 + 3개월 증권사 목표가 평균을 VM 상한으로 적용",
+        "reason": "TOP20 20종목의 VM을 동일 기준으로 재산출했습니다. 우리 VM은 증권사 목표가 평균을 넘지 않도록 보수적으로 제한합니다."
+      },
+      {
+        "code": "005290",
+        "name": "동진쎄미켐",
+        "date": "2026-09-26",
+        "field": "검토대상 제외",
+        "before": "TOP20 20위 (CAQM 77.0)",
+        "after": "제외",
+        "reason": "최근 3년간 증권사 커버리지가 없어 신뢰할 만한 EPS 컨센서스를 확보할 수 없습니다(장기예측불가 원칙)."
+      },
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "date": "2026-09-26",
+        "field": "후보군 → TOP20 20위 승격 · CAQM 조정",
+        "before": "후보군 1위 (CAQM 76.0, VM 758,100원)",
+        "after": "TOP20 20위 (CAQM 74.0, VM 681,200원)",
+        "reason": "동진쎄미켐 제외로 승격. 임원 뇌물 기소(2026-08-20)를 반영해 경영진 점수를 5.0→3.0으로 조정했습니다."
+      },
+      {
+        "code": "000810",
+        "name": "삼성화재",
+        "date": "2026-09-26",
+        "field": "Final VM 방법론 변경 (SOTP)",
+        "before": "785,000원",
+        "after": "629,500원",
+        "reason": "보험 본업 가치와 삼성전자 지분 가치(50% 할인)를 따로 계산해 합산했습니다. 특별배당은 지분 가치에 포함된 것으로 보고 이중계산하지 않습니다."
+      },
       {
         "code": null,
         "name": "TOP20 전종목",
@@ -88,24 +308,6 @@
       }
     ],
     "candidates": [
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "sector": "방산",
-        "status": "후보군",
-        "caqm": 76.0,
-        "finalVm": 758100,
-        "note": "구LIG넥스원",
-        "components": {
-          "moatIndustry": 20.0,
-          "moatCross": 8.8,
-          "growth": 14.8,
-          "profitability": 15.9,
-          "financialHealth": 8.5,
-          "management": 5.0,
-          "shareholderReturn": 3.0
-        }
-      },
       {
         "code": "006800",
         "name": "미래에셋증권",
@@ -343,8 +545,8 @@
   "summary": {
     "universeSize": 20,
     "top20Count": 20,
-    "averageCaqm": 82.0,
-    "undervaluedCount": 15
+    "averageCaqm": 81.9,
+    "undervaluedCount": 14
   },
   "companies": [
     {
@@ -395,7 +597,7 @@
       ],
       "modelCalculatedVm": 389000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -435,7 +637,7 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "2028E 정상화 EPS 72,398원과 글로벌 메모리 비교를 반영한 정상 PER 6.5배를 사용한다. 사업 다각화와 재무안정성은 인정하되 HBM·파운드리 실행 위험과 피크 사이클을 고려해 2년 현재가치로 할인한다.",
+      "vmNote": "2사(현대차·DS) 2027F EPS 평균 × PER 6배. 2026-09-25 새 기준(복수 EPS·목표가 상한) 점검 결과 유지.",
       "gapRate": -43.9,
       "rating": "★★★★★",
       "opinion": "적극 매수",
@@ -490,13 +692,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -550,7 +752,7 @@
       ],
       "modelCalculatedVm": 2913000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -590,7 +792,7 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "2028E 정상화 EPS 512,706원과 Micron 비교를 반영한 정상 PER 7.0배를 사용한다. HBM 경쟁력 프리미엄은 인정하되 피크 EPS 과대평가를 막기 위해 2년 현재가치로 할인하며 DRAM·HBM 가격, 재고, CAPEX를 분기마다 재검증한다.",
+      "vmNote": "2028F EPS(미래에셋) × 정상 PER 8배 ÷ 1.1². 2사 평균 적용 시 3,135,300원이나 사이클 산업 장기 지속성 불확실로 보수적 유지(2026-09-25).",
       "gapRate": -36.1,
       "rating": "★★★★★",
       "opinion": "적극 매수",
@@ -645,13 +847,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -700,7 +902,7 @@
       "finalVm": 57700,
       "modelCalculatedVm": 43300,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -740,7 +942,7 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
+      "vmNote": "2028F EPS × 5년 평균 PER 38.73배(프리미엄 0.66%) ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
       "gapRate": -5.9,
       "rating": "★★★☆☆",
       "opinion": "관찰",
@@ -784,13 +986,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -836,14 +1038,14 @@
       "discountRate": 12,
       "primaryVm": 426800,
       "crossCheckVm": null,
-      "finalVm": 1298500,
+      "finalVm": 954200,
       "modelCalculatedVm": 426800,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 954400,
+          "finalVm": 701400,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -852,7 +1054,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 1298500,
+          "finalVm": 954200,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -861,7 +1063,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 1687300,
+          "finalVm": 1239900,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -879,11 +1081,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "북미 변압기 공급부족의 장기화를 반영하되 업황 정상화 위험을 적용한다.",
-      "gapRate": -45.0,
+      "vmNote": "2027E EPS 3사(교보·SK·미래에셋) 평균 34,246원 × 30.65배(5년 평균 30.52배 + K×D 선반영 체크) ÷ 1.1.",
+      "gapRate": -25.2,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "강한안전마진",
+      "signal": "1차관심",
       "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
       "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
       "warning": null,
@@ -934,13 +1136,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -986,14 +1188,14 @@
       "discountRate": 12,
       "primaryVm": 1284100,
       "crossCheckVm": null,
-      "finalVm": 3924900,
+      "finalVm": 3472000,
       "modelCalculatedVm": 1284100,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (경영진 중대감점(조현준 회장 횡령 확정판결))",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 2885000,
+          "finalVm": 2552100,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1002,7 +1204,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 3924900,
+          "finalVm": 3472000,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1011,7 +1213,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 5100300,
+          "finalVm": 4511800,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1029,11 +1231,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "미국 변압기 수요와 수주 가시성을 반영하되 레버리지와 증설 위험을 할인한다.",
-      "gapRate": -26.1,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "1차관심",
+      "vmNote": "2027F EPS 2분기 실적 이후 2사(대신·SK) 평균 126,969원 × 30.08배(5년 평균 26.63배 + K×D) ÷ 1.1.",
+      "gapRate": -16.4,
+      "rating": "★★★★☆",
+      "opinion": "분할매수",
+      "signal": "관망",
       "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
       "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다. 조현준 회장의 횡령 확정판결에 따른 경영진 점수 중대 감점 요인이 있다.",
       "warning": "조현준 회장 횡령 확정판결(경영진 중대감점)",
@@ -1084,13 +1286,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1139,7 +1341,7 @@
       "finalVm": 168800,
       "modelCalculatedVm": 126800,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1179,7 +1381,7 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
+      "vmNote": "2027F EPS(유안타) × 33.55배 ÷ 1.1. 메리츠·다올 영업이익 전망과 4% 이내 교차확인, 목표가 상한 점검 후 유지(2026-09-25).",
       "gapRate": -33.1,
       "rating": "★★★★★",
       "opinion": "적극 매수",
@@ -1223,13 +1425,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1275,14 +1477,14 @@
       "discountRate": 12,
       "primaryVm": 153600,
       "crossCheckVm": null,
-      "finalVm": 646000,
+      "finalVm": 516900,
       "modelCalculatedVm": 153600,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 474900,
+          "finalVm": 380000,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1291,7 +1493,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 646000,
+          "finalVm": 516900,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1300,7 +1502,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 839500,
+          "finalVm": 671700,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1318,11 +1520,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "고부가 선종 수주잔고와 방산·해양플랜트 포트폴리오를 반영하되 조선 경기민감도와 HD한국조선해양과의 밸류체인 중복을 할인한다.",
-      "gapRate": -29.5,
-      "rating": "★★★★★",
-      "opinion": "적극 매수",
-      "signal": "1차관심",
+      "vmNote": "PBR-고든 방식 기각. 조선 3사 선행 PER 최고(14.9배) + 경쟁력 프리미엄 10% = 16.4배 × 5사 평균 2028F EPS 38,164원 ÷ 1.1².",
+      "gapRate": -11.9,
+      "rating": "★★★★☆",
+      "opinion": "분할매수",
+      "signal": "관망",
       "reason": "고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.",
       "risk": "후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.",
       "warning": null,
@@ -1362,13 +1564,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1414,14 +1616,14 @@
       "discountRate": 10,
       "primaryVm": 153000,
       "crossCheckVm": null,
-      "finalVm": 203600,
+      "finalVm": 274700,
       "modelCalculatedVm": 153000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 149500,
+          "finalVm": 201700,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1430,7 +1632,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 203600,
+          "finalVm": 274700,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1439,7 +1641,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 264700,
+          "finalVm": 357100,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1457,11 +1659,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 0.7,
-      "rating": "★★★☆☆",
-      "opinion": "관찰",
-      "signal": "관망",
+      "vmNote": "5년 PER 사용 불가(상장 2년) → PEG 방식. 3사 평균 2028F EPS 11,460원 × PER 29배(목표가 평균 상한 280,000원 준수) ÷ 1.1².",
+      "gapRate": -25.4,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "1차관심",
       "reason": "전력기기 수요 확대와 수주잔고 성장이 안정적 이익 기반을 지지한다.",
       "risk": "수주 변동성과 생산능력 확장 속도, 전력기기 업황 사이클이 위험이다.",
       "warning": null,
@@ -1501,13 +1703,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1556,7 +1758,7 @@
       "finalVm": 1427500,
       "modelCalculatedVm": 1339100,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (경영진 중대감점(창업주 전인장 前회장 반복확정유죄))",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
@@ -1596,7 +1798,7 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "불닭 수출과 생산능력 확대를 반영하되 단일 브랜드 집중을 점검한다.",
+      "vmNote": "2028E EPS(LS) × 17.62배 ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
       "gapRate": -12.3,
       "rating": "★★★★☆",
       "opinion": "분할매수",
@@ -1651,13 +1853,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1703,14 +1905,14 @@
       "discountRate": 12,
       "primaryVm": 767000,
       "crossCheckVm": null,
-      "finalVm": 1433700,
+      "finalVm": 1025500,
       "modelCalculatedVm": 767000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (세부배점 합계(80.75)가 CAQM 총점(79.9)과 0.85점 차이 — 원본 데이터 그대로 반영, 총점 기준 확정 유지)",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 1053900,
+          "finalVm": 753800,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1719,7 +1921,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 1433700,
+          "finalVm": 1025500,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1728,7 +1930,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 1863100,
+          "finalVm": 1332600,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1746,11 +1948,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "수출 잔고 성장성과 방산 진입장벽을 반영하되 계약·재무 위험을 할인한다.",
-      "gapRate": -26.3,
+      "vmNote": "2028F EPS 3사(DS·유안타·키움, 이상치 대신 제외) 평균 67,585원 × 5년 평균 PER 18.36배(K×D 결과 프리미엄 0%) ÷ 1.1².",
+      "gapRate": 3.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "1차관심",
+      "signal": "관망",
       "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
       "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
       "warning": null,
@@ -1801,13 +2003,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1853,14 +2055,14 @@
       "discountRate": 10,
       "primaryVm": 225700,
       "crossCheckVm": null,
-      "finalVm": 407700,
+      "finalVm": 524100,
       "modelCalculatedVm": 225700,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 299500,
+          "finalVm": 385000,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -1869,7 +2071,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 407700,
+          "finalVm": 524100,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -1878,7 +2080,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 530100,
+          "finalVm": 681500,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -1896,11 +2098,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "메디큐브·에이지알의 해외 확장과 뷰티 디바이스 성장성을 반영하되 채널 재고와 신제품 주기 리스크를 할인한다.",
-      "gapRate": -11.3,
+      "vmNote": "2028F EPS 3사(교보·유안타·LS) 평균 22,180원 × 5년 평균 PER 28.59배(K×D 결과 프리미엄 0%) ÷ 1.1².",
+      "gapRate": -31.0,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "관망",
+      "signal": "적극검토",
       "reason": "메디큐브·에이지알 브랜드의 해외 확장과 뷰티 디바이스 성장성이 높은 CAQM을 지지한다.",
       "risk": "채널 재고와 신제품 주기 리스크, 해외 유통 실행력을 점검해야 한다.",
       "warning": null,
@@ -1940,13 +2142,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -1992,14 +2194,14 @@
       "discountRate": 10,
       "primaryVm": 114800,
       "crossCheckVm": null,
-      "finalVm": 167700,
+      "finalVm": 164900,
       "modelCalculatedVm": 114800,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 123100,
+          "finalVm": 121100,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2008,7 +2210,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 167700,
+          "finalVm": 164900,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2017,7 +2219,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 218000,
+          "finalVm": 214300,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2035,8 +2237,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 5.7,
+      "vmNote": "2027F EPS 2사(한화·DS) 평균 13,994원 × 12.96배(5년 평균 12.67배 + 프리미엄 2.28%) ÷ 1.1.",
+      "gapRate": 7.5,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2090,13 +2292,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2142,14 +2344,14 @@
       "discountRate": 10,
       "primaryVm": 75400,
       "crossCheckVm": null,
-      "finalVm": 106600,
+      "finalVm": 60300,
       "modelCalculatedVm": 75400,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 78300,
+          "finalVm": 44300,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2158,7 +2360,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 106600,
+          "finalVm": 60300,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2167,7 +2369,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 138500,
+          "finalVm": 78400,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2185,8 +2387,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "2026년 2분기 매출 1,055억원(+26.7% YoY)으로 분기 최초 1,000억원을 돌파했으나, 국내 장비·소모품 매출 부진과 브라질 매출 가이던스 하향(500~700억원→400억원대)을 반영해 3년 후 EPS 추정을 하향한다. 유럽·북미·태국 등 해외 성장은 견조하며 소모품 반복매출 구조는 유지된다.",
-      "gapRate": -71.3,
+      "vmNote": "2028F EPS 3사 평균 3,841원 × PER 19배(성장 둔화로 과거 PER 하향, 목표가 평균 상한 62,300원 준수) ÷ 1.1².",
+      "gapRate": -49.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -2229,13 +2431,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2282,14 +2484,14 @@
       "csmSotpAdjustment": 119500,
       "primaryVm": 644500,
       "crossCheckVm": 644500,
-      "finalVm": 785000,
+      "finalVm": 629500,
       "modelCalculatedVm": 644500,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 670400,
+          "finalVm": 537600,
           "assumptions": [
             "BPS·EPS -5%",
             "PBR·PER -10%",
@@ -2298,7 +2500,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 785000,
+          "finalVm": 629500,
           "assumptions": [
             "공식 적용 BPS·EPS",
             "공식 적용 배수",
@@ -2307,7 +2509,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 905900,
+          "finalVm": 726500,
           "assumptions": [
             "BPS·EPS +5%",
             "PBR·PER +10%",
@@ -2325,8 +2527,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "정상화 BPS×PBR에 CSM·SOTP 조정을 별도로 더하고 EPS×PER로 교차검증한다. 조정값은 K-ICS, 보험계약서비스마진, 투자자산, 손해율과 실제 주주환원을 확인해 갱신하는 초안이다.",
-      "gapRate": -16.6,
+      "vmNote": "SOTP: 보험 본업(삼성전자 배당 제외 2027F EPS 55,144원 × 손보 peer PER 6.64배 ÷ 1.1 = 332,900원) + 삼성전자 지분(8,697만주 시가 × 50% 할인 = 주당 296,600원).",
+      "gapRate": 4.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2383,13 +2585,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2435,14 +2637,14 @@
       "discountRate": 11,
       "primaryVm": 66000,
       "crossCheckVm": null,
-      "finalVm": 93900,
+      "finalVm": 75200,
       "modelCalculatedVm": 66000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 69000,
+          "finalVm": 55200,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2451,7 +2653,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 93900,
+          "finalVm": 75200,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2460,7 +2662,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 122000,
+          "finalVm": 97700,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2478,11 +2680,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "정밀 테스트 부품의 고마진과 순현금을 반영하되 고객·업황 집중을 고려한다.",
-      "gapRate": -20.1,
+      "vmNote": "2028F EPS 2사(신한·메리츠) 평균 3,379원 × 5년 평균 PER 26.94배(프리미엄 0%) ÷ 1.1². 7~9월 파업 영향은 3분기 실적으로 확인 필요.",
+      "gapRate": -0.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "1차관심",
+      "signal": "관망",
       "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
       "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
       "warning": null,
@@ -2533,13 +2735,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2585,14 +2787,14 @@
       "discountRate": 10,
       "primaryVm": 126300,
       "crossCheckVm": null,
-      "finalVm": 168100,
+      "finalVm": 171500,
       "modelCalculatedVm": 126300,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (동점(78.3) 타이브레이크로 리노공업 다음 순위)",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 123500,
+          "finalVm": 126000,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2601,7 +2803,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 168100,
+          "finalVm": 171500,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2610,7 +2812,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 218500,
+          "finalVm": 223000,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2628,8 +2830,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": -46.1,
+      "vmNote": "5년 평균 PER 왜곡(136배) → PEG 방식. 2사 평균 2028F EPS 6,322원 × 32.8배(성장률) ÷ 1.1².",
+      "gapRate": -47.2,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -2672,13 +2874,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2724,14 +2926,14 @@
       "discountRate": 10,
       "primaryVm": 473300,
       "crossCheckVm": null,
-      "finalVm": 417800,
+      "finalVm": 479300,
       "modelCalculatedVm": 473300,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 306900,
+          "finalVm": 352000,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2740,7 +2942,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 417800,
+          "finalVm": 479300,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2749,7 +2951,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 543100,
+          "finalVm": 623100,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2767,11 +2969,11 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "리쥬란 해외 확장과 높은 성장성을 반영한 성장기업 할인율이다.",
-      "gapRate": -22.5,
+      "vmNote": "2028F EPS(LS, 보수적) 25,868원 × 22.42배(5년 평균 21.84배 + 프리미엄 2.64%) ÷ 1.1². 국내 리쥬란 성장 둔화 반영.",
+      "gapRate": -32.4,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "1차관심",
+      "signal": "적극검토",
       "reason": "리쥬란 브랜드와 PN 제조 역량, 의료진 채널 및 해외 확장이 높은 성장성과 마진을 만든다.",
       "risk": "핵심 제품 집중, 의료미용 규제와 해외 유통 실행력이 주요 위험이다.",
       "warning": null,
@@ -2822,13 +3024,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -2874,14 +3076,14 @@
       "discountRate": 11,
       "primaryVm": 136700,
       "crossCheckVm": null,
-      "finalVm": 186700,
+      "finalVm": 151700,
       "modelCalculatedVm": 136700,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 137200,
+          "finalVm": 111500,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -2890,7 +3092,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 186700,
+          "finalVm": 151700,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -2899,7 +3101,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 242700,
+          "finalVm": 197200,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -2917,8 +3119,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 13.6,
+      "vmNote": "2028F EPS 최신 2사(하나·유안타) 평균 6,845원 × 5년 평균 PER 26.81배(K×D 결과 프리미엄 0%) ÷ 1.1².",
+      "gapRate": 39.7,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2972,13 +3174,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -3024,14 +3226,14 @@
       "discountRate": 0,
       "primaryVm": 113000,
       "crossCheckVm": 113000,
-      "finalVm": 113000,
+      "finalVm": 99500,
       "modelCalculatedVm": 113000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 97000,
+          "finalVm": 85000,
           "assumptions": [
             "BPS·EPS -5%",
             "PBR·PER -10%"
@@ -3039,7 +3241,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 113000,
+          "finalVm": 99500,
           "assumptions": [
             "공식 적용 BPS·EPS",
             "공식 적용 배수"
@@ -3047,7 +3249,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 131000,
+          "finalVm": 115000,
           "assumptions": [
             "BPS·EPS +5%",
             "PBR·PER +10%"
@@ -3064,8 +3266,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 0.2,
+      "vmNote": "PBR(ROE 9.7%, COE 9.5%, g 2% → 1.027배 × 2027 BPS 144,443원 ÷ 1.1)과 PER(2027F EPS 12,830원 × 5.5배 ÷ 1.1) 50:50.",
+      "gapRate": 13.8,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -3122,13 +3324,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
           "price": "2026-09-22",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
@@ -3136,19 +3338,19 @@
     },
     {
       "rank": 20,
-      "code": "005290",
+      "code": "079550",
       "officialOrder": 20,
-      "name": "동진쎄미켐",
-      "sector": "반도체소재",
-      "caqm": 77.0,
+      "name": "LIG디펜스앤에어로스페이스",
+      "sector": "방산",
+      "caqm": 74.0,
       "components": {
-        "moatIndustry": 19.0,
-        "moatCross": 6.0,
-        "growth": 20.0,
-        "profitability": 11.1,
-        "financialHealth": 11.4,
-        "management": 4.5,
-        "shareholderReturn": 5.0
+        "moatIndustry": 20.0,
+        "moatCross": 8.8,
+        "growth": 14.8,
+        "profitability": 15.9,
+        "financialHealth": 8.5,
+        "management": 3.0,
+        "shareholderReturn": 3.0
       },
       "componentLimits": {
         "moatIndustry": 20,
@@ -3159,29 +3361,29 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 42950,
-      "priceBasisDate": "2026-09-22",
+      "currentPrice": 699000,
+      "priceBasisDate": "2026-09-23",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
       "valuationHorizonYears": 3,
-      "forwardEps3y": 3450,
-      "historicalPer5y": 12,
-      "overseasPeerPer": 12,
+      "forwardEps3y": 60648,
+      "historicalPer5y": 12.5,
+      "overseasPeerPer": 12.5,
       "overseasCorrectionPer": 0,
       "overseasAdjustmentWeightPct": 30.0,
-      "appliedPer": 12,
-      "discountRate": 10,
-      "primaryVm": 31100,
+      "appliedPer": 12.5,
+      "discountRate": 11,
+      "primaryVm": 554300,
       "crossCheckVm": null,
-      "finalVm": 41400,
-      "modelCalculatedVm": 31100,
+      "finalVm": 681200,
+      "modelCalculatedVm": 554300,
       "officialVmOverride": true,
-      "officialVmSource": "CAR v3 CAQM 재검증 · 2026.09.22 (잠정확정, 최근 원문 리포트 부재로 데이터한계 큼)",
+      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 30400,
+          "finalVm": 500600,
           "assumptions": [
             "EPS -15%",
             "배수 -10%",
@@ -3190,7 +3392,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 41400,
+          "finalVm": 681200,
           "assumptions": [
             "공식 적용 EPS",
             "공식 적용 배수",
@@ -3199,7 +3401,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 53800,
+          "finalVm": 885500,
           "assumptions": [
             "EPS +15%",
             "배수 +10%",
@@ -3208,46 +3410,30 @@
         }
       },
       "vmConfidence": {
-        "grade": "B",
-        "label": "근거 확인 완료 · 일부 분석 가정",
+        "grade": "D",
+        "label": "핵심 데이터 보강 필요",
         "reasons": [
-          "최신 보고서 주요 지표 수신 완료",
+          "최신 보고서 핵심 지표 확인 필요",
           "VM 가정 검토 완료",
           "근거 자료 2건 이상 연결"
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "",
-      "gapRate": 3.7,
+      "vmNote": "2028F EPS 2사(DS·키움, 이상치 iM 제외) 평균 34,654원 × 23.78배(5년 평균 23.21배 + K×D) ÷ 1.1².",
+      "gapRate": 2.6,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
-      "reason": "반도체 포토레지스트 국산화와 디스플레이 소재 다각화가 안정적 수요 기반을 만든다.",
-      "risk": "특정 소재·고객 집중과 최근 원문 리포트 공백에 따른 데이터 한계가 있어 보수적 접근이 필요하다.",
-      "warning": null,
+      "reason": "정밀유도무기(천궁-Ⅱ·L-SAM) 국내 사실상 독점과 중동 수출 레퍼런스, 수주잔고 확대가 성장 가시성을 높인다.",
+      "risk": "임원 뇌물 기소(2026-08-20)에 따른 방사청 입찰참가 제한 여부, 수주-매출 인식 시차와 환율 변동을 점검해야 한다.",
+      "warning": "임원 2명 방사청 뇌물 혐의 기소(2026-08-20) — 부정당업자 제재 결정 대기",
       "issues": [],
       "financials": {
-        "revenue2025": 11941,
-        "operatingMargin2025": 14.44,
-        "roe2025": 8.87,
-        "debtRatio2025": 82.11,
-        "eps2025": 1927,
-        "latestReport": {
-          "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
-          "fsDiv": "CFS",
-          "rceptNo": "20260814002890",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-09-26T12:58:32+09:00",
-          "revenueEok": 6750,
-          "operatingMargin": 18.65,
-          "roeAnnualized": 25.92,
-          "debtRatio": 81.59,
-          "epsCumulative": 3020,
-          "dataQuality": "complete",
-          "missingMetrics": []
-        }
+        "revenue2025": null,
+        "operatingMargin2025": null,
+        "roe2025": null,
+        "debtRatio2025": null,
+        "eps2025": null
       },
       "sources": [
         {
@@ -3261,13 +3447,13 @@
       ],
       "review": {
         "status": "CAQM reviewed / VM reviewed",
-        "reviewedAt": "2026-09-22",
+        "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-09-22",
-          "financialReport": "2026-06-30",
-          "eps": "2026-09-22",
-          "multiple": "2026-09-22",
+          "price": "2026-09-23",
+          "financialReport": "2026-09-26",
+          "eps": "2026-09-26",
+          "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
         }
       },
