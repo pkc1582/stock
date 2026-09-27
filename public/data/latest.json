@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T14:16:38+09:00",
+  "generatedAt": "2026-09-27T23:36:58+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 19/20 · 주요지표 완전 17/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,204 +9,29 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-09-26T12:59:37+09:00",
-    "generatedAt": "2026-09-26T14:16:38+09:00",
-    "vm": [
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": 1298500,
-        "after": 954200
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": 3924900,
-        "after": 3472000
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "before": 646000,
-        "after": 516900
-      },
-      {
-        "code": "062040",
-        "name": "산일전기",
-        "before": 203600,
-        "after": 274700
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": 1433700,
-        "after": 1025500
-      },
-      {
-        "code": "278470",
-        "name": "에이피알",
-        "before": 407700,
-        "after": 524100
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 167700,
-        "after": 164900
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "before": 106600,
-        "after": 60300
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": 785000,
-        "after": 629500
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 93900,
-        "after": 75200
-      },
-      {
-        "code": "237690",
-        "name": "에스티팜",
-        "before": 168100,
-        "after": 171500
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": 417800,
-        "after": 479300
-      },
-      {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "before": 186700,
-        "after": 151700
-      },
-      {
-        "code": "055550",
-        "name": "신한지주",
-        "before": 113000,
-        "after": 99500
-      }
-    ],
-    "gap": [
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": -26.3,
-        "after": 3.1,
-        "delta": 29.4
-      },
-      {
-        "code": "062040",
-        "name": "산일전기",
-        "before": 0.7,
-        "after": -25.4,
-        "delta": -26.1
-      },
-      {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "before": 13.6,
-        "after": 39.7,
-        "delta": 26.1
-      },
-      {
-        "code": "214150",
-        "name": "클래시스",
-        "before": -71.3,
-        "after": -49.3,
-        "delta": 22.0
-      },
-      {
-        "code": "000810",
-        "name": "삼성화재",
-        "before": -16.6,
-        "after": 4.1,
-        "delta": 20.7
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": -45.0,
-        "after": -25.2,
-        "delta": 19.8
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": -20.1,
-        "after": -0.3,
-        "delta": 19.8
-      },
-      {
-        "code": "278470",
-        "name": "에이피알",
-        "before": -11.3,
-        "after": -31.0,
-        "delta": -19.7
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "before": -29.5,
-        "after": -11.9,
-        "delta": 17.6
-      },
-      {
-        "code": "055550",
-        "name": "신한지주",
-        "before": 0.2,
-        "after": 13.8,
-        "delta": 13.6
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": -22.5,
-        "after": -32.4,
-        "delta": -9.9
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": -26.1,
-        "after": -16.4,
-        "delta": 9.7
-      }
-    ],
+    "comparedAt": "2026-09-27T22:59:38+09:00",
+    "generatedAt": "2026-09-27T23:36:58+09:00",
+    "vm": [],
+    "gap": [],
     "caqm": [],
-    "entrants": [
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "rank": 20,
-        "caqm": 74.0
-      }
-    ],
-    "exits": [
-      {
-        "code": "005290",
-        "name": "동진쎄미켐",
-        "previousRank": 20,
-        "reason": "CAQM 정렬과 동점 규칙에 따라 TOP20 밖으로 이동"
-      }
-    ],
+    "entrants": [],
+    "exits": [],
     "reports": [],
-    "hasMaterialChanges": true
+    "hasMaterialChanges": false
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-26 (TOP20 VM 새 기준 재검증 완료)",
-    "basisDate": "2026-09-26",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-27 (후보군 잠정 VM 새 기준 재평가)",
+    "basisDate": "2026-09-27",
     "changes": [
+      {
+        "code": null,
+        "name": "후보군 21~26위",
+        "date": "2026-09-27",
+        "field": "잠정 VM 재평가 (새 기준)",
+        "before": "미래에셋 35,000 · 파크시스템스 355,800 · 코리안리 18,000 · 오리온 151,300 · 코웨이 116,900",
+        "after": "미래에셋 29,300 · 파크시스템스 252,500 · 코리안리 16,800 · 오리온 146,600 · 코웨이 102,300 (삼성바이오로직스 유지)",
+        "reason": "후보군도 5년평균 PER·K×D·목표가 상한 기준으로 다시 계산했습니다. 일부 종목은 증권사 자료가 한 곳뿐이라 잠정치이며, 3분기 실적 이후 재점검합니다."
+      },
       {
         "code": null,
         "name": "TOP20 전종목",
@@ -314,8 +139,8 @@
         "sector": "금융-증권",
         "status": "후보군",
         "caqm": 73.6,
-        "finalVm": 35000,
-        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "finalVm": 29300,
+        "note": "잠정 VM(2026-09-27): PBR(ROE 3개년 14.47%, COE 10.5% → 1.47배 × 2027F BPS 24,463원 ÷ 1.1) + PER(2027F EPS 3,505원 × 5년평균 8.17배 ÷ 1.1) 50:50. 교보 단일소스.",
         "components": {
           "moatIndustry": 15.0,
           "moatCross": 7.8,
@@ -332,8 +157,8 @@
         "sector": "반도체소부장",
         "status": "후보군",
         "caqm": 73.4,
-        "finalVm": 355800,
-        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "finalVm": 252500,
+        "note": "잠정 VM(2026-09-27): 2028F EPS 7,978원(iM, 2Q 쇼크 이전) × 과거 PER 38.3배(2022~25) ÷ 1.1². 3Q 이후 EPS로 재계산 예정.",
         "components": {
           "moatIndustry": 20.0,
           "moatCross": 7.2,
@@ -350,8 +175,8 @@
         "sector": "금융-보험",
         "status": "후보군",
         "caqm": 72.9,
-        "finalVm": 18000,
-        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "finalVm": 16800,
+        "note": "잠정 VM(2026-09-27): PBR(정상화 ROE 11.37%, COE 10% → 1.17배 × 2027F BPS 18,581원 ÷ 1.1) + PER(2027F EPS 2,047원 × 현재 PER 7.43배 ÷ 1.1) 50:50. iM 단일소스.",
         "components": {
           "moatIndustry": 20.0,
           "moatCross": 7.0,
@@ -368,8 +193,8 @@
         "sector": "소비재",
         "status": "후보군",
         "caqm": 72.3,
-        "finalVm": 151300,
-        "note": "경영진 중대감점(오너2인 오래된 확정유죄, 중간수준)",
+        "finalVm": 146600,
+        "note": "잠정 VM(2026-09-27): 2028F EPS 14,825원(교보) × 11.97배(5년평균 11.67배 + 프리미엄 2.5%) ÷ 1.1². 키움 9/14 하향 반영 시 133,400원.",
         "components": {
           "moatIndustry": 19.0,
           "moatCross": 5.6,
@@ -386,8 +211,8 @@
         "sector": "렌탈구독",
         "status": "후보군",
         "caqm": 70.6,
-        "finalVm": 116900,
-        "note": "VM 미산출 · CAQM 세부배점만 잠정 확정된 후보군입니다.",
+        "finalVm": 102300,
+        "note": "잠정 VM(2026-09-27): 2028F EPS 12,898원(신한 역산) × 5년평균 PER 9.60배(K×D 결과 프리미엄 0%) ÷ 1.1².",
         "components": {
           "moatIndustry": 16.0,
           "moatCross": 5.0,
@@ -405,7 +230,7 @@
         "status": "후보군",
         "caqm": 70.1,
         "finalVm": 1266900,
-        "note": "2026-09-22 2차재계산(인적분할로 자사과거PER 무효화, peer최고PER+경쟁력프리미엄 방식 적용). 70점 컷라인 근소통과",
+        "note": "VM 유지(2026-09-27): 증권사 EPS 기준(분할 전후) 불일치·3조원 유상증자(11/30 신주상장)로 재계산 보류.",
         "components": {
           "moatIndustry": 20.0,
           "moatCross": 9.0,
