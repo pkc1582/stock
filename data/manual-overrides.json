@@ -282,35 +282,35 @@
     },
     "055550": {
       "valuationModel": "bank_pbr",
-      "normalizedBps": 129884,
-      "targetPbr": 0.87,
+      "normalizedBps": 141789,
+      "targetPbr": 1.0,
       "normalizedEps": 14125,
       "crossCheckPer": 8,
       "roundingUnit": 1000,
       "componentOverrides": {},
       "issueOverrides": {},
-      "officialFinalVm": 99500,
-      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
+      "officialFinalVm": 128000,
+      "officialVmSource": "CAR 은행 VM PBR 100% 전환 · 2026.09.30",
       "status": "reviewed",
-      "epsReviewedAt": "2026-09-26",
-      "multipleReviewedAt": "2026-09-26",
-      "analystNote": "PBR(ROE 9.7%, COE 9.5%, g 2% → 1.027배 × 2027 BPS 144,443원 ÷ 1.1)과 PER(2027F EPS 12,830원 × 5.5배 ÷ 1.1) 50:50."
+      "epsReviewedAt": "2026-09-30",
+      "multipleReviewedAt": "2026-09-30",
+      "analystNote": "PBR 100%(COE 9.5%, g 2%). 키움 4/27: ROE 9.7% → 1.027배 × 2027E BPS 139,134원 ÷ 1.1 = 129,860원 / 한화 4/24: ROE 9.2% → 0.96배 × 2027E BPS 144,443원 ÷ 1.1 = 126,060원 → 평균 128,000원. FCFE DCF 검증 120,400원(COE 10%). 3개월 목표가 평균 140,000원 이하."
     },
     "105560": {
       "valuationModel": "bank_pbr",
-      "normalizedBps": 169091,
-      "targetPbr": 1.1,
+      "normalizedBps": 180185,
+      "targetPbr": 1.155,
       "normalizedEps": 19579,
       "crossCheckPer": 9.5,
       "roundingUnit": 1000,
       "componentOverrides": {},
       "issueOverrides": {},
       "status": "reviewed",
-      "analystNote": "정상화 BPS×적정 PBR 1.10배를 주평가하고 정상화 EPS×PER 9.5배로 교차검증한다. 비은행 다각화, 자본력, 주주환원 지속성에 프리미엄을 주되 CET1·연체율·NPL·대손비용을 함께 점검한다.",
-      "officialFinalVm": 186000,
-      "officialVmSource": "CAR 국내 TOP20 공식 마스터 · 2026.09.04 (VM 산출 기준일 2026-08-28)",
-      "epsReviewedAt": "2026-08-28",
-      "multipleReviewedAt": "2026-08-28"
+      "analystNote": "PBR 100%(COE 9.5%, g 2%). 키움 4/27: ROE 10.63% → 1.151배 × 2027E BPS 181,494원 ÷ 1.1 = 190,000원 / 유안타 4/28: ROE 10.70% → 1.160배 × 2027E BPS 178,875원 ÷ 1.1 = 188,600원 → 평균 189,300원. 두 자료 모두 2Q 이전(보수적). 3개월 목표가 평균 228,800원 이하.",
+      "officialFinalVm": 189300,
+      "officialVmSource": "CAR 은행 VM PBR 100% 전환 · 2026.09.30",
+      "epsReviewedAt": "2026-09-30",
+      "multipleReviewedAt": "2026-09-30"
     },
     "138040": {
       "valuationModel": "financial_hybrid",
@@ -483,9 +483,27 @@
     }
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-27 (후보군 잠정 VM 새 기준 재평가)",
-    "basisDate": "2026-09-27",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-30 (은행 VM PBR 100% 전환)",
+    "basisDate": "2026-09-30",
     "changes": [
+      {
+        "code": "003690",
+        "name": "코리안리재보험",
+        "date": "2026-10-05",
+        "field": "VM 확정",
+        "before": "16,800",
+        "after": "14,800",
+        "reason": "가결정(현재 PER 사용)을 증권사 확정 5년 평균 PER로 교체한 PBR·PER 50:50 기본 원칙으로 확정했습니다."
+      },
+      {
+        "code": null,
+        "name": "은행 2종목",
+        "date": "2026-09-30",
+        "field": "VM 방법론 변경 (PBR 100%)",
+        "before": "신한지주 99,500 · KB금융 186,000 (PBR·PER 50:50)",
+        "after": "신한지주 128,000 · KB금융 189,300 (PBR 100%)",
+        "reason": "밸류업 이전의 낮은 과거 PER이 은행 가치를 25~45% 끌어내려 PER 절반을 없앴습니다. 은행 DCF로 검증하면 PBR 값과 ±5% 안에서 일치합니다. COE는 대형은행 9.5%, 지방은행 10%입니다."
+      },
       {
         "code": null,
         "name": "후보군 21~26위",
@@ -638,8 +656,8 @@
         "sector": "금융-보험",
         "status": "후보군",
         "caqm": 72.9,
-        "finalVm": 16800,
-        "note": "잠정 VM(2026-09-27): PBR(정상화 ROE 11.37%, COE 10% → 1.17배 × 2027F BPS 18,581원 ÷ 1.1) + PER(2027F EPS 2,047원 × 현재 PER 7.43배 ÷ 1.1) 50:50. iM 단일소스.",
+        "finalVm": 14800,
+        "note": "VM 확정(2026-10-05): PBR (ROE 11.37%, COE 10% → 1.17배 × 2027F BPS 18,581 ÷ 1.1 = 19,800) + PER (2027F EPS 2,047 × 증권사 확정 5년 평균 5.26배 ÷ 1.1 = 9,800) 50:50. iM 8/18 단일. D10 배당성장 트랙 편입(DGQM 79.4). 3Q26 일본 지진 손실 반영 후 재계산.",
         "components": {
           "moatIndustry": 20.0,
           "moatCross": 7.0,
@@ -710,8 +728,8 @@
         "sector": "금융-은행",
         "status": "관찰기업",
         "caqm": 69.9,
-        "finalVm": 186000,
-        "note": "구TOP20(2위)였으나 재정렬시 70점컷라인 미달로 강등",
+        "finalVm": 189300,
+        "note": "관찰기업(CAQM 69.9). 2026-09-30 은행 PBR 100% 전환으로 VM 186,000→189,300원. D10 배당성장 트랙 평가 대상.",
         "components": {
           "moatIndustry": 15.0,
           "moatCross": 7.6,

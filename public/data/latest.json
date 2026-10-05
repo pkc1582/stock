@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T13:24:12+09:00",
+  "generatedAt": "2026-10-05T16:10:46+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,20 +9,53 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-10-03T01:01:41+09:00",
-    "generatedAt": "2026-10-03T13:24:12+09:00",
-    "vm": [],
-    "gap": [],
+    "comparedAt": "2026-10-03T13:24:12+09:00",
+    "generatedAt": "2026-10-05T16:10:46+09:00",
+    "vm": [
+      {
+        "code": "055550",
+        "name": "신한지주",
+        "before": 99500,
+        "after": 128000
+      }
+    ],
+    "gap": [
+      {
+        "code": "055550",
+        "name": "신한지주",
+        "before": 4.3,
+        "after": -18.9,
+        "delta": -23.2
+      }
+    ],
     "caqm": [],
     "entrants": [],
     "exits": [],
     "reports": [],
-    "hasMaterialChanges": false
+    "hasMaterialChanges": true
   },
   "officialMaster": {
-    "version": "국내 TOP20 공식 마스터 · 2026-09-27 (후보군 잠정 VM 새 기준 재평가)",
-    "basisDate": "2026-09-27",
+    "version": "국내 TOP20 공식 마스터 · 2026-09-30 (은행 VM PBR 100% 전환)",
+    "basisDate": "2026-09-30",
     "changes": [
+      {
+        "code": "003690",
+        "name": "코리안리재보험",
+        "date": "2026-10-05",
+        "field": "VM 확정",
+        "before": "16,800",
+        "after": "14,800",
+        "reason": "가결정(현재 PER 사용)을 증권사 확정 5년 평균 PER로 교체한 PBR·PER 50:50 기본 원칙으로 확정했습니다."
+      },
+      {
+        "code": null,
+        "name": "은행 2종목",
+        "date": "2026-09-30",
+        "field": "VM 방법론 변경 (PBR 100%)",
+        "before": "신한지주 99,500 · KB금융 186,000 (PBR·PER 50:50)",
+        "after": "신한지주 128,000 · KB금융 189,300 (PBR 100%)",
+        "reason": "밸류업 이전의 낮은 과거 PER이 은행 가치를 25~45% 끌어내려 PER 절반을 없앴습니다. 은행 DCF로 검증하면 PBR 값과 ±5% 안에서 일치합니다. COE는 대형은행 9.5%, 지방은행 10%입니다."
+      },
       {
         "code": null,
         "name": "후보군 21~26위",
@@ -175,8 +208,8 @@
         "sector": "금융-보험",
         "status": "후보군",
         "caqm": 72.9,
-        "finalVm": 16800,
-        "note": "잠정 VM(2026-09-27): PBR(정상화 ROE 11.37%, COE 10% → 1.17배 × 2027F BPS 18,581원 ÷ 1.1) + PER(2027F EPS 2,047원 × 현재 PER 7.43배 ÷ 1.1) 50:50. iM 단일소스.",
+        "finalVm": 14800,
+        "note": "VM 확정(2026-10-05): PBR (ROE 11.37%, COE 10% → 1.17배 × 2027F BPS 18,581 ÷ 1.1 = 19,800) + PER (2027F EPS 2,047 × 증권사 확정 5년 평균 5.26배 ÷ 1.1 = 9,800) 50:50. iM 8/18 단일. D10 배당성장 트랙 편입(DGQM 79.4). 3Q26 일본 지진 손실 반영 후 재계산.",
         "components": {
           "moatIndustry": 20.0,
           "moatCross": 7.0,
@@ -247,8 +280,8 @@
         "sector": "금융-은행",
         "status": "관찰기업",
         "caqm": 69.9,
-        "finalVm": 186000,
-        "note": "구TOP20(2위)였으나 재정렬시 70점컷라인 미달로 강등",
+        "finalVm": 189300,
+        "note": "관찰기업(CAQM 69.9). 2026-09-30 은행 PBR 100% 전환으로 VM 186,000→189,300원. D10 배당성장 트랙 평가 대상.",
         "components": {
           "moatIndustry": 15.0,
           "moatCross": 7.6,
@@ -351,6 +384,390 @@
       }
     ]
   },
+  "dividendTrack": {
+    "version": "D10 배당성장 트랙 · 2026-10-05 CEO 확정 (10종목)",
+    "basisDate": "2026-10-05",
+    "description": "DGQM v2(배당성장 품질점수, 100점 = 과거 검증 45 + 미래 지속성 55 + 차감) 70점 이상 상위 10종목. VM은 성장 트랙과 같은 기업 = 같은 VM 원칙.",
+    "componentMeta": [
+      {
+        "key": "A1",
+        "label": "배당 지속성",
+        "max": 15
+      },
+      {
+        "key": "A2",
+        "label": "과거 배당 성장",
+        "max": 10
+      },
+      {
+        "key": "A3",
+        "label": "수익성(5년 ROE)",
+        "max": 10
+      },
+      {
+        "key": "A4",
+        "label": "재무건전성·신용등급",
+        "max": 10
+      },
+      {
+        "key": "B1",
+        "label": "전망 이익 성장",
+        "max": 15
+      },
+      {
+        "key": "B2",
+        "label": "전망 배당 성장",
+        "max": 10
+      },
+      {
+        "key": "B3a",
+        "label": "배당 여력(성향·환원율)",
+        "max": 7.5
+      },
+      {
+        "key": "B3b",
+        "label": "현금·자본 커버리지",
+        "max": 7.5
+      },
+      {
+        "key": "B4",
+        "label": "주주환원 약속",
+        "max": 5
+      },
+      {
+        "key": "B5",
+        "label": "사업 안정성",
+        "max": 10
+      },
+      {
+        "key": "C",
+        "label": "차감(역풍·경영진)",
+        "max": 0
+      }
+    ],
+    "companies": [
+      {
+        "rank": 1,
+        "code": "030190",
+        "name": "NICE평가정보",
+        "sector": "신용정보(CB)",
+        "track": "D",
+        "dgqm": 96.3,
+        "components": {
+          "A1": 15,
+          "A2": 10,
+          "A3": 10,
+          "A4": 9.3,
+          "B1": 15,
+          "B2": 10,
+          "B3a": 7.5,
+          "B3b": 7.5,
+          "B4": 5,
+          "B5": 7.0,
+          "C": 0
+        },
+        "finalVm": 22300,
+        "vmMethod": "과거 추세 EPS × 5년 PER (커버리지 예외)",
+        "risks": [
+          "커버리지 공백 — 리포트 재개 시 재계산",
+          "계열 NICE신용평가 차이니즈월 의혹"
+        ],
+        "currentPrice": 16270,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -27.0,
+        "stage": "1차 관심"
+      },
+      {
+        "rank": 2,
+        "code": "105560",
+        "name": "KB금융",
+        "sector": "은행 금융지주",
+        "track": "D",
+        "dgqm": 90.2,
+        "components": {
+          "A1": 15,
+          "A2": 10,
+          "A3": 5.9,
+          "A4": 10,
+          "B1": 15,
+          "B2": 8.8,
+          "B3a": 7.5,
+          "B3b": 7.5,
+          "B4": 4.0,
+          "B5": 7.5,
+          "C": -1
+        },
+        "finalVm": 189300,
+        "vmMethod": "BPS × 적정 PBR 100% (COE 9.5%)",
+        "risks": [
+          "회장 교체 후 환원 정책 유지 여부",
+          "금감원 검사·세무조사·공정위 심의"
+        ],
+        "currentPrice": 168800,
+        "priceBasisDate": "2026-09-30",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -10.8,
+        "stage": "VM 아래 · 관심선 전"
+      },
+      {
+        "rank": 3,
+        "code": "175330",
+        "name": "JB금융지주",
+        "sector": "지방은행 금융지주",
+        "track": "D·T",
+        "dgqm": 87.2,
+        "components": {
+          "A1": 15,
+          "A2": 10,
+          "A3": 8.5,
+          "A4": 9.0,
+          "B1": 13.7,
+          "B2": 10,
+          "B3a": 7.5,
+          "B3b": 5.5,
+          "B4": 5.0,
+          "B5": 4.0,
+          "C": -1
+        },
+        "finalVm": 39000,
+        "vmMethod": "BPS × 적정 PBR 100% (COE 10%) · 목표가 상한",
+        "risks": [
+          "NPL 상승·커버리지 하락",
+          "금감원 정기검사·회장 3연임"
+        ],
+        "currentPrice": 29000,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -25.6,
+        "stage": "1차 관심"
+      },
+      {
+        "rank": 4,
+        "code": "000810",
+        "name": "삼성화재",
+        "sector": "손해보험",
+        "track": "G·D",
+        "dgqm": 86.6,
+        "components": {
+          "A1": 12,
+          "A2": 10,
+          "A3": 5.7,
+          "A4": 8.0,
+          "B1": 15,
+          "B2": 8.4,
+          "B3a": 7.5,
+          "B3b": 7.5,
+          "B4": 3.0,
+          "B5": 9.5,
+          "C": 0
+        },
+        "finalVm": 629500,
+        "vmMethod": "SOTP (본업 + 삼성전자 지분 50% 할인)",
+        "risks": [
+          "삼성전자 주가(VM의 47%)",
+          "ROE 9%대 정체"
+        ],
+        "currentPrice": 626000,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -0.6,
+        "stage": "VM 아래 · 관심선 전"
+      },
+      {
+        "rank": 5,
+        "code": "033780",
+        "name": "KT&G",
+        "sector": "담배·인삼",
+        "track": "G·D",
+        "dgqm": 83.3,
+        "components": {
+          "A1": 15,
+          "A2": 4.6,
+          "A3": 7.4,
+          "A4": 9.3,
+          "B1": 15,
+          "B2": 10,
+          "B3a": 7.5,
+          "B3b": 0,
+          "B4": 5,
+          "B5": 9.5,
+          "C": 0
+        },
+        "finalVm": 164900,
+        "vmMethod": "2사 평균 2027F EPS × 5년 PER",
+        "risks": [
+          "해외 투자로 FCF < 배당(0.56배)",
+          "국내 담배 수요 축소"
+        ],
+        "currentPrice": 176900,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": 7.3,
+        "stage": "VM 위"
+      },
+      {
+        "rank": 6,
+        "code": "049720",
+        "name": "고려신용정보",
+        "sector": "채권추심",
+        "track": "D",
+        "dgqm": 82.8,
+        "components": {
+          "A1": 15,
+          "A2": 10,
+          "A3": 10,
+          "A4": 8.6,
+          "B1": 9.9,
+          "B2": 5.3,
+          "B3a": 7.5,
+          "B3b": 7.5,
+          "B4": 4.0,
+          "B5": 8.0,
+          "C": -3
+        },
+        "finalVm": 11600,
+        "vmMethod": "2026E EPS × 증권사 확정 5년 PER (iM 단일)",
+        "risks": [
+          "이익 정체 — FY2026 감익·DPS 500원 미만 시 재검토",
+          "오너가 지분 이동"
+        ],
+        "currentPrice": 9150,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -21.1,
+        "stage": "1차 관심"
+      },
+      {
+        "rank": 7,
+        "code": "000270",
+        "name": "기아",
+        "sector": "완성차",
+        "track": "D",
+        "dgqm": 80.8,
+        "components": {
+          "A1": 9,
+          "A2": 10,
+          "A3": 10,
+          "A4": 10,
+          "B1": 15,
+          "B2": 4.8,
+          "B3a": 5.5,
+          "B3b": 7.5,
+          "B4": 5,
+          "B5": 6.0,
+          "C": -2
+        },
+        "finalVm": 122900,
+        "vmMethod": "2사 평균 2027E EPS × 5년 PER",
+        "risks": [
+          "관세·인센티브 마진 압박",
+          "배당 성장 둔화"
+        ],
+        "currentPrice": 112900,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -8.1,
+        "stage": "VM 아래 · 관심선 전"
+      },
+      {
+        "rank": 8,
+        "code": "003690",
+        "name": "코리안리",
+        "sector": "재보험",
+        "track": "D",
+        "dgqm": 79.4,
+        "components": {
+          "A1": 15,
+          "A2": 10,
+          "A3": 3.8,
+          "A4": 10,
+          "B1": 10.1,
+          "B2": 10,
+          "B3a": 5.5,
+          "B3b": 5.5,
+          "B4": 0,
+          "B5": 10,
+          "C": -0.5
+        },
+        "finalVm": 14800,
+        "vmMethod": "PBR·PER 50:50",
+        "risks": [
+          "3Q26 일본 구마모토 지진 손실",
+          "재보험 소프트마켓"
+        ],
+        "currentPrice": 14410,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -2.6,
+        "stage": "VM 아래 · 관심선 전"
+      },
+      {
+        "rank": 9,
+        "code": "214320",
+        "name": "이노션",
+        "sector": "광고대행",
+        "track": "D",
+        "dgqm": 76.9,
+        "components": {
+          "A1": 15,
+          "A2": 5.5,
+          "A3": 6.4,
+          "A4": 10,
+          "B1": 15,
+          "B2": 4.5,
+          "B3a": 7.5,
+          "B3b": 7.5,
+          "B4": 0,
+          "B5": 5.5,
+          "C": 0
+        },
+        "finalVm": 26000,
+        "vmMethod": "2사 평균 2027E EPS × 5년 PER · 목표가 상한",
+        "risks": [
+          "현대차그룹 캡티브 의존(해외 79%)",
+          "배당 3년째 1,175원 정체"
+        ],
+        "currentPrice": 18160,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -30.2,
+        "stage": "적극 검토"
+      },
+      {
+        "rank": 10,
+        "code": "241560",
+        "name": "두산밥캣",
+        "sector": "소형 건설장비",
+        "track": "D",
+        "dgqm": 74.2,
+        "components": {
+          "A1": 10,
+          "A2": 6.0,
+          "A3": 5.7,
+          "A4": 9.3,
+          "B1": 15,
+          "B2": 5.3,
+          "B3a": 5.5,
+          "B3b": 7.5,
+          "B4": 5,
+          "B5": 6.9,
+          "C": -2
+        },
+        "finalVm": 65900,
+        "vmMethod": "2사 평균 2027F EPS × Peer 보정 PER 10.76배",
+        "risks": [
+          "미국 232조·멕시코 관세",
+          "대주주 지분 담보(오버행)"
+        ],
+        "currentPrice": 55200,
+        "priceBasisDate": "2026-10-02",
+        "priceSource": "CEO 확정 시점 가격",
+        "gapRate": -16.2,
+        "stage": "VM 아래 · 관심선 전"
+      }
+    ]
+  },
   "methodology": {
     "version": "CAQM Official v3.0 · Sector VM v2.0",
     "weights": {
@@ -371,7 +788,7 @@
     "universeSize": 20,
     "top20Count": 20,
     "averageCaqm": 81.9,
-    "undervaluedCount": 13
+    "undervaluedCount": 14
   },
   "companies": [
     {
@@ -3045,20 +3462,20 @@
       "forwardEps3y": 14125,
       "normalizedEps": 14125,
       "normalizedPer": 8,
-      "normalizedBps": 129884,
-      "targetPbr": 0.87,
+      "normalizedBps": 141789,
+      "targetPbr": 1,
       "appliedPer": 8,
       "discountRate": 0,
-      "primaryVm": 113000,
+      "primaryVm": 142000,
       "crossCheckVm": 113000,
-      "finalVm": 99500,
-      "modelCalculatedVm": 113000,
+      "finalVm": 128000,
+      "modelCalculatedVm": 142000,
       "officialVmOverride": true,
-      "officialVmSource": "CAR TOP20 VM 재검증 · 2026.09.26",
+      "officialVmSource": "CAR 은행 VM PBR 100% 전환 · 2026.09.30",
       "vmScenarios": {
         "conservative": {
           "label": "보수",
-          "finalVm": 85000,
+          "finalVm": 109000,
           "assumptions": [
             "BPS·EPS -5%",
             "PBR·PER -10%"
@@ -3066,7 +3483,7 @@
         },
         "base": {
           "label": "기준",
-          "finalVm": 99500,
+          "finalVm": 128000,
           "assumptions": [
             "공식 적용 BPS·EPS",
             "공식 적용 배수"
@@ -3074,7 +3491,7 @@
         },
         "optimistic": {
           "label": "낙관",
-          "finalVm": 115000,
+          "finalVm": 148000,
           "assumptions": [
             "BPS·EPS +5%",
             "PBR·PER +10%"
@@ -3091,8 +3508,8 @@
         ]
       },
       "vmStatus": "reviewed",
-      "vmNote": "PBR(ROE 9.7%, COE 9.5%, g 2% → 1.027배 × 2027 BPS 144,443원 ÷ 1.1)과 PER(2027F EPS 12,830원 × 5.5배 ÷ 1.1) 50:50.",
-      "gapRate": 4.3,
+      "vmNote": "PBR 100%(COE 9.5%, g 2%). 키움 4/27: ROE 9.7% → 1.027배 × 2027E BPS 139,134원 ÷ 1.1 = 129,860원 / 한화 4/24: ROE 9.2% → 0.96배 × 2027E BPS 144,443원 ÷ 1.1 = 126,060원 → 평균 128,000원. FCFE DCF 검증 120,400원(COE 10%). 3개월 목표가 평균 140,000원 이하.",
+      "gapRate": -18.9,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -3154,8 +3571,8 @@
         "basisDates": {
           "price": "2026-10-01",
           "financialReport": "2026-06-30",
-          "eps": "2026-09-26",
-          "multiple": "2026-09-26",
+          "eps": "2026-09-30",
+          "multiple": "2026-09-30",
           "nextReview": "2026-09-30"
         }
       },

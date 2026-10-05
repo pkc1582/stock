@@ -1021,3 +1021,16 @@ td { padding-block: 15px; }
   .sector-vm-panel, .vm-scenario-panel, .sensitivity-calculator { background: #f4f6f2; color: #10231f; }
   .sensitivity-calculator { display: none; }
 }
+
+/* D10 dividend-growth track */
+.d10-section { border-top: 1px solid #d4dbd2; }
+.d10-table { min-width: 980px; }
+.d10-date { color: #8a948f; font-size: 9px; }
+.d10-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 18px 8px; text-align: left; white-space: normal; }
+.d10-detail h4 { margin: 0 0 10px; color: var(--deep); font-size: 13px; }
+.d10-detail p { margin: 0 0 10px; color: #4f5d57; font-size: 12px; line-height: 1.6; }
+.d10-scores { margin: 0; padding: 0; list-style: none; }
+.d10-scores li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid #e6eae4; font-size: 11.5px; }
+.d10-risks { margin: 0; padding-left: 18px; color: #4f5d57; font-size: 12px; line-height: 1.7; }
+.d10-source { color: #85908b; font-size: 11px; }
+@media (max-width: 720px) { .d10-detail { grid-template-columns: 1fr; gap: 16px; } }

@@ -12,6 +12,8 @@ from scripts.build_dataset import (
     vm_confidence_for,
     change_log_for,
     apply_official_final_vm,
+    build_dividend_track,
+    dividend_stage,
 )
 
 
@@ -201,6 +203,32 @@ class ValuationModelTests(unittest.TestCase):
 
         self.assertTrue(changes["hasMaterialChanges"])
         self.assertEqual(len(changes["gap"]), 1)
+
+
+class DividendTrackTests(unittest.TestCase):
+    def test_stage_boundaries_follow_buy_review_thresholds(self):
+        self.assertEqual(dividend_stage(-40), "강한 안전마진")
+        self.assertEqual(dividend_stage(-30), "적극 검토")
+        self.assertEqual(dividend_stage(-20), "1차 관심")
+        self.assertEqual(dividend_stage(-0.1), "VM 아래 · 관심선 전")
+        self.assertEqual(dividend_stage(0), "VM 위")
+        self.assertEqual(dividend_stage(None), "가격 확인 중")
+
+    def test_freshest_price_wins_and_gap_is_computed(self):
+        track = {"companies": [
+            {"code": "111111", "name": "A", "finalVm": 10_000, "fallbackPrice": 9_000, "fallbackPriceDate": "2026-10-02"},
+            {"code": "222222", "name": "B", "finalVm": 20_000, "fallbackPrice": 30_000, "fallbackPriceDate": "2026-09-01"},
+        ]}
+        quotes = {"basisDate": "2026-10-05", "quotes": {"111111": 7_000}}
+        g20 = [{"code": "222222", "currentPrice": 16_000, "priceBasisDate": "2026-10-04"}]
+        result = build_dividend_track(track, quotes, g20, None)
+        a, b = result["companies"]
+        self.assertEqual((a["currentPrice"], a["gapRate"], a["stage"]), (7_000, -30.0, "적극 검토"))
+        self.assertEqual((b["currentPrice"], b["gapRate"]), (16_000, -20.0))
+        self.assertNotIn("fallbackPrice", a)
+
+    def test_missing_track_returns_none(self):
+        self.assertIsNone(build_dividend_track(None, None, [], None))
 
 
 if __name__ == "__main__":
