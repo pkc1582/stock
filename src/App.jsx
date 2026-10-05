@@ -5,6 +5,10 @@ const DATA_EDIT_URL = `${REPOSITORY_URL}/edit/main/data/manual-overrides.json`
 const DATA_URL = `${import.meta.env.BASE_URL}data/latest.json`
 const SCREENER_URL = `${import.meta.env.BASE_URL}data/screener.json`
 const CANDIDATE_REVIEW_URL = `${REPOSITORY_URL}/issues/new?template=candidate-review.yml`
+const ONEPAGER_LINKS = [
+  { key: 'g20', label: 'G20 원페이저', url: 'https://claude.ai/artifact/CMLWGQJDVzfLYHzeNMFdUC', desc: '성장 트랙 20종목 한 장 요약 — CAQM 항목·VM 산출식·추적 리스크·현재가 게이지' },
+  { key: 'd10', label: 'D10 원페이저', url: 'https://claude.ai/artifact/6evo9CyAbi5AjHPoXTkAwy', desc: '배당성장 트랙 10종목 한 장 요약 — DGQM 항목·VM 근거·배당 점검·현재가 게이지' },
+]
 const SCREENER_ROW_LIMIT = 200
 const WATCHLIST_STORAGE_KEY = 'compound-asset-2045-watchlist'
 
@@ -488,6 +492,7 @@ function Header({ basisDate }) {
     ['#d10', 'D10 배당성장'],
     ['#sectors', '산업별 보기'],
     ['#company', '기업 분석'],
+    ['#onepagers', '원페이저'],
     ['#methodology', '평가 기준'],
     ['#screener', '전체시장 스크리너'],
   ]
@@ -1561,6 +1566,29 @@ function DividendTrackSection({ track }) {
   )
 }
 
+function OnepagerLinks() {
+  return (
+    <section className="candidate-section onepager-section" id="onepagers" aria-labelledby="onepager-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="ONE-PAGERS"
+          title="종목별 원페이저"
+          titleId="onepager-title"
+          description="확정된 종목마다 한 장으로 정리한 분석 페이지입니다. 사업 브리핑·점수 항목·VM 산출식·추적 리스크를 담고, 현재가와 괴리율은 매 영업일 자동 갱신됩니다. 새 창으로 열립니다."
+        />
+        <div className="onepager-grid">
+          {ONEPAGER_LINKS.map((item) => (
+            <a key={item.key} className="onepager-card" href={item.url} target="_blank" rel="noopener noreferrer">
+              <strong>{item.label} ↗</strong>
+              <span>{item.desc}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function SectorView({ companies, candidates, selectedCode, onSelect }) {
   const groups = useMemo(() => {
     const bySector = new Map()
@@ -2421,6 +2449,7 @@ export default function App() {
         />
         <CandidateWatchlist master={snapshot.officialMaster} />
         <DividendTrackSection track={snapshot.dividendTrack} />
+        <OnepagerLinks />
         <SectorView
           companies={snapshot.companies}
           candidates={snapshot.officialMaster.candidates || []}
