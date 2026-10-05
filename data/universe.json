@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T03:43:22+09:00",
-  "basisDate": "2026-09-23",
+  "generatedAt": "2026-10-06T04:54:52+09:00",
+  "basisDate": "2026-10-01",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -26,16 +26,16 @@
     "KRX 공식 종목분류와 지정 상태를 교차검증하기 전에는 1차 정량 선별에만 사용해야 합니다."
   ],
   "counts": {
-    "providerRows": 2755,
+    "providerRows": 2758,
     "kospi": 830,
-    "kosdaq": 1818,
+    "kosdaq": 1821,
     "classified": {
-      "common_candidate": 2549,
+      "common_candidate": 2552,
       "name_likely_preferred": 3,
       "name_likely_spac": 71,
       "name_likely_reit": 25
     },
-    "preliminaryEligible": 2549,
+    "preliminaryEligible": 2552,
     "knownExcluded": 99
   },
   "companies": [
@@ -451,6 +451,20 @@
       "name": "하림지주",
       "corporationName": "(주)하림지주",
       "corporateRegistrationNumber": "1601110003931",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0035S0",
+      "isin": "KR70035S0001",
+      "name": "빅웨이브로보틱스",
+      "corporationName": "빅웨이브로보틱스(주)",
+      "corporateRegistrationNumber": "1101117638517",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -9770,20 +9784,6 @@
       "exclusionReason": null
     },
     {
-      "code": "084180",
-      "isin": "KR7084180009",
-      "name": "수성웹툰",
-      "corporationName": "수성웹툰 주식회사",
-      "corporateRegistrationNumber": "1101110313728",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
       "code": "084370",
       "isin": "KR7084370006",
       "name": "유진테크",
@@ -18016,6 +18016,20 @@
       "exclusionReason": null
     },
     {
+      "code": "266690",
+      "isin": "KR7266690007",
+      "name": "덕산넵코어스",
+      "corporationName": "덕산넵코어스(주)",
+      "corporateRegistrationNumber": "1601110337819",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "267320",
       "isin": "KR7267320000",
       "name": "나인테크",
@@ -24092,6 +24106,20 @@
       "exclusionReason": null
     },
     {
+      "code": "468670",
+      "isin": "KR7468670005",
+      "name": "브릴스",
+      "corporationName": "주식회사 브릴스",
+      "corporateRegistrationNumber": "1201110746711",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "468760",
       "isin": "KR7468760004",
       "name": "유진스팩10호",
@@ -24867,6 +24895,20 @@
       "name": "티엑스알로보틱스",
       "corporationName": "주식회사 티엑스알로보틱스",
       "corporateRegistrationNumber": "1211110330000",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "486510",
+      "isin": "KR7486510001",
+      "name": "글로벌테크놀로지",
+      "corporationName": "(주)글로벌테크놀로지",
+      "corporateRegistrationNumber": "1348110270158",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
