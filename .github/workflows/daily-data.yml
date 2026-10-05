@@ -57,6 +57,14 @@ jobs:
           STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
         run: python scripts/fetch_market.py
 
+      - name: Fetch D10 dividend-track quotes
+        id: d10
+        continue-on-error: true
+        env:
+          STOCK_API_ENDPOINT: ${{ secrets.STOCK_API_ENDPOINT }}
+          STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
+        run: python scripts/fetch_dividend_quotes.py
+
       - name: Fetch OpenDART financial data
         id: dart
         continue-on-error: true
@@ -78,6 +86,7 @@ jobs:
         shell: bash
         run: |
           git add -- data/companies.json public/data/latest.json
+          if [ -f data/dividend-quotes.json ]; then git add -- data/dividend-quotes.json; fi
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0

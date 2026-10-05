@@ -709,6 +709,85 @@ def apply_official_final_vm(
     return result
 
 
+DIVIDEND_TRACK_PATH = ROOT / "data" / "dividend-track.json"
+DIVIDEND_QUOTES_PATH = ROOT / "data" / "dividend-quotes.json"
+MARKET_UNIVERSE_PATH = ROOT / "data" / "market-universe.json"
+
+
+def dividend_stage(gap: float | None) -> str:
+    if gap is None:
+        return "가격 확인 중"
+    if gap <= -40:
+        return "강한 안전마진"
+    if gap <= -30:
+        return "적극 검토"
+    if gap <= -20:
+        return "1차 관심"
+    if gap < 0:
+        return "VM 아래 · 관심선 전"
+    return "VM 위"
+
+
+def build_dividend_track(
+    track: dict[str, Any] | None,
+    quotes: dict[str, Any] | None,
+    g20_companies: list[dict[str, Any]],
+    market_universe: dict[str, Any] | None,
+) -> dict[str, Any] | None:
+    """Attach the freshest available close price and gap to each D10 entry.
+
+    Price priority is the most recent basis date among: the D10 quote snapshot,
+    the G20 company snapshot, the weekly full-market snapshot and the manual
+    fallback recorded with the CEO decision.
+    """
+    if not track or not isinstance(track.get("companies"), list):
+        return None
+    candidates: dict[str, list[tuple[str, int, str]]] = {}
+
+    def add(code: str, date: Any, price: Any, source: str) -> None:
+        if not isinstance(price, (int, float)) or isinstance(price, bool) or price <= 0 or not date:
+            return
+        candidates.setdefault(str(code), []).append((str(date), int(price), source))
+
+    if quotes and isinstance(quotes.get("quotes"), dict):
+        for code, price in quotes["quotes"].items():
+            add(code, quotes.get("basisDate"), price, "D10 시세 갱신")
+    for company in g20_companies:
+        add(company.get("code"), company.get("priceBasisDate"), company.get("currentPrice"), "G20 시세")
+    if market_universe and isinstance(market_universe.get("securities"), list):
+        wanted = {str(item.get("code")) for item in track["companies"]}
+        for item in market_universe["securities"]:
+            if str(item.get("code")) in wanted:
+                add(item.get("code"), market_universe.get("basisDate"), item.get("closePrice"), "전체시장 스냅샷")
+
+    rows = []
+    for item in track["companies"]:
+        code = str(item["code"])
+        options = list(candidates.get(code, []))
+        add_fallback = item.get("fallbackPrice"), item.get("fallbackPriceDate")
+        if isinstance(add_fallback[0], (int, float)) and add_fallback[1]:
+            options.append((str(add_fallback[1]), int(add_fallback[0]), "CEO 확정 시점 가격"))
+        price_date, price, source = max(options) if options else (None, None, None)
+        vm = item.get("finalVm")
+        gap = round((price - vm) / vm * 100, 1) if price and isinstance(vm, (int, float)) and vm > 0 else None
+        row = {key: value for key, value in item.items() if key not in ("fallbackPrice", "fallbackPriceDate")}
+        row.update({
+            "currentPrice": price,
+            "priceBasisDate": price_date,
+            "priceSource": source,
+            "gapRate": gap,
+            "stage": dividend_stage(gap),
+        })
+        rows.append(row)
+    return {
+        "version": track.get("version", ""),
+        "basisDate": track.get("basisDate", ""),
+        "description": track.get("description", ""),
+        "componentMeta": track.get("componentMeta", []),
+        "companies": rows,
+    }
+
+
 def main() -> None:
     previous_output = load_json(OUTPUT_PATH) if OUTPUT_PATH.exists() else None
     companies_data = load_json(COMPANIES_PATH)
@@ -879,6 +958,12 @@ def main() -> None:
         "financialDataSummary": financial_summary,
         "changes": changes,
         "officialMaster": overrides_data.get("officialMaster", {}),
+        "dividendTrack": build_dividend_track(
+            load_json(DIVIDEND_TRACK_PATH) if DIVIDEND_TRACK_PATH.exists() else None,
+            load_json(DIVIDEND_QUOTES_PATH) if DIVIDEND_QUOTES_PATH.exists() else None,
+            companies,
+            load_json(MARKET_UNIVERSE_PATH) if MARKET_UNIVERSE_PATH.exists() else None,
+        ),
         "methodology": {
             "version": "CAQM Official v3.0 · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,

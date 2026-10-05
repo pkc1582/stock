@@ -285,6 +285,7 @@ function normalizeSnapshot(raw) {
       hasMaterialChanges: rawChanges.hasMaterialChanges || false,
     },
     officialMaster: raw.officialMaster || { version: '', changes: [], candidates: [] },
+    dividendTrack: raw.dividendTrack || null,
     methodology: raw.methodology || {
       version: raw.methodologyVersion || 'CAQM Official v1.0',
       weights: {},
@@ -484,6 +485,7 @@ function Header({ basisDate }) {
     ['#matrix', 'CAQM × 가격'],
     ['#top20', 'TOP20'],
     ['#candidates', '후보군'],
+    ['#d10', 'D10 배당성장'],
     ['#sectors', '산업별 보기'],
     ['#company', '기업 분석'],
     ['#methodology', '평가 기준'],
@@ -1462,6 +1464,103 @@ function CandidateWatchlist({ master }) {
   )
 }
 
+const D10_STAGE_TONES = {
+  '강한 안전마진': 'attractive',
+  '적극 검토': 'attractive',
+  '1차 관심': 'attractive',
+  'VM 아래 · 관심선 전': 'fair',
+  'VM 위': 'expensive',
+}
+
+function DividendTrackSection({ track }) {
+  const [expandedCode, setExpandedCode] = useState(null)
+  const rows = track?.companies || []
+  if (!rows.length) return null
+  const meta = track.componentMeta || []
+  const reviewCount = rows.filter((row) => row.gapRate !== null && row.gapRate <= -20).length
+  return (
+    <section className="top20-section d10-section" id="d10" aria-labelledby="d10-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="DIVIDEND GROWTH · D10"
+          title="D10 배당성장 트랙"
+          titleId="d10-title"
+          description={`${track.description || ''} 성장 트랙(TOP20)과 점수를 섞지 않는 별도 트랙입니다. 행을 누르면 DGQM 항목과 VM 근거를 볼 수 있습니다.`}
+          aside={<><strong>{rows.length}종목</strong><span>{reviewCount}종목 매수 검토 구간(−20% 이하)</span></>}
+        />
+        <p className="table-mobile-note" id="d10-table-note">← 표를 좌우로 밀어 현재가·Final VM·괴리율까지 확인하세요 →</p>
+        <div className="table-wrap" tabIndex="0" role="region" aria-labelledby="d10-table-note">
+          <table className="d10-table">
+            <thead>
+              <tr>
+                <th>순위</th><th>종목명</th><th>섹터</th><th>DGQM</th><th>현재가</th><th>Final VM</th><th>괴리율</th><th>구간</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => {
+                const expanded = expandedCode === row.code
+                return (
+                  <Fragment key={row.code}>
+                    <tr
+                      className={expanded ? 'expandable-row is-expanded' : 'expandable-row'}
+                      onClick={() => setExpandedCode(expanded ? null : row.code)}
+                      aria-expanded={expanded}
+                    >
+                      <td><span className={`table-rank rank-${row.rank}`}>{row.rank}</span></td>
+                      <td>
+                        <div className="company-cell">
+                          <strong>{row.name}</strong>
+                          <small>{row.code}</small>
+                          {row.track && <em>{row.track}</em>}
+                        </div>
+                      </td>
+                      <td><span className="sector-badge">{row.sector}</span></td>
+                      <td><strong className="caqm-value">{row.dgqm}</strong></td>
+                      <td>{formatWon(row.currentPrice)}<br /><small className="d10-date">{formatDate(row.priceBasisDate)}</small></td>
+                      <td>{formatWon(row.finalVm)}</td>
+                      <td><span className={`gap-pill ${D10_STAGE_TONES[row.stage] || 'neutral'} ${gapSign(row.gapRate)}`}>{formatPercent(row.gapRate, true)}</span></td>
+                      <td><span className="opinion-text">{row.stage}</span></td>
+                    </tr>
+                    {expanded && (
+                      <tr className="detail-row">
+                        <td colSpan={8}>
+                          <div className="d10-detail">
+                            <div>
+                              <h4>DGQM v2 — {row.dgqm}점</h4>
+                              <ul className="d10-scores">
+                                {meta.map((item) => (
+                                  <li key={item.key}>
+                                    <span>{item.key} {item.label}</span>
+                                    <strong>{row.components?.[item.key] ?? '—'}{item.max ? ` / ${item.max}` : ''}</strong>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <h4>Final VM {formatWon(row.finalVm)}</h4>
+                              <p>{row.vmMethod}</p>
+                              <p className="d10-source">가격: {row.priceSource || '—'} · {formatDate(row.priceBasisDate)}</p>
+                              <h4>추적 리스크</h4>
+                              <ul className="d10-risks">
+                                {(row.risks || []).map((risk) => <li key={risk}>{risk}</li>)}
+                              </ul>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="table-footnote">* 괴리율 = (현재가 − Final VM) ÷ Final VM. 매수 검토 기준 −20% 1차 관심 · −30% 적극 검토 · −40% 강한 안전마진. {track.version}</p>
+      </div>
+    </section>
+  )
+}
+
 function SectorView({ companies, candidates, selectedCode, onSelect }) {
   const groups = useMemo(() => {
     const bySector = new Map()
@@ -2321,6 +2420,7 @@ export default function App() {
           onToggleWatch={toggleWatchlist}
         />
         <CandidateWatchlist master={snapshot.officialMaster} />
+        <DividendTrackSection track={snapshot.dividendTrack} />
         <SectorView
           companies={snapshot.companies}
           candidates={snapshot.officialMaster.candidates || []}
