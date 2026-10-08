@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T01:38:07+09:00",
+  "generatedAt": "2026-10-09T01:34:38+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,37 +9,65 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-10-07T01:08:34+09:00",
-    "generatedAt": "2026-10-08T01:38:07+09:00",
+    "comparedAt": "2026-10-08T01:38:07+09:00",
+    "generatedAt": "2026-10-09T01:34:38+09:00",
     "vm": [],
     "gap": [
       {
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "before": 43.4,
+        "after": 35.5,
+        "delta": -7.9
+      },
+      {
         "code": "079550",
         "name": "LIG디펜스앤에어로스페이스",
-        "before": 11.9,
-        "after": 3.2,
-        "delta": -8.7
+        "before": 3.2,
+        "after": -3.3,
+        "delta": -6.5
+      },
+      {
+        "code": "298040",
+        "name": "효성중공업",
+        "before": -19.2,
+        "after": -25.5,
+        "delta": -6.3
+      },
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": -28.4,
+        "after": -34.2,
+        "delta": -5.8
       },
       {
         "code": "007660",
         "name": "이수페타시스",
-        "before": -28.2,
-        "after": -21.9,
-        "delta": 6.3
+        "before": -21.9,
+        "after": -27.7,
+        "delta": -5.8
       },
       {
         "code": "403870",
         "name": "HPSP",
-        "before": 13.5,
-        "after": 19.2,
-        "delta": 5.7
+        "before": 19.2,
+        "after": 13.5,
+        "delta": -5.7
       },
       {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "before": 38.1,
-        "after": 43.4,
-        "delta": 5.3
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": -0.2,
+        "after": -5.2,
+        "delta": -5.0
+      },
+      {
+        "code": "329180",
+        "name": "HD현대중공업",
+        "before": -18.6,
+        "after": -22.6,
+        "delta": -4.0
       }
     ],
     "caqm": [],
@@ -486,10 +514,10 @@
           "커버리지 공백 — 리포트 재개 시 재계산",
           "계열 NICE신용평가 차이니즈월 의혹"
         ],
-        "currentPrice": 16150,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 16850,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -27.6,
+        "gapRate": -24.4,
         "stage": "1차 관심"
       },
       {
@@ -518,10 +546,10 @@
           "회장 교체 후 환원 정책 유지 여부",
           "금감원 검사·세무조사·공정위 심의"
         ],
-        "currentPrice": 166900,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 168500,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -11.8,
+        "gapRate": -11.0,
         "stage": "VM 아래 · 관심선 전"
       },
       {
@@ -550,10 +578,10 @@
           "NPL 상승·커버리지 하락",
           "금감원 정기검사·회장 3연임"
         ],
-        "currentPrice": 28650,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 28250,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -26.5,
+        "gapRate": -27.6,
         "stage": "1차 관심"
       },
       {
@@ -582,11 +610,11 @@
           "삼성전자 주가(VM의 47%)",
           "ROE 9%대 정체"
         ],
-        "currentPrice": 635000,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 629000,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "G20 시세",
-        "gapRate": 0.9,
-        "stage": "VM 위"
+        "gapRate": -0.1,
+        "stage": "VM 아래 · 관심선 전"
       },
       {
         "rank": 5,
@@ -614,10 +642,10 @@
           "해외 투자로 FCF < 배당(0.56배)",
           "국내 담배 수요 축소"
         ],
-        "currentPrice": 176400,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 179600,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "G20 시세",
-        "gapRate": 7.0,
+        "gapRate": 8.9,
         "stage": "VM 위"
       },
       {
@@ -646,10 +674,10 @@
           "이익 정체 — FY2026 감익·DPS 500원 미만 시 재검토",
           "오너가 지분 이동"
         ],
-        "currentPrice": 9080,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 9090,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -21.7,
+        "gapRate": -21.6,
         "stage": "1차 관심"
       },
       {
@@ -678,10 +706,10 @@
           "관세·인센티브 마진 압박",
           "배당 성장 둔화"
         ],
-        "currentPrice": 112600,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 109600,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -8.4,
+        "gapRate": -10.8,
         "stage": "VM 아래 · 관심선 전"
       },
       {
@@ -710,10 +738,10 @@
           "3Q26 일본 구마모토 지진 손실",
           "재보험 소프트마켓"
         ],
-        "currentPrice": 14450,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 14640,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -2.4,
+        "gapRate": -1.1,
         "stage": "VM 아래 · 관심선 전"
       },
       {
@@ -742,10 +770,10 @@
           "현대차그룹 캡티브 의존(해외 79%)",
           "배당 3년째 1,175원 정체"
         ],
-        "currentPrice": 17990,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 17960,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -30.8,
+        "gapRate": -30.9,
         "stage": "적극 검토"
       },
       {
@@ -774,10 +802,10 @@
           "미국 232조·멕시코 관세",
           "대주주 지분 담보(오버행)"
         ],
-        "currentPrice": 55400,
-        "priceBasisDate": "2026-10-06",
+        "currentPrice": 55000,
+        "priceBasisDate": "2026-10-07",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -15.9,
+        "gapRate": -16.5,
         "stage": "VM 아래 · 관심선 전"
       }
     ]
@@ -802,7 +830,7 @@
     "universeSize": 20,
     "top20Count": 20,
     "averageCaqm": 81.9,
-    "undervaluedCount": 14
+    "undervaluedCount": 16
   },
   "companies": [
     {
@@ -830,8 +858,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 272000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 268500,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "memory_normalized",
       "valuationModelLabel": "메모리 정상화 EPS·PER",
@@ -894,7 +922,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2사(현대차·DS) 2027F EPS 평균 × PER 6배. 2026-09-25 새 기준(복수 EPS·목표가 상한) 점검 결과 유지.",
-      "gapRate": -44.9,
+      "gapRate": -45.6,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -951,7 +979,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -985,8 +1013,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1773000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 1723000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "memory_normalized",
       "valuationModelLabel": "메모리 정상화 EPS·PER",
@@ -1049,10 +1077,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS(미래에셋) × 정상 PER 8배 ÷ 1.1². 2사 평균 적용 시 3,135,300원이나 사이클 산업 장기 지속성 불확실로 보수적 유지(2026-09-25).",
-      "gapRate": -38.4,
+      "gapRate": -40.2,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "적극검토",
+      "signal": "강한안전마진",
       "reason": "HBM 기술 리더십과 선도 고객 인증이 AI 메모리 성장의 핵심 경쟁우위다.",
       "risk": "메모리 가격 사이클과 대규모 CAPEX, 경쟁사의 HBM 수율 개선이 핵심 위험이다.",
       "warning": null,
@@ -1106,7 +1134,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1140,8 +1168,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 68800,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 65500,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1199,7 +1227,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS × 5년 평균 PER 38.73배(프리미엄 0.66%) ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": 19.2,
+      "gapRate": 13.5,
       "rating": "★★★☆☆",
       "opinion": "관찰",
       "signal": "관망",
@@ -1245,7 +1273,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1279,8 +1307,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 683000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 628000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1338,10 +1366,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027E EPS 3사(교보·SK·미래에셋) 평균 34,246원 × 30.65배(5년 평균 30.52배 + K×D 선반영 체크) ÷ 1.1.",
-      "gapRate": -28.4,
+      "gapRate": -34.2,
       "rating": "★★★★★",
       "opinion": "적극 매수",
-      "signal": "1차관심",
+      "signal": "적극검토",
       "reason": "북미 전력망 교체와 데이터센터 전력 수요, 장기 수주잔고가 실적 가시성을 높인다.",
       "risk": "변압기 업황 정상화, 원재료와 생산능력 확대에 따른 마진 변동이 핵심 위험이다.",
       "warning": null,
@@ -1395,7 +1423,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1429,8 +1457,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 2807000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 2588000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1488,10 +1516,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS 2분기 실적 이후 2사(대신·SK) 평균 126,969원 × 30.08배(5년 평균 26.63배 + K×D) ÷ 1.1.",
-      "gapRate": -19.2,
-      "rating": "★★★★☆",
-      "opinion": "분할매수",
-      "signal": "관망",
+      "gapRate": -25.5,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "1차관심",
       "reason": "고압 전력기기 공급부족과 북미 생산거점, 장기 수주잔고가 이익 성장을 지지한다.",
       "risk": "프로젝트 원가와 납기, 전력기기 증설 경쟁에 따른 사이클 정상화 위험이 있다. 조현준 회장의 횡령 확정판결에 따른 경영진 점수 중대 감점 요인이 있다.",
       "warning": "조현준 회장 횡령 확정판결(경영진 중대감점)",
@@ -1545,7 +1573,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1579,8 +1607,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 131900,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 122000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1638,7 +1666,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS(유안타) × 33.55배 ÷ 1.1. 메리츠·다올 영업이익 전망과 4% 이내 교차확인, 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": -21.9,
+      "gapRate": -27.7,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "1차관심",
@@ -1684,7 +1712,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1718,8 +1746,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 420500,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 400000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1777,10 +1805,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "PBR-고든 방식 기각. 조선 3사 선행 PER 최고(14.9배) + 경쟁력 프리미엄 10% = 16.4배 × 5사 평균 2028F EPS 38,164원 ÷ 1.1².",
-      "gapRate": -18.6,
-      "rating": "★★★★☆",
-      "opinion": "분할매수",
-      "signal": "관망",
+      "gapRate": -22.6,
+      "rating": "★★★★★",
+      "opinion": "적극 매수",
+      "signal": "1차관심",
       "reason": "고부가 선종 수주와 장기 인도 슬롯, 계열 조선소 포트폴리오가 이익 가시성을 높인다.",
       "risk": "후판 가격, 공정 지연과 환율·해운 사이클 변화가 주요 위험이다.",
       "warning": null,
@@ -1823,7 +1851,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1857,8 +1885,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 235000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 231500,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1916,7 +1944,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "5년 PER 사용 불가(상장 2년) → PEG 방식. 3사 평균 2028F EPS 11,460원 × PER 29배(목표가 평균 상한 280,000원 준수) ÷ 1.1².",
-      "gapRate": -14.5,
+      "gapRate": -15.7,
       "rating": "★★★★☆",
       "opinion": "분할매수",
       "signal": "관망",
@@ -1962,7 +1990,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -1996,8 +2024,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1210000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 1217000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2055,7 +2083,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028E EPS(LS) × 17.62배 ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": -15.2,
+      "gapRate": -14.7,
       "rating": "★★★★☆",
       "opinion": "분할매수",
       "signal": "관망",
@@ -2112,7 +2140,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2146,8 +2174,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1023000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 972000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2205,7 +2233,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사(DS·유안타·키움, 이상치 대신 제외) 평균 67,585원 × 5년 평균 PER 18.36배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": -0.2,
+      "gapRate": -5.2,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2262,7 +2290,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2296,8 +2324,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 361000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 379000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2355,10 +2383,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사(교보·유안타·LS) 평균 22,180원 × 5년 평균 PER 28.59배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": -31.1,
+      "gapRate": -27.7,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "적극검토",
+      "signal": "1차관심",
       "reason": "메디큐브·에이지알 브랜드의 해외 확장과 뷰티 디바이스 성장성이 높은 CAQM을 지지한다.",
       "risk": "채널 재고와 신제품 주기 리스크, 해외 유통 실행력을 점검해야 한다.",
       "warning": null,
@@ -2401,7 +2429,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2435,8 +2463,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 176400,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 179600,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2494,7 +2522,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS 2사(한화·DS) 평균 13,994원 × 12.96배(5년 평균 12.67배 + 프리미엄 2.28%) ÷ 1.1.",
-      "gapRate": 7.0,
+      "gapRate": 8.9,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2551,7 +2579,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2585,8 +2613,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 31350,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 30700,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2644,7 +2672,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사 평균 3,841원 × PER 19배(성장 둔화로 과거 PER 하향, 목표가 평균 상한 62,300원 준수) ÷ 1.1².",
-      "gapRate": -48.0,
+      "gapRate": -49.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -2690,7 +2718,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2724,8 +2752,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 635000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 629000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "insurance_sotp",
       "valuationModelLabel": "보험 PBR·CSM·SOTP",
@@ -2784,7 +2812,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "SOTP: 보험 본업(삼성전자 배당 제외 2027F EPS 55,144원 × 손보 peer PER 6.64배 ÷ 1.1 = 332,900원) + 삼성전자 지분(8,697만주 시가 × 50% 할인 = 주당 296,600원).",
-      "gapRate": 0.9,
+      "gapRate": -0.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2844,7 +2872,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -2878,8 +2906,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 86900,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 85200,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2937,7 +2965,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 2사(신한·메리츠) 평균 3,379원 × 5년 평균 PER 26.94배(프리미엄 0%) ÷ 1.1². 7~9월 파업 영향은 3분기 실적으로 확인 필요.",
-      "gapRate": 15.6,
+      "gapRate": 13.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2994,7 +3022,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -3028,8 +3056,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 96900,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 96400,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3087,7 +3115,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "5년 평균 PER 왜곡(136배) → PEG 방식. 2사 평균 2028F EPS 6,322원 × 32.8배(성장률) ÷ 1.1².",
-      "gapRate": -43.5,
+      "gapRate": -43.8,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -3133,7 +3161,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -3167,8 +3195,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 306000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 308500,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3226,7 +3254,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS(LS, 보수적) 25,868원 × 22.42배(5년 평균 21.84배 + 프리미엄 2.64%) ÷ 1.1². 국내 리쥬란 성장 둔화 반영.",
-      "gapRate": -36.2,
+      "gapRate": -35.6,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "적극검토",
@@ -3283,7 +3311,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -3317,8 +3345,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 217500,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 205500,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3376,7 +3404,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 최신 2사(하나·유안타) 평균 6,845원 × 5년 평균 PER 26.81배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": 43.4,
+      "gapRate": 35.5,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -3433,7 +3461,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
@@ -3467,8 +3495,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 103600,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 103300,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "bank_pbr",
       "valuationModelLabel": "은행·금융지주 BPS·PBR",
@@ -3523,7 +3551,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "PBR 100%(COE 9.5%, g 2%). 키움 4/27: ROE 9.7% → 1.027배 × 2027E BPS 139,134원 ÷ 1.1 = 129,860원 / 한화 4/24: ROE 9.2% → 0.96배 × 2027E BPS 144,443원 ÷ 1.1 = 126,060원 → 평균 128,000원. FCFE DCF 검증 120,400원(COE 10%). 3개월 목표가 평균 140,000원 이하.",
-      "gapRate": -19.1,
+      "gapRate": -19.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -3583,7 +3611,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-30",
           "multiple": "2026-09-30",
@@ -3617,8 +3645,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 703000,
-      "priceBasisDate": "2026-10-06",
+      "currentPrice": 659000,
+      "priceBasisDate": "2026-10-07",
       "priceSource": "공공데이터포털 금융위원회 주식시세정보",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3676,7 +3704,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 2사(DS·키움, 이상치 iM 제외) 평균 34,654원 × 23.78배(5년 평균 23.21배 + K×D) ÷ 1.1².",
-      "gapRate": 3.2,
+      "gapRate": -3.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -3722,7 +3750,7 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-10-06",
+          "price": "2026-10-07",
           "financialReport": "2026-06-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
