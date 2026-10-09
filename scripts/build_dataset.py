@@ -965,7 +965,7 @@ def main() -> None:
             load_json(MARKET_UNIVERSE_PATH) if MARKET_UNIVERSE_PATH.exists() else None,
         ),
         "methodology": {
-            "version": "CAQM Official v3.0 · Sector VM v2.0",
+            "version": "CAQM Official v3.19 (2026-10-09) · Sector VM v2.0",
             "weights": COMPONENT_LIMITS,
             "formula": f"일반기업은 과거 5년 평균 PER에 해외 유사기업 차이의 {overseas_adjustment_weight * 100:g}%를 보정한다. 은행·금융지주는 정상화 BPS × 적정 PBR을 주평가하고 정상화 EPS × PER로 교차검증한다. 증권·복합금융은 PBR·PER를 병행하며, 보험은 PBR에 CSM·SOTP 조정을 더한다. 메모리 반도체는 2~3년 정상화 EPS × 정상 PER를 현재가치로 할인한다. 괴리율 = (현재가 - Final VM) ÷ Final VM × 100",
             "ratingPolicy": "CAQM은 가격과 VM을 제외하고 해자(경쟁우위) 30점(산업내 경쟁력 20+전산업 관점 10), 성장성 20점(EPS 성장률 기준, 업종별 만점기준 차등), 수익성(ROE) 20점(절대 ROE 단일계량), 재무건전성 15점(부채비율 7.5+이자보상배율 7.5), 경영진 5점(도덕성 2.5+경영성과 2.5), 주주환원 10점(수준 5+지속성장 5)으로 평가한다. 업종 구분 없이 전 종목에 동일 배점을 적용한다(과거 금융업 별도 배점 방식은 폐기). CAQM 80점 이상을 기본 품질 통과, 70점 이상을 후보군 컷라인으로 보고, VM 초안 기준 괴리율 -20% 이하는 적극 검토, -20% 초과~-10% 이하는 분할 검토, -10% 초과는 관찰로 표시한다. VM이 검토 완료되기 전에는 매수 표현을 사용하지 않는다.",
