@@ -8,6 +8,7 @@ const CANDIDATE_REVIEW_URL = `${REPOSITORY_URL}/issues/new?template=candidate-re
 const ONEPAGER_LINKS = [
   { key: 'g20', label: 'G20 원페이저', url: 'https://claude.ai/artifact/CMLWGQJDVzfLYHzeNMFdUC', desc: '성장 트랙 20종목 한 장 요약 — CAQM 항목·VM 산출식·추적 리스크·현재가 게이지' },
   { key: 'd10', label: 'D10 원페이저', url: 'https://claude.ai/artifact/6evo9CyAbi5AjHPoXTkAwy', desc: '배당성장 트랙 10종목 한 장 요약 — DGQM 항목·VM 근거·배당 점검·현재가 게이지' },
+  { key: 'w10', label: 'W10 원페이저', url: 'https://claude.ai/artifact/8RBWD9abju8ge8qAU58zLD', desc: '해외 핵심 트랙 한 장 요약 — CAQM 항목·VM(달러) 산출식·추적 리스크·현재가 게이지' },
 ]
 const SCREENER_ROW_LIMIT = 200
 const WATCHLIST_STORAGE_KEY = 'compound-asset-2045-watchlist'
@@ -492,6 +493,7 @@ function Header({ basisDate }) {
     ['#d10', 'D10 배당성장'],
     ['#sectors', '산업별 보기'],
     ['#company', '기업 분석'],
+    ['#w10', 'W10 해외'],
     ['#onepagers', '원페이저'],
     ['#methodology', '평가 기준'],
     ['#screener', '전체시장 스크리너'],
@@ -1566,6 +1568,69 @@ function DividendTrackSection({ track }) {
   )
 }
 
+function w10Stage(g) {
+  if (g <= -40) return '강한 안전마진'
+  if (g <= -30) return '적극 검토 구간'
+  if (g <= -20) return '1차 관심 구간'
+  if (g < 0) return 'VM 아래 · 관심선 전'
+  return 'VM 위(고평가)'
+}
+
+function W10Section() {
+  const [w10, setW10] = useState(null)
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/w10.json?ts=${Date.now()}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then(setW10)
+      .catch(() => setW10(null))
+  }, [])
+  if (!w10) return null
+  const usd = (n) => `$${Number(n).toLocaleString('en-US', { maximumFractionDigits: n >= 100 ? 0 : 2 })}`
+  return (
+    <section className="candidate-section w10-section" id="w10" aria-labelledby="w10-title">
+      <div className="page-shell">
+        <SectionHeading
+          eyebrow="W10 · OVERSEAS CORE"
+          title="W10 해외 핵심 트랙"
+          titleId="w10-title"
+          description={`${w10.description} 투자 비중 G20:D10:W10 = 4:4:2. 현재가 기준일 ${w10.asof}.`}
+        />
+        <div className="w10-table-wrap">
+          <table className="w10-table">
+            <thead>
+              <tr><th>순위</th><th>종목</th><th>업종</th><th>CAQM</th><th>VM</th><th>현재가</th><th>괴리율</th><th>구간</th></tr>
+            </thead>
+            <tbody>
+              {w10.holdings.map((h) => {
+                const g = ((h.price - h.vm) / h.vm) * 100
+                const cls = g <= -20 ? 'w10-good' : g >= 10 ? 'w10-bad' : 'w10-mid'
+                return (
+                  <tr key={h.ticker}>
+                    <td>{h.rank}</td>
+                    <td><strong>{h.name}</strong> <small>{h.ticker}</small></td>
+                    <td className="w10-left">{h.sector}</td>
+                    <td>{h.caqmBase.toFixed(1)}{h.bonus ? ` + ${h.bonus}` : ''}</td>
+                    <td>{usd(h.vm)}</td>
+                    <td>{usd(h.price)}</td>
+                    <td className={cls}>{g > 0 ? '+' : g < 0 ? '−' : ''}{Math.abs(g).toFixed(1)}%</td>
+                    <td className="w10-left">{w10Stage(g)}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <ul className="w10-watch">
+          {w10.watch.map((w) => (
+            <li key={w.ticker}><strong>{w.name} ({w.ticker})</strong> {w.status}</li>
+          ))}
+        </ul>
+        <a className="w10-link" href={w10.onepagerUrl} target="_blank" rel="noopener noreferrer">종목별 상세는 W10 원페이저 ↗</a>
+      </div>
+    </section>
+  )
+}
+
 function OnepagerLinks() {
   return (
     <section className="candidate-section onepager-section" id="onepagers" aria-labelledby="onepager-title">
@@ -2160,6 +2225,16 @@ function Methodology({ methodology }) {
           title="CAQM과 VM은 이렇게 구분합니다."
           description="CAQM(Compound Asset Quality Model)은 기업이 장기간 복리성장을 만들 수 있는지를 평가하고, VM(Value Model)은 그 기업의 현재 적정가치를 평가합니다."
         />
+        <div className="track-composition">
+          <span>TRACK COMPOSITION · v3.19</span>
+          <h3>G20 · D10 · W10 세 트랙, 투자 비중 4 : 4 : 2</h3>
+          <div className="track-composition-grid">
+            <div><strong>G20</strong><span>성장 트랙 · CAQM·VM</span></div>
+            <div><strong>D10</strong><span>배당성장 트랙 · DGQM v2·VM</span></div>
+            <div><strong>W10</strong><span>해외 핵심 트랙 · CAQM·VM(달러)</span></div>
+          </div>
+          <p>국내 성장주(G20)와 배당성장주(D10)에 각 4, 해외 핵심종목(W10)에 2 비중을 기본으로 배분합니다. 매수 검토 기준(괴리율 -20%/-30%/-40%)은 세 트랙에 동일하게 적용합니다.</p>
+        </div>
         <div className="method-grid">
           {[
             ['01', '해자(경쟁우위)', '30점', '산업내 경쟁력 20점과 전산업 관점 경쟁력 10점으로 평가합니다.'],
@@ -2168,6 +2243,7 @@ function Methodology({ methodology }) {
             ['04', '재무건전성', '15점', '부채비율 7.5점과 이자보상배율 7.5점으로 평가합니다.'],
             ['05', '경영진', '5점', '도덕성 2.5점과 경영성과 2.5점으로 평가합니다.'],
             ['06', '주주환원', '10점', '환원 수준 5점과 지속성장 5점으로 평가합니다.'],
+            ['07', '침투율 가점', '+10점(가점)', '침투율 10%를 막 넘은 산업(예: 미국 GLP-1 11%, 에이전틱 AI 약 11%)의 수혜 기업에 가점을 더합니다. 실적으로 증명 +3, 국내 1위 또는 글로벌 Top3 +2, 관련 매출 10% 이상 또는 증권사 실적 전망에 반영 +5. 침투율 20% 초과 시 소멸하며, 점수는 "기본 + 가점"으로 표시하고 VM에는 영향을 주지 않습니다.'],
           ].map(([numberLabel, title, score, copy]) => (
             <article key={numberLabel}>
               <div><span>{numberLabel}</span><strong>{score}</strong></div>
@@ -2269,6 +2345,14 @@ function Methodology({ methodology }) {
         <div className="exclusion-note">
           <span aria-hidden="true">i</span>
           <p>한화오션, HD한국조선해양은 HD현대중공업으로 조선업 대표 종목이 확정되어 검토 대상에서 제외됩니다 (2026-09-12)</p>
+        </div>
+        <div className="exclusion-note">
+          <span aria-hidden="true">i</span>
+          <p><strong>원전 특례(G20 안)</strong>: 원전 최대 2종목 + 전력기기 최대 2종목까지 편입할 수 있습니다. VM은 수주잔고 기준 SOTP로 산정하고 정상화 EPS로 교차검증합니다. 현재 후보 3사(두산에너빌리티·한전기술·한전KPS)는 모두 편입을 보류하고 2026년 3분기 실적 발표 후 재점검합니다.</p>
+        </div>
+        <div className="exclusion-note">
+          <span aria-hidden="true">i</span>
+          <p><strong>W10 해외 핵심 트랙</strong>: 해외 상장·시가총액 500억 달러 이상·업종별 대표 1종목, CAQM 기본 80점 이상 기준으로 최대 10종목을 편입합니다. 글로벌 시가총액 1위 기업은 업종 대표와 별도로 상시 편입하며(정원 10종목에 포함, 질적 결격 시 제외, 1위가 바뀌면 새 1위를 편입하고 이전 1위는 재심사), 데이터는 회사 공시를 우선하고 EPS 컨센서스 2곳 이상 평균과 최근 3개월 투자은행 목표가 평균을 VM 상한으로 사용합니다. 해외주식은 양도차익 250만원 공제 후 22% 과세이며 연금계좌로는 매수할 수 없습니다.</p>
         </div>
         <aside className="disclaimer">
           <span aria-hidden="true">!</span>
@@ -2449,6 +2533,7 @@ export default function App() {
         />
         <CandidateWatchlist master={snapshot.officialMaster} />
         <DividendTrackSection track={snapshot.dividendTrack} />
+        <W10Section />
         <OnepagerLinks />
         <SectorView
           companies={snapshot.companies}

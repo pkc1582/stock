@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T01:34:38+09:00",
+  "generatedAt": "2026-10-09T21:30:11+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,72 +9,15 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-10-08T01:38:07+09:00",
-    "generatedAt": "2026-10-09T01:34:38+09:00",
+    "comparedAt": "2026-10-09T01:34:38+09:00",
+    "generatedAt": "2026-10-09T21:30:11+09:00",
     "vm": [],
-    "gap": [
-      {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "before": 43.4,
-        "after": 35.5,
-        "delta": -7.9
-      },
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "before": 3.2,
-        "after": -3.3,
-        "delta": -6.5
-      },
-      {
-        "code": "298040",
-        "name": "효성중공업",
-        "before": -19.2,
-        "after": -25.5,
-        "delta": -6.3
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": -28.4,
-        "after": -34.2,
-        "delta": -5.8
-      },
-      {
-        "code": "007660",
-        "name": "이수페타시스",
-        "before": -21.9,
-        "after": -27.7,
-        "delta": -5.8
-      },
-      {
-        "code": "403870",
-        "name": "HPSP",
-        "before": 19.2,
-        "after": 13.5,
-        "delta": -5.7
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": -0.2,
-        "after": -5.2,
-        "delta": -5.0
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "before": -18.6,
-        "after": -22.6,
-        "delta": -4.0
-      }
-    ],
+    "gap": [],
     "caqm": [],
     "entrants": [],
     "exits": [],
     "reports": [],
-    "hasMaterialChanges": true
+    "hasMaterialChanges": false
   },
   "officialMaster": {
     "version": "국내 TOP20 공식 마스터 · 2026-09-30 (은행 VM PBR 100% 전환)",
@@ -811,7 +754,7 @@
     ]
   },
   "methodology": {
-    "version": "CAQM Official v3.0 · Sector VM v2.0",
+    "version": "CAQM Official v3.19 (2026-10-09) · Sector VM v2.0",
     "weights": {
       "moatIndustry": 20,
       "moatCross": 10,

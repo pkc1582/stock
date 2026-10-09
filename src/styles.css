@@ -1042,3 +1042,32 @@ td { padding-block: 15px; }
 .onepager-card strong { font-size: 18px; letter-spacing: -.4px; }
 .onepager-card span { color: #65736d; font-size: 13.5px; line-height: 1.7; }
 @media (max-width: 720px) { .onepager-grid { grid-template-columns: 1fr; } }
+
+/* W10 overseas core track */
+.w10-table-wrap { overflow-x: auto; border: 1px solid #cdd5cc; background: #fbfcf8; }
+.w10-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.w10-table th, .w10-table td { padding: 12px 14px; border-bottom: 1px solid #e3e8e1; text-align: right; white-space: nowrap; }
+.w10-table th { color: #65736d; font-weight: 600; font-size: 12.5px; background: #f2f5ef; }
+.w10-table td:first-child, .w10-table th:first-child { text-align: center; }
+.w10-table td:nth-child(2), .w10-table th:nth-child(2), .w10-left { text-align: left !important; }
+.w10-table small { color: #65736d; margin-left: 4px; }
+.w10-good { color: #1f7a4d; font-weight: 700; }
+.w10-mid { color: var(--deep); }
+.w10-bad { color: #b3412e; font-weight: 700; }
+.w10-watch { margin: 16px 0 0; padding-left: 18px; color: #65736d; font-size: 13.5px; line-height: 1.8; }
+.w10-watch strong { color: var(--deep); margin-right: 6px; }
+.w10-link { display: inline-block; margin-top: 12px; color: var(--green); font-weight: 600; text-decoration: none; }
+.w10-link:hover { text-decoration: underline; }
+.onepager-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .onepager-grid { grid-template-columns: 1fr; } }
+
+/* Track composition (v3.19) */
+.track-composition { border: 1px solid #cdd5cc; background: #fbfcf8; padding: 24px; margin: 24px 0; }
+.track-composition > span { color: #65736d; font-size: 12px; font-weight: 600; letter-spacing: .4px; }
+.track-composition h3 { margin: 6px 0 16px; font-size: 19px; letter-spacing: -.4px; }
+.track-composition-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+.track-composition-grid div { display: flex; flex-direction: column; gap: 4px; padding: 12px; background: #edf5ee; border: 1px solid #d7e3d8; }
+.track-composition-grid strong { font-size: 16px; color: var(--deep); }
+.track-composition-grid span { font-size: 12.5px; color: #65736d; }
+.track-composition p { margin: 0; color: #4f5d57; font-size: 13.5px; line-height: 1.7; }
+@media (max-width: 720px) { .track-composition-grid { grid-template-columns: 1fr; } }

@@ -65,6 +65,11 @@ jobs:
           STOCK_API_SERVICE_KEY: ${{ secrets.STOCK_API_SERVICE_KEY }}
         run: python scripts/fetch_dividend_quotes.py
 
+      - name: Fetch W10 overseas quotes
+        id: w10
+        continue-on-error: true
+        run: python scripts/fetch_w10_quotes.py
+
       - name: Fetch OpenDART financial data
         id: dart
         continue-on-error: true
@@ -86,6 +91,7 @@ jobs:
         shell: bash
         run: |
           git add -- data/companies.json public/data/latest.json
+          if [ -f public/data/w10.json ]; then git add -- public/data/w10.json; fi
           if [ -f data/dividend-quotes.json ]; then git add -- data/dividend-quotes.json; fi
           if git diff --cached --quiet; then
             echo "No data changes to commit."
