@@ -6,16 +6,94 @@
   "description": "해외 상장·시총 500억 달러 이상·업종별 대표 1종목, CAQM 기본 80점 이상(침투율 가점은 순위에만 반영). 글로벌 시총 1위는 업종 대표와 별도로 상시 편입. VM은 달러, 괴리율 = (현재가 − VM) ÷ VM.",
   "onepagerUrl": "https://claude.ai/artifact/8RBWD9abju8ge8qAU58zLD",
   "holdings": [
-    { "rank": 1, "name": "일라이 릴리", "ticker": "LLY",   "sector": "제약(비만·당뇨)",   "caqmBase": 87.2, "bonus": 10, "vm": 1415, "price": 1161.16, "priceDate": "2026-10-08", "note": "미국 GLP-1 침투율 11% 가점" },
-    { "rank": 2, "name": "알파벳",     "ticker": "GOOGL", "sector": "플랫폼(검색·클라우드)", "caqmBase": 84.5, "bonus": 10, "vm": 321,  "price": 348.29,  "priceDate": "2026-10-08", "note": "에이전틱 AI 가점" },
-    { "rank": 3, "name": "마이크로소프트", "ticker": "MSFT", "sector": "소프트웨어·클라우드", "caqmBase": 90.6, "bonus": 10, "vm": 608,  "price": 522.61,  "priceDate": "2026-10-08", "note": "에이전틱 AI 가점" },
-    { "rank": 4, "name": "TSMC",       "ticker": "TSM",   "sector": "반도체(파운드리) 대표", "caqmBase": 93.3, "bonus": 10, "vm": 468,  "price": 457.99,  "priceDate": "2026-10-08", "note": "ADR 기준 VM" },
-    { "rank": 5, "name": "엔비디아",   "ticker": "NVDA",  "sector": "AI 가속기 · 글로벌 시총 1위", "caqmBase": 92.3, "bonus": 10, "vm": 340, "price": 230.48, "priceDate": "2026-10-08", "note": "시총 1위 상시 편입, VM은 목표가 상한(근사)" },
-    { "rank": 6, "name": "코스트코",   "ticker": "COST",  "sector": "소비(창고형 할인점) 대표", "caqmBase": 82.0, "bonus": 0, "vm": 951, "price": 947.92, "priceDate": "2026-10-08", "note": "" }
+    {
+      "rank": 1,
+      "name": "일라이 릴리",
+      "ticker": "LLY",
+      "sector": "제약(비만·당뇨)",
+      "caqmBase": 87.2,
+      "bonus": 10,
+      "vm": 1415,
+      "price": 1161.16,
+      "priceDate": "2026-10-08",
+      "note": "미국 GLP-1 침투율 11% 가점"
+    },
+    {
+      "rank": 2,
+      "name": "알파벳",
+      "ticker": "GOOGL",
+      "sector": "플랫폼(검색·클라우드)",
+      "caqmBase": 84.5,
+      "bonus": 10,
+      "vm": 321,
+      "price": 348.29,
+      "priceDate": "2026-10-08",
+      "note": "에이전틱 AI 가점"
+    },
+    {
+      "rank": 3,
+      "name": "마이크로소프트",
+      "ticker": "MSFT",
+      "sector": "소프트웨어·클라우드",
+      "caqmBase": 90.6,
+      "bonus": 10,
+      "vm": 608,
+      "price": 522.61,
+      "priceDate": "2026-10-08",
+      "note": "에이전틱 AI 가점"
+    },
+    {
+      "rank": 4,
+      "name": "TSMC",
+      "ticker": "TSM",
+      "sector": "반도체(파운드리) 대표",
+      "caqmBase": 93.3,
+      "bonus": 10,
+      "vm": 468,
+      "price": 457.99,
+      "priceDate": "2026-10-08",
+      "note": "ADR 기준 VM"
+    },
+    {
+      "rank": 5,
+      "name": "엔비디아",
+      "ticker": "NVDA",
+      "sector": "AI 가속기 · 글로벌 시총 1위",
+      "caqmBase": 92.3,
+      "bonus": 10,
+      "vm": 340,
+      "price": 230.48,
+      "priceDate": "2026-10-08",
+      "note": "시총 1위 상시 편입, VM은 목표가 상한(근사)"
+    },
+    {
+      "rank": 6,
+      "name": "코스트코",
+      "ticker": "COST",
+      "sector": "소비(창고형 할인점) 대표",
+      "caqmBase": 82.0,
+      "bonus": 0,
+      "vm": 951,
+      "price": 947.92,
+      "priceDate": "2026-10-08",
+      "note": ""
+    }
   ],
   "watch": [
-    { "name": "ASML",   "ticker": "ASML", "status": "미편입 — 반도체 대표는 TSMC. CAQM 93.8, VM €2,026(유로), 가격 추적" },
-    { "name": "무디스", "ticker": "MCO",  "status": "미편입 — CAQM 73.5(80점 미달). VM $566, 가격 추적" },
-    { "name": "비자",   "ticker": "V",    "status": "제외 — 결제 산업 대체 위험(CEO 판단)" }
+    {
+      "name": "ASML",
+      "ticker": "ASML",
+      "status": "미편입 — 반도체 대표는 TSMC. CAQM 93.8, VM €2,026(유로), 가격 추적"
+    },
+    {
+      "name": "무디스",
+      "ticker": "MCO",
+      "status": "미편입 — CAQM 73.5(80점 미달). VM $566, 가격 추적"
+    },
+    {
+      "name": "비자",
+      "ticker": "V",
+      "status": "제외 — 결제 산업 대체 위험(CEO 판단)"
+    }
   ]
 }
