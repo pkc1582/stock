@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T04:54:52+09:00",
-  "basisDate": "2026-10-01",
+  "generatedAt": "2026-10-13T05:25:10+09:00",
+  "basisDate": "2026-10-08",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -26,16 +26,16 @@
     "KRX 공식 종목분류와 지정 상태를 교차검증하기 전에는 1차 정량 선별에만 사용해야 합니다."
   ],
   "counts": {
-    "providerRows": 2758,
+    "providerRows": 2757,
     "kospi": 830,
-    "kosdaq": 1821,
+    "kosdaq": 1820,
     "classified": {
-      "common_candidate": 2552,
+      "common_candidate": 2551,
       "name_likely_preferred": 3,
       "name_likely_spac": 71,
       "name_likely_reit": 25
     },
-    "preliminaryEligible": 2552,
+    "preliminaryEligible": 2551,
     "knownExcluded": 99
   },
   "companies": [
@@ -9114,8 +9114,8 @@
     {
       "code": "078130",
       "isin": "KR7078130002",
-      "name": "국일제지",
-      "corporationName": "국일제지(주)",
+      "name": "에스엠국일",
+      "corporationName": "에스엠국일(주)",
       "corporateRegistrationNumber": "1345110001377",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -13244,8 +13244,8 @@
     {
       "code": "134580",
       "isin": "KR7134580000",
-      "name": "탑코미디어",
-      "corporationName": "주식회사 탑코미디어",
+      "name": "엔키AX",
+      "corporationName": "(주)엔키에이엑스",
       "corporateRegistrationNumber": "1101113615121",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -15020,20 +15020,6 @@
       "exclusionReason": null
     },
     {
-      "code": "196490",
-      "isin": "KR7196490007",
-      "name": "디에이테크놀로지",
-      "corporationName": "(주)디에이테크놀로지",
-      "corporateRegistrationNumber": "1101111958888",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
       "code": "196700",
       "isin": "KR7196700009",
       "name": "웹스",
@@ -15624,8 +15610,8 @@
     {
       "code": "210120",
       "isin": "KR7210120002",
-      "name": "캔버스엔",
-      "corporationName": "(주)캔버스엔",
+      "name": "빅텐츠",
+      "corporationName": "(주)빅토리콘텐츠",
       "corporateRegistrationNumber": "1101112753873",
       "market": "KOSDAQ",
       "classification": "common_candidate",
