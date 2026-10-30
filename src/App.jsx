@@ -331,6 +331,30 @@ const formatDateTime = (value) => {
   }).format(date)
 }
 
+const STALE_BUSINESS_DAYS = 3
+
+const businessDaysStale = (dateStr) => {
+  if (!dateStr) return null
+  const start = new Date(`${String(dateStr).slice(0, 10)}T00:00:00Z`)
+  if (Number.isNaN(start.getTime())) return null
+  const today = new Date()
+  const todayUtc = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()))
+  let count = 0
+  const cursor = new Date(start)
+  while (cursor < todayUtc) {
+    cursor.setUTCDate(cursor.getUTCDate() + 1)
+    const day = cursor.getUTCDay()
+    if (day !== 0 && day !== 6) count += 1
+  }
+  return count
+}
+
+function StaleBadge({ dateStr }) {
+  const stale = businessDaysStale(dateStr)
+  if (stale === null || stale <= STALE_BUSINESS_DAYS) return null
+  return <span className="stale-badge">갱신 지연 · {stale}영업일 경과</span>
+}
+
 const formatWon = (value) => (
   value === null || value === undefined
     ? '입력 대기'
@@ -483,7 +507,7 @@ function PwaUpdateNotice() {
   )
 }
 
-function Header({ basisDate }) {
+function Header({ basisDate, priceBasisDate }) {
   const [open, setOpen] = useState(false)
   const links = [
     ['#changes', '이번 갱신'],
@@ -525,7 +549,8 @@ function Header({ basisDate }) {
         </nav>
         <div className="header-date">
           <span className="live-dot" />
-          {formatDate(basisDate)} 기준
+          시세 기준일 {formatDate(priceBasisDate || basisDate)}
+          <StaleBadge dateStr={priceBasisDate || basisDate} />
         </div>
       </div>
     </header>
@@ -731,7 +756,7 @@ function LatestChanges({ snapshot, onSelect }) {
           </div>
         )}
         <div className="data-health-grid" aria-label="자동화 데이터 상태">
-          <div><span>시세 기준일</span><strong>{formatDate(snapshot.companies[0]?.priceBasisDate)}</strong><small>공식 종가 스냅샷</small></div>
+          <div><span>시세 기준일</span><strong>{formatDate(snapshot.companies[0]?.priceBasisDate)}</strong><small>공식 종가 스냅샷</small><StaleBadge dateStr={snapshot.companies[0]?.priceBasisDate} /></div>
           <div><span>OpenDART 수신</span><strong>{financial.latestReportSuccessCount ?? '—'} / {financial.companyCount ?? snapshot.companies.length}</strong><small>기업별 최신 보고서</small></div>
           <div><span>주요 지표 완전</span><strong>{financial.latestReportCompleteCount ?? '—'}개</strong><small>누락 없는 기업</small></div>
           <div><span>마지막 자동 계산</span><strong>{formatDateTime(snapshot.generatedAt)}</strong><small>다음 실행 · 평일 18:20 KST</small></div>
@@ -1562,7 +1587,7 @@ function DividendTrackSection({ track }) {
             </tbody>
           </table>
         </div>
-        <p className="table-footnote">* 괴리율 = (현재가 − Final VM) ÷ Final VM. 매수 검토 기준 −20% 1차 관심 · −30% 적극 검토 · −40% 강한 안전마진. {track.version}</p>
+        <p className="table-footnote">* 괴리율 = (현재가 − Final VM) ÷ Final VM. 매수 검토 기준 −20% 1차 관심 · −30% 적극 검토 · −40% 강한 안전마진. {track.version} <StaleBadge dateStr={track.companies?.[0]?.priceBasisDate} /></p>
       </div>
     </section>
   )
@@ -1593,7 +1618,7 @@ function W10Section() {
           eyebrow="W10 · OVERSEAS CORE"
           title="W10 해외 핵심 트랙"
           titleId="w10-title"
-          description={`${w10.description} 투자 비중 G20:D10:W10 = 4:4:2. 현재가 기준일 ${w10.asof}.`}
+          description={<>{w10.description} 투자 비중 G20:D10:W10 = 4:4:2. 현재가 기준일 {w10.asof}. <StaleBadge dateStr={w10.asof} /></>}
         />
         <div className="w10-table-wrap">
           <table className="w10-table">
@@ -2517,7 +2542,7 @@ export default function App() {
   return (
     <>
       <a className="skip-link" href="#main-content">본문으로 건너뛰기</a>
-      <Header basisDate={snapshot.basisDate} />
+      <Header basisDate={snapshot.basisDate} priceBasisDate={snapshot.companies[0]?.priceBasisDate} />
       <PwaUpdateNotice />
       <main id="main-content">
         <Hero snapshot={snapshot} />
