@@ -2,9 +2,9 @@ name: Daily data refresh
 
 on:
   schedule:
-    # 18:20 KST, Monday-Friday (GitHub cron uses UTC).
-    - cron: "20 9 * * 1-5"
-  workflow_dispatch:
+    - cron: '10 9 * * 1-5'    # 한국시간 월~금 18:10 — 국내 장 마감 후
+    - cron: '10 22 * * 0-4'   # 한국시간 월~금 07:10 — 미국 장 마감 후(W10), 국내 전일 데이터 보완
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -86,6 +86,14 @@ jobs:
         if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         run: python -m json.tool public/data/latest.json > /dev/null
 
+      - name: Freshness check
+        id: freshness
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "market=${{ steps.market.outcome }} d10=${{ steps.d10.outcome }} w10=${{ steps.w10.outcome }} dart=${{ steps.dart.outcome }}"
+          python scripts/check_freshness.py
+
       - name: Commit refreshed snapshot
         if: success() && (steps.market.outcome == 'success' || steps.dart.outcome == 'success')
         shell: bash
@@ -111,6 +119,7 @@ jobs:
           market="${{ steps.market.outcome }}"
           dart="${{ steps.dart.outcome }}"
           build="${{ steps.build.outcome }}"
+          freshness="${{ steps.freshness.outcome }}"
           if [ "$market" != "success" ]; then
             echo "::warning::Market refresh failed; the last verified prices were preserved."
           fi
@@ -123,5 +132,9 @@ jobs:
           fi
           if [ "$build" != "success" ]; then
             echo "::error::The public dataset could not be rebuilt safely."
+            exit 1
+          fi
+          if [ "$freshness" != "success" ]; then
+            echo "::error::Price data freshness check failed; see the Freshness check step log."
             exit 1
           fi
