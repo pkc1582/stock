@@ -219,6 +219,7 @@ class DividendTrackTests(unittest.TestCase):
             {"code": "111111", "name": "A", "finalVm": 10_000, "fallbackPrice": 9_000, "fallbackPriceDate": "2026-10-02"},
             {"code": "222222", "name": "B", "finalVm": 20_000, "fallbackPrice": 30_000, "fallbackPriceDate": "2026-09-01"},
         ]}
+        # Legacy pre-migration shape: a flat price sharing one top-level basisDate.
         quotes = {"basisDate": "2026-10-05", "quotes": {"111111": 7_000}}
         g20 = [{"code": "222222", "currentPrice": 16_000, "priceBasisDate": "2026-10-04"}]
         result = build_dividend_track(track, quotes, g20, None)
@@ -226,6 +227,26 @@ class DividendTrackTests(unittest.TestCase):
         self.assertEqual((a["currentPrice"], a["gapRate"], a["stage"]), (7_000, -30.0, "적극 검토"))
         self.assertEqual((b["currentPrice"], b["gapRate"]), (16_000, -20.0))
         self.assertNotIn("fallbackPrice", a)
+
+    def test_per_code_basis_date_is_used_for_partial_yahoo_updates(self):
+        track = {"companies": [
+            {"code": "111111", "name": "A", "finalVm": 10_000},
+            {"code": "222222", "name": "B", "finalVm": 20_000},
+        ]}
+        # New per-code shape: each code can carry its own basis date, since a
+        # partial Yahoo refresh only updates the codes that succeeded.
+        quotes = {
+            "quotes": {
+                "111111": {"price": 6_000, "basisDate": "2026-10-09"},
+                "222222": {"price": 19_000, "basisDate": "2026-10-02"},
+            }
+        }
+        g20 = [{"code": "222222", "currentPrice": 18_000, "priceBasisDate": "2026-10-07"}]
+        result = build_dividend_track(track, quotes, g20, None)
+        a, b = result["companies"]
+        self.assertEqual((a["currentPrice"], a["priceBasisDate"]), (6_000, "2026-10-09"))
+        # B's G20 price (10-07) is fresher than its D10 quote (10-02), so the G20 price wins.
+        self.assertEqual((b["currentPrice"], b["priceBasisDate"]), (18_000, "2026-10-07"))
 
     def test_missing_track_returns_none(self):
         self.assertIsNone(build_dividend_track(None, None, [], None))

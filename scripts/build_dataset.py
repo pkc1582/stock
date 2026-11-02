@@ -750,8 +750,12 @@ def build_dividend_track(
         candidates.setdefault(str(code), []).append((str(date), int(price), source))
 
     if quotes and isinstance(quotes.get("quotes"), dict):
-        for code, price in quotes["quotes"].items():
-            add(code, quotes.get("basisDate"), price, "D10 시세 갱신")
+        for code, entry in quotes["quotes"].items():
+            if isinstance(entry, dict):
+                add(code, entry.get("basisDate"), entry.get("price"), "D10 시세 갱신")
+            else:
+                # Pre-migration shape: a flat price shared one top-level basisDate.
+                add(code, quotes.get("basisDate"), entry, "D10 시세 갱신")
     for company in g20_companies:
         add(company.get("code"), company.get("priceBasisDate"), company.get("currentPrice"), "G20 시세")
     if market_universe and isinstance(market_universe.get("securities"), list):

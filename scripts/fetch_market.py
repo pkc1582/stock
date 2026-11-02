@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
-"""Refresh Korean closing prices from the free data.go.kr stock-price API.
+"""Refresh Korean closing prices, preferring the free Yahoo Finance chart API.
 
-Required secret (either name is accepted):
-  STOCK_API_SERVICE_KEY or DATA_GO_KR_API_KEY
+Primary source: Yahoo Finance's public chart endpoint
+(https://query1.finance.yahoo.com/v8/finance/chart/<code>.KS or .KQ), queried
+with no API key. Each code is tried against both the .KS (KOSPI) and .KQ
+(KOSDAQ) suffixes; whichever response has the newer ``meta.regularMarketTime``
+is used (querying a KOSDAQ code with .KS, or vice versa, silently returns a
+different, stale instrument rather than failing, so both must be checked).
+Codes that fail keep their previously verified price — a full 20/20 snapshot
+is no longer required to write a partial update.
 
-Optional:
-  STOCK_API_ENDPOINT
+Fallback source (only when Yahoo returns zero usable quotes): the data.go.kr
+stock-price API, unchanged from before. Required secret (either name is
+accepted): STOCK_API_SERVICE_KEY or DATA_GO_KR_API_KEY. Optional:
+STOCK_API_ENDPOINT. That provider publishes reference-date data on the
+following business day, so we try each prior KST business date, newest first,
+and a snapshot is written only when every configured stock has one valid
+quote on that same date (the original all-or-nothing rule, kept only for this
+fallback path).
 
-The provider publishes reference-date data on the following business day.  We
-therefore try each prior KST business date, newest first, and fetch only the 20
-configured codes through exact-date, code-filtered requests.  A snapshot is
-written only when every configured stock has one valid quote on that same date.
 Raw responses and credentials are never persisted.
 """
 
@@ -46,6 +54,19 @@ TOTAL_HTTP_BUDGET_SECONDS = 105
 RETRY_DELAY_SECONDS = 0.25
 SUCCESS_CODES = {"0", "00"}
 STOCK_CODE_PATTERN = re.compile(r"^(?:A)?(\d{6})$")
+
+YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+YAHOO_SUFFIXES = (".KS", ".KQ")
+YAHOO_RANGE = "10d"
+YAHOO_INTERVAL = "1d"
+YAHOO_USER_AGENT = "Mozilla/5.0"
+YAHOO_SOURCE_LABEL = "Yahoo Finance 차트 API (KRX 정규장 종가)"
+YAHOO_HTTP_TIMEOUT_SECONDS = 15
+YAHOO_MAX_HTTP_ATTEMPTS_PER_REQUEST = 2
+YAHOO_RETRY_DELAY_SECONDS = 0.25
+YAHOO_MAX_CONCURRENT_REQUESTS = 8
+YAHOO_TOTAL_HTTP_BUDGET_SECONDS = 60
+KST = timezone(timedelta(hours=9))
 
 
 class MarketRefreshError(RuntimeError):
@@ -95,6 +116,127 @@ def fetch_json(url: str, timeout: float = HTTP_TIMEOUT_SECONDS) -> dict[str, Any
     if not isinstance(decoded, dict):
         raise MarketRefreshError("provider response was not an object")
     return decoded
+
+
+def fetch_yahoo_json(url: str, timeout: float = YAHOO_HTTP_TIMEOUT_SECONDS) -> dict[str, Any]:
+    request = Request(url, headers={"User-Agent": YAHOO_USER_AGENT, "Accept": "application/json"})
+    with urlopen(request, timeout=timeout) as response:
+        payload = response.read()
+    decoded = json.loads(payload.decode("utf-8"))
+    if not isinstance(decoded, dict):
+        raise MarketRefreshError("yahoo response was not an object")
+    return decoded
+
+
+def fetch_yahoo_symbol(symbol: str, deadline: float) -> dict[str, Any] | None:
+    """Fetch one Yahoo chart symbol. Any failure (network, shape, missing
+    result) is swallowed and reported as None so one bad symbol never aborts
+    the run; partial per-code failure is expected and tolerated."""
+
+    url = (
+        f"{YAHOO_CHART_URL.format(symbol=quote(symbol, safe=''))}"
+        f"?range={YAHOO_RANGE}&interval={YAHOO_INTERVAL}"
+    )
+    attempts = 0
+    while attempts < YAHOO_MAX_HTTP_ATTEMPTS_PER_REQUEST:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            return None
+        attempts += 1
+        try:
+            payload = fetch_yahoo_json(url, min(YAHOO_HTTP_TIMEOUT_SECONDS, remaining))
+        except (HTTPError, URLError, TimeoutError, OSError, UnicodeDecodeError, json.JSONDecodeError, MarketRefreshError):
+            if attempts < YAHOO_MAX_HTTP_ATTEMPTS_PER_REQUEST:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    return None
+                time.sleep(min(YAHOO_RETRY_DELAY_SECONDS, remaining))
+                continue
+            return None
+        chart = payload.get("chart")
+        if not isinstance(chart, dict) or chart.get("error"):
+            return None
+        results = chart.get("result")
+        if not isinstance(results, list) or not results or not isinstance(results[0], dict):
+            return None
+        return results[0]
+    return None
+
+
+def extract_latest_close(result: dict[str, Any]) -> tuple[int, str] | None:
+    """Return (price, KST-date) for the most recent trading day with a
+    non-null close, newest first."""
+
+    timestamps = result.get("timestamp")
+    indicators = result.get("indicators")
+    quote_list = indicators.get("quote") if isinstance(indicators, dict) else None
+    if not isinstance(timestamps, list) or not timestamps or not isinstance(quote_list, list) or not quote_list:
+        return None
+    first_quote = quote_list[0]
+    closes = first_quote.get("close") if isinstance(first_quote, dict) else None
+    if not isinstance(closes, list) or len(closes) != len(timestamps):
+        return None
+    for timestamp, close in zip(reversed(timestamps), reversed(closes)):
+        if close is None or not isinstance(timestamp, (int, float)):
+            continue
+        price = normalized_price(round(close))
+        if price is None:
+            continue
+        kst_date = datetime.fromtimestamp(timestamp, tz=KST).date().isoformat()
+        return price, kst_date
+    return None
+
+
+def fetch_yahoo_quote(code: str, deadline: float) -> tuple[int, str] | None:
+    """Try both the .KS and .KQ suffixes and keep whichever response is
+    actually the freshest (meta.regularMarketTime), since querying the wrong
+    market for a code returns a different, stale instrument instead of an
+    error."""
+
+    candidates: list[tuple[float, int, str]] = []
+    for suffix in YAHOO_SUFFIXES:
+        symbol = f"{code}{suffix}"
+        result = fetch_yahoo_symbol(symbol, deadline)
+        if result is None:
+            continue
+        meta = result.get("meta")
+        if not isinstance(meta, dict):
+            continue
+        regular_market_time = meta.get("regularMarketTime")
+        if not isinstance(regular_market_time, (int, float)) or isinstance(regular_market_time, bool):
+            continue
+        if str(meta.get("symbol", "")).upper() != symbol:
+            continue
+        parsed = extract_latest_close(result)
+        if parsed is None:
+            continue
+        price, kst_date = parsed
+        candidates.append((float(regular_market_time), price, kst_date))
+
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: item[0])
+    _, price, kst_date = candidates[-1]
+    return price, kst_date
+
+
+def fetch_yahoo_snapshot(stock_codes: list[str], deadline: float) -> dict[str, tuple[int, str]]:
+    quotes: dict[str, tuple[int, str]] = {}
+    worker_count = min(YAHOO_MAX_CONCURRENT_REQUESTS, len(stock_codes))
+    if worker_count <= 0:
+        return quotes
+
+    with ThreadPoolExecutor(max_workers=worker_count, thread_name_prefix="yahoo-quote") as executor:
+        futures = {
+            executor.submit(fetch_yahoo_quote, stock_code, deadline): stock_code
+            for stock_code in stock_codes
+        }
+        for future in as_completed(futures):
+            stock_code = futures[future]
+            result = future.result()
+            if result is not None:
+                quotes[stock_code] = result
+    return quotes
 
 
 def positive_int(value: Any, field: str, *, allow_zero: bool = False) -> int:
@@ -379,6 +521,54 @@ def apply_quotes(data: dict[str, Any], basis_date: str, quotes: dict[str, int]) 
     return changed
 
 
+def apply_partial_quotes(data: dict[str, Any], quotes: dict[str, tuple[int, str]]) -> bool:
+    """Update only the companies present in ``quotes``; companies with no
+    fresh quote this run keep their previously verified price untouched.
+    Never regresses an individual company to an older basis date."""
+
+    companies = data["companies"]
+    target_codes = configured_codes(companies)
+    unknown = set(quotes) - target_codes
+    if unknown:
+        raise MarketRefreshError(f"quotes include codes outside the configured universe: {sorted(unknown)}")
+
+    changed = False
+    applied_any = False
+    newest_basis_date = parse_existing_basis_date(data.get("priceBasisDate"))
+    for company in companies:
+        code = str(company["code"])
+        result = quotes.get(code)
+        if result is None:
+            continue
+        price, basis_date = result
+        existing_company_date = normalized_date(company.get("priceBasisDate")) or ""
+        if basis_date < existing_company_date:
+            continue
+        applied_any = True
+        if (
+            company.get("currentPrice") != price
+            or company.get("priceBasisDate") != basis_date
+            or company.get("priceSource") != YAHOO_SOURCE_LABEL
+        ):
+            changed = True
+        company["currentPrice"] = price
+        company["priceBasisDate"] = basis_date
+        company["priceSource"] = YAHOO_SOURCE_LABEL
+        if basis_date > newest_basis_date:
+            newest_basis_date = basis_date
+
+    if not applied_any:
+        return False
+
+    if newest_basis_date != data.get("priceBasisDate"):
+        data["priceBasisDate"] = newest_basis_date
+        changed = True
+    if data.get("marketDataStatus") != "updated_from_yahoo_finance":
+        data["marketDataStatus"] = "updated_from_yahoo_finance"
+        changed = True
+    return changed
+
+
 def current_kst_date() -> date:
     return datetime.now(timezone(timedelta(hours=9))).date()
 
@@ -432,20 +622,50 @@ def refresh_market(
 
 
 def main() -> int:
+    try:
+        data = load_data()
+    except (OSError, json.JSONDecodeError, MarketRefreshError) as error:
+        print(f"market refresh failed; verified snapshot preserved: {error}", file=sys.stderr)
+        return 1
+
+    try:
+        companies = data.get("companies")
+        if not isinstance(companies, list):
+            raise MarketRefreshError("data/companies.json has an invalid companies list")
+        target_codes = configured_codes(companies)
+        stock_codes = [str(company["code"]) for company in companies]
+        if set(stock_codes) != target_codes:
+            raise MarketRefreshError("configured stock order does not match the validated universe")
+
+        yahoo_deadline = time.monotonic() + YAHOO_TOTAL_HTTP_BUDGET_SECONDS
+        yahoo_quotes = fetch_yahoo_snapshot(stock_codes, yahoo_deadline)
+
+        if yahoo_quotes:
+            changed = apply_partial_quotes(data, yahoo_quotes)
+            if changed:
+                atomic_write(data)
+            success_count = len(yahoo_quotes)
+            suffix = "" if changed else "; no file changes"
+            print(f"market refresh via Yahoo Finance updated {success_count}/{len(stock_codes)} companies{suffix}")
+            return 0
+
+        print("Yahoo Finance returned no usable quotes; falling back to data.go.kr")
+    except MarketRefreshError as error:
+        print(f"Yahoo Finance refresh failed; falling back to data.go.kr: {error}")
+
     service_key = os.environ.get("STOCK_API_SERVICE_KEY") or os.environ.get("DATA_GO_KR_API_KEY")
     if not service_key:
-        print("market refresh skipped: no API key; verified snapshot preserved")
+        print("market refresh skipped: no fallback API key; verified snapshot preserved")
         return 0
 
     endpoint = os.environ.get("STOCK_API_ENDPOINT", DEFAULT_ENDPOINT).strip() or DEFAULT_ENDPOINT
     try:
-        data = load_data()
         changed, basis_date = refresh_market(data, endpoint, service_key, current_kst_date())
         if changed:
             atomic_write(data)
-            print(f"market refresh atomically updated 20/20 companies for {basis_date}")
+            print(f"market refresh (data.go.kr fallback) atomically updated 20/20 companies for {basis_date}")
         else:
-            print(f"market refresh already current for {basis_date}; no file changes")
+            print(f"market refresh (data.go.kr fallback) already current for {basis_date}; no file changes")
         return 0
     except (MarketRefreshError, OSError, json.JSONDecodeError) as error:
         print(f"market refresh failed; verified snapshot preserved: {error}", file=sys.stderr)

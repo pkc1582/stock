@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T23:41:12+09:00",
+  "generatedAt": "2026-11-02T21:40:07+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 공공데이터포털 시세 API 갱신 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,37 +9,15 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-10-14T02:00:39+09:00",
-    "generatedAt": "2026-10-14T23:41:12+09:00",
+    "comparedAt": "2026-10-14T23:41:12+09:00",
+    "generatedAt": "2026-11-02T21:40:07+09:00",
     "vm": [],
-    "gap": [
-      {
-        "code": "278470",
-        "name": "에이피알",
-        "before": -32.8,
-        "after": -46.0,
-        "delta": -13.2
-      },
-      {
-        "code": "000660",
-        "name": "SK하이닉스",
-        "before": -44.3,
-        "after": -49.9,
-        "delta": -5.6
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": -38.0,
-        "after": -43.0,
-        "delta": -5.0
-      }
-    ],
+    "gap": [],
     "caqm": [],
     "entrants": [],
     "exits": [],
     "reports": [],
-    "hasMaterialChanges": true
+    "hasMaterialChanges": false
   },
   "officialMaster": {
     "version": "국내 TOP20 공식 마스터 · 2026-09-30 (은행 VM PBR 100% 전환)",
