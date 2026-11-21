@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T13:26:24+09:00",
+  "generatedAt": "2026-11-21T13:54:00+09:00",
   "basisDate": "2026-09-26",
   "dataStatus": "OpenDART 최신 보고서 확인 20/20 · 주요지표 완전 18/20 · 2026-08-07 정규장 종가 교차검증 / 공식 마스터 VM 검토 완료",
   "financialDataSummary": {
@@ -9,127 +9,261 @@
     "latestReportPartialCount": 2
   },
   "changes": {
-    "comparedAt": "2026-11-02T21:40:07+09:00",
-    "generatedAt": "2026-11-03T13:26:24+09:00",
+    "comparedAt": "2026-11-03T13:26:24+09:00",
+    "generatedAt": "2026-11-21T13:54:00+09:00",
     "vm": [],
     "gap": [
       {
-        "code": "403870",
-        "name": "HPSP",
-        "before": 6.8,
-        "after": -30.1,
-        "delta": -36.9
-      },
-      {
-        "code": "058470",
-        "name": "리노공업",
-        "before": 5.9,
-        "after": -28.2,
-        "delta": -34.1
-      },
-      {
-        "code": "062040",
-        "name": "산일전기",
-        "before": -23.2,
-        "after": -46.9,
-        "delta": -23.7
-      },
-      {
-        "code": "079550",
-        "name": "LIG디펜스앤에어로스페이스",
-        "before": -17.1,
-        "after": -39.2,
-        "delta": -22.1
-      },
-      {
-        "code": "007660",
-        "name": "이수페타시스",
-        "before": -30.6,
-        "after": -51.9,
-        "delta": -21.3
-      },
-      {
         "code": "010120",
         "name": "LS ELECTRIC",
-        "before": 18.1,
-        "after": 0.7,
-        "delta": -17.4
-      },
-      {
-        "code": "329180",
-        "name": "HD현대중공업",
-        "before": -29.1,
-        "after": -44.2,
-        "delta": -15.1
-      },
-      {
-        "code": "267260",
-        "name": "HD현대일렉트릭",
-        "before": -41.3,
-        "after": -54.2,
-        "delta": -12.9
-      },
-      {
-        "code": "214450",
-        "name": "파마리서치",
-        "before": -43.0,
-        "after": -54.5,
-        "delta": -11.5
-      },
-      {
-        "code": "055550",
-        "name": "신한지주",
-        "before": -22.1,
-        "after": -33.1,
-        "delta": -11.0
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "before": -18.2,
-        "after": -27.1,
-        "delta": -8.9
-      },
-      {
-        "code": "237690",
-        "name": "에스티팜",
-        "before": -49.9,
-        "after": -58.7,
-        "delta": -8.8
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "before": 10.0,
-        "after": 16.8,
-        "delta": 6.8
+        "before": 0.7,
+        "after": -27.7,
+        "delta": -28.4
       },
       {
         "code": "000810",
         "name": "삼성화재",
-        "before": -2.8,
-        "after": 3.7,
-        "delta": 6.5
+        "before": 3.7,
+        "after": -18.8,
+        "delta": -22.5
       },
       {
-        "code": "278470",
-        "name": "에이피알",
-        "before": -46.0,
-        "after": -52.3,
-        "delta": -6.3
+        "code": "062040",
+        "name": "산일전기",
+        "before": -46.9,
+        "after": -61.8,
+        "delta": -14.9
+      },
+      {
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": -27.1,
+        "after": -41.0,
+        "delta": -13.9
+      },
+      {
+        "code": "214450",
+        "name": "파마리서치",
+        "before": -54.5,
+        "after": -42.6,
+        "delta": 11.9
+      },
+      {
+        "code": "058470",
+        "name": "리노공업",
+        "before": -28.2,
+        "after": -39.7,
+        "delta": -11.5
+      },
+      {
+        "code": "000660",
+        "name": "SK하이닉스",
+        "before": -51.4,
+        "after": -61.3,
+        "delta": -9.9
+      },
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "before": -39.2,
+        "after": -48.9,
+        "delta": -9.7
       },
       {
         "code": "298040",
         "name": "효성중공업",
-        "before": -38.0,
-        "after": -43.5,
-        "delta": -5.5
+        "before": -43.5,
+        "after": -51.6,
+        "delta": -8.1
+      },
+      {
+        "code": "329180",
+        "name": "HD현대중공업",
+        "before": -44.2,
+        "after": -52.2,
+        "delta": -8.0
+      },
+      {
+        "code": "005930",
+        "name": "삼성전자",
+        "before": -55.4,
+        "after": -62.9,
+        "delta": -7.5
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": 16.8,
+        "after": 9.8,
+        "delta": -7.0
+      },
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "before": -56.8,
+        "after": -63.8,
+        "delta": -7.0
+      },
+      {
+        "code": "007660",
+        "name": "이수페타시스",
+        "before": -51.9,
+        "after": -58.8,
+        "delta": -6.9
+      },
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": -54.2,
+        "after": -59.5,
+        "delta": -5.3
       }
     ],
     "caqm": [],
     "entrants": [],
     "exits": [],
-    "reports": [],
+    "reports": [
+      {
+        "code": "005930",
+        "name": "삼성전자",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "000660",
+        "name": "SK하이닉스",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "403870",
+        "name": "HPSP",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "298040",
+        "name": "효성중공업",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "007660",
+        "name": "이수페타시스",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "329180",
+        "name": "HD현대중공업",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "062040",
+        "name": "산일전기",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "003230",
+        "name": "삼양식품",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "012450",
+        "name": "한화에어로스페이스",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "278470",
+        "name": "에이피알",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "033780",
+        "name": "KT&G",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "214150",
+        "name": "클래시스",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "000810",
+        "name": "삼성화재",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "058470",
+        "name": "리노공업",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "237690",
+        "name": "에스티팜",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "214450",
+        "name": "파마리서치",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "055550",
+        "name": "신한지주",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      },
+      {
+        "code": "079550",
+        "name": "LIG디펜스앤에어로스페이스",
+        "before": "2026-06-30",
+        "after": "2026-09-30",
+        "periodLabel": "2026년 3분기 누적"
+      }
+    ],
     "hasMaterialChanges": true
   },
   "officialMaster": {
@@ -570,10 +704,10 @@
           "커버리지 공백 — 리포트 재개 시 재계산",
           "계열 NICE신용평가 차이니즈월 의혹"
         ],
-        "currentPrice": 17230,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 16470,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -22.7,
+        "gapRate": -26.1,
         "stage": "1차 관심"
       },
       {
@@ -602,10 +736,10 @@
           "회장 교체 후 환원 정책 유지 여부",
           "금감원 검사·세무조사·공정위 심의"
         ],
-        "currentPrice": 151900,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 152400,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -19.8,
+        "gapRate": -19.5,
         "stage": "VM 아래 · 관심선 전"
       },
       {
@@ -634,10 +768,10 @@
           "NPL 상승·커버리지 하락",
           "금감원 정기검사·회장 3연임"
         ],
-        "currentPrice": 25150,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 25600,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -35.5,
+        "gapRate": -34.4,
         "stage": "적극 검토"
       },
       {
@@ -666,11 +800,11 @@
           "삼성전자 주가(VM의 47%)",
           "ROE 9%대 정체"
         ],
-        "currentPrice": 653000,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 511000,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "G20 시세",
-        "gapRate": 3.7,
-        "stage": "VM 위"
+        "gapRate": -18.8,
+        "stage": "VM 아래 · 관심선 전"
       },
       {
         "rank": 5,
@@ -698,10 +832,10 @@
           "해외 투자로 FCF < 배당(0.56배)",
           "국내 담배 수요 축소"
         ],
-        "currentPrice": 192600,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 181000,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "G20 시세",
-        "gapRate": 16.8,
+        "gapRate": 9.8,
         "stage": "VM 위"
       },
       {
@@ -730,10 +864,10 @@
           "이익 정체 — FY2026 감익·DPS 500원 미만 시 재검토",
           "오너가 지분 이동"
         ],
-        "currentPrice": 8810,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 8220,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -24.1,
+        "gapRate": -29.1,
         "stage": "1차 관심"
       },
       {
@@ -762,10 +896,10 @@
           "관세·인센티브 마진 압박",
           "배당 성장 둔화"
         ],
-        "currentPrice": 94500,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 88200,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -23.1,
+        "gapRate": -28.2,
         "stage": "1차 관심"
       },
       {
@@ -794,10 +928,10 @@
           "3Q26 일본 구마모토 지진 손실",
           "재보험 소프트마켓"
         ],
-        "currentPrice": 13800,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 12420,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -6.8,
+        "gapRate": -16.1,
         "stage": "VM 아래 · 관심선 전"
       },
       {
@@ -826,10 +960,10 @@
           "현대차그룹 캡티브 의존(해외 79%)",
           "배당 3년째 1,175원 정체"
         ],
-        "currentPrice": 17280,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 16850,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -33.5,
+        "gapRate": -35.2,
         "stage": "적극 검토"
       },
       {
@@ -858,10 +992,10 @@
           "미국 232조·멕시코 관세",
           "대주주 지분 담보(오버행)"
         ],
-        "currentPrice": 48900,
-        "priceBasisDate": "2026-11-03",
+        "currentPrice": 50200,
+        "priceBasisDate": "2026-11-20",
         "priceSource": "D10 시세 갱신",
-        "gapRate": -25.8,
+        "gapRate": -23.8,
         "stage": "1차 관심"
       }
     ]
@@ -886,7 +1020,7 @@
     "universeSize": 20,
     "top20Count": 20,
     "averageCaqm": 81.9,
-    "undervaluedCount": 17
+    "undervaluedCount": 19
   },
   "companies": [
     {
@@ -914,8 +1048,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 220000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 183100,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "memory_normalized",
       "valuationModelLabel": "메모리 정상화 EPS·PER",
@@ -978,7 +1112,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2사(현대차·DS) 2027F EPS 평균 × PER 6배. 2026-09-25 새 기준(복수 EPS·목표가 상한) 점검 결과 유지.",
-      "gapRate": -55.4,
+      "gapRate": -62.9,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1005,17 +1139,17 @@
         "eps2025": 6605,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003699",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 3053729,
-          "operatingMargin": 48.05,
-          "roeAnnualized": 46.81,
-          "debtRatio": 31.1,
-          "epsCumulative": 17950,
+          "rceptNo": "20261116001482",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 5006261,
+          "operatingMargin": 50.77,
+          "roeAnnualized": 49.25,
+          "debtRatio": 28.94,
+          "epsCumulative": 29381,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1035,8 +1169,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1069,8 +1203,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1399000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 1113000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "memory_normalized",
       "valuationModelLabel": "메모리 정상화 EPS·PER",
@@ -1133,7 +1267,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS(미래에셋) × 정상 PER 8배 ÷ 1.1². 2사 평균 적용 시 3,135,300원이나 사이클 산업 장기 지속성 불확실로 보수적 유지(2026-09-25).",
-      "gapRate": -51.4,
+      "gapRate": -61.3,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1160,17 +1294,17 @@
         "eps2025": 62044,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003509",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 1318950,
-          "operatingMargin": 74.42,
-          "roeAnnualized": 140.1,
-          "debtRatio": 32.8,
-          "epsCumulative": 189546,
+          "rceptNo": "20261116001715",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 2365105,
+          "operatingMargin": 76.74,
+          "roeAnnualized": 108.0,
+          "debtRatio": 26.76,
+          "epsCumulative": 243776,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1190,8 +1324,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1224,8 +1358,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 40350,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 37800,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1283,7 +1417,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS × 5년 평균 PER 38.73배(프리미엄 0.66%) ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": -30.1,
+      "gapRate": -34.5,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "적극검토",
@@ -1299,17 +1433,17 @@
         "eps2025": 901,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "OFS",
-          "rceptNo": "20260814004015",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 781,
-          "operatingMargin": 56.94,
-          "roeAnnualized": 31.51,
-          "debtRatio": 29.85,
-          "epsCumulative": 602,
+          "rceptNo": "20261116001497",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 1297,
+          "operatingMargin": 55.75,
+          "roeAnnualized": 27.37,
+          "debtRatio": 39.25,
+          "epsCumulative": 805,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1329,8 +1463,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1363,8 +1497,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 437000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 386500,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1422,7 +1556,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027E EPS 3사(교보·SK·미래에셋) 평균 34,246원 × 30.65배(5년 평균 30.52배 + K×D 선반영 체크) ÷ 1.1.",
-      "gapRate": -54.2,
+      "gapRate": -59.5,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1449,17 +1583,17 @@
         "eps2025": 20354,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003228",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 21783,
-          "operatingMargin": 25.03,
-          "roeAnnualized": 38.57,
-          "debtRatio": 143.18,
-          "epsCumulative": 11521,
+          "rceptNo": "20261116001028",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 33582,
+          "operatingMargin": 24.71,
+          "roeAnnualized": 36.73,
+          "debtRatio": 134.7,
+          "epsCumulative": 16613,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1479,8 +1613,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1513,8 +1647,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1961000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 1679000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1572,7 +1706,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS 2분기 실적 이후 2사(대신·SK) 평균 126,969원 × 30.08배(5년 평균 26.63배 + K×D) ÷ 1.1.",
-      "gapRate": -43.5,
+      "gapRate": -51.6,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1599,17 +1733,17 @@
         "eps2025": 55832,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260813001554",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 30452,
-          "operatingMargin": 13.68,
-          "roeAnnualized": 20.16,
-          "debtRatio": 213.51,
-          "epsCumulative": 27905,
+          "rceptNo": "20261113001360",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 47858,
+          "operatingMargin": 13.79,
+          "roeAnnualized": 24.45,
+          "debtRatio": 208.95,
+          "epsCumulative": 51489,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1629,8 +1763,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1663,8 +1797,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 81200,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 69600,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1722,7 +1856,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS(유안타) × 33.55배 ÷ 1.1. 메리츠·다올 영업이익 전망과 4% 이내 교차확인, 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": -51.9,
+      "gapRate": -58.8,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1738,17 +1872,17 @@
         "eps2025": 2278,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814002283",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 7202,
-          "operatingMargin": 20.03,
-          "roeAnnualized": 27.27,
-          "debtRatio": 70.59,
-          "epsCumulative": 1501,
+          "rceptNo": "20261116001194",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 11094,
+          "operatingMargin": 21.56,
+          "roeAnnualized": 28.07,
+          "debtRatio": 65.59,
+          "epsCumulative": 2386,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1768,8 +1902,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1802,8 +1936,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 288500,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 247000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -1861,7 +1995,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "PBR-고든 방식 기각. 조선 3사 선행 PER 최고(14.9배) + 경쟁력 프리미엄 10% = 16.4배 × 5사 평균 2028F EPS 38,164원 ÷ 1.1².",
-      "gapRate": -44.2,
+      "gapRate": -52.2,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -1877,17 +2011,17 @@
         "eps2025": 15702,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814002879",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 122485,
-          "operatingMargin": 15.88,
-          "roeAnnualized": 32.1,
-          "debtRatio": 178.6,
-          "epsCumulative": 15209,
+          "rceptNo": "20261116001044",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 180020,
+          "operatingMargin": 15.8,
+          "roeAnnualized": 26.59,
+          "debtRatio": 173.54,
+          "epsCumulative": 18585,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -1907,8 +2041,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -1941,8 +2075,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 145900,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 104800,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2000,7 +2134,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "5년 PER 사용 불가(상장 2년) → PEG 방식. 3사 평균 2028F EPS 11,460원 × PER 29배(목표가 평균 상한 280,000원 준수) ÷ 1.1².",
-      "gapRate": -46.9,
+      "gapRate": -61.8,
       "rating": "★★★★★",
       "opinion": "적극 매수",
       "signal": "강한안전마진",
@@ -2016,17 +2150,17 @@
         "eps2025": 4901,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003544",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 3145,
-          "operatingMargin": 37.37,
-          "roeAnnualized": 32.19,
-          "debtRatio": 14.24,
-          "epsCumulative": 3292,
+          "rceptNo": "20261116001322",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 4605,
+          "operatingMargin": 35.18,
+          "roeAnnualized": 29.36,
+          "debtRatio": 12.55,
+          "epsCumulative": 4636,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2046,8 +2180,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2080,8 +2214,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 1178000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 1233000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2139,7 +2273,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028E EPS(LS) × 17.62배 ÷ 1.1². 목표가 상한 점검 후 유지(2026-09-25).",
-      "gapRate": -17.5,
+      "gapRate": -13.6,
       "rating": "★★★★☆",
       "opinion": "분할매수",
       "signal": "관망",
@@ -2166,17 +2300,17 @@
         "eps2025": 52156,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003053",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 14847,
-          "operatingMargin": 23.8,
-          "roeAnnualized": 40.01,
-          "debtRatio": 77.53,
-          "epsCumulative": 37414,
+          "rceptNo": "20261116001082",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 22766,
+          "operatingMargin": 24.14,
+          "roeAnnualized": 34.67,
+          "debtRatio": 76.02,
+          "epsCumulative": 49329,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2196,8 +2330,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2230,8 +2364,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 748000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 605000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2289,10 +2423,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사(DS·유안타·키움, 이상치 대신 제외) 평균 67,585원 × 5년 평균 PER 18.36배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": -27.1,
+      "gapRate": -41.0,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "1차관심",
+      "signal": "강한안전마진",
       "reason": "방산 수출 레퍼런스와 대규모 수주잔고, 엔진·지상체계 기술 장벽이 성장 가시성을 높인다.",
       "risk": "계약 일정 지연, 원가 상승과 지정학적·정책 변수에 민감하다.",
       "warning": null,
@@ -2316,17 +2450,17 @@
         "eps2025": null,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003198",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 150439,
-          "operatingMargin": 13.32,
-          "roeAnnualized": 17.36,
-          "debtRatio": 190.27,
-          "epsCumulative": 17202,
+          "rceptNo": "20261112000647",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 210978,
+          "operatingMargin": 11.64,
+          "roeAnnualized": 11.63,
+          "debtRatio": 205.22,
+          "epsCumulative": 14571,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2346,8 +2480,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2380,8 +2514,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 250250,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 235500,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2439,7 +2573,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사(교보·유안타·LS) 평균 22,180원 × 5년 평균 PER 28.59배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": -52.3,
+      "gapRate": -55.1,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -2455,17 +2589,17 @@
         "eps2025": 7765,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814002503",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 13609,
-          "operatingMargin": 25.19,
-          "roeAnnualized": 94.64,
-          "debtRatio": 70.07,
-          "epsCumulative": 6913,
+          "rceptNo": "20261113001366",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 21340,
+          "operatingMargin": 23.59,
+          "roeAnnualized": 88.66,
+          "debtRatio": 91.1,
+          "epsCumulative": 9856,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2485,8 +2619,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2519,8 +2653,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 192600,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 181000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2578,7 +2712,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2027F EPS 2사(한화·DS) 평균 13,994원 × 12.96배(5년 평균 12.67배 + 프리미엄 2.28%) ÷ 1.1.",
-      "gapRate": 16.8,
+      "gapRate": 9.8,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2605,17 +2739,17 @@
         "eps2025": 10220,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814004174",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 34052,
-          "operatingMargin": 22.88,
-          "roeAnnualized": 15.54,
-          "debtRatio": 54.65,
-          "epsCumulative": 7175,
+          "rceptNo": "20261113001553",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 53103,
+          "operatingMargin": 24.65,
+          "roeAnnualized": 12.0,
+          "debtRatio": 56.42,
+          "epsCumulative": 8197,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2635,8 +2769,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2669,8 +2803,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 26050,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 21800,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -2728,7 +2862,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 3사 평균 3,841원 × PER 19배(성장 둔화로 과거 PER 하향, 목표가 평균 상한 62,300원 준수) ÷ 1.1².",
-      "gapRate": -56.8,
+      "gapRate": -63.8,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -2744,17 +2878,17 @@
         "eps2025": 2017,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814004072",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 1927,
-          "operatingMargin": 42.11,
-          "roeAnnualized": 21.21,
-          "debtRatio": 39.57,
-          "epsCumulative": 950,
+          "rceptNo": "20261116000298",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 2757,
+          "operatingMargin": 39.22,
+          "roeAnnualized": 15.51,
+          "debtRatio": 35.03,
+          "epsCumulative": 1047,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -2774,8 +2908,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2808,8 +2942,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 653000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 511000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "insurance_sotp",
       "valuationModelLabel": "보험 PBR·CSM·SOTP",
@@ -2868,7 +3002,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "SOTP: 보험 본업(삼성전자 배당 제외 2027F EPS 55,144원 × 손보 peer PER 6.64배 ÷ 1.1 = 332,900원) + 삼성전자 지분(8,697만주 시가 × 50% 할인 = 주당 296,600원).",
-      "gapRate": 3.7,
+      "gapRate": -18.8,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "관망",
@@ -2895,17 +3029,17 @@
         "eps2025": 47478,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003992",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
+          "rceptNo": "20261116001792",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
           "revenueEok": null,
           "operatingMargin": null,
-          "roeAnnualized": 9.56,
-          "debtRatio": 219.01,
-          "epsCumulative": 32283,
+          "roeAnnualized": 9.36,
+          "debtRatio": 237.62,
+          "epsCumulative": 43884,
           "dataQuality": "partial",
           "missingMetrics": [
             "revenueEok",
@@ -2928,8 +3062,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -2962,8 +3096,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 54000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 45350,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3021,10 +3155,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 2사(신한·메리츠) 평균 3,379원 × 5년 평균 PER 26.94배(프리미엄 0%) ÷ 1.1². 7~9월 파업 영향은 3분기 실적으로 확인 필요.",
-      "gapRate": -28.2,
+      "gapRate": -39.7,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "1차관심",
+      "signal": "적극검토",
       "reason": "반도체 테스트 소켓과 핀의 정밀가공 기술, 높은 고객 전환비용과 장기 수익성이 핵심 해자다.",
       "risk": "고객 집중과 반도체 테스트 수요 변동, 증설 이후 가동률을 점검해야 한다.",
       "warning": null,
@@ -3048,17 +3182,17 @@
         "eps2025": 2002,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "OFS",
-          "rceptNo": "20260814000445",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 2430,
-          "operatingMargin": 49.73,
-          "roeAnnualized": 28.2,
-          "debtRatio": 10.31,
-          "epsCumulative": 1401,
+          "rceptNo": "20261113000396",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 3257,
+          "operatingMargin": 49.2,
+          "roeAnnualized": 22.47,
+          "debtRatio": 7.84,
+          "epsCumulative": 1699,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -3078,8 +3212,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -3112,8 +3246,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 70900,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 71600,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3171,7 +3305,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "5년 평균 PER 왜곡(136배) → PEG 방식. 2사 평균 2028F EPS 6,322원 × 32.8배(성장률) ÷ 1.1².",
-      "gapRate": -58.7,
+      "gapRate": -58.3,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -3187,17 +3321,17 @@
         "eps2025": 2706,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003399",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 1754,
-          "operatingMargin": 17.01,
-          "roeAnnualized": 9.28,
-          "debtRatio": 34.81,
-          "epsCumulative": 1358,
+          "rceptNo": "20261116001993",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 2730,
+          "operatingMargin": 16.68,
+          "roeAnnualized": 6.48,
+          "debtRatio": 32.54,
+          "epsCumulative": 1406,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -3217,8 +3351,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -3251,8 +3385,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 218000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 275000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3310,7 +3444,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS(LS, 보수적) 25,868원 × 22.42배(5년 평균 21.84배 + 프리미엄 2.64%) ÷ 1.1². 국내 리쥬란 성장 둔화 반영.",
-      "gapRate": -54.5,
+      "gapRate": -42.6,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "강한안전마진",
@@ -3337,17 +3471,17 @@
         "eps2025": 14933,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814002997",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 3248,
-          "operatingMargin": 38.1,
-          "roeAnnualized": 27.76,
-          "debtRatio": 40.35,
-          "epsCumulative": 10024,
+          "rceptNo": "20261113001686",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 4963,
+          "operatingMargin": 37.55,
+          "roeAnnualized": 23.43,
+          "debtRatio": 41.03,
+          "epsCumulative": 12907,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -3367,8 +3501,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -3401,8 +3535,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 152700,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 109700,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3460,10 +3594,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 최신 2사(하나·유안타) 평균 6,845원 × 5년 평균 PER 26.81배(K×D 결과 프리미엄 0%) ÷ 1.1².",
-      "gapRate": 0.7,
+      "gapRate": -27.7,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "관망",
+      "signal": "1차관심",
       "reason": "전력기기·자동화 포트폴리오와 해외 생산거점 확대가 안정적 수주잔고를 지지한다.",
       "risk": "원자재 가격과 해외 수주 경쟁, 전력기기 사이클 정상화가 주요 위험이다.",
       "warning": null,
@@ -3487,17 +3621,17 @@
         "eps2025": 9647,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260814003088",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 29535,
-          "operatingMargin": 10.33,
-          "roeAnnualized": 21.64,
-          "debtRatio": 172.12,
-          "epsCumulative": 1607,
+          "rceptNo": "20261116002011",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 48313,
+          "operatingMargin": 11.15,
+          "roeAnnualized": 21.33,
+          "debtRatio": 145.61,
+          "epsCumulative": 2556,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -3517,8 +3651,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
@@ -3551,8 +3685,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 85600,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 86200,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "bank_pbr",
       "valuationModelLabel": "은행·금융지주 BPS·PBR",
@@ -3607,7 +3741,7 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "PBR 100%(COE 9.5%, g 2%). 키움 4/27: ROE 9.7% → 1.027배 × 2027E BPS 139,134원 ÷ 1.1 = 129,860원 / 한화 4/24: ROE 9.2% → 0.96배 × 2027E BPS 144,443원 ÷ 1.1 = 126,060원 → 평균 128,000원. FCFE DCF 검증 120,400원(COE 10%). 3개월 목표가 평균 140,000원 이하.",
-      "gapRate": -33.1,
+      "gapRate": -32.7,
       "rating": "★★☆☆☆",
       "opinion": "후보",
       "signal": "적극검토",
@@ -3634,17 +3768,17 @@
         "eps2025": 9812,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20261007000223",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
+          "rceptNo": "20261116001624",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
           "revenueEok": null,
           "operatingMargin": null,
-          "roeAnnualized": 11.38,
-          "debtRatio": 1245.01,
-          "epsCumulative": 7075,
+          "roeAnnualized": 11.11,
+          "debtRatio": 1234.28,
+          "epsCumulative": 10370,
           "dataQuality": "partial",
           "missingMetrics": [
             "revenueEok",
@@ -3667,8 +3801,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-30",
           "multiple": "2026-09-30",
           "nextReview": "2026-09-30"
@@ -3701,8 +3835,8 @@
         "management": 5,
         "shareholderReturn": 10
       },
-      "currentPrice": 414000,
-      "priceBasisDate": "2026-11-03",
+      "currentPrice": 348000,
+      "priceBasisDate": "2026-11-20",
       "priceSource": "Yahoo Finance 차트 API (KRX 정규장 종가)",
       "valuationModel": "standard_per",
       "valuationModelLabel": "일반기업 EPS·PER",
@@ -3760,10 +3894,10 @@
       },
       "vmStatus": "reviewed",
       "vmNote": "2028F EPS 2사(DS·키움, 이상치 iM 제외) 평균 34,654원 × 23.78배(5년 평균 23.21배 + K×D) ÷ 1.1².",
-      "gapRate": -39.2,
+      "gapRate": -48.9,
       "rating": "★★☆☆☆",
       "opinion": "후보",
-      "signal": "적극검토",
+      "signal": "강한안전마진",
       "reason": "정밀유도무기(천궁-Ⅱ·L-SAM) 국내 사실상 독점과 중동 수출 레퍼런스, 수주잔고 확대가 성장 가시성을 높인다.",
       "risk": "임원 뇌물 기소(2026-08-20)에 따른 방사청 입찰참가 제한 여부, 수주-매출 인식 시차와 환율 변동을 점검해야 한다.",
       "warning": "임원 2명 방사청 뇌물 혐의 기소(2026-08-20) — 부정당업자 제재 결정 대기",
@@ -3776,17 +3910,17 @@
         "eps2025": 11604,
         "latestReport": {
           "reportYear": 2026,
-          "reportCode": "11012",
-          "periodLabel": "2026년 반기 누적",
+          "reportCode": "11014",
+          "periodLabel": "2026년 3분기 누적",
           "fsDiv": "CFS",
-          "rceptNo": "20260825000158",
-          "periodEnd": "2026-06-30",
-          "fetchedAt": "2026-11-03T13:18:09+09:00",
-          "revenueEok": 22780,
-          "operatingMargin": 12.15,
-          "roeAnnualized": 27.41,
-          "debtRatio": 434.05,
-          "epsCumulative": 10187,
+          "rceptNo": "20261116000096",
+          "periodEnd": "2026-09-30",
+          "fetchedAt": "2026-11-21T13:45:29+09:00",
+          "revenueEok": 33492,
+          "operatingMargin": 10.28,
+          "roeAnnualized": 17.74,
+          "debtRatio": 454.09,
+          "epsCumulative": 9974,
           "dataQuality": "complete",
           "missingMetrics": []
         }
@@ -3806,8 +3940,8 @@
         "reviewedAt": "2026-09-26",
         "nextReviewAt": "2026-09-30",
         "basisDates": {
-          "price": "2026-11-03",
-          "financialReport": "2026-06-30",
+          "price": "2026-11-20",
+          "financialReport": "2026-09-30",
           "eps": "2026-09-26",
           "multiple": "2026-09-26",
           "nextReview": "2026-09-30"
