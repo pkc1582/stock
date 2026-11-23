@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T05:25:10+09:00",
-  "basisDate": "2026-10-08",
+  "generatedAt": "2026-11-24T07:54:45+09:00",
+  "basisDate": "2026-11-20",
   "status": "provisional_name_classification",
   "managed_item_checked": false,
   "source": {
@@ -26,17 +26,17 @@
     "KRX 공식 종목분류와 지정 상태를 교차검증하기 전에는 1차 정량 선별에만 사용해야 합니다."
   ],
   "counts": {
-    "providerRows": 2757,
-    "kospi": 830,
-    "kosdaq": 1820,
+    "providerRows": 2768,
+    "kospi": 827,
+    "kosdaq": 1834,
     "classified": {
-      "common_candidate": 2551,
+      "common_candidate": 2564,
       "name_likely_preferred": 3,
-      "name_likely_spac": 71,
-      "name_likely_reit": 25
+      "name_likely_spac": 70,
+      "name_likely_reit": 24
     },
-    "preliminaryEligible": 2551,
-    "knownExcluded": 99
+    "preliminaryEligible": 2564,
+    "knownExcluded": 97
   },
   "companies": [
     {
@@ -264,6 +264,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0013Y0",
+      "isin": "KR70013Y0009",
+      "name": "엠에스바이오",
+      "corporationName": "(주)엠에스바이오",
+      "corporateRegistrationNumber": "1311110426823",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "001540",
       "isin": "KR7001540004",
       "name": "안국약품",
@@ -283,6 +297,20 @@
       "name": "그린광학",
       "corporationName": "(주)그린광학",
       "corporateRegistrationNumber": "1501110038584",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0015M0",
+      "isin": "KR70015M0001",
+      "name": "디티에스",
+      "corporationName": "(주)디티에스",
+      "corporateRegistrationNumber": "1615110037981",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -633,6 +661,20 @@
       "name": "동진쎄미켐",
       "corporationName": "(주)동진쎄미켐",
       "corporateRegistrationNumber": "1201110003848",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0053F0",
+      "isin": "KR70053F0003",
+      "name": "티앤이코리아",
+      "corporationName": "(주)티앤이코리아",
+      "corporateRegistrationNumber": "1601110366561",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -1468,6 +1510,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0127E0",
+      "isin": "KR70127E0006",
+      "name": "한화플러스제6호스팩",
+      "corporationName": "한화플러스제6호기업인수목적(주)",
+      "corporateRegistrationNumber": "1101110939734",
+      "market": "KOSDAQ",
+      "classification": "name_likely_spac",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": false,
+      "exclusionReason": "name_indicates_spac"
+    },
+    {
       "code": "012860",
       "isin": "KR7012860003",
       "name": "모베이스전자",
@@ -1720,6 +1776,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0147B0",
+      "isin": "KR70147B0005",
+      "name": "래블업",
+      "corporationName": "래블업 주식회사",
+      "corporateRegistrationNumber": "1101115701382",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "014940",
       "isin": "KR7014940001",
       "name": "오리엔탈정공",
@@ -1753,6 +1823,20 @@
       "name": "삼륭물산",
       "corporationName": "삼륭물산(주)",
       "corporateRegistrationNumber": "1156110001401",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0153R0",
+      "isin": "KR70153R0008",
+      "name": "바로팜",
+      "corporationName": "주식회사 바로팜",
+      "corporateRegistrationNumber": "1101117302261",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -1818,6 +1902,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0158S0",
+      "isin": "KR70158S0002",
+      "name": "엘리스",
+      "corporationName": "(주)엘리스그룹",
+      "corporateRegistrationNumber": "1601110411655",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "016100",
       "isin": "KR7016100000",
       "name": "리더스코스메틱",
@@ -1851,6 +1949,20 @@
       "name": "SGC E&C",
       "corporationName": "에스지씨이앤씨(주)",
       "corporateRegistrationNumber": "1101110327555",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "0162D0",
+      "isin": "KR70162D0003",
+      "name": "동원파츠",
+      "corporationName": "(주)동원파츠",
+      "corporateRegistrationNumber": "1101111420746",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -2294,6 +2406,20 @@
       "exclusionReason": null
     },
     {
+      "code": "0205H0",
+      "isin": "KR70205H0008",
+      "name": "에스케이증권제14호기업인수목적",
+      "corporationName": "에스케이증권제14호기업인수목적 주식회사",
+      "corporateRegistrationNumber": "1101110959003",
+      "market": "KOSDAQ",
+      "classification": "name_likely_spac",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": false,
+      "exclusionReason": "name_indicates_spac"
+    },
+    {
       "code": "020710",
       "isin": "KR7020710000",
       "name": "시공테크",
@@ -2418,6 +2544,20 @@
       "managementStatus": "unverified",
       "eligibleForPreliminaryScreen": true,
       "exclusionReason": null
+    },
+    {
+      "code": "0222E0",
+      "isin": "KR70222E0000",
+      "name": "아이엠스팩1호",
+      "corporationName": "아이엠기업인수목적1호 주식회사",
+      "corporateRegistrationNumber": "1101110962979",
+      "market": "KOSDAQ",
+      "classification": "name_likely_spac",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": false,
+      "exclusionReason": "name_indicates_spac"
     },
     {
       "code": "023160",
@@ -2943,20 +3083,6 @@
       "name": "대성창투",
       "corporationName": "대성창업투자(주)",
       "corporateRegistrationNumber": "1701110031881",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
-      "code": "028080",
-      "isin": "KR7028080000",
-      "name": "휴맥스홀딩스",
-      "corporationName": "(주)휴맥스홀딩스",
-      "corporateRegistrationNumber": "1101110604200",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -10486,8 +10612,8 @@
     {
       "code": "091340",
       "isin": "KR7091340000",
-      "name": "S&K폴리텍",
-      "corporationName": "에스엔케이폴리텍(주)",
+      "name": "S&K글로벌",
+      "corporationName": "에스앤케이글로벌(주)",
       "corporateRegistrationNumber": "1355110101465",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -11105,20 +11231,6 @@
       "name": "엘디티",
       "corporationName": "(주)엘디티",
       "corporateRegistrationNumber": "1501110031257",
-      "market": "KOSDAQ",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
-      "code": "097780",
-      "isin": "KR7097780001",
-      "name": "에코볼트",
-      "corporationName": "에코볼트(주)",
-      "corporateRegistrationNumber": "1358110109364",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -13762,8 +13874,8 @@
     {
       "code": "148250",
       "isin": "KR7148250004",
-      "name": "알엔투테크놀로지",
-      "corporationName": "(주)알엔투테크놀로지",
+      "name": "스퀘어텍",
+      "corporationName": "(주)스퀘어텍",
       "corporateRegistrationNumber": "1156110036979",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -14465,6 +14577,20 @@
       "name": "애드바이오텍",
       "corporationName": "(주)애드바이오텍",
       "corporateRegistrationNumber": "1101111999444",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "179880",
+      "isin": "KR7179880000",
+      "name": "멜콘",
+      "corporationName": "멜콘 주식회사",
+      "corporateRegistrationNumber": "1311110107671",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -15204,8 +15330,8 @@
     {
       "code": "200350",
       "isin": "KR7200350007",
-      "name": "아티스트스튜디오",
-      "corporationName": "(주)아티스트스튜디오",
+      "name": "스튜디오쏠쏠",
+      "corporationName": "(주)스튜디오쏠쏠",
       "corporateRegistrationNumber": "1101113629841",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -15442,16 +15568,16 @@
     {
       "code": "206400",
       "isin": "KR7206400004",
-      "name": "베노티앤알",
-      "corporationName": "(주)베노티앤알",
+      "name": "아인스팩씨엔에스",
+      "corporationName": "(주)아인스팩씨엔에스",
       "corporateRegistrationNumber": "1101115518084",
       "market": "KOSDAQ",
-      "classification": "common_candidate",
+      "classification": "name_likely_spac",
       "classificationBasis": "conservative_name_heuristic",
       "classificationVerified": false,
       "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
+      "eligibleForPreliminaryScreen": false,
+      "exclusionReason": "name_indicates_spac"
     },
     {
       "code": "206560",
@@ -17288,6 +17414,20 @@
       "exclusionReason": null
     },
     {
+      "code": "250030",
+      "isin": "KR7250030004",
+      "name": "진코스텍",
+      "corporationName": "(주)진코스텍",
+      "corporateRegistrationNumber": "1314110243742",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "250060",
       "isin": "KR7250060001",
       "name": "모비스",
@@ -18091,6 +18231,20 @@
       "name": "뉴트리",
       "corporationName": "(주)뉴트리",
       "corporateRegistrationNumber": "1101112214429",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "271160",
+      "isin": "KR7271160004",
+      "name": "하나에어로",
+      "corporationName": "(주)하나에어로다이내믹스",
+      "corporateRegistrationNumber": "1954110013446",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -19208,8 +19362,8 @@
     {
       "code": "304840",
       "isin": "KR7304840002",
-      "name": "피플바이오",
-      "corporationName": "(주)피플바이오",
+      "name": "타임X AI",
+      "corporationName": "타임엑스에이아이",
       "corporateRegistrationNumber": "1101112606171",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -20466,6 +20620,20 @@
       "exclusionReason": null
     },
     {
+      "code": "345290",
+      "isin": "KR7345290001",
+      "name": "영광와이케이엠씨",
+      "corporationName": "(주)영광와이케이엠씨",
+      "corporateRegistrationNumber": "1648110066022",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "347000",
       "isin": "KR7347000002",
       "name": "센코",
@@ -21031,6 +21199,20 @@
       "name": "씨엔알리서치",
       "corporationName": "(주)씨엔알리서치",
       "corporateRegistrationNumber": "1101117525110",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "359410",
+      "isin": "KR7359410008",
+      "name": "영광",
+      "corporationName": "(주)영광",
+      "corporateRegistrationNumber": "1712110020378",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -22846,6 +23028,20 @@
       "exclusionReason": null
     },
     {
+      "code": "420610",
+      "isin": "KR7420610008",
+      "name": "인텔리빅스",
+      "corporationName": "주식회사 인텔리빅스",
+      "corporateRegistrationNumber": "1101111995244",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "420770",
       "isin": "KR7420770000",
       "name": "기가비스",
@@ -23103,6 +23299,20 @@
       "name": "마녀공장",
       "corporationName": "(주)마녀공장",
       "corporateRegistrationNumber": "1101114810308",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "439270",
+      "isin": "KR7439270000",
+      "name": "크리에이츠",
+      "corporationName": "(주)크리에이츠",
+      "corporateRegistrationNumber": "1101114170778",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -23674,8 +23884,8 @@
     {
       "code": "457600",
       "isin": "KR7457600005",
-      "name": "벡트",
-      "corporationName": "(주)벡트",
+      "name": "벡트로보틱스",
+      "corporationName": "(주)벡트로보틱스",
       "corporateRegistrationNumber": "1101113429621",
       "market": "KOSDAQ",
       "classification": "common_candidate",
@@ -24162,18 +24372,18 @@
       "exclusionReason": null
     },
     {
-      "code": "469900",
-      "isin": "KR7469900005",
-      "name": "하나31호스팩",
-      "corporationName": "하나31호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118762696",
+      "code": "471800",
+      "isin": "KR7471800003",
+      "name": "에이엘로봇",
+      "corporationName": "(주)에이엘로봇",
+      "corporateRegistrationNumber": "1211110324590",
       "market": "KOSDAQ",
-      "classification": "name_likely_spac",
+      "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
       "classificationVerified": false,
       "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
     },
     {
       "code": "471820",
@@ -24188,20 +24398,6 @@
       "managementStatus": "unverified",
       "eligibleForPreliminaryScreen": true,
       "exclusionReason": null
-    },
-    {
-      "code": "472230",
-      "isin": "KR7472230002",
-      "name": "SK증권제11호스팩",
-      "corporationName": "에스케이증권제11호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118782032",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
     },
     {
       "code": "472850",
@@ -24223,20 +24419,6 @@
       "name": "SK증권제12호스팩",
       "corporationName": "에스케이증권제12호기업인수목적 주식회사",
       "corporateRegistrationNumber": "1101118794475",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
-    },
-    {
-      "code": "473050",
-      "isin": "KR7473050003",
-      "name": "유안타제15호스팩",
-      "corporationName": "유안타제15호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118796596",
       "market": "KOSDAQ",
       "classification": "name_likely_spac",
       "classificationBasis": "conservative_name_heuristic",
@@ -24330,20 +24512,6 @@
       "exclusionReason": null
     },
     {
-      "code": "474660",
-      "isin": "KR7474660008",
-      "name": "신한제12호스팩",
-      "corporationName": "신한제12호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118819330",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
-    },
-    {
       "code": "474930",
       "isin": "KR7474930005",
       "name": "신한제13호스팩",
@@ -24384,20 +24552,6 @@
       "managementStatus": "unverified",
       "eligibleForPreliminaryScreen": true,
       "exclusionReason": null
-    },
-    {
-      "code": "475240",
-      "isin": "KR7475240008",
-      "name": "하나32호스팩",
-      "corporationName": "하나32호기업인수목적 주식회사",
-      "corporateRegistrationNumber": "1101118835245",
-      "market": "KOSDAQ",
-      "classification": "name_likely_spac",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_spac"
     },
     {
       "code": "475250",
@@ -25156,6 +25310,20 @@
       "exclusionReason": "name_indicates_spac"
     },
     {
+      "code": "493260",
+      "isin": "KR7493260004",
+      "name": "옵토닉스",
+      "corporationName": "(주)옵토닉스",
+      "corporateRegistrationNumber": "2001110202906",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "493280",
       "isin": "KR7493280002",
       "name": "아이엠바이오로직스",
@@ -25184,6 +25352,20 @@
       "exclusionReason": null
     },
     {
+      "code": "493410",
+      "isin": "KR7493410005",
+      "name": "넥스아이",
+      "corporationName": "주식회사 넥스아이",
+      "corporateRegistrationNumber": "1101117849370",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
       "code": "493790",
       "isin": "KR7493790000",
       "name": "유안타제17호스팩",
@@ -25203,6 +25385,20 @@
       "name": "큐리오시스",
       "corporationName": "주식회사 큐리오시스",
       "corporateRegistrationNumber": "1101115622801",
+      "market": "KOSDAQ",
+      "classification": "common_candidate",
+      "classificationBasis": "conservative_name_heuristic",
+      "classificationVerified": false,
+      "managementStatus": "unverified",
+      "eligibleForPreliminaryScreen": true,
+      "exclusionReason": null
+    },
+    {
+      "code": "495910",
+      "isin": "KR7495910002",
+      "name": "이에스티",
+      "corporationName": "(주)이에스티",
+      "corporateRegistrationNumber": "1760110105393",
       "market": "KOSDAQ",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -25536,8 +25732,8 @@
     {
       "code": "000040",
       "isin": "KR7000040006",
-      "name": "KR모터스",
-      "corporationName": "KR모터스(주)",
+      "name": "다이나맥",
+      "corporationName": "(주)다이나맥",
       "corporateRegistrationNumber": "1601110007032",
       "market": "KOSPI",
       "classification": "common_candidate",
@@ -25900,8 +26096,8 @@
     {
       "code": "000640",
       "isin": "KR7000640003",
-      "name": "동아쏘시오홀딩스",
-      "corporationName": "동아쏘시오홀딩스(주)",
+      "name": "동아제약",
+      "corporationName": "동아제약(주)",
       "corporateRegistrationNumber": "1101110017990",
       "market": "KOSPI",
       "classification": "common_candidate",
@@ -26194,8 +26390,8 @@
     {
       "code": "001080",
       "isin": "KR7001080001",
-      "name": "만호제강",
-      "corporationName": "만호제강(주)",
+      "name": "MH머트리얼즈",
+      "corporationName": "엠에이치머트리얼즈(주)",
       "corporateRegistrationNumber": "1801110054659",
       "market": "KOSPI",
       "classification": "common_candidate",
@@ -28390,20 +28586,6 @@
       "exclusionReason": null
     },
     {
-      "code": "005030",
-      "isin": "KR7005030002",
-      "name": "부산주공",
-      "corporationName": "부산주공(주)",
-      "corporateRegistrationNumber": "1801110002682",
-      "market": "KOSPI",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
       "code": "005070",
       "isin": "KR7005070008",
       "name": "코스모신소재",
@@ -28423,20 +28605,6 @@
       "name": "SGC에너지",
       "corporationName": "SGC에너지(주)",
       "corporateRegistrationNumber": "1101110079817",
-      "market": "KOSPI",
-      "classification": "common_candidate",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": true,
-      "exclusionReason": null
-    },
-    {
-      "code": "005110",
-      "isin": "KR7005110002",
-      "name": "한창",
-      "corporationName": "(주)한창",
-      "corporateRegistrationNumber": "1801110000602",
       "market": "KOSPI",
       "classification": "common_candidate",
       "classificationBasis": "conservative_name_heuristic",
@@ -36746,20 +36914,6 @@
       "managementStatus": "unverified",
       "eligibleForPreliminaryScreen": true,
       "exclusionReason": null
-    },
-    {
-      "code": "417310",
-      "isin": "KR7417310000",
-      "name": "코람코더원리츠",
-      "corporationName": "(주)코람코더원위탁관리부동산투자회사",
-      "corporateRegistrationNumber": "1101115837294",
-      "market": "KOSPI",
-      "classification": "name_likely_reit",
-      "classificationBasis": "conservative_name_heuristic",
-      "classificationVerified": false,
-      "managementStatus": "unverified",
-      "eligibleForPreliminaryScreen": false,
-      "exclusionReason": "name_indicates_reit"
     },
     {
       "code": "432320",
