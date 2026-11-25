@@ -3,44 +3,44 @@
   "source": "Yahoo Finance 차트 API (KRX 정규장 종가)",
   "quotes": {
     "030190": {
-      "price": 16690,
-      "basisDate": "2026-11-24"
+      "price": 17220,
+      "basisDate": "2026-11-25"
     },
     "105560": {
-      "price": 151600,
-      "basisDate": "2026-11-24"
+      "price": 148000,
+      "basisDate": "2026-11-25"
     },
     "175330": {
-      "price": 25250,
-      "basisDate": "2026-11-24"
+      "price": 24700,
+      "basisDate": "2026-11-25"
     },
     "000810": {
-      "price": 510000,
-      "basisDate": "2026-11-24"
+      "price": 506000,
+      "basisDate": "2026-11-25"
     },
     "033780": {
-      "price": 183800,
-      "basisDate": "2026-11-24"
+      "price": 182900,
+      "basisDate": "2026-11-25"
     },
     "049720": {
-      "price": 8340,
-      "basisDate": "2026-11-24"
+      "price": 8460,
+      "basisDate": "2026-11-25"
     },
     "000270": {
-      "price": 96250,
-      "basisDate": "2026-11-24"
+      "price": 95600,
+      "basisDate": "2026-11-25"
     },
     "003690": {
-      "price": 11710,
-      "basisDate": "2026-11-24"
+      "price": 11580,
+      "basisDate": "2026-11-25"
     },
     "214320": {
-      "price": 16550,
-      "basisDate": "2026-11-24"
+      "price": 16830,
+      "basisDate": "2026-11-25"
     },
     "241560": {
-      "price": 49800,
-      "basisDate": "2026-11-24"
+      "price": 47950,
+      "basisDate": "2026-11-25"
     }
   }
 }
